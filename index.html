@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>고1 학업 설계 | 학생 학업설계 & 교사용 세특 분석 플랫폼</title>
+  <title>고1 학업 설계 실습 워크스페이스 | 『고1 학업 설계』 도서 연계 공식 웹앱</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome CDN -->
@@ -19,1145 +19,486 @@
     }
   </style>
 </head>
-<body class="bg-[#f8fafc] text-slate-900 min-h-screen flex flex-col justify-between selection:bg-indigo-100 selection:text-indigo-900 antialiased pb-16 md:pb-0">
+<body class="bg-[#f8fafc] text-slate-900 min-h-screen flex flex-col justify-between antialiased pb-16 md:pb-0">
 
-  <!-- 5. HEADER (데스크톱 / 모바일 반응형) -->
+  <!-- 상단 공식 교재 연계 알림 바 -->
+  <div class="bg-slate-900 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-xs no-print">
+    <span class="bg-indigo-600 text-white font-bold px-2 py-0.5 rounded text-xs mr-2">도서 연계 실습 웹앱</span>
+    도서 <strong>『고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계』</strong>(씨마스)를 옆에 펼쳐두고 함께 사용하는 디지털 실습실
+  </div>
+
+  <!-- 헤더 -->
   <header class="bg-white/95 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-50 no-print">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <!-- 로고 -->
-      <a href="#" class="flex items-center space-x-2.5">
-        <div class="w-9 h-9 bg-slate-900 text-white rounded-xl flex items-center justify-center font-black text-base shadow-xs">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="scrollToTop()">
+        <div class="w-10 h-10 bg-indigo-600 text-white rounded-xl flex items-center justify-center font-black text-base shadow-xs">
           고1
         </div>
-        <div class="flex items-center gap-1.5">
-          <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">고1 학업 설계</span>
-          <span class="hidden sm:inline-block text-[10px] bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded-full border border-indigo-200">디지털 플랫폼</span>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">고1 학업 설계 실습실</span>
+            <span class="text-[10px] bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded-full border border-indigo-200">Book Companion</span>
+          </div>
+          <p class="text-[11px] text-slate-500 font-medium hidden sm:block">씨마스21 · 심재준(휘문고) · 한상근(한국직업능력연구원) 공저</p>
         </div>
-      </a>
-
-      <!-- 데스크톱 메뉴 (5개 메뉴) -->
-      <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
-        <a href="#overview-section" class="hover:text-indigo-600 transition">서비스 소개</a>
-        <a href="#major-section" class="hover:text-indigo-600 transition">진로·학과</a>
-        <a href="#simulator" class="hover:text-indigo-600 transition">선택과목</a>
-        <a href="#report-preview-section" class="hover:text-indigo-600 transition">학업설계</a>
-        <a href="#ai-analysis-section" class="hover:text-indigo-600 transition">AI 탐구분석</a>
-      </nav>
-
-      <!-- 우측 액션 버튼 & 모바일 햄버거 -->
-      <div class="flex items-center space-x-2.5">
-        <a href="#simulator" class="hidden sm:inline-flex text-xs sm:text-sm font-extrabold bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl shadow-xs transition items-center gap-1.5">
-          <span>학업설계 시작하기</span>
-          <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
-        <button onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 transition">
-          <i class="fa-solid fa-bars text-base" id="mobile-menu-icon"></i>
-        </button>
       </div>
-    </div>
 
-    <!-- 모바일 드롭다운 메뉴 -->
-    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-4 space-y-2 text-sm font-bold text-slate-700">
-      <a href="#overview-section" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-slate-50">서비스 소개</a>
-      <a href="#major-section" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-slate-50">진로·학과 (90개)</a>
-      <a href="#simulator" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-slate-50">선택과목 설계 (272개)</a>
-      <a href="#report-preview-section" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-slate-50">학업설계서 리포트</a>
-      <a href="#ai-analysis-section" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-slate-50">AI 탐구분석</a>
-      <a href="#teacher-section" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg text-indigo-600 bg-indigo-50">교사용 대시보드</a>
-      <div class="pt-2">
-        <a href="#simulator" onclick="toggleMobileMenu()" class="block w-full py-3 bg-indigo-600 text-white text-center rounded-xl font-extrabold shadow-xs">
-          학업설계 시작하기
+      <!-- 퀵 네비게이션 & 인쇄 버튼 -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <a href="#step-1" class="text-xs sm:text-sm font-semibold text-slate-700 hover:text-indigo-600 px-3 py-1.5 rounded-lg border border-slate-300 hover:border-slate-400 transition hidden sm:inline-block">
+          1. 진로검사
         </a>
+        <a href="#step-2" class="text-xs sm:text-sm font-semibold text-slate-700 hover:text-indigo-600 px-3 py-1.5 rounded-lg border border-slate-300 hover:border-slate-400 transition hidden sm:inline-block">
+          2. 학과탐색
+        </a>
+        <a href="#step-3" class="text-xs sm:text-sm font-semibold text-slate-700 hover:text-indigo-600 px-3 py-1.5 rounded-lg border border-slate-300 hover:border-slate-400 transition hidden sm:inline-block">
+          3. 과목설계
+        </a>
+        <button onclick="quickPrint()" class="text-xs sm:text-sm font-extrabold bg-slate-900 hover:bg-slate-800 text-white px-3.5 py-1.5 rounded-xl shadow-xs transition flex items-center gap-1.5">
+          <i class="fa-solid fa-print text-xs"></i> <span>설계서 인쇄/PDF</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- 3. 모바일 하단 고정 CTA (360px ~ 430px 최적화) -->
+  <!-- 모바일 하단 플로팅 고정 버튼 -->
   <div class="fixed bottom-0 left-0 right-0 p-3 bg-white/95 backdrop-blur-md border-t border-slate-200 z-40 md:hidden no-print flex items-center gap-2">
-    <a href="#simulator" class="flex-1 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-center rounded-xl shadow-md text-sm transition flex items-center justify-center gap-1.5">
-      <span>학업설계 시작하기</span>
-      <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+    <a href="#step-2" class="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-center rounded-xl shadow-md text-xs transition flex items-center justify-center gap-1.5">
+      <span>목표 학과 & 과목 설계하기</span>
+      <i class="fa-solid fa-arrow-down text-xs"></i>
     </a>
-    <a href="#printable-study-plan" onclick="quickPrint()" class="px-4 py-3.5 bg-slate-900 text-white font-bold rounded-xl text-xs flex items-center justify-center shrink-0">
+    <button onclick="quickPrint()" class="px-4 py-3 bg-slate-900 text-white font-bold rounded-xl text-xs flex items-center justify-center shrink-0">
       <i class="fa-solid fa-print"></i>
-    </a>
+    </button>
   </div>
 
-  <!-- 6 & 7. HERO SECTION + HERO DASHBOARD (실제 서비스 대시보드 중심) -->
-  <section class="relative bg-white pt-10 pb-16 lg:pt-16 lg:pb-20 border-b border-slate-200/80 no-print">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <!-- 좌측 텍스트 & CTA (7 cols) -->
-        <div class="lg:col-span-7 space-y-6 text-left">
-          <div class="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full text-xs font-bold text-slate-700">
-            <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
-            고1 맞춤 학업설계 솔루션
+  <!-- 메인 인트로 (책과 웹의 상호작용 안내) -->
+  <section class="bg-white border-b border-slate-200/80 py-10 lg:py-14 no-print">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-700 bg-indigo-50 border border-indigo-100 px-3.5 py-1 rounded-full">
+        📖 『고1 학업 설계』 도서 연계 공식 실습 워크스페이스
+      </span>
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 tracking-tight leading-snug">
+        책을 옆에 펼치고, 웹에서 직접 내 3개년 시간표를 설계하세요
+      </h1>
+      <p class="text-slate-600 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+        <strong>책(Book)</strong>은 352쪽의 깊이 있는 학과 해설과 과목 평가 정보를 제공하고, <strong>웹(Web)</strong>은 학생이 직접 학과를 검색하고 과목을 담아 전공 연계 적합도를 계산하며 3개년 설계서를 출력하는 실습 도구입니다.
+      </p>
+
+      <!-- 책과 웹의 동행 5단계 안내 바 -->
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 max-w-3xl mx-auto grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs">
+        <a href="#step-1" class="p-2 bg-white rounded-xl border border-slate-200 hover:border-indigo-400 transition">
+          <span class="text-slate-400 text-[10px] block">부록 p.332</span>
+          <strong class="text-slate-800 text-[11px]">1. 진로검사</strong>
+        </a>
+        <a href="#step-2" class="p-2 bg-white rounded-xl border border-slate-200 hover:border-indigo-400 transition">
+          <span class="text-slate-400 text-[10px] block">2부 p.54</span>
+          <strong class="text-slate-800 text-[11px]">2. 90개 학과</strong>
+        </a>
+        <a href="#step-3" class="p-2 bg-white rounded-xl border border-slate-200 hover:border-indigo-400 transition">
+          <span class="text-slate-400 text-[10px] block">3부 p.250</span>
+          <strong class="text-slate-800 text-[11px]">3. 272개 과목</strong>
+        </a>
+        <a href="#step-4" class="p-2 bg-white rounded-xl border border-slate-200 hover:border-indigo-400 transition">
+          <span class="text-slate-400 text-[10px] block">부록 p.313</span>
+          <strong class="text-slate-800 text-[11px]">4. 추천도서·탐구</strong>
+        </a>
+        <a href="#step-5" class="p-2 bg-indigo-600 text-white rounded-xl border border-indigo-600 shadow-xs transition">
+          <span class="text-indigo-200 text-[10px] block">1부 Ⅴ장 p.45</span>
+          <strong class="text-white text-[11px]">5. 3개년 설계서</strong>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 실전 5단계 워크스페이스 본체 -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12 flex-1 w-full">
+
+    <!-- STEP 1. [도서 부록 p.332~343] 3대 진로 심리 간이 검사 -->
+    <section id="step-1" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-5 no-print">
+      <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-black">1</span>
+            <span class="text-xs font-bold text-indigo-600 uppercase">도서 부록 332~343쪽 연계</span>
           </div>
-
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-[1.25]">
-            고1 때 설계하는<br>
-            <span class="text-indigo-600">나의 3년</span>
-          </h1>
-
-          <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl font-normal">
-            진로부터 학과, 선택과목, 탐구주제, 추천도서까지<br class="hidden sm:inline">
-            나에게 맞는 3개년 학업계획을 직접 설계해보세요.
+          <h2 class="text-xl font-black text-slate-900 mt-1">진로 심리 간이 검사 (흥미 · 적성 · 가치관)</h2>
+          <p class="text-xs text-slate-500 mt-0.5">
+            책의 간이 검사지를 보며 웹에서 클릭하면 점수가 자동 채점되어 나에게 맞는 계열과 학과가 도출됩니다.
           </p>
-
-          <!-- 2대 CTA -->
-          <div class="flex flex-wrap items-center gap-3 pt-2">
-            <a href="#simulator" class="px-7 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold rounded-xl shadow-xs transition flex items-center gap-2 text-sm sm:text-base">
-              학업설계 시작하기 <i class="fa-solid fa-arrow-right text-xs"></i>
-            </a>
-            <a href="#report-preview-section" class="px-6 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl border border-slate-200 transition text-sm sm:text-base">
-              결과 예시 보기
-            </a>
-          </div>
         </div>
-
-        <!-- 우측 Hero Dashboard Mockup (김○○ 학생의 실제 대시보드 화면) -->
-        <div class="lg:col-span-5">
-          <div class="relative mx-auto max-w-md lg:max-w-none">
-            <!-- SaaS 카드 그림자 및 테두리 -->
-            <div class="bg-slate-900 rounded-3xl p-6 sm:p-7 text-white shadow-xl border border-slate-800 space-y-5">
-              
-              <!-- 상단 학생 프로필 및 적합도 점수 -->
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 flex items-center justify-center font-black text-sm">
-                    김
-                  </div>
-                  <div>
-                    <h3 class="font-black text-base text-white">김○○ 학생의 학업설계</h3>
-                    <p class="text-xs text-indigo-300 font-semibold mt-0.5">나의 진로 : 컴퓨터공학과</p>
-                  </div>
-                </div>
-                <div class="text-right">
-                  <div class="text-3xl sm:text-4xl font-black text-yellow-400 tracking-tight" id="hero-count-score">82<span class="text-base font-bold text-slate-300">점</span></div>
-                  <span class="text-[10px] text-slate-400 font-bold">전공 연계 적합도 예시</span>
-                </div>
-              </div>
-
-              <!-- 관심 분야 뱃지 -->
-              <div>
-                <span class="text-[11px] text-slate-400 font-bold block mb-1.5">관심 분야</span>
-                <div class="flex flex-wrap gap-1.5 text-xs font-semibold">
-                  <span class="px-2.5 py-1 bg-slate-800 text-indigo-300 rounded-lg border border-slate-700">AI</span>
-                  <span class="px-2.5 py-1 bg-slate-800 text-indigo-300 rounded-lg border border-slate-700">소프트웨어</span>
-                  <span class="px-2.5 py-1 bg-slate-800 text-indigo-300 rounded-lg border border-slate-700">데이터</span>
-                </div>
-              </div>
-
-              <!-- 추천 선택과목 카드 -->
-              <div class="p-3.5 bg-slate-800/90 rounded-2xl border border-slate-700 space-y-1.5 text-xs">
-                <span class="text-[11px] font-bold text-slate-400 block">추천 선택과목</span>
-                <div class="grid grid-cols-2 gap-1.5 text-slate-200 font-medium">
-                  <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-400 text-xs"></i> 미적분Ⅱ</div>
-                  <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-400 text-xs"></i> 정보과학</div>
-                  <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-400 text-xs"></i> 확률과 통계</div>
-                  <div class="flex items-center gap-1.5 text-slate-400"><i class="fa-regular fa-circle text-[10px]"></i> 물리학</div>
-                </div>
-              </div>
-
-              <!-- 추천 탐구주제 & 추천도서 -->
-              <div class="space-y-2 text-xs">
-                <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
-                  <span class="text-amber-400 font-bold block text-[10px]">추천 탐구주제</span>
-                  <p class="text-slate-200 font-semibold mt-0.5 truncate">알고리즘 최적화와 AI 서비스의 관계</p>
-                </div>
-                <div class="flex items-center justify-between px-1 text-[11px] text-slate-400 font-medium">
-                  <span>📚 세특 연계 추천 도서 <strong>5권</strong></span>
-                  <span class="text-indigo-400 font-bold">추천 탐구 방향 3개 도출</span>
-                </div>
-              </div>
-
-              <!-- 나의 3개년 학업계획 타임라인 -->
-              <div class="pt-3 border-t border-slate-800 space-y-1.5">
-                <span class="text-[10px] text-slate-400 font-bold block">나의 3개년 학업계획</span>
-                <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
-                  <div class="p-2 bg-slate-800 rounded-lg border border-slate-700">
-                    <span class="text-indigo-300 font-bold block text-[10px]">1학년</span>
-                    <span class="text-slate-300">기초 역량</span>
-                  </div>
-                  <div class="p-2 bg-slate-800 rounded-lg border border-slate-700">
-                    <span class="text-indigo-300 font-bold block text-[10px]">2학년</span>
-                    <span class="text-slate-300">전공 심화</span>
-                  </div>
-                  <div class="p-2 bg-slate-800 rounded-lg border border-slate-700">
-                    <span class="text-indigo-300 font-bold block text-[10px]">3학년</span>
-                    <span class="text-slate-300">탐구·진로 확장</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. 핵심 숫자 SECTION (대형 숫자, 모바일 2x2 카드) -->
-  <section class="py-14 bg-[#f8fafc] border-b border-slate-200/80 no-print">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        
-        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/80 shadow-xs">
-          <div class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">90</div>
-          <div class="text-xs sm:text-sm font-extrabold text-slate-600 mt-2">대표 학과</div>
-          <p class="text-[11px] text-slate-400 mt-0.5">7대 계열 전공 전체 가이드</p>
-        </div>
-
-        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/80 shadow-xs">
-          <div class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">272</div>
-          <div class="text-xs sm:text-sm font-extrabold text-slate-600 mt-2">선택과목</div>
-          <p class="text-[11px] text-slate-400 mt-0.5">보통 및 특목고 과목 DB</p>
-        </div>
-
-        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/80 shadow-xs">
-          <div class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">450</div>
-          <div class="text-xs sm:text-sm font-extrabold text-slate-600 mt-2">추천도서</div>
-          <p class="text-[11px] text-slate-400 mt-0.5">공공기관·전공 자문 도서</p>
-        </div>
-
-        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/80 shadow-xs">
-          <div class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">3<span class="text-2xl sm:text-3xl font-bold">년</span></div>
-          <div class="text-xs sm:text-sm font-extrabold text-slate-600 mt-2">학업설계</div>
-          <p class="text-[11px] text-slate-400 mt-0.5">A4 개인 학업 설계서 완성</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 9. 5 STEP 학업설계 PROCESS -->
-  <section id="overview-section" class="py-16 lg:py-20 bg-white border-b border-slate-200/80 no-print">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950">
-          진로를 찾고,<br>
-          3년의 계획으로 연결하세요.
-        </h2>
-        <p class="text-slate-600 text-xs sm:text-sm mt-2.5 leading-relaxed">
-          5단계 프로세스를 통해 학생 스스로 진로부터 과목, 탐구, 독서 계획을 구조화합니다.
-        </p>
+        <span class="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full self-start sm:self-auto">
+          자동 채점 지원
+        </span>
       </div>
 
-      <!-- 5단계 카드 (모바일 세로 타임라인) -->
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-3.5 relative">
-        
-        <div class="bg-[#f8fafc] p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-black text-indigo-600 uppercase tracking-wide block mb-1">STEP 01</span>
-            <h4 class="font-black text-slate-900 text-sm">진로 탐색</h4>
-            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              관심·적성·가치관을 바탕으로 나의 진로 방향 확인
-            </p>
-          </div>
-          <span class="text-[11px] font-bold text-slate-400 mt-4 pt-3 border-t border-slate-200/60 block">3대 진로 심리 검사</span>
-        </div>
-
-        <div class="bg-[#f8fafc] p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-black text-indigo-600 uppercase tracking-wide block mb-1">STEP 02</span>
-            <h4 class="font-black text-slate-900 text-sm">학과 탐색</h4>
-            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              90개 대표 학과를 통해 관심 전공 탐색
-            </p>
-          </div>
-          <span class="text-[11px] font-bold text-slate-400 mt-4 pt-3 border-t border-slate-200/60 block">7대 계열 대표 학과</span>
-        </div>
-
-        <div class="bg-[#f8fafc] p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-black text-indigo-600 uppercase tracking-wide block mb-1">STEP 03</span>
-            <h4 class="font-black text-slate-900 text-sm">과목 설계</h4>
-            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              272개 선택과목을 확인하고 나에게 필요한 과목 선택
-            </p>
-          </div>
-          <span class="text-[11px] font-bold text-slate-400 mt-4 pt-3 border-t border-slate-200/60 block">전공 연계 권장 과목</span>
-        </div>
-
-        <div class="bg-[#f8fafc] p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-black text-indigo-600 uppercase tracking-wide block mb-1">STEP 04</span>
-            <h4 class="font-black text-slate-900 text-sm">탐구 설계</h4>
-            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              관심 분야에 맞는 추천도서와 탐구주제 확인
-            </p>
-          </div>
-          <span class="text-[11px] font-bold text-slate-400 mt-4 pt-3 border-t border-slate-200/60 block">세특 독서 450권</span>
-        </div>
-
-        <div class="bg-white p-5 rounded-2xl border-2 border-indigo-600 shadow-xs flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-black text-indigo-600 uppercase tracking-wide block mb-1">STEP 05</span>
-            <h4 class="font-black text-slate-900 text-sm">학업계획 완성</h4>
-            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              나만의 3개년 학업설계 결과물 완성
-            </p>
-          </div>
-          <span class="text-[11px] font-bold text-indigo-600 mt-4 pt-3 border-t border-indigo-100 block">A4 인쇄 / PDF 저장</span>
-        </div>
-
+      <!-- 3개 서브 검사 선택 탭 -->
+      <div class="flex border-b border-slate-200 space-x-4 text-xs sm:text-sm font-bold">
+        <button onclick="switchSubTest('sub-riasec')" id="btn-sub-riasec" class="sub-tab-btn pb-2 border-b-2 border-indigo-600 text-indigo-600">
+          ① 직업 흥미 유형 검사 (332~335p)
+        </button>
+        <button onclick="switchSubTest('sub-aptitude')" id="btn-sub-aptitude" class="sub-tab-btn pb-2 border-b-2 border-transparent text-slate-500 hover:text-slate-800">
+          ② 직업 적성 검사 (336~339p)
+        </button>
+        <button onclick="switchSubTest('sub-value')" id="btn-sub-value" class="sub-tab-btn pb-2 border-b-2 border-transparent text-slate-500 hover:text-slate-800">
+          ③ 직업 가치관 검사 (340~343p)
+        </button>
       </div>
 
-    </div>
-  </section>
-
-  <!-- 10. 학생별 결과물 SECTION (Personalization Showcase) -->
-  <section class="py-16 bg-[#f8fafc] border-b border-slate-200/80 no-print">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-950">
-          모두에게 같은 결과가 아닙니다.<br>
-          <span class="text-indigo-600">학생마다 다른 학업설계</span>가 만들어집니다.
-        </h2>
-        <p class="text-slate-600 text-xs sm:text-sm mt-2">
-          선택한 진로와 과목, 탐구 활동에 따라 개인별 최적화된 포트폴리오가 구성됩니다.
-        </p>
+      <!-- ① 직업 흥미 검사 -->
+      <div id="sub-riasec" class="sub-test-view space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="riasec-items-box"></div>
+        <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div>
+            <span class="text-slate-400 block font-bold text-[10px]">나의 직업 흥미 유형 판정</span>
+            <strong class="text-indigo-700 text-sm">탐구형(I) & 진취형(E)</strong>
+          </div>
+          <button onclick="applyFilterAndGo('공학 계열')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs transition">
+            이 결과로 2단계 공학·자연 학과 추천받기 →
+          </button>
+        </div>
       </div>
 
-      <!-- 3명의 학생 결과 카드 비교 UI -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- 학생 A (컴퓨터공학과) -->
-        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <div class="flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs">A</span>
-              <strong class="text-sm text-slate-900">학생 A</strong>
-            </div>
-            <span class="text-xs font-black text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">82점</span>
-          </div>
+      <!-- ② 직업 적성 검사 -->
+      <div id="sub-aptitude" class="sub-test-view hidden space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="aptitude-items-box"></div>
+        <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <div>
-            <span class="text-[11px] text-slate-400 block font-semibold">희망 학과</span>
-            <h4 class="text-base font-black text-slate-900">컴퓨터공학과</h4>
+            <span class="text-slate-400 block font-bold text-[10px]">나의 상위 3대 적성 판정</span>
+            <strong class="text-emerald-700 text-sm">1위: 수리·논리력, 2위: 공간지각력, 3위: 창의력</strong>
           </div>
-          <div class="p-3 bg-slate-50 rounded-xl text-xs space-y-1">
-            <span class="font-bold text-slate-700 block text-[11px]">추천과목</span>
-            <p class="text-slate-600 font-medium">미적분Ⅱ · 정보과학</p>
-          </div>
-          <div class="p-3 bg-slate-50 rounded-xl text-xs space-y-1">
-            <span class="font-bold text-slate-700 block text-[11px]">탐구</span>
-            <p class="text-slate-600 font-medium">알고리즘 최적화</p>
-          </div>
+          <button onclick="applyFilterAndGo('공학 계열')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition">
+            이 적성에 맞는 학과 추천받기 →
+          </button>
         </div>
-
-        <!-- 학생 B (심리학과) -->
-        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <div class="flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs">B</span>
-              <strong class="text-sm text-slate-900">학생 B</strong>
-            </div>
-            <span class="text-xs font-black text-purple-600 bg-purple-50 px-2.5 py-1 rounded-md">78점</span>
-          </div>
-          <div>
-            <span class="text-[11px] text-slate-400 block font-semibold">희망 학과</span>
-            <h4 class="text-base font-black text-slate-900">심리학과</h4>
-          </div>
-          <div class="p-3 bg-slate-50 rounded-xl text-xs space-y-1">
-            <span class="font-bold text-slate-700 block text-[11px]">추천과목</span>
-            <p class="text-slate-600 font-medium">심리학 · 사회문제탐구</p>
-          </div>
-          <div class="p-3 bg-slate-50 rounded-xl text-xs space-y-1">
-            <span class="font-bold text-slate-700 block text-[11px]">탐구</span>
-            <p class="text-slate-600 font-medium">청소년 심리와 미디어</p>
-          </div>
-        </div>
-
-        <!-- 학생 C (경영학과) -->
-        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <div class="flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">C</span>
-              <strong class="text-sm text-slate-900">학생 C</strong>
-            </div>
-            <span class="text-xs font-black text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">85점</span>
-          </div>
-          <div>
-            <span class="text-[11px] text-slate-400 block font-semibold">희망 학과</span>
-            <h4 class="text-base font-black text-slate-900">경영학과</h4>
-          </div>
-          <div class="p-3 bg-slate-50 rounded-xl text-xs space-y-1">
-            <span class="font-bold text-slate-700 block text-[11px]">추천과목</span>
-            <p class="text-slate-600 font-medium">경제 · 확률과 통계</p>
-          </div>
-          <div class="p-3 bg-slate-50 rounded-xl text-xs space-y-1">
-            <span class="font-bold text-slate-700 block text-[11px]">탐구</span>
-            <p class="text-slate-600 font-medium">소비자 행동 분석</p>
-          </div>
-        </div>
-
       </div>
 
-    </div>
-  </section>
+      <!-- ③ 직업 가치관 검사 -->
+      <div id="sub-value" class="sub-test-view hidden space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="value-items-box"></div>
+        <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div>
+            <span class="text-slate-400 block font-bold text-[10px]">나의 가치 지향 유형 판정</span>
+            <strong class="text-amber-700 text-sm">성취지향형 (자율성 & 성취감 추구)</strong>
+          </div>
+          <button onclick="applyFilterAndGo('사회 계열')" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl text-xs transition">
+            가치 지향에 맞는 학과 추천받기 →
+          </button>
+        </div>
+      </div>
+    </section>
 
-  <!-- 11. 개인 학업설계 리포트 SECTION (A4 디지털 스타일) -->
-  <section id="report-preview-section" class="py-16 bg-white border-b border-slate-200/80 no-print">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-xl mx-auto mb-10">
-        <span class="text-xs font-extrabold text-indigo-600 uppercase tracking-wider">Report Preview</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-950 mt-1">
-          내가 선택한 과정이<br>하나의 결과물이 됩니다.
-        </h2>
-        <p class="text-slate-600 text-xs sm:text-sm mt-2">
-          A4 보고서처럼 정돈된 모던 디지털 리포트로 언제든 인쇄하거나 PDF로 저장할 수 있습니다.
-        </p>
+    <!-- STEP 2. [도서 2부 p.54~249] 대표 학과 90개 탐색 및 추천도서 5선 -->
+    <section id="step-2" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6 no-print">
+      <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-black">2</span>
+            <span class="text-xs font-bold text-indigo-600 uppercase">도서 2부 54~249쪽 연계</span>
+          </div>
+          <h2 class="text-xl font-black text-slate-900 mt-1">목표 학과 선택 (대표 90개 학과 전체)</h2>
+          <p class="text-xs text-slate-500 mt-0.5">
+            목표 학과를 선택하면 해당 학과의 <strong>도서 페이지 안내</strong>와 함께 필수 권장 과목, 부록 추천 도서 5선이 즉시 로드됩니다.
+          </p>
+        </div>
+        <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200 self-start sm:self-auto">
+          대표 90개 학과 100% 수록
+        </span>
       </div>
 
-      <!-- 리포트 Preview 목업 -->
-      <div class="bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200 max-w-3xl mx-auto space-y-5 shadow-xs">
-        <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-          <span class="text-xs font-black text-slate-900 tracking-wider">MY ACADEMIC PLAN</span>
-          <span class="text-[11px] font-bold text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded border border-indigo-200">디지털 리포트 프리뷰</span>
+      <!-- 8대 계열 빠른 필터 버튼 -->
+      <div class="space-y-1.5">
+        <label class="block text-xs font-bold text-slate-600">계열별 필터:</label>
+        <div class="flex flex-wrap gap-1.5 text-xs font-bold" id="group-filter-buttons">
+          <button onclick="filterByGroup('all')" class="grp-btn px-3 py-1.5 rounded-xl border bg-slate-900 text-white border-slate-900 transition" data-group="all">전체 (90)</button>
+          <button onclick="filterByGroup('공학 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="공학 계열">공학 (21)</button>
+          <button onclick="filterByGroup('사회 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="사회 계열">사회 (15)</button>
+          <button onclick="filterByGroup('교육 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="교육 계열">교육 (12)</button>
+          <button onclick="filterByGroup('의약보건 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="의약보건 계열">의약보건 (12)</button>
+          <button onclick="filterByGroup('자연 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="자연 계열">자연 (10)</button>
+          <button onclick="filterByGroup('인문 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="인문 계열">인문 (10)</button>
+          <button onclick="filterByGroup('예체능 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="예체능 계열">예체능 (9)</button>
+          <button onclick="filterByGroup('자유전공')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="자유전공">자유전공 (1)</button>
+        </div>
+      </div>
+
+      <!-- 검색창 & 드롭다운 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="major-search-input" placeholder="학과명 검색 (예: 컴퓨터, 반도체, 의학, 경영, 간호 등)"
+                 class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold text-slate-900 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                 oninput="onSearchInput()">
+        </div>
+        <div>
+          <select id="target-major-select" class="w-full p-3 border border-slate-300 rounded-xl bg-slate-50 text-slate-900 font-bold text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none" onchange="onSelectChange(this.value)">
+          </select>
+        </div>
+      </div>
+
+      <!-- 90개 학과 카드 리스트 (스크롤) -->
+      <div class="border border-slate-200 rounded-2xl p-3 bg-slate-50 max-h-48 overflow-y-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-xs" id="majors-grid-container"></div>
+      </div>
+
+      <!-- 선택 학과 상세 정보 & 책 페이지 안내 & 추천도서 5선 -->
+      <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-bold text-indigo-600 uppercase" id="selected-major-group-label">공학 계열</span>
+            <h3 class="text-2xl font-black text-slate-900 mt-0.5" id="selected-major-title">컴퓨터공학과</h3>
+          </div>
+          <!-- 📖 도서 페이지 안내 뱃지 -->
+          <div class="p-2.5 bg-indigo-50 border border-indigo-200 rounded-xl text-xs font-bold text-indigo-900 flex items-center gap-2">
+            <i class="fa-solid fa-book-open text-indigo-600"></i>
+            <span id="selected-major-page-badge">도서 p.162~163을 함께 펼치세요</span>
+          </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
-          <div class="bg-white p-3 rounded-xl border border-slate-200">
-            <span class="text-slate-400 block text-[10px]">학생명</span>
-            <strong class="text-slate-900">김○○</strong>
+        <!-- 진학샘 코칭 팁 -->
+        <div class="text-xs sm:text-sm text-slate-700 space-y-1">
+          <strong class="text-indigo-950 font-bold block">💡 진학 전문 교사의 조언 (도서 본문 수록):</strong>
+          <p id="selected-major-tip" class="bg-white p-3.5 rounded-xl border border-slate-200 text-slate-800 leading-relaxed font-medium"></p>
+        </div>
+
+        <!-- 권장 과목 요약 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200">
+            <span class="font-bold text-indigo-700 block mb-1">★ 전공 필수 권장 과목:</span>
+            <span id="selected-major-core" class="text-slate-900 font-bold"></span>
           </div>
-          <div class="bg-white p-3 rounded-xl border border-slate-200">
-            <span class="text-slate-400 block text-[10px]">희망 학과</span>
-            <strong class="text-indigo-600">컴퓨터공학과</strong>
-          </div>
-          <div class="bg-white p-3 rounded-xl border border-slate-200">
-            <span class="text-slate-400 block text-[10px]">전공 연계 적합도</span>
-            <strong class="text-slate-900">82점</strong>
-          </div>
-          <div class="bg-white p-3 rounded-xl border border-slate-200">
-            <span class="text-slate-400 block text-[10px]">추천도서</span>
-            <strong class="text-slate-900">5권 수록</strong>
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200">
+            <span class="font-bold text-slate-600 block mb-1">★ 전공 이수 권장 과목:</span>
+            <span id="selected-major-rec" class="text-slate-800 font-medium"></span>
           </div>
         </div>
 
-        <div class="bg-white p-4 rounded-xl border border-slate-200 text-xs space-y-2">
+        <!-- 부록 313~330p 추천도서 5선 표지 서가 -->
+        <div class="pt-2 space-y-2">
           <div class="flex items-center justify-between">
-            <span class="font-bold text-slate-800">추천 선택과목 :</span>
-            <span class="text-slate-600 font-medium">미적분Ⅱ, 정보과학</span>
+            <strong class="text-xs sm:text-sm font-black text-slate-900 flex items-center gap-1.5">
+              <i class="fa-solid fa-book-bookmark text-indigo-600"></i> 학과별 추천 도서 5선 (교재 부록 313~330쪽 수록)
+            </strong>
+            <span class="text-[11px] text-slate-500 font-medium">공공기관·전공 자문 추천도서</span>
           </div>
-          <div class="flex items-center justify-between">
-            <span class="font-bold text-slate-800">탐구 관심 분야 :</span>
-            <span class="text-slate-600 font-medium">알고리즘 최적화와 AI</span>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 pt-1" id="book-covers-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3. [도서 3부 p.250~311] 선택 과목 272개 시간표 담기 & 실시간 적합도 -->
+    <section id="step-3" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6 no-print">
+      <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-black">3</span>
+            <span class="text-xs font-bold text-indigo-600 uppercase">도서 3부 250~311쪽 연계</span>
           </div>
-          <div class="pt-2 border-t border-slate-100 flex items-center justify-between font-bold text-[11px]">
-            <span class="text-slate-700">3개년 학업계획 :</span>
-            <span class="text-indigo-600">1학년(기초) ➔ 2학년(심화) ➔ 3학년(융합)</span>
-          </div>
+          <h2 class="text-xl font-black text-slate-900 mt-1">
+            <span id="sim-target-major-name" class="text-indigo-600">컴퓨터공학과</span> 과목 설계 & 실시간 적합도 계산
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">
+            과목을 선택할 때마다 목표 학과 권장 과목과의 일치도를 실시간으로 계산해 줍니다.
+          </p>
         </div>
       </div>
 
-    </div>
-  </section>
+      <!-- 실시간 적합도 점수 인포 바 -->
+      <div class="bg-slate-900 text-white p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <span class="text-[11px] text-indigo-300 font-bold block">전공 연계 과목 적합도 분석</span>
+          <div class="text-2xl font-black text-white mt-0.5">
+            전공 연계 적합도: <span class="text-yellow-400" id="rep-score">82점</span>
+          </div>
+          <p class="text-xs text-slate-300 mt-1" id="rep-missing-alert">
+            필수 권장 과목 중 일부가 미선택되어 있습니다.
+          </p>
+        </div>
+        <div class="text-xs font-bold px-4 py-2 rounded-xl bg-slate-800 text-amber-300 border border-slate-700" id="rep-status">
+          ⚠️ 보완 권장 과목 확인
+        </div>
+      </div>
 
-  <!-- 12. AI 탐구 분석 SECTION (Gemini 보조 분석) -->
-  <section id="ai-analysis-section" class="py-16 bg-[#f8fafc] border-b border-slate-200/80 no-print">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <span class="text-xs font-extrabold text-indigo-600 uppercase tracking-wider">AI Assistant Engine</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-950 mt-1">
-          학생의 활동을<br>AI가 분석하고 정리합니다.
-        </h2>
-        <p class="text-slate-600 text-xs sm:text-sm mt-2.5 leading-relaxed">
-          학생이 실제로 선택하고 기록한 진로·과목·탐구 활동을 바탕으로 AI가 학생의 관심 분야와 활동 흐름을 분석하고, 교사가 학생을 이해하고 지도하는 데 활용할 수 있는 자료를 제공합니다.
+      <!-- 272개 과목 풀 체크박스 -->
+      <div>
+        <span class="font-bold text-sm text-slate-800 block mb-2">수학 교과군 (256~259쪽)</span>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs" id="box-math"></div>
+      </div>
+
+      <div>
+        <span class="font-bold text-sm text-slate-800 block mb-2">과학 / 정보 / 기술가정 교과군 (274~289쪽)</span>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs" id="box-sci"></div>
+      </div>
+
+      <div>
+        <span class="font-bold text-sm text-slate-800 block mb-2">사회 / 인문 / 교양 교과군 (264~273쪽)</span>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs" id="box-soc"></div>
+      </div>
+    </section>
+
+    <!-- STEP 4. 탐구주제 도출 & 학생 실제 활동 기록 ✍️ -->
+    <section id="step-4" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6 no-print">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-black">4</span>
+          <span class="text-xs font-bold text-indigo-600 uppercase">세특 연계 탐구 & 활동 기록</span>
+        </div>
+        <h2 class="text-xl font-black text-slate-900 mt-1">나의 탐구 주제 및 실제 활동 기록</h2>
+        <p class="text-xs text-slate-500 mt-0.5">
+          교과 과제 탐구나 동아리에서 실제로 수행한 활동을 기록하면 선생님이 세특 작성 시 가장 훌륭한 근거 자료가 됩니다.
         </p>
       </div>
 
-      <!-- AI 분석 결과 카드 UI -->
-      <div class="bg-slate-900 rounded-3xl p-6 sm:p-8 text-white max-w-3xl mx-auto space-y-5 shadow-xl border border-slate-800">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <span class="text-xs font-black text-indigo-400 flex items-center gap-2">
-            <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i> AI 분석 결과
-          </span>
-          <span class="text-[10px] text-slate-400">활동 기반 연계성 추출</span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-          <div class="p-3 bg-slate-800 rounded-xl border border-slate-700">
-            <span class="text-slate-400 block text-[10px] font-bold">학생 관심 분야</span>
-            <p class="text-white font-bold mt-0.5">AI · 소프트웨어 · 데이터</p>
-          </div>
-          <div class="p-3 bg-slate-800 rounded-xl border border-slate-700">
-            <span class="text-slate-400 block text-[10px] font-bold">선택과목</span>
-            <p class="text-white font-bold mt-0.5">미적분Ⅱ · 정보과학</p>
-          </div>
-          <div class="p-3 bg-slate-800 rounded-xl border border-slate-700">
-            <span class="text-slate-400 block text-[10px] font-bold">탐구주제</span>
-            <p class="text-white font-bold mt-0.5">알고리즘 최적화</p>
-          </div>
-        </div>
-
-        <div class="p-4 bg-indigo-950/60 rounded-2xl border border-indigo-500/30 text-xs space-y-1.5">
-          <span class="font-black text-indigo-300 block">💡 AI가 발견한 연계성</span>
-          <p class="text-slate-200 font-medium">수학적 사고(미적분) ➔ 알고리즘 최적화 ➔ AI 문제 해결 역량으로 이어지는 일관된 탐구 흐름</p>
-        </div>
-
-        <div class="p-4 bg-slate-800/80 rounded-2xl border border-slate-700 text-xs space-y-1.5">
-          <span class="font-black text-amber-300 block">🎯 확장 탐구 방향 제안</span>
-          <ul class="text-slate-300 space-y-1 font-medium text-[11px]">
-            <li>• 알고리즘별 효율성 비교 분석 실험</li>
-            <li>• AI 추천 알고리즘의 원리 조사 보고서</li>
-            <li>• 데이터 처리 방식에 따른 모델 성능 비교</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 13 & 14. 교사용 화면 & 교사용 AI 활용 SECTION -->
-  <section id="teacher-section" class="py-16 bg-white border-b border-slate-200/80 no-print">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-      
-      <div class="text-center max-w-2xl mx-auto">
-        <span class="text-xs font-extrabold text-indigo-600 uppercase tracking-wider">Teacher Consultation Workspace</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-950 mt-1">
-          선생님은 학생의<br>학업설계 과정을 한눈에 확인합니다.
-        </h2>
-        <p class="text-slate-600 text-xs sm:text-sm mt-2">
-          학생들의 학과 선택, 과목 구성, 실제 활동 기록을 파악하고 세특 작성에 필요한 정보를 효율적으로 정리합니다.
-        </p>
-      </div>
-
-      <!-- 교사 Dashboard Mockup -->
-      <div class="bg-[#f8fafc] rounded-3xl p-6 sm:p-8 border border-slate-200 max-w-5xl mx-auto space-y-6 shadow-xs">
-        
-        <!-- 상단 반 현황 통계 -->
-        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="space-y-3">
           <div>
-            <h3 class="font-black text-base text-slate-900">우리 반 학업설계 현황 (1학년 2반)</h3>
-            <span class="text-xs text-slate-500">학생이 직접 입력한 데이터가 실시간으로 집계됩니다.</span>
+            <label class="block text-xs font-bold text-slate-700 mb-1">관심 탐구 키워드</label>
+            <input type="text" id="user-keywords" value="알고리즘 최적화, 머신러닝 모델, 데이터 압축"
+                   class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
           </div>
-          <div class="flex items-center gap-3 text-xs font-bold text-slate-700">
-            <span>학생 28명</span>
-            <span class="text-slate-300">|</span>
-            <span class="text-indigo-600">진로설계 완료 24명</span>
-            <span class="text-slate-300">|</span>
-            <span>과목설계 완료 21명</span>
-            <span class="text-slate-300">|</span>
-            <span class="text-emerald-600">탐구활동 기록 18명</span>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">탐구 주제</label>
+            <input type="text" id="user-topic" value="정렬 알고리즘의 시간 복잡도 분석과 AI 추천 서비스 적용 방안"
+                   class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold text-indigo-900 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">연계 탐구 도서</label>
+            <input type="text" id="user-book" value="컴퓨팅 사고력을 키우는 이산수학 (박주미)"
+                   class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-indigo-500 focus:outline-none">
           </div>
         </div>
 
-        <!-- 학생별 목록 (모바일 카드 리스트 / 데스크톱 테이블) -->
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs sm:text-sm">
-            <thead class="bg-white border-b border-slate-200 text-slate-600 font-bold">
-              <tr>
-                <th class="p-3">학생</th>
-                <th class="p-3">관심 학과</th>
-                <th class="p-3 text-center">적합도</th>
-                <th class="p-3">선택과목</th>
-                <th class="p-3">탐구주제</th>
-                <th class="p-3 text-center">활동기록</th>
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold text-slate-700">
+            ✍️ 학생 실제 활동 기록 (실험, 탐구 보고서, 발표 내용)
+          </label>
+          <textarea id="user-activity-log" rows="6"
+                    class="w-full p-3.5 bg-slate-50 border border-slate-300 rounded-2xl text-xs font-medium leading-relaxed focus:ring-2 focus:ring-indigo-500 focus:outline-none">파이썬을 활용해 버블 정렬과 퀵 정렬의 실행 시간을 데이터 크기별로 측정하고 비교하는 실험을 진행함. 도서 『컴퓨팅 사고력을 키우는 이산수학』을 읽고 점화식과 그래프 이론이 알고리즘 최적화에 어떻게 적용되는지 탐구하여 교과 과제 보고서로 제출함.</textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 5. [도서 1부 Ⅳ·Ⅴ장 p.45] 3개년 학업 설계서 (A4 출력) -->
+    <section id="step-5" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6">
+      <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 no-print">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-black">5</span>
+            <span class="text-xs font-bold text-indigo-600 uppercase">도서 1부 Ⅳ·Ⅴ장 p.45~53 연계</span>
+          </div>
+          <h2 class="text-xl font-black text-slate-900 mt-1">고등학교 3개년 개인 학업 설계서</h2>
+          <p class="text-xs text-slate-500 mt-0.5">
+            상담 및 학교 제출용 표준 양식으로, 아래 버튼을 눌러 인쇄하거나 PDF로 저장하세요.
+          </p>
+        </div>
+        <button onclick="quickPrint()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-xs transition flex items-center gap-2 text-sm shrink-0">
+          <i class="fa-solid fa-print"></i> A4 인쇄 / PDF 저장
+        </button>
+      </div>
+
+      <!-- 인쇄용 A4 공식 문서 영역 -->
+      <div id="printable-study-plan" class="bg-white p-6 sm:p-8 rounded-2xl border-2 border-slate-900 space-y-6">
+        <div class="border-b-2 border-slate-900 pb-4 text-center">
+          <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">High School Credit System Study Plan</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">고등학교 3개년 개인 학업 설계서</h2>
+          <p class="text-xs text-slate-500 mt-1">
+            참고 도서: 『고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계』 (심재준·한상근 공저 / 씨마스21)
+          </p>
+        </div>
+
+        <table class="w-full text-xs sm:text-sm border-collapse border border-slate-300">
+          <tr class="bg-slate-100">
+            <th class="border border-slate-300 p-2.5 text-slate-600 w-1/4">희망 진로 계열</th>
+            <td class="border border-slate-300 p-2.5 font-bold" id="out-group">-</td>
+            <th class="border border-slate-300 p-2.5 text-slate-600 w-1/4">목표 학과 (1지망)</th>
+            <td class="border border-slate-300 p-2.5 font-bold text-indigo-700" id="out-major">-</td>
+          </tr>
+          <tr>
+            <th class="border border-slate-300 p-2.5 text-slate-600">진학 목표 전형</th>
+            <td class="border border-slate-300 p-2.5">학생부 종합전형 / 학생부 교과전형</td>
+            <th class="border border-slate-300 p-2.5 text-slate-600">도서 참조 가이드</th>
+            <td class="border border-slate-300 p-2.5 font-bold" id="out-page">-</td>
+          </tr>
+        </table>
+
+        <div class="space-y-2">
+          <h4 class="font-bold text-sm text-slate-900">영역별 선택 이수 계획표 (3개년)</h4>
+          <table class="w-full text-xs sm:text-sm border-collapse border border-slate-300">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700">
+                <th class="border border-slate-300 p-2 w-1/4">교과 영역</th>
+                <th class="border border-slate-300 p-2">선택 과목 목록</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-slate-200 font-medium">
-              <tr class="hover:bg-indigo-50/50 transition cursor-pointer">
-                <td class="p-3 font-bold text-slate-900">김○○</td>
-                <td class="p-3">컴퓨터공학과</td>
-                <td class="p-3 text-center font-bold text-indigo-600">82점</td>
-                <td class="p-3 text-slate-600">미적분Ⅱ · 정보과학</td>
-                <td class="p-3 text-slate-800 truncate max-w-xs">알고리즘 최적화</td>
-                <td class="p-3 text-center font-bold text-slate-700">3건</td>
+            <tbody>
+              <tr>
+                <td class="border border-slate-300 p-2 font-bold text-center bg-slate-50">수학 교과군</td>
+                <td class="border border-slate-300 p-2 font-medium" id="out-sub-math">-</td>
               </tr>
-              <tr class="hover:bg-indigo-50/50 transition cursor-pointer">
-                <td class="p-3 font-bold text-slate-900">이○○</td>
-                <td class="p-3">심리학과</td>
-                <td class="p-3 text-center font-bold text-purple-600">78점</td>
-                <td class="p-3 text-slate-600">심리학 · 사회문제탐구</td>
-                <td class="p-3 text-slate-800 truncate max-w-xs">청소년 심리와 미디어</td>
-                <td class="p-3 text-center font-bold text-slate-700">2건</td>
+              <tr>
+                <td class="border border-slate-300 p-2 font-bold text-center bg-slate-50">과학 / 정보 교과군</td>
+                <td class="border border-slate-300 p-2 font-medium" id="out-sub-sci">-</td>
               </tr>
-              <tr class="hover:bg-indigo-50/50 transition cursor-pointer">
-                <td class="p-3 font-bold text-slate-900">박○○</td>
-                <td class="p-3">경영학과</td>
-                <td class="p-3 text-center font-bold text-emerald-600">85점</td>
-                <td class="p-3 text-slate-600">경제 · 확률과 통계</td>
-                <td class="p-3 text-slate-800 truncate max-w-xs">소비자 행동 분석</td>
-                <td class="p-3 text-center font-bold text-slate-700">4건</td>
+              <tr>
+                <td class="border border-slate-300 p-2 font-bold text-center bg-slate-50">사회 / 인문 교과군</td>
+                <td class="border border-slate-300 p-2 font-medium" id="out-sub-soc">-</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <!-- 교사용 세특 참고자료 생성 뷰 -->
-        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 space-y-4">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
-            <div>
-              <span class="text-xs font-bold text-indigo-600">학생 활동 바탕 세특 보조</span>
-              <h4 class="font-black text-slate-900 text-sm sm:text-base">김○○ 학생의 활동 기반 세특 작성 참고자료</h4>
-            </div>
-            <div class="flex gap-2">
-              <button class="px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold rounded-lg text-xs transition">
-                AI 분석하기
-              </button>
-              <button class="px-3 py-1.5 bg-indigo-600 text-white hover:bg-indigo-700 font-bold rounded-lg text-xs transition">
-                참고자료 생성하기
-              </button>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-            <div class="p-3 bg-slate-50 rounded-xl space-y-1">
-              <span class="font-bold text-slate-700 block">학생 실제 활동 기록:</span>
-              <p class="text-slate-600 leading-relaxed font-medium">
-                파이썬을 활용해 정렬 알고리즘의 실행 시간을 비교하는 실험을 진행하고 보고서를 작성함. 도서 『컴퓨팅 사고력을 키우는 이산수학』을 읽고 알고리즘 최적화의 수학적 원리를 탐구함.
-              </p>
-            </div>
-            <div class="p-3 bg-indigo-50/70 rounded-xl space-y-1 border border-indigo-100">
-              <span class="font-bold text-indigo-900 block">세특 작성 참고자료:</span>
-              <p class="text-slate-800 leading-relaxed font-medium">
-                컴퓨터공학 및 알고리즘 효율성에 높은 관심이 있는 학생임. 파이썬 프로그래밍을 통해 정렬 알고리즘의 시간 복잡도를 실험적으로 분석하고, 전공 연계 도서를 탐독하며 수학적 최적화 원리를 체계적으로 탐구하여 발표함.
-              </p>
-            </div>
-          </div>
-
-          <!-- 주의 안내 고지문 -->
-          <div class="p-2.5 bg-slate-100 rounded-xl text-[11px] text-slate-500 flex items-center gap-1.5">
-            <i class="fa-solid fa-circle-info text-indigo-500"></i>
-            <span>AI가 생성한 결과는 교사의 검토 및 수정 후 활용할 수 있습니다. (학생의 실제 활동 관찰 기록 보조용)</span>
+        <!-- 학생 실제 활동 기록 및 탐구주제 -->
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2">
+          <strong class="font-bold text-slate-900 block">🎯 학생 탐구 주제 및 실제 활동 기록:</strong>
+          <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+            <div><span class="text-slate-500">탐구주제:</span> <strong id="out-topic" class="text-indigo-900"></strong></div>
+            <div><span class="text-slate-500">활동기록:</span> <span id="out-activity-log" class="text-slate-800 leading-relaxed font-medium"></span></div>
           </div>
         </div>
 
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
+          <span class="font-bold text-slate-900 block">📖 전공 연계 학생부 세특 추천 도서 목록 (부록 313~330p):</span>
+          <div id="out-books-list" class="text-slate-700 font-medium"></div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1">
+          <span class="font-bold text-slate-900 block">✔ 학업 설계서 최종 점검 체크리스트 (교재 1부 Ⅴ장)</span>
+          <div class="text-slate-600 space-y-0.5">
+            <div>[ ] 1. 목표 대학 및 학과의 전공 연계 권장 과목을 충분히 반영하였는가?</div>
+            <div>[ ] 2. 소속 고등학교의 교육과정 편제표상 개설 학기와 이수 순서(위계)가 적절한가?</div>
+            <div>[ ] 3. 과목별 성적 산출 방식(절대/상대평가)을 고려하여 학점 관리 전략을 세웠는가?</div>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center pt-4 border-t border-slate-200 text-xs text-slate-500">
+          <div>작성일: 2026년 ___월 ___일</div>
+          <div>학생 서명: ____________________ (인)</div>
+        </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+  </main>
 
-  <!-- 실전 인터랙티브 시뮬레이터 워크스페이스 -->
-  <section id="simulator" class="py-16 bg-[#f8fafc] border-b border-slate-200/80 no-print">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <span class="text-xs font-extrabold text-indigo-600 uppercase tracking-wider">Interactive Simulator</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-950 mt-1">
-          나만의 3개년 학업 설계 시뮬레이터
-        </h2>
-        <p class="text-slate-600 text-xs sm:text-sm mt-2">
-          아래 탭을 통해 학과 탐색부터 과목 선택, 활동 기록, 3개년 설계서 출력을 직접 진행하세요.
-        </p>
-      </div>
-
-      <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden max-w-5xl mx-auto">
-        
-        <!-- 서브 탭 네비게이션 -->
-        <div class="bg-slate-50 border-b border-slate-200 px-4 sm:px-6 py-3 flex items-center justify-between overflow-x-auto no-scrollbar gap-2">
-          <div class="flex space-x-1 sm:space-x-2 text-xs sm:text-sm font-bold whitespace-nowrap">
-            <button onclick="switchTab('tab-major')" id="sim-nav-major" class="sim-nav px-3.5 py-2 rounded-xl bg-slate-900 text-white shadow-xs">
-              1. 90개 학과 & 도서 표지
-            </button>
-            <button onclick="switchTab('tab-subject')" id="sim-nav-subject" class="sim-nav px-3.5 py-2 rounded-xl bg-white text-slate-700 hover:bg-slate-200">
-              2. 272개 과목 설계
-            </button>
-            <button onclick="switchTab('tab-activity')" id="sim-nav-activity" class="sim-nav px-3.5 py-2 rounded-xl bg-white text-slate-700 hover:bg-slate-200">
-              3. 탐구주제 & 활동기록 ✍️
-            </button>
-            <button onclick="switchTab('tab-report')" id="sim-nav-report" class="sim-nav px-3.5 py-2 rounded-xl bg-white text-slate-700 hover:bg-slate-200">
-              4. 적합도 리포트
-            </button>
-            <button onclick="switchTab('tab-plan')" id="sim-nav-plan" class="sim-nav px-3.5 py-2 rounded-xl bg-white text-slate-700 hover:bg-slate-200">
-              5. 3개년 설계서 (A4 출력)
-            </button>
-            <button onclick="switchTab('tab-tests')" id="sim-nav-tests" class="sim-nav px-3.5 py-2 rounded-xl bg-white text-slate-700 hover:bg-slate-200">
-              부록. 3대 진로검사
-            </button>
-          </div>
-        </div>
-
-        <!-- 1. 학과 탐색 & 부록 추천 도서 표지 5선 -->
-        <div id="tab-major" class="tab-pane p-6 sm:p-8 space-y-6">
-          <div class="border-b border-slate-200 pb-4">
-            <span class="text-xs font-bold text-indigo-600 uppercase">STEP 01</span>
-            <h3 class="text-xl font-black text-slate-950 mt-0.5">목표 학과 탐색 & 교과·세특 추천 도서 표지</h3>
-            <p class="text-xs text-slate-500 mt-1">
-              공공기관(독서로, 국립중앙도서관 등)과 주요 대학, 진학 전문 교사의 자문으로 엄선된 학과별 추천 도서를 확인하세요.
-            </p>
-          </div>
-
-          <!-- 계열별 모아보기 필터 -->
-          <div class="space-y-2">
-            <div class="flex flex-wrap gap-1.5 text-xs font-bold" id="group-filter-buttons">
-              <button onclick="filterByGroup('all')" class="grp-btn px-3 py-1.5 rounded-xl border bg-slate-900 text-white border-slate-900 transition" data-group="all">전체 (90)</button>
-              <button onclick="filterByGroup('공학 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="공학 계열">공학 (21)</button>
-              <button onclick="filterByGroup('사회 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="사회 계열">사회 (15)</button>
-              <button onclick="filterByGroup('교육 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="교육 계열">교육 (12)</button>
-              <button onclick="filterByGroup('의약보건 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="의약보건 계열">의약보건 (12)</button>
-              <button onclick="filterByGroup('자연 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="자연 계열">자연 (10)</button>
-              <button onclick="filterByGroup('인문 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="인문 계열">인문 (10)</button>
-              <button onclick="filterByGroup('예체능 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="예체능 계열">예체능 (9)</button>
-              <button onclick="filterByGroup('자유전공')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="자유전공">자유전공 (1)</button>
-            </div>
-          </div>
-
-          <!-- 검색창 & 드롭다운 -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="relative">
-              <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-              <input type="text" id="major-search-input" placeholder="학과명 검색 (예: 컴퓨터, 반도체, 의학, 경영, 간호 등)"
-                     class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold text-slate-900 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                     oninput="onSearchInput()">
-            </div>
-            <div>
-              <select id="target-major-select" class="w-full p-3 border border-slate-300 rounded-xl bg-slate-50 text-slate-900 font-bold text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none" onchange="onSelectChange(this.value)">
-              </select>
-            </div>
-          </div>
-
-          <!-- 90개 학과 카드 리스트 -->
-          <div class="border border-slate-200 rounded-2xl p-3 bg-slate-50 max-h-48 overflow-y-auto">
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-xs" id="majors-grid-container"></div>
-          </div>
-
-          <!-- 선택 학과 상세 가이드 카드 -->
-          <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-5">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
-              <div>
-                <span class="text-xs font-bold text-indigo-600 uppercase" id="selected-major-group-label">공학 계열</span>
-                <h4 class="text-xl font-black text-slate-900 mt-0.5" id="selected-major-title">컴퓨터공학과</h4>
-              </div>
-              <span class="text-xs font-bold bg-white text-slate-700 px-3 py-1.5 rounded-lg border border-slate-200" id="selected-major-page-badge">
-                📖 도서 p.162 수록
-              </span>
-            </div>
-
-            <!-- 코칭 팁 및 권장 과목 -->
-            <p id="selected-major-tip" class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium bg-white p-4 rounded-2xl border border-slate-200"></p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div class="bg-white p-3.5 rounded-2xl border border-slate-200">
-                <span class="font-bold text-indigo-700 block mb-1">★ 전공 연계 핵심 권장 과목:</span>
-                <span id="selected-major-core" class="text-slate-800 font-bold"></span>
-              </div>
-              <div class="bg-white p-3.5 rounded-2xl border border-slate-200">
-                <span class="font-bold text-slate-600 block mb-1">★ 전공 연계 이수 권장 과목:</span>
-                <span id="selected-major-rec" class="text-slate-800 font-medium"></span>
-              </div>
-            </div>
-
-            <!-- 부록 313~330쪽 학과별 추천 도서 5선 표지 갤러리 UI -->
-            <div class="space-y-3 pt-2">
-              <div class="flex items-center justify-between">
-                <div>
-                  <strong class="text-sm font-black text-slate-900 flex items-center gap-2">
-                    <i class="fa-solid fa-book-bookmark text-indigo-600"></i> 부록 추천 도서 5선 표지 서가 (교재 313~330쪽)
-                  </strong>
-                  <p class="text-[11px] text-slate-500 mt-0.5">교과 과제 탐구와 세특에 도움이 될 만한 도서 (국립중앙도서관·독서로 선정)</p>
-                </div>
-                <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-200">5권 전수 매핑</span>
-              </div>
-
-              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 pt-1" id="book-covers-container"></div>
-            </div>
-          </div>
-
-          <div class="flex justify-end pt-2">
-            <button onclick="switchTab('tab-subject')" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-xs transition flex items-center gap-2 text-sm">
-              다음: 과목 설계하기 <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- 2. 과목 설계 (272개 과목) -->
-        <div id="tab-subject" class="tab-pane hidden p-6 sm:p-8 space-y-6">
-          <div class="border-b border-slate-200 pb-4">
-            <span class="text-xs font-bold text-indigo-600 uppercase">STEP 02</span>
-            <h3 class="text-xl font-black text-slate-900 mt-0.5">
-              <span id="sim-target-major-name" class="text-indigo-600">컴퓨터공학과</span> 전공 연계 선택 과목 구성 (272개 DB)
-            </h3>
-            <p class="text-xs text-slate-500 mt-1">고2~고3 동안 이수할 일반 선택, 진로 선택, 융합 선택 과목을 체크하세요.</p>
-          </div>
-
-          <div>
-            <span class="font-bold text-sm text-slate-800 block mb-2">수학 교과군</span>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs" id="box-math"></div>
-          </div>
-
-          <div>
-            <span class="font-bold text-sm text-slate-800 block mb-2">과학 / 정보 / 기술가정 교과군</span>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs" id="box-sci"></div>
-          </div>
-
-          <div>
-            <span class="font-bold text-sm text-slate-800 block mb-2">사회 / 인문 / 교양 교과군</span>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs" id="box-soc"></div>
-          </div>
-
-          <div class="flex justify-between items-center pt-4 border-t border-slate-200">
-            <button onclick="switchTab('tab-major')" class="text-slate-500 hover:text-slate-800 text-sm font-bold">
-              <i class="fa-solid fa-arrow-left mr-1"></i> 이전 단계
-            </button>
-            <button onclick="switchTab('tab-activity')" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-xs transition flex items-center gap-2 text-sm">
-              다음: 탐구주제 & 활동 기록 ✍️ <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- 3. 탐구주제 & 활동 기록 ✍️ -->
-        <div id="tab-activity" class="tab-pane hidden p-6 sm:p-8 space-y-6">
-          <div class="border-b border-slate-200 pb-4">
-            <span class="text-xs font-bold text-indigo-600 uppercase">STEP 03</span>
-            <h3 class="text-xl font-black text-slate-900 mt-0.5">탐구주제 도출 및 학생 활동 기록 작성</h3>
-            <p class="text-xs text-slate-500 mt-1">
-              교과 과제 탐구 및 동아리·자율활동에서 수행한 내용을 기록해 두면 교사용 AI 분석 자료로 연동됩니다.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div class="space-y-4">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">관심 탐구 분야 및 키워드</label>
-                <input type="text" id="user-keywords" value="알고리즘 최적화, 머신러닝 모델, 데이터 압축" placeholder="예: 알고리즘 최적화, 인공지능 윤리 등"
-                       class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">추천 탐구주제 도출</label>
-                <input type="text" id="user-topic" value="정렬 알고리즘의 시간 복잡도 분석과 AI 추천 서비스 적용 방안" placeholder="탐구하고 싶은 구체적인 주제를 입력하세요"
-                       class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold text-indigo-900 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">연계 탐구 도서 (부록 추천도서 중 선택)</label>
-                <input type="text" id="user-book" value="컴퓨팅 사고력을 키우는 이산수학 (박주미)" placeholder="참고한 도서명을 입력하세요"
-                       class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <label class="block text-xs font-bold text-slate-700">
-                ✍️ 학생 실제 활동 기록 (교과 탐구, 실험, 보고서 등)
-              </label>
-              <textarea id="user-activity-log" rows="7" placeholder="내가 수행한 활동을 구체적으로 기록하세요."
-                        class="w-full p-3.5 bg-slate-50 border border-slate-300 rounded-2xl text-xs font-medium leading-relaxed focus:ring-2 focus:ring-indigo-500 focus:outline-none">파이썬을 활용해 버블 정렬과 퀵 정렬의 실행 시간을 데이터 크기별로 측정하고 비교하는 실험을 진행함. 도서 『컴퓨팅 사고력을 키우는 이산수학』을 읽고 점화식과 그래프 이론이 알고리즘 최적화에 어떻게 적용되는지 탐구하여 교과 과제 보고서로 제출함.</textarea>
-              <span class="text-[11px] text-slate-400 block">이 기록은 선생님이 세특을 작성할 때 가장 중요한 근거 자료가 됩니다.</span>
-            </div>
-          </div>
-
-          <div class="flex justify-between items-center pt-2">
-            <button onclick="switchTab('tab-subject')" class="text-slate-500 hover:text-slate-800 text-sm font-bold">
-              <i class="fa-solid fa-arrow-left mr-1"></i> 과목 선택으로 돌아가기
-            </button>
-            <button onclick="runDiagnosis(); switchTab('tab-report')" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-xs transition flex items-center gap-2 text-sm">
-              <i class="fa-solid fa-chart-pie"></i> 리포트 생성 & AI 분석 <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- 4. 적합도 리포트 & AI 분석 -->
-        <div id="tab-report" class="tab-pane hidden p-6 sm:p-8 space-y-6">
-          <div class="bg-slate-900 rounded-3xl p-6 sm:p-8 text-white space-y-5">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-slate-800 pb-5">
-              <div>
-                <span class="text-xs font-bold text-indigo-400">Major Suitability & AI Analysis</span>
-                <h3 class="text-2xl font-black text-white mt-0.5">
-                  <span id="rep-major-title" class="text-yellow-400">컴퓨터공학과</span> 전공 연계 리포트
-                </h3>
-                <p class="text-xs text-slate-400 mt-1" id="rep-major-page-guide">
-                  선택 과목과 전공 권장 과목을 비교 진단합니다.
-                </p>
-              </div>
-              <div class="flex items-center gap-4 bg-slate-800/80 px-6 py-3.5 rounded-2xl border border-slate-700 text-center">
-                <div>
-                  <div class="text-3xl sm:text-4xl font-black text-yellow-400" id="rep-score">82점</div>
-                  <span class="text-[10px] text-slate-300">전공 연계 적합도 예시</span>
-                </div>
-                <div class="h-8 w-px bg-slate-700"></div>
-                <div class="text-xs text-amber-300 font-bold leading-tight" id="rep-status">
-                  ⚠️ 보완 권장<br>과목 확인
-                </div>
-              </div>
-            </div>
-
-            <!-- Gemini 기반 AI 학업·탐구 분석 결과 카드 -->
-            <div class="bg-indigo-950/70 p-5 rounded-2xl border border-indigo-500/30 space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-black text-indigo-300 flex items-center gap-1.5">
-                  <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i> AI 학업·탐구 분석 (학생 성장 및 확장 방향)
-                </span>
-                <span class="text-[10px] bg-indigo-900 text-indigo-200 px-2 py-0.5 rounded font-semibold">Gemini 보조 분석</span>
-              </div>
-
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-                <div class="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                  <span class="text-amber-300 font-bold block">1. 학생 성장 및 관심 분야</span>
-                  <p id="ai-insight-growth" class="text-slate-300 leading-relaxed font-medium">
-                    컴퓨터공학 및 인공지능 알고리즘 분야에 대한 지속적인 관심이 관찰되며, 수학적 모델링 역량이 우수함.
-                  </p>
-                </div>
-                <div class="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                  <span class="text-indigo-300 font-bold block">2. 연계 탐구 방향</span>
-                  <p id="ai-insight-direction" class="text-slate-300 leading-relaxed font-medium">
-                    미적분Ⅱ의 연속성과 최적화 개념을 기계학습 손실함수 최소화 탐구와 융합하는 심화 탐구 추천.
-                  </p>
-                </div>
-                <div class="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                  <span class="text-emerald-300 font-bold block">3. 확장 활동 제안</span>
-                  <p id="ai-insight-expand" class="text-slate-300 leading-relaxed font-medium">
-                    • 정렬 알고리즘별 실제 빅데이터 처리 속도 벤치마크 실험<br>• AI 추천 알고리즘의 그래프 모델 분석
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 과목 및 도서 요약 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
-              <div class="p-3.5 bg-slate-800/90 rounded-xl border border-slate-700">
-                <span class="text-amber-400 font-bold block mb-1">★ 전공 필수 권장 과목:</span>
-                <p id="rep-core-list" class="font-semibold text-white"></p>
-              </div>
-              <div class="p-3.5 bg-slate-800/90 rounded-xl border border-slate-700">
-                <span class="text-indigo-300 font-bold block mb-1">★ 전공 이수 권장 과목:</span>
-                <p id="rep-rec-list" class="font-medium text-slate-300"></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex justify-between items-center pt-2">
-            <button onclick="switchTab('tab-activity')" class="text-slate-500 hover:text-slate-800 text-sm font-bold">
-              <i class="fa-solid fa-arrow-left mr-1"></i> 활동 기록 수정
-            </button>
-            <button onclick="buildStudyPlan(); switchTab('tab-plan')" class="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl shadow-xs transition flex items-center gap-2 text-sm">
-              다음: 3개년 학업 설계서 완성 <i class="fa-solid fa-file-lines text-xs"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- 5. 3개년 학업 설계서 (A4 출력) -->
-        <div id="tab-plan" class="tab-pane hidden p-6 sm:p-8 space-y-6">
-          <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 no-print">
-            <div>
-              <span class="text-xs font-bold text-indigo-600 uppercase">STEP 05</span>
-              <h3 class="text-xl font-black text-slate-900">고등학교 3개년 개인 학업 설계서</h3>
-              <p class="text-xs text-slate-500 mt-1">선생님과의 진로·학업 상담 및 교과 세특 연계 제출용 공식 양식입니다.</p>
-            </div>
-            <button onclick="window.print()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-xs transition flex items-center gap-2 text-sm shrink-0">
-              <i class="fa-solid fa-print"></i> A4 인쇄 / PDF 저장
-            </button>
-          </div>
-
-          <!-- 인쇄 출력 영역 -->
-          <div id="printable-study-plan" class="bg-white p-6 sm:p-8 rounded-2xl border-2 border-slate-900 space-y-6">
-            <div class="border-b-2 border-slate-900 pb-4 text-center">
-              <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">High School Credit System Study Plan</span>
-              <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">고등학교 3개년 개인 학업 설계서</h2>
-              <p class="text-xs text-slate-500 mt-1">
-                참고 도서: 『고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계』 (심재준·한상근 공저 / 씨마스21)
-              </p>
-            </div>
-
-            <table class="w-full text-xs sm:text-sm border-collapse border border-slate-300">
-              <tr class="bg-slate-100">
-                <th class="border border-slate-300 p-2.5 text-slate-600 w-1/4">희망 진로 계열</th>
-                <td class="border border-slate-300 p-2.5 font-bold" id="out-group">-</td>
-                <th class="border border-slate-300 p-2.5 text-slate-600 w-1/4">목표 학과 (1지망)</th>
-                <td class="border border-slate-300 p-2.5 font-bold text-indigo-700" id="out-major">-</td>
-              </tr>
-              <tr>
-                <th class="border border-slate-300 p-2.5 text-slate-600">진학 목표 전형</th>
-                <td class="border border-slate-300 p-2.5">학생부 종합전형 / 학생부 교과전형</td>
-                <th class="border border-slate-300 p-2.5 text-slate-600">도서 참조 가이드</th>
-                <td class="border border-slate-300 p-2.5 font-bold" id="out-page">-</td>
-              </tr>
-            </table>
-
-            <div class="space-y-2">
-              <h4 class="font-bold text-sm text-slate-900">영역별 선택 이수 계획표 (3개년)</h4>
-              <table class="w-full text-xs sm:text-sm border-collapse border border-slate-300">
-                <thead>
-                  <tr class="bg-slate-100 text-slate-700">
-                    <th class="border border-slate-300 p-2 w-1/4">교과 영역</th>
-                    <th class="border border-slate-300 p-2">선택 과목 목록</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="border border-slate-300 p-2 font-bold text-center bg-slate-50">수학 교과군</td>
-                    <td class="border border-slate-300 p-2 font-medium" id="out-sub-math">-</td>
-                  </tr>
-                  <tr>
-                    <td class="border border-slate-300 p-2 font-bold text-center bg-slate-50">과학 / 정보 교과군</td>
-                    <td class="border border-slate-300 p-2 font-medium" id="out-sub-sci">-</td>
-                  </tr>
-                  <tr>
-                    <td class="border border-slate-300 p-2 font-bold text-center bg-slate-50">사회 / 인문 교과군</td>
-                    <td class="border border-slate-300 p-2 font-medium" id="out-sub-soc">-</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <!-- 학생 실제 활동 기록 및 탐구주제 반영 -->
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2">
-              <strong class="font-bold text-slate-900 block">🎯 학생 탐구 주제 및 실제 활동 기록:</strong>
-              <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
-                <div><span class="text-slate-500">탐구주제:</span> <strong id="out-topic" class="text-indigo-900"></strong></div>
-                <div><span class="text-slate-500">활동기록:</span> <span id="out-activity-log" class="text-slate-800"></span></div>
-              </div>
-            </div>
-
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
-              <span class="font-bold text-slate-900 block">📖 전공 연계 학생부 세특 추천 도서 목록 (부록 313~330p):</span>
-              <div id="out-books-list" class="text-slate-700 font-medium"></div>
-            </div>
-
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1">
-              <span class="font-bold text-slate-900 block">✔ 학업 설계서 최종 점검 체크리스트 (교재 1부 Ⅴ장)</span>
-              <div class="text-slate-600 space-y-0.5">
-                <div>[ ] 1. 목표 대학 및 학과의 전공 연계 권장 과목을 충분히 반영하였는가?</div>
-                <div>[ ] 2. 소속 고등학교의 교육과정 편제표상 개설 학기와 이수 순서(위계)가 적절한가?</div>
-                <div>[ ] 3. 과목별 성적 산출 방식(절대/상대평가)을 고려하여 학점 관리 전략을 세웠는가?</div>
-              </div>
-            </div>
-
-            <div class="flex justify-between items-center pt-4 border-t border-slate-200 text-xs text-slate-500">
-              <div>작성일: 2026년 ___월 ___일</div>
-              <div>학생 서명: ____________________ (인)</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 부록. 3대 진로 간이 검사 -->
-        <div id="tab-tests" class="tab-pane hidden p-6 sm:p-8 space-y-6">
-          <div class="border-b border-slate-200 pb-4">
-            <span class="text-xs font-bold text-indigo-600">부록 332~343쪽</span>
-            <h3 class="text-xl font-black text-slate-900">진로 심리 간이 검사 3종 (흥미 · 적성 · 가치관)</h3>
-            <p class="text-xs text-slate-500 mt-1">자신의 진로 특성을 진단하고 관심 학과로 연결해 보세요.</p>
-          </div>
-
-          <div class="flex border-b border-slate-200 space-x-4 text-xs sm:text-sm font-bold">
-            <button onclick="switchSubTest('sub-riasec')" id="btn-sub-riasec" class="sub-tab-btn pb-2 border-b-2 border-indigo-600 text-indigo-600">
-              ① 직업 흥미 유형 검사
-            </button>
-            <button onclick="switchSubTest('sub-aptitude')" id="btn-sub-aptitude" class="sub-tab-btn pb-2 border-b-2 border-transparent text-slate-500 hover:text-slate-800">
-              ② 직업 적성 검사
-            </button>
-            <button onclick="switchSubTest('sub-value')" id="btn-sub-value" class="sub-tab-btn pb-2 border-b-2 border-transparent text-slate-500 hover:text-slate-800">
-              ③ 직업 가치관 검사
-            </button>
-          </div>
-
-          <div id="sub-riasec" class="sub-test-view space-y-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="riasec-items-box"></div>
-            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
-              <span class="text-xs font-bold text-indigo-700">추천 흥미 유형: 탐구형(I) & 진취형(E)</span>
-              <button onclick="applyTestRecommendation('I')" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-xs font-bold">
-                추천 학과로 이동 →
-              </button>
-            </div>
-          </div>
-
-          <div id="sub-aptitude" class="sub-test-view hidden space-y-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="aptitude-items-box"></div>
-            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
-              <span class="text-xs font-bold text-emerald-700">상위 3대 적성: 수리·논리력, 공간지각력, 창의력</span>
-              <button onclick="applyTestRecommendation('apt')" class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-xs font-bold">
-                추천 학과로 이동 →
-              </button>
-            </div>
-          </div>
-
-          <div id="sub-value" class="sub-test-view hidden space-y-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="value-items-box"></div>
-            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
-              <span class="text-xs font-bold text-amber-700">가치 지향: 성취지향형 (자율성 & 성취감)</span>
-              <button onclick="applyTestRecommendation('val')" class="px-4 py-2 bg-amber-500 text-slate-950 rounded-lg text-xs font-bold">
-                추천 학과로 이동 →
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 15. 도서 SECTION (콘텐츠 원천으로서의 책 연계 10%) -->
-  <section class="py-14 bg-white border-t border-slate-200/80 no-print">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6">
-      <div class="max-w-xl mx-auto space-y-2">
-        <h3 class="text-xl sm:text-2xl font-black text-slate-900">
-          『고1 학업 설계』<br>
-          <span class="text-indigo-600 text-base font-bold block mt-1">디지털 학업설계와 함께 활용하세요.</span>
-        </h3>
-        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-          책에서 다루는 진로·학과·선택과목·학업설계 전문 해설을 디지털 서비스와 직접 연결하여 3년의 확고한 기준을 세웁니다.
-        </p>
-      </div>
-
-      <!-- 책 정보 미니 카드 -->
-      <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5 text-left">
-        <div class="flex items-center gap-4">
-          <div class="w-16 h-22 bg-slate-900 text-white rounded-lg p-2 text-[9px] font-black flex flex-col justify-between shadow-sm shrink-0">
-            <span>고교학점제</span>
-            <span>고1 학업설계</span>
-            <span class="text-[7px] text-slate-400">씨마스21</span>
-          </div>
-          <div>
-            <h4 class="font-extrabold text-slate-900 text-sm">『고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계』</h4>
-            <p class="text-xs text-slate-500 mt-0.5">심재준 · 한상근 공저 | 씨마스21 | 352쪽</p>
-            <p class="text-xs text-indigo-600 font-bold mt-1">정가 27,000원 ➔ 24,300원 (10% 할인, 무료배송)</p>
-          </div>
-        </div>
-        <a href="https://search.kyobobook.co.kr/search?keyword=9791198347077" target="_blank" class="px-5 py-2.5 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black rounded-xl text-xs transition shrink-0 shadow-xs">
-          도서 구매하기
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 16. FINAL CTA -->
-  <section class="py-16 lg:py-20 bg-slate-900 text-white text-center no-print">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-4">
-      <h2 class="text-3xl sm:text-4xl font-black leading-tight">
-        고1의 3년,<br>지금 직접 설계해보세요.
-      </h2>
-      <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-        진로부터 과목, 탐구, 학업계획까지<br>
-        나만의 학업설계 결과물을 만들어보세요.
-      </p>
-      <div class="pt-4">
-        <a href="#simulator" class="inline-flex px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-md transition text-base items-center gap-2">
-          <span>학업설계 시작하기</span>
-          <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 17. 고객센터 (지시사항대로 간결하게) -->
-  <section class="py-6 bg-slate-950 text-slate-400 text-xs border-t border-slate-800 text-center no-print">
+  <!-- 고객센터 -->
+  <section class="py-6 bg-slate-100 text-slate-600 text-xs border-t border-slate-200 text-center no-print">
     <div class="max-w-xl mx-auto px-4 font-semibold">
-      <span class="text-slate-300 font-bold">고객센터</span>
-      <span class="mx-2 text-slate-600">|</span>
+      <span class="text-slate-800 font-bold">고객센터</span>
+      <span class="mx-2 text-slate-400">|</span>
       <span>씨마스 02-2274-1590</span>
     </div>
   </section>
 
-  <!-- 17. FOOTER -->
-  <footer class="bg-black text-slate-500 text-xs py-10 text-center space-y-2 no-print">
+  <!-- 푸터 -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-8 text-center space-y-1.5 no-print">
     <div class="max-w-5xl mx-auto px-4 leading-relaxed">
-      <p class="text-slate-400 font-bold text-sm mb-1">
+      <p class="text-slate-300 font-bold text-sm mb-1">
         『고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계』 공식 웹 서비스
       </p>
       <p>
         저자: 심재준(휘문고), 한상근(한국직업능력연구원) | 감수: 한상근, 임은미 | 출판: 씨마스21 | ISBN: 9791198347077
       </p>
-      <p>
-        정가 27,000원 | 판매가 24,300원
-      </p>
-      <p class="text-slate-600 pt-2">
+      <p class="text-slate-500 pt-1">
         © 2026 씨마스진로교육연구소 & 고1 학업 설계 연구팀. All rights reserved.
       </p>
     </div>
@@ -1208,39 +549,6 @@
       renderSubjectBoxes();
       renderTests();
       selectMajor(currentSelectedMajor.id);
-    }
-
-    function toggleMobileMenu() {
-      const menu = document.getElementById("mobile-menu");
-      const icon = document.getElementById("mobile-menu-icon");
-      if (menu.classList.contains("hidden")) {
-        menu.classList.remove("hidden");
-        icon.className = "fa-solid fa-xmark text-base";
-      } else {
-        menu.classList.add("hidden");
-        icon.className = "fa-solid fa-bars text-base";
-      }
-    }
-
-    function switchTab(tabId) {
-      document.querySelectorAll(".tab-pane").forEach(el => el.classList.add("hidden"));
-      document.querySelectorAll(".sim-nav").forEach(el => {
-        el.className = "sim-nav px-3.5 py-2 rounded-xl bg-white text-slate-700 hover:bg-slate-200";
-      });
-
-      document.getElementById(tabId).classList.remove("hidden");
-      const navMap = {
-        "tab-major": "sim-nav-major",
-        "tab-subject": "sim-nav-subject",
-        "tab-activity": "sim-nav-activity",
-        "tab-report": "sim-nav-report",
-        "tab-plan": "sim-nav-plan",
-        "tab-tests": "sim-nav-tests"
-      };
-      if (navMap[tabId]) {
-        const activeBtn = document.getElementById(navMap[tabId]);
-        if (activeBtn) activeBtn.className = "sim-nav px-3.5 py-2 rounded-xl bg-slate-900 text-white shadow-xs";
-      }
     }
 
     function switchSubTest(subId) {
@@ -1321,7 +629,7 @@
 
       document.getElementById("selected-major-group-label").textContent = found.group;
       document.getElementById("selected-major-title").textContent = found.name;
-      document.getElementById("selected-major-page-badge").textContent = `📖 도서 p.${found.page} 수록`;
+      document.getElementById("selected-major-page-badge").textContent = `도서 p.${found.page}을 함께 펼치세요`;
       document.getElementById("selected-major-tip").textContent = found.tip;
       document.getElementById("selected-major-core").textContent = found.core.join(", ");
       document.getElementById("selected-major-rec").textContent = found.rec.join(", ");
@@ -1331,7 +639,7 @@
       const select = document.getElementById("target-major-select");
       select.value = found.id;
 
-      // 추천 도서 5선 표지 갤러리 렌더링
+      // 추천 도서 5선 표지 서가 렌더링
       const booksContainer = document.getElementById("book-covers-container");
       booksContainer.innerHTML = "";
       (found.book_cards || []).forEach(b => {
@@ -1354,6 +662,8 @@
       });
 
       onSearchInput();
+      runDiagnosis();
+      buildStudyPlan();
     }
 
     function filterByGroup(grp) {
@@ -1386,6 +696,8 @@
             if (selectedSubjects.has(subj)) selectedSubjects.delete(subj);
             else selectedSubjects.add(subj);
             renderSubjectBoxes();
+            runDiagnosis();
+            buildStudyPlan();
           };
           container.appendChild(btn);
         });
@@ -1394,9 +706,6 @@
 
     function runDiagnosis() {
       const major = currentSelectedMajor;
-      document.getElementById("rep-major-title").textContent = major.name;
-      document.getElementById("rep-major-page-guide").textContent = `도서 2부 p.${major.page} 전공 연계 권장 과목 기준 비교 분석`;
-
       let matchedCore = 0;
       major.core.forEach(req => {
         if (selectedSubjects.has(req)) matchedCore++;
@@ -1408,21 +717,12 @@
 
       document.getElementById("rep-score").textContent = `${score}점`;
       if (matchedCore < major.core.length) {
-        document.getElementById("rep-status").innerHTML = "⚠️ 보완 권장<br>과목 확인";
-        document.getElementById("rep-missing-alert").textContent = `전공 연계성이 높은 핵심 과목 중 [${major.core.filter(c => !selectedSubjects.has(c)).join(', ') || '핵심 과목'}] 등이 미선택되어 있습니다. 도서 ${major.page}쪽의 이수 가이드를 참고하여 보완 계획을 세우세요.`;
+        document.getElementById("rep-status").innerHTML = "⚠️ 보완 권장 과목 확인";
+        document.getElementById("rep-missing-alert").textContent = `대학에서 전공 연계성이 높다고 권장하는 과목 중 [${major.core.filter(c => !selectedSubjects.has(c)).join(', ') || '핵심 과목'}] 등이 미선택되어 있습니다. 도서 ${major.page}쪽의 이수 가이드를 참고하여 보완 계획을 세우세요.`;
       } else {
-        document.getElementById("rep-status").innerHTML = "✅ 우수 조합<br>(세특 집중)";
+        document.getElementById("rep-status").innerHTML = "✅ 우수 조합 (세특 집중)";
         document.getElementById("rep-missing-alert").textContent = "전공 연계 권장 과목이 균형 있게 이수 계획되었습니다. 이제 과목별 세특 탐구 및 추천 도서 독서 계획에 집중하세요.";
       }
-
-      document.getElementById("rep-core-list").textContent = major.core.join(", ");
-      document.getElementById("rep-rec-list").textContent = major.rec.join(", ");
-
-      const userKwd = document.getElementById("user-keywords").value || "알고리즘 최적화, 인공지능";
-      const userTopic = document.getElementById("user-topic").value || "정렬 알고리즘 분석과 AI 모델 적용";
-      document.getElementById("ai-insight-growth").textContent = `'${major.name}' 진학을 위해 [${userKwd}] 영역을 주도적으로 탐구하고 있으며, 선택 과목과의 연계성이 우수함.`;
-      document.getElementById("ai-insight-direction").textContent = `'${userTopic}' 주제를 바탕으로 프로그래밍 실습과 수학적 논증을 결합한 융합 탐구 전개 추천.`;
-      document.getElementById("ai-insight-expand").innerHTML = `• 알고리즘 빅오(O) 복잡도 실증 실험 보고서 작성<br>• 『${major.book_cards[0].title}』 독서 연계 세특 키워드 추출`;
     }
 
     function buildStudyPlan() {
@@ -1451,7 +751,7 @@
       riasecBox.innerHTML = "";
       riasecQuestions.forEach(q => {
         const div = document.createElement("div");
-        div.className = "p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs flex items-center justify-between";
+        div.className = "p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs flex items-center justify-between";
         div.innerHTML = `
           <span class="font-medium text-slate-800 pr-2">${q.text}</span>
           <div class="flex gap-2 shrink-0 font-bold">
@@ -1466,7 +766,7 @@
       aptBox.innerHTML = "";
       aptitudeQuestions.forEach(a => {
         const div = document.createElement("div");
-        div.className = "p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs";
+        div.className = "p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs";
         div.innerHTML = `
           <strong class="text-slate-900 block mb-1">📌 ${a.name}</strong>
           <p class="text-slate-600 mb-2">${a.text}</p>
@@ -1482,7 +782,7 @@
       valBox.innerHTML = "";
       valueQuestions.forEach(v => {
         const div = document.createElement("div");
-        div.className = "p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs";
+        div.className = "p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs";
         div.innerHTML = `
           <strong class="text-slate-900 block mb-1">⭐ ${v.name}</strong>
           <p class="text-slate-600 mb-2">${v.text}</p>
@@ -1495,16 +795,18 @@
       });
     }
 
-    function applyTestRecommendation(type) {
-      if (type === 'I' || type === 'apt') filterByGroup('공학 계열');
-      else if (type === 'val') filterByGroup('사회 계열');
-      switchTab('tab-major');
+    function applyFilterAndGo(grp) {
+      filterByGroup(grp);
+      document.getElementById("step-2").scrollIntoView({ behavior: 'smooth' });
     }
 
     function quickPrint() {
       buildStudyPlan();
-      switchTab("tab-plan");
-      setTimeout(() => { window.print(); }, 200);
+      setTimeout(() => { window.print(); }, 150);
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     window.onload = init;
