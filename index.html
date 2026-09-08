@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>고교학점제 과목 선택 & 학점 관리를 위한 고1 학업 설계 | 공식 시뮬레이터</title>
+  <title>고1 학업 설계 마스터 시뮬레이터 | 90개 학과·추천도서·3대 진로검사</title>
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-    body { font-family: 'Pretendard', sans-serif; }
-    .blur-lock { filter: blur(5px); user-select: none; }
+    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; }
+    .blur-lock { filter: blur(6px); user-select: none; pointer-events: none; }
     @media print {
       body * { visibility: hidden; }
       #printable-study-plan, #printable-study-plan * { visibility: visible; }
@@ -20,10 +22,10 @@
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col justify-between">
 
-  <!-- 상단 공지 바 -->
-  <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-medium shadow-sm no-print">
-    <span class="bg-amber-400 text-slate-950 font-black px-2 py-0.5 rounded text-xs mr-2">2028 대입 완벽 대비</span>
-    『고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계』 (심재준·한상근 저 / ISBN: 9791198347077) 공식 시뮬레이터
+  <!-- 상단 공식 도서 알림 바 -->
+  <div class="bg-gradient-to-r from-blue-950 via-indigo-900 to-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-medium shadow-sm no-print">
+    <span class="bg-amber-400 text-slate-950 font-black px-2 py-0.5 rounded text-xs mr-2">2028 대입 개편안 완벽 대응</span>
+    『고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계』 (심재준·한상근 저 / 감수 한상근·임은미 / 씨마스21) 공식 시뮬레이터
   </div>
 
   <!-- 헤더 -->
@@ -36,9 +38,9 @@
         <div>
           <div class="flex items-center gap-2">
             <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">고1 학업 설계 시뮬레이터</span>
-            <span class="text-[11px] bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded-full border border-indigo-200">고교학점제</span>
+            <span class="text-[11px] bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded-full border border-indigo-200">풀스펙 에디션</span>
           </div>
-          <p class="text-[11px] text-slate-500 font-medium hidden sm:block">휘문고 심재준 선생님 · 한국직업능력연구원 한상근 박사 공저</p>
+          <p class="text-[11px] text-slate-500 font-medium hidden sm:block">대표 90개 학과 · 313~331p 추천 도서 · 332~343p 진로 간이 검사지 완벽 수록</p>
         </div>
       </div>
 
@@ -55,131 +57,268 @@
     <!-- 네비게이션 탭 -->
     <div class="bg-slate-100 border-t border-slate-200 overflow-x-auto no-scrollbar">
       <div class="max-w-7xl mx-auto px-4 flex space-x-1 sm:space-x-2 py-2 text-xs sm:text-sm font-bold whitespace-nowrap">
-        <button onclick="switchTab('tab-diag')" id="nav-tab-diag" class="nav-tab px-3.5 py-1.5 rounded-lg bg-indigo-600 text-white shadow-xs">
-          1. 진로·적성 간이 진단
+        <button onclick="switchTab('tab-tests')" id="nav-tab-tests" class="nav-tab px-3.5 py-1.5 rounded-lg bg-indigo-600 text-white shadow-xs">
+          1. 3대 진로 간이 검사 (332~343p)
         </button>
         <button onclick="switchTab('tab-major')" id="nav-tab-major" class="nav-tab px-3.5 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200">
-          2. 대표 90개 학과 탐색
+          2. 대표 90개 학과 & 추천도서 (54~249p, 313~330p)
         </button>
         <button onclick="switchTab('tab-subject')" id="nav-tab-subject" class="nav-tab px-3.5 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200">
-          3. 선택 과목 272개 시뮬레이터
+          3. 선택 과목 272개 시뮬레이터 (250~311p)
         </button>
         <button onclick="switchTab('tab-report')" id="nav-tab-report" class="nav-tab px-3.5 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200">
           4. 과목 적합도 & 도서 락인 리포트
         </button>
         <button onclick="switchTab('tab-plan')" id="nav-tab-plan" class="nav-tab px-3.5 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200">
-          5. 나만의 3개년 학업 설계서 (A4 출력)
+          5. 3개년 학업 설계서 (A4 인쇄/PDF)
         </button>
       </div>
     </div>
   </header>
 
   <!-- 메인 컨테이너 -->
-  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full">
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full">
 
     <!-- 히어로 배너 -->
-    <div class="bg-gradient-to-br from-indigo-900 to-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl mb-8 relative overflow-hidden no-print">
-      <div class="relative z-10 max-w-3xl">
-        <span class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-300 bg-amber-400/20 px-3 py-1 rounded-full mb-3 border border-amber-300/30">
-          <i class="fa-solid fa-graduation-cap"></i> 2028 대입 합불을 가르는 고1 첫 단추
-        </span>
+    <div class="bg-gradient-to-br from-indigo-900 via-slate-900 to-blue-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl mb-8 relative overflow-hidden no-print">
+      <div class="relative z-10 max-w-4xl">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="inline-flex items-center gap-1.5 text-xs font-black text-amber-300 bg-amber-400/20 px-3 py-1 rounded-full border border-amber-300/30">
+            <i class="fa-solid fa-graduation-cap"></i> 2028 대입 합불을 가르는 고1 학업 설계
+          </span>
+          <span class="text-xs text-indigo-200 font-semibold">도서 전 영역(진로검사, 90개 학과, 272개 과목, 추천도서 450권) 완전 수록</span>
+        </div>
         <h1 class="text-2xl sm:text-4xl font-black text-white tracking-tight leading-snug">
-          고1 과목 선택과 학점 관리를 위한<br>
-          <span class="text-yellow-400">맞춤형 학업 설계 시뮬레이터</span>
+          고교학점제 과목 선택과 학점 관리를 위한<br>
+          <span class="text-yellow-400">고1 학업 설계 공식 인터랙티브 플랫폼</span>
         </h1>
-        <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
-          진학 담당·입시 전문 현장 선생님이 엄선한 <strong>대표 90개 학과 정보</strong>와 <strong>272개 선택 과목 DB</strong>를 기반으로 나만의 3개년 시간표를 설계해보세요.
+        <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed max-w-3xl">
+          내가 원하는 학과에 진학하려면 3년 동안 어떤 과목을 듣고, 어떤 추천 도서로 세특을 채워야 할까요?<br class="hidden sm:inline">
+          진로 간이 검사부터 <strong>대표 90개 학과 정밀 가이드</strong>와 <strong>272개 선택 과목 시간표 편성</strong>까지 원스톱으로 확인하세요.
         </p>
 
-        <div class="grid grid-cols-3 gap-3 max-w-lg mt-6 pt-6 border-t border-white/15 text-center">
+        <!-- 핵심 지표 4개 -->
+        <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-2xl mt-6 pt-6 border-t border-white/15 text-center">
           <div>
             <div class="text-xl sm:text-2xl font-black text-yellow-400">90개</div>
-            <div class="text-[11px] text-slate-300">대표 학과 정밀 가이드</div>
+            <div class="text-[11px] text-slate-300">대표 학과 전체</div>
+          </div>
+          <div>
+            <div class="text-xl sm:text-2xl font-black text-yellow-400">450권</div>
+            <div class="text-[11px] text-slate-300">학과별 추천 도서</div>
+          </div>
+          <div>
+            <div class="text-xl sm:text-2xl font-black text-yellow-400">3대 검사</div>
+            <div class="text-[11px] text-slate-300">흥미·적성·가치관</div>
           </div>
           <div>
             <div class="text-xl sm:text-2xl font-black text-yellow-400">272개</div>
-            <div class="text-[11px] text-slate-300">선택 과목 전체 수록</div>
-          </div>
-          <div>
-            <div class="text-xl sm:text-2xl font-black text-yellow-400">352쪽</div>
-            <div class="text-[11px] text-slate-300">학업설계 바이블</div>
+            <div class="text-[11px] text-slate-300">고교 선택 과목 DB</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 1. 진로 적성 간이 진단 탭 -->
-    <section id="tab-diag" class="tab-content space-y-6">
+    <!-- 1. 3대 진로 간이 검사지 탭 (p.332~343) -->
+    <section id="tab-tests" class="tab-content space-y-6">
       <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
         <div class="border-b border-slate-200 pb-4">
-          <h2 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
-            <span class="w-7 h-7 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-sm font-black">1</span>
-            진로 심리 간이 검사 & 희망 계열 찾기 (교재 부록 연계)
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-500 mt-1">흥미와 적성을 바탕으로 대학 진학에 유리한 추천 계열을 진단합니다.</p>
-        </div>
-
-        <div class="space-y-4">
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-            <span class="font-bold text-sm text-slate-800">Q1. 평소 가장 흥미를 느끼는 탐구 분야는?</span>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium">
-              <label class="p-2.5 bg-white border rounded-xl flex items-center gap-2 cursor-pointer hover:border-indigo-500">
-                <input type="radio" name="diag_q1" value="eng" checked class="text-indigo-600"> 기술, 컴퓨터, 기계 및 인공지능 알고리즘
-              </label>
-              <label class="p-2.5 bg-white border rounded-xl flex items-center gap-2 cursor-pointer hover:border-indigo-500">
-                <input type="radio" name="diag_q1" value="med" class="text-indigo-600"> 인체, 질병 치료, 생명 현상 및 약물 메커니즘
-              </label>
-              <label class="p-2.5 bg-white border rounded-xl flex items-center gap-2 cursor-pointer hover:border-indigo-500">
-                <input type="radio" name="diag_q1" value="soc" class="text-indigo-600"> 기업 경영, 금융 경제, 미디어 마케팅 및 사회 문제
-              </label>
-              <label class="p-2.5 bg-white border rounded-xl flex items-center gap-2 cursor-pointer hover:border-indigo-500">
-                <input type="radio" name="diag_q1" value="hum" class="text-indigo-600"> 문학, 외국어, 역사 철학 및 교육 지도
-              </label>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h2 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                <span class="w-7 h-7 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-sm font-black">1</span>
+                진로 간이 검사지 3종 (교재 부록 p.332~343 수록)
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                학업 설계 전 자신의 진로 특성(직업 흥미, 적성, 가치관)을 진단하고 나에게 꼭 맞는 학과를 매핑해 보세요.
+              </p>
             </div>
+            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200 self-start sm:self-center">
+              부록 332~343쪽
+            </span>
           </div>
         </div>
 
-        <div class="flex justify-end pt-2">
+        <!-- 3개 서브 검사 선택 탭 -->
+        <div class="flex border-b border-slate-200 space-x-4 text-xs sm:text-sm font-bold">
+          <button onclick="switchSubTest('sub-riasec')" id="btn-sub-riasec" class="sub-tab-btn pb-2 border-b-2 border-indigo-600 text-indigo-600">
+            ① 직업 흥미 유형 검사 (332~335p)
+          </button>
+          <button onclick="switchSubTest('sub-aptitude')" id="btn-sub-aptitude" class="sub-tab-btn pb-2 border-b-2 border-transparent text-slate-500 hover:text-slate-800">
+            ② 직업 적성 검사 (336~339p)
+          </button>
+          <button onclick="switchSubTest('sub-value')" id="btn-sub-value" class="sub-tab-btn pb-2 border-b-2 border-transparent text-slate-500 hover:text-slate-800">
+            ③ 직업 가치관 검사 (340~343p)
+          </button>
+        </div>
+
+        <!-- ① 직업 흥미 유형 검사 (RIASEC 간이) -->
+        <div id="sub-riasec" class="sub-test-view space-y-4">
+          <div class="bg-indigo-50/70 p-4 rounded-2xl border border-indigo-100 text-xs sm:text-sm text-indigo-950">
+            <strong>📋 검사 안내:</strong> 각 문항의 활동을 얼마나 좋아하는지 표시해 보세요. 홀랜드(Holland) 6대 흥미 유형(현실형 R, 탐구형 I, 예술형 A, 사회형 S, 진취형 E, 관습형 C) 점수가 자동 집계됩니다.
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="riasec-items-box">
+            <!-- 12개 핵심 문항 -->
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div>
+              <span class="text-xs text-slate-500 font-bold block">나의 대표 직업 흥미 유형 결과</span>
+              <span class="text-base font-black text-indigo-700" id="riasec-result-label">탐구형(I) & 진취형(E)</span>
+            </div>
+            <button onclick="applyTestRecommendation('I')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs transition">
+              이 결과로 추천 학과 필터링하기 →
+            </button>
+          </div>
+        </div>
+
+        <!-- ② 직업 적성 검사 (11대 적성) -->
+        <div id="sub-aptitude" class="sub-test-view hidden space-y-4">
+          <div class="bg-indigo-50/70 p-4 rounded-2xl border border-indigo-100 text-xs sm:text-sm text-indigo-950">
+            <strong>📋 검사 안내:</strong> 11개 영역(수리논리, 창의력, 공간지각, 언어능력, 자연친화, 대인관계 등) 문항을 평가하여 자신의 상위 3대 적성을 도출합니다.
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="aptitude-items-box"></div>
+
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div>
+              <span class="text-xs text-slate-500 font-bold block">나의 상위 3대 적성 결과</span>
+              <span class="text-base font-black text-emerald-700" id="aptitude-result-label">1위: 수리·논리력, 2위: 공간지각력, 3위: 창의력</span>
+            </div>
+            <button onclick="applyTestRecommendation('apt')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition">
+              공학·자연 계열 학과 추천받기 →
+            </button>
+          </div>
+        </div>
+
+        <!-- ③ 직업 가치관 검사 (4대 가치 지향 유형) -->
+        <div id="sub-value" class="sub-test-view hidden space-y-4">
+          <div class="bg-indigo-50/70 p-4 rounded-2xl border border-indigo-100 text-xs sm:text-sm text-indigo-950">
+            <strong>📋 검사 안내:</strong> 직업을 선택할 때 중요하게 여기는 4대 가치 지향 유형(안정지향형, 의미지향형, 변화지향형, 성취지향형)을 진단합니다.
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="value-items-box"></div>
+
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div>
+              <span class="text-xs text-slate-500 font-bold block">나의 가치 지향 유형</span>
+              <span class="text-base font-black text-amber-700" id="value-result-label">성취지향형 (성취, 사회적 인정, 자율성 추구)</span>
+            </div>
+            <button onclick="applyTestRecommendation('val')" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl text-xs transition">
+              가치 지향형 학과 추천받기 →
+            </button>
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-2 border-t border-slate-200">
           <button onclick="switchTab('tab-major')" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-xs transition flex items-center gap-2 text-sm">
-            다음: 대표 90개 학과 선택 <i class="fa-solid fa-arrow-right"></i>
+            다음: 대표 90개 학과 & 추천 도서 탐색 <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
       </div>
     </section>
 
-    <!-- 2. 대표 90개 학과 탐색 탭 -->
+    <!-- 2. 대표 90개 학과 & 450권 추천도서 탭 (p.54~249, 313~331) -->
     <section id="tab-major" class="tab-content hidden space-y-6">
       <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
         <div class="border-b border-slate-200 pb-4">
-          <h2 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
-            <span class="w-7 h-7 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-sm font-black">2</span>
-            2부. 대표 학과 90개 전공 연계 과목 선택 안내
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-500 mt-1">목표 학과를 선택하면 도서 수록 페이지와 핵심 이수 권장 과목이 매핑됩니다.</p>
-        </div>
-
-        <div>
-          <label class="block text-sm font-bold text-slate-700 mb-2">계열을 선택하세요 (7대 계열 + 자유전공)</label>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs sm:text-sm font-bold" id="group-buttons"></div>
-        </div>
-
-        <div>
-          <label class="block text-sm font-bold text-slate-700 mb-2">목표 학과를 선택하세요 (대표 90개 학과)</label>
-          <select id="major-select" class="w-full p-3.5 border border-slate-300 rounded-2xl bg-slate-50 text-slate-900 font-bold text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none" onchange="updateSelectedMajorInfo()"></select>
-        </div>
-
-        <div class="bg-indigo-50/70 p-5 rounded-2xl border border-indigo-100 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="font-extrabold text-indigo-950 text-sm" id="card-major-name">컴퓨터공학과</span>
-            <span class="text-xs font-black text-indigo-700 bg-white px-3 py-1 rounded-full border border-indigo-200" id="card-book-page">도서 p.142~147 수록</span>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h2 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                <span class="w-7 h-7 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-sm font-black">2</span>
+                대표 학과 90개 전공 안내 & 학과별 추천 도서 (교재 p.54~249, 313~330)
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                『고1 학업 설계』 본문에 수록된 <strong>90개 전체 학과</strong>와 부록에 실린 <strong>학과별 추천 도서 5권 목록</strong>을 탐색하세요.
+              </p>
+            </div>
+            <div class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-200 self-start sm:self-center">
+              총 <span id="majors-count-badge">90</span>개 학과 전체 탑재
+            </div>
           </div>
-          <p class="text-xs text-slate-600 leading-relaxed" id="card-major-desc">
-            서울대·연세대·고려대 등 주요 대학 학생부 종합전형 평가 시 수학(미적분, 확통)과 과학/정보(물리학, 정보) 이수가 강력하게 권장됩니다.
+        </div>
+
+        <!-- 검색창 및 계열 필터 바 -->
+        <div class="space-y-3">
+          <div class="relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="text" id="major-search-input" placeholder="학과명을 검색하세요 (예: 컴퓨터, 반도체, 의학, 경영, 국어국문, 간호, 수의학, 디자인 등)"
+                   class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-2xl text-sm font-semibold text-slate-900 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                   oninput="filterMajors()">
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 text-xs font-bold" id="group-filter-bar">
+            <button onclick="filterByGroup('all')" class="grp-btn px-3 py-1.5 rounded-xl border bg-indigo-600 text-white border-indigo-600" data-group="all">전체(90)</button>
+            <button onclick="filterByGroup('공학 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:bg-slate-100" data-group="공학 계열">공학(21)</button>
+            <button onclick="filterByGroup('사회 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:bg-slate-100" data-group="사회 계열">사회(15)</button>
+            <button onclick="filterByGroup('교육 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:bg-slate-100" data-group="교육 계열">교육(12)</button>
+            <button onclick="filterByGroup('의약보건 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:bg-slate-100" data-group="의약보건 계열">의약보건(12)</button>
+            <button onclick="filterByGroup('인문 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:bg-slate-100" data-group="인문 계열">인문(10)</button>
+            <button onclick="filterByGroup('자연 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:bg-slate-100" data-group="자연 계열">자연(10)</button>
+            <button onclick="filterByGroup('예체능 계열')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:bg-slate-100" data-group="예체능 계열">예체능(9)</button>
+            <button onclick="filterByGroup('자유전공')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:bg-slate-100" data-group="자유전공">자유전공(1)</button>
+          </div>
+        </div>
+
+        <!-- 90개 학과 카드 리스트 -->
+        <div class="border border-slate-200 rounded-2xl p-3 sm:p-4 bg-slate-50 max-h-72 overflow-y-auto">
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-xs" id="majors-grid-container"></div>
+        </div>
+
+        <!-- 선택 학과 상세 정보 & 추천 도서 5선 카드 -->
+        <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-3xl border border-indigo-100 space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-indigo-200/60 pb-3">
+            <div>
+              <span class="text-xs font-bold text-indigo-600 uppercase tracking-wide" id="selected-major-group-label">공학 계열</span>
+              <h3 class="text-xl font-black text-slate-900 flex items-center gap-2 mt-0.5">
+                <span id="selected-major-title">컴퓨터공학과</span>
+              </h3>
+            </div>
+            <span class="text-xs font-extrabold bg-indigo-600 text-white px-3 py-1.5 rounded-xl shadow-xs self-start sm:self-auto" id="selected-major-page-badge">
+              📖 본문 p.162~163 수록
+            </span>
+          </div>
+
+          <!-- 진학샘 코칭 팁 -->
+          <div class="text-xs sm:text-sm text-slate-700 space-y-2 leading-relaxed">
+            <strong class="text-indigo-900 font-extrabold block">💡 진학샘의 특별한 코칭:</strong>
+            <p id="selected-major-tip" class="bg-white p-3.5 rounded-xl border border-indigo-100 font-medium"></p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
+              <div class="bg-white p-3 rounded-xl border border-indigo-100">
+                <span class="font-bold text-indigo-700 block mb-1">★ 대학 평가관 핵심 권장 과목:</span>
+                <span id="selected-major-core" class="text-slate-800 font-semibold"></span>
+              </div>
+              <div class="bg-white p-3 rounded-xl border border-indigo-100">
+                <span class="font-bold text-slate-600 block mb-1">★ 전공 이수 권장 과목:</span>
+                <span id="selected-major-rec" class="text-slate-800 font-medium"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 부록 313~330쪽 학과별 추천 도서 5선 렌더링 -->
+          <div class="pt-2">
+            <div class="flex items-center justify-between mb-2">
+              <strong class="text-xs font-black text-indigo-950 flex items-center gap-1.5">
+                <i class="fa-solid fa-book-bookmark text-indigo-600"></i> 학과별 추천 도서 5선 (교재 부록 313~330p 연계):
+              </strong>
+              <span class="text-[11px] text-slate-500">학생부 세특 독서활동 추천</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 text-xs" id="selected-major-books-container"></div>
+          </div>
+        </div>
+
+        <!-- 331p 더 알아보기 기관별 추천도서 배너 -->
+        <div class="p-4 rounded-2xl bg-slate-100 border border-slate-200 text-xs text-slate-700 space-y-1">
+          <strong class="text-slate-900 font-bold block">📚 [부록 331쪽] 더 알아보기: 공식 추천 도서 공공 목록</strong>
+          <p class="text-slate-600">
+            • 국립중앙도서관 사서 추천 도서 | • 독서IN 기관별 추천 도서 | • 교육부 독서로(read365.edunet.net) | • 환경부 우수 환경도서 | • 카이스트 독서문화위원회 추천도서 101선
           </p>
         </div>
 
         <div class="flex justify-between items-center pt-2">
-          <button onclick="switchTab('tab-diag')" class="text-slate-500 hover:text-slate-800 text-sm font-bold">
+          <button onclick="switchTab('tab-tests')" class="text-slate-500 hover:text-slate-800 text-sm font-bold">
             <i class="fa-solid fa-arrow-left mr-1"></i> 이전
           </button>
           <button onclick="switchTab('tab-subject')" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-xs transition flex items-center gap-2 text-sm">
@@ -189,35 +328,58 @@
       </div>
     </section>
 
-    <!-- 3. 선택 과목 272개 시뮬레이터 탭 -->
+    <!-- 3. 선택 과목 272개 시뮬레이터 탭 (교재 p.250~311) -->
     <section id="tab-subject" class="tab-content hidden space-y-6">
       <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
         <div class="border-b border-slate-200 pb-4">
-          <h2 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
-            <span class="w-7 h-7 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-sm font-black">3</span>
-            3부. 고등학교 선택 과목 272개 시뮬레이터
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-500 mt-1">고2~고3 3개년 동안 이수할 과목들을 직접 체크하여 조합해 보세요.</p>
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+              <span class="w-7 h-7 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-sm font-black">3</span>
+              3부. 고등학교 선택 과목 272개 시뮬레이터 (교재 p.250~311)
+            </h2>
+            <span class="text-xs bg-indigo-50 text-indigo-700 font-bold px-2.5 py-1 rounded-full">시간표 편성</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">
+            선택하신 <strong id="sim-target-major-name" class="text-indigo-600 font-bold">컴퓨터공학과</strong> 진학을 위해 고등학교 2~3학년 때 이수할 선택 과목을 체크해 보세요.
+          </p>
         </div>
 
+        <!-- 수학 교과군 -->
         <div>
-          <span class="font-extrabold text-sm text-slate-800 block mb-2">수학 교과군 (일반/진로/융합선택)</span>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 bg-indigo-600 rounded-full"></span> 수학 교과군 (일반/진로/융합선택)
+            </span>
+            <span class="text-[11px] text-slate-400">교재 256~259쪽 수록</span>
+          </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs" id="box-math"></div>
         </div>
 
+        <!-- 과학 / 정보 교과군 -->
         <div>
-          <span class="font-extrabold text-sm text-slate-800 block mb-2">과학 / 정보 / 기술가정 교과군</span>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 bg-emerald-600 rounded-full"></span> 과학 / 정보 / 기술가정 교과군
+            </span>
+            <span class="text-[11px] text-slate-400">교재 274~289쪽 수록</span>
+          </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs" id="box-sci"></div>
         </div>
 
+        <!-- 사회 / 인문 교과군 -->
         <div>
-          <span class="font-extrabold text-sm text-slate-800 block mb-2">사회 / 인문 / 융합 선택 교과군</span>
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 bg-amber-600 rounded-full"></span> 사회 / 인문 / 교양 교과군
+            </span>
+            <span class="text-[11px] text-slate-400">교재 264~273, 292~297쪽 수록</span>
+          </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs" id="box-soc"></div>
         </div>
 
         <div class="flex justify-between items-center pt-4 border-t border-slate-200">
           <button onclick="switchTab('tab-major')" class="text-slate-500 hover:text-slate-800 text-sm font-bold">
-            <i class="fa-solid fa-arrow-left mr-1"></i> 이전
+            <i class="fa-solid fa-arrow-left mr-1"></i> 학과 다시 선택
           </button>
           <button onclick="runDiagnosis(); switchTab('tab-report')" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-xs transition flex items-center gap-2 text-sm">
             <i class="fa-solid fa-chart-pie"></i> 진단 결과 및 도서 연계 해설 보기
@@ -229,63 +391,66 @@
     <!-- 4. 과목 적합도 & 도서 락인 리포트 탭 -->
     <section id="tab-report" class="tab-content hidden space-y-6">
       <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
-        <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white p-6 sm:p-8 rounded-3xl relative overflow-hidden">
+        <div class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-8 rounded-3xl relative overflow-hidden">
           <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <span class="text-xs font-bold text-indigo-300 uppercase tracking-widest">2028 학생부종합 평가 시뮬레이션</span>
+              <span class="text-xs font-bold text-indigo-300 uppercase tracking-widest">2028 수시 학생부종합 평가 시뮬레이션</span>
               <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">
                 <span id="rep-major-title" class="text-yellow-400">컴퓨터공학과</span> 과목 이수 적합도
               </h2>
-              <p class="text-slate-300 text-xs sm:text-sm mt-1">『고1 학업 설계』 2부 학과별 중요도 분석 기준</p>
+              <p class="text-slate-300 text-xs sm:text-sm mt-1" id="rep-major-page-guide">
+                『고1 학업 설계』 2부 기준 정밀 분석
+              </p>
             </div>
             <div class="flex items-center gap-4 bg-white/10 px-6 py-3.5 rounded-2xl border border-white/15 backdrop-blur-sm">
               <div class="text-center">
-                <div class="text-3xl sm:text-4xl font-black text-yellow-400" id="rep-score">76점</div>
+                <div class="text-3xl sm:text-4xl font-black text-yellow-400" id="rep-score">82점</div>
                 <div class="text-[11px] text-slate-300">종합 적합도</div>
               </div>
               <div class="h-10 w-px bg-white/20"></div>
               <div class="text-xs text-amber-300 font-bold" id="rep-status">
-                ⚠️ 필수 과목<br>누락 주의
+                ⚠️ 필수 과목<br>보완 권장
               </div>
             </div>
           </div>
         </div>
 
+        <!-- 전문가 총평 -->
         <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-2xl text-xs sm:text-sm text-amber-950 leading-relaxed">
-          <strong>현직 진학 전문 교사 총평:</strong> 선택하신 과목 조합은 기초 요건은 충족하고 있으나, <strong>대학 학종 평가관이 중요하게 평가하는 핵심 과목 1개가 미선택</strong>되어 있습니다. 과목 신청 마감 전 반드시 확인이 필요합니다.
+          <strong>현직 진학 전문 교사 분석 총평:</strong> 선택하신 과목 구성은 기본 소양을 갖추고 있으나, <strong id="rep-missing-alert">대학 학종 평가관이 전공 적합성에서 높게 평가하는 권장 과목 일부가 미선택</strong>되어 있습니다. 1학년 2학기 최종 과목 신청 마감 전 보완 계획을 세우세요.
         </div>
 
         <!-- 블라인드 락인 카드 -->
         <div class="border border-slate-200 rounded-3xl p-6 bg-slate-50/60 space-y-4">
           <div class="flex items-center justify-between">
             <h3 class="font-extrabold text-slate-900 text-base flex items-center gap-2">
-              <i class="fa-solid fa-lock text-indigo-600"></i> 학과별 심층 가이드 (도서 연계 잠금)
+              <i class="fa-solid fa-lock text-indigo-600"></i> 학과별 심층 가이드 & 세특 키워드 (도서 연계 잠금)
             </h3>
             <span class="text-xs bg-red-100 text-red-700 font-bold px-2.5 py-1 rounded-full">도서 참조 필수</span>
           </div>
 
           <div class="bg-white p-4.5 rounded-2xl border border-slate-200 relative overflow-hidden">
             <div class="flex justify-between items-center mb-1.5">
-              <span class="text-xs font-bold text-slate-600">대학 진학에 유리한 전공 연계 선택 과목 중요도</span>
-              <span class="text-xs font-black text-indigo-600" id="lock-page-1">도서 p.142 수록</span>
+              <span class="text-xs font-bold text-slate-600">대학 진학에 유리한 추천 선택 과목 중요도 상세 해설</span>
+              <span class="text-xs font-black text-indigo-600" id="lock-page-ref">도서 수록</span>
             </div>
             <div class="p-3 bg-slate-100 rounded-xl blur-lock text-slate-800 font-bold text-xs sm:text-sm">
-              미적분Ⅱ / 인공지능 수학 / 정보과학 / 물리학 심층 탐구 (도서 인증 후 확인 가능)
+              핵심 권장 과목 및 위계별 이수 순서 (도서 인증 후 확인 가능)
             </div>
             <div class="absolute inset-0 bg-slate-900/15 backdrop-blur-[2px] flex items-center justify-center">
               <span class="bg-slate-900/85 text-white text-xs px-3.5 py-1.5 rounded-xl font-bold shadow-md">
-                🔒 『고1 학업 설계』 도서 <span id="lock-span-page" class="text-yellow-300">142~147쪽</span>에서 상세 확인
+                🔒 『고1 학업 설계』 도서 <span id="lock-span-page" class="text-yellow-300">해당 페이지</span>에서 상세 확인
               </span>
             </div>
           </div>
 
           <div class="bg-white p-4.5 rounded-2xl border border-slate-200 relative overflow-hidden">
             <div class="flex justify-between items-center mb-1.5">
-              <span class="text-xs font-bold text-slate-600">학교생활기록부 세특 키워드 & 학과별 추천 도서</span>
-              <span class="text-xs font-black text-indigo-600">도서 부록 수록</span>
+              <span class="text-xs font-bold text-slate-600">학교생활기록부 세특용 학과별 추천 도서 5선</span>
+              <span class="text-xs font-black text-indigo-600">부록 313~330쪽</span>
             </div>
             <div class="p-3 bg-slate-100 rounded-xl blur-lock text-slate-800 font-bold text-xs sm:text-sm">
-              알고리즘 최적화 세특 주제 및 전공 추천 도서 4선 (도서 인증 후 확인 가능)
+              전공 역량 입증 추천 도서 5권 목록 (도서 인증 후 확인 가능)
             </div>
             <div class="absolute inset-0 bg-slate-900/15 backdrop-blur-[2px] flex items-center justify-center">
               <span class="bg-slate-900/85 text-white text-xs px-3.5 py-1.5 rounded-xl font-bold shadow-md">
@@ -298,7 +463,7 @@
         <!-- 구매 CTA 배너 -->
         <div class="bg-indigo-600 rounded-3xl p-6 sm:p-8 text-white text-center shadow-lg space-y-4">
           <h3 class="text-xl sm:text-2xl font-black leading-snug">
-            완벽한 3개년 학업 설계서와 90개 학과 상세 가이드는<br>
+            완벽한 3개년 학업 설계서와 90개 학과 전체 해설은<br>
             『고1 학업 설계』 도서에서 바로 완성됩니다!
           </h3>
           <p class="text-indigo-100 text-xs sm:text-sm max-w-xl mx-auto">
@@ -332,7 +497,7 @@
           <div>
             <h2 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
               <span class="w-7 h-7 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-sm font-black">5</span>
-              나만의 3개년 개인 학업 설계서 (교재 1부 Ⅳ·Ⅴ장 연계)
+              나만의 3개년 개인 학업 설계서 (교재 1부 Ⅳ·Ⅴ장 p.36~53 연계)
             </h2>
             <p class="text-xs sm:text-sm text-slate-500 mt-1">학교 담임선생님 및 진로상담선생님 제출용 표준 양식입니다.</p>
           </div>
@@ -347,7 +512,7 @@
             <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">High School Credit System Study Plan</span>
             <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">고등학교 3개년 개인 학업 설계서</h2>
             <p class="text-xs text-slate-500 mt-1">
-              참고 도서: 『고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계』 (심재준·한상근 저)
+              참고 도서: 『고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계』 (심재준·한상근 저 / 씨마스)
             </p>
           </div>
 
@@ -368,7 +533,7 @@
 
           <div class="space-y-2">
             <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-2">
-              <i class="fa-solid fa-table-list text-indigo-600"></i> 영역별 선택 이수 계획표
+              <i class="fa-solid fa-table-list text-indigo-600"></i> 영역별 선택 이수 계획표 (3개년)
             </h4>
             <table class="w-full text-xs sm:text-sm border-collapse border border-slate-300">
               <thead>
@@ -394,8 +559,14 @@
             </table>
           </div>
 
+          <!-- 학과별 추천도서 5권 목록 인쇄 반영 -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
+            <span class="font-bold text-slate-900 block">📖 전공 연계 학생부 세특 추천 도서 목록 (부록 313~330p):</span>
+            <div id="out-books-list" class="text-slate-700 font-medium"></div>
+          </div>
+
           <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1">
-            <span class="font-bold text-slate-900 block">✔ 학업 설계서 최종 점검 체크리스트 (교재 1부 Ⅴ장)</span>
+            <span class="font-bold text-slate-900 block">✔ 학업 설계서 최종 점검 체크리스트 (교재 1부 Ⅴ장 p.44, 52)</span>
             <div class="text-slate-600 space-y-0.5">
               <div>[ ] 1. 목표 대학 및 학과의 전공 연계 필수/권장 과목을 모두 반영하였는가?</div>
               <div>[ ] 2. 소속 고등학교의 교육과정 편제표상 개설 학년과 학기가 일치하는가?</div>
@@ -447,86 +618,2275 @@
   <!-- 푸터 -->
   <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 text-center space-y-2 no-print">
     <p class="text-slate-300 font-bold">『고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계』 공식 웹 서비스</p>
-    <p>저자: 심재준(휘문고), 한상근(한국직업능력연구원) | ISBN: 9791198347077 | 정가: 27,000원 (할인가 24,300원)</p>
+    <p>저자: 심재준(휘문고), 한상근(한국직업능력연구원) | 감수: 한상근, 임은미 | 출판: 씨마스21 | ISBN: 9791198347077</p>
     <p class="text-slate-600">© 2026 고1 학업 설계 연구팀. All rights reserved.</p>
   </footer>
 
   <script>
-    const majorData = {
-      engineering: {
-        name: "공학 계열",
-        icon: "fa-microchip",
-        majors: [
-          { id: "cs", name: "컴퓨터공학과", page: "142~147", reqMath: ["미적분", "확률과통계"], reqSci: ["물리학", "정보"] },
-          { id: "semi", name: "반도체공학과", page: "158~163", reqMath: ["미적분", "기하"], reqSci: ["물리학", "화학"] },
-          { id: "ai", name: "인공지능학과", page: "148~153", reqMath: ["미적분", "인공지능수학"], reqSci: ["정보", "물리학"] },
-          { id: "mech", name: "기계공학과", page: "164~169", reqMath: ["미적분", "기하"], reqSci: ["물리학"] }
-        ]
-      },
-      medical: {
-        name: "의약보건 계열",
-        icon: "fa-user-doctor",
-        majors: [
-          { id: "med", name: "의학과(의예과)", page: "198~203", reqMath: ["미적분", "확률과통계"], reqSci: ["생명과학", "화학"] },
-          { id: "pharm", name: "약학과", page: "210~215", reqMath: ["미적분"], reqSci: ["화학", "생명과학"] },
-          { id: "nurs", name: "간호학과", page: "222~227", reqMath: ["확률과통계"], reqSci: ["생명과학"] }
-        ]
-      },
-      natural: {
-        name: "자연 계열",
-        icon: "fa-atom",
-        majors: [
-          { id: "bio", name: "생명과학과", page: "128~133", reqMath: ["미적분"], reqSci: ["생명과학", "화학"] },
-          { id: "chem", name: "화학과", page: "134~139", reqMath: ["미적분"], reqSci: ["화학", "물리학"] }
-        ]
-      },
-      social: {
-        name: "사회 계열",
-        icon: "fa-chart-line",
-        majors: [
-          { id: "biz", name: "경영학과", page: "82~87", reqMath: ["확률과통계", "경제수학"], reqSci: [], reqSoc: ["경제", "사회문화"] },
-          { id: "econ", name: "경제학과", page: "76~81", reqMath: ["미적분", "경제수학", "확률과통계"], reqSci: [], reqSoc: ["경제"] },
-          { id: "media", name: "미디어커뮤니케이션학과", page: "88~93", reqMath: ["확률과통계"], reqSci: [], reqSoc: ["사회문화", "현대사회와철학"] }
-        ]
-      },
-      humanities: {
-        name: "인문 계열",
-        icon: "fa-book-open",
-        majors: [
-          { id: "kor", name: "국어국문학과", page: "52~57", reqMath: [], reqSci: [], reqSoc: ["사회문화"] },
-          { id: "eng", name: "영어영문학과", page: "58~63", reqMath: [], reqSci: [], reqSoc: ["세계사"] }
-        ]
-      },
-      education: {
-        name: "교육 계열",
-        icon: "fa-chalkboard-user",
-        majors: [
-          { id: "edu_pri", name: "초등교육과", page: "110~115", reqMath: ["확률과통계"], reqSci: ["통합과학"], reqSoc: ["교육학"] },
-          { id: "edu_math", name: "수학교육과", page: "102~107", reqMath: ["미적분", "기하", "확률과통계"], reqSci: [] }
-        ]
-      },
-      arts: {
-        name: "예체능 계열",
-        icon: "fa-palette",
-        majors: [
-          { id: "design", name: "디자인학과", page: "246~251", reqMath: [], reqSci: [], reqSoc: ["미술창작"] }
-        ]
-      }
-    };
+    const majorsData = [
+  {
+    "id": "kor_lit",
+    "name": "국어국문학과",
+    "group": "인문 계열",
+    "group_id": "hum",
+    "page": "58~59",
+    "core": [
+      "화법과 언어",
+      "문학",
+      "독서와 작문"
+    ],
+    "rec": [
+      "주제 탐구 독서",
+      "언어생활 탐구",
+      "문학과 영상"
+    ],
+    "tip": "국어 교과를 충실히 이수하고 소설, 시, 서평 등 다양한 글쓰기 및 어문 탐구 활동 권장",
+    "books": [
+      "우리말 산책 (이익섭)",
+      "지용시선 (정지용)",
+      "토지 (박경리)",
+      "소년이 온다 (한강)",
+      "열하일기 (박지원)"
+    ]
+  },
+  {
+    "id": "eng_lit",
+    "name": "영어영문학과",
+    "group": "인문 계열",
+    "group_id": "hum",
+    "page": "60~61",
+    "core": [
+      "영어Ⅰ",
+      "영어Ⅱ",
+      "영어 독해와 작문"
+    ],
+    "rec": [
+      "영미 문학 읽기",
+      "영어 발표와 토론",
+      "심화 영어"
+    ],
+    "tip": "영어 교과를 깊이 이수하고 영미 문학 작품 번역 및 영어 스피치 역량 강화 권장",
+    "books": [
+      "영미문학의 길잡이 (영미문학연구회)",
+      "이야기 미국사 (이구한)",
+      "황무지 (T. S. 엘리엇)",
+      "1984 (조지 오웰)",
+      "허클베리 핀의 모험 (마크 트웨인)"
+    ]
+  },
+  {
+    "id": "philosophy",
+    "name": "철학과",
+    "group": "인문 계열",
+    "group_id": "hum",
+    "page": "62~63",
+    "core": [
+      "현대사회와 윤리",
+      "윤리와 사상"
+    ],
+    "rec": [
+      "인문학과 윤리",
+      "논리와 사고",
+      "인간과 철학"
+    ],
+    "tip": "사회 교과의 윤리 과목과 철학 고전 탐독, 비판적 사고 훈련 권장",
+    "books": [
+      "동양철학 에세이 (김교빈 외)",
+      "스피노자 윤리학 수업 (진태원)",
+      "라플라스의 악마, 철학을 묻다 (최훈)",
+      "소크라테스 익스프레스 (에릭 와이너)",
+      "왜 칸트인가 (김상환)"
+    ]
+  },
+  {
+    "id": "history",
+    "name": "사학과",
+    "group": "인문 계열",
+    "group_id": "hum",
+    "page": "64~65",
+    "core": [
+      "세계사",
+      "한국사"
+    ],
+    "rec": [
+      "동아시아 역사 기행",
+      "역사로 탐구하는 현대 세계",
+      "지역 이해"
+    ],
+    "tip": "역사 교과 과목 이수 및 사료 분석, 역사 왜곡 바로잡기 탐구 활동 권장",
+    "books": [
+      "역사란 무엇인가 (E. H. 카)",
+      "내일을 위한 역사학 강의 (김기봉)",
+      "세계사 편력 (J. 네루)",
+      "비이성의 세계사 (정찬일)",
+      "한국 문화유산 산책 (고려대 한국사연구소)"
+    ]
+  },
+  {
+    "id": "linguistics",
+    "name": "언어학과",
+    "group": "인문 계열",
+    "group_id": "hum",
+    "page": "66~67",
+    "core": [
+      "화법과 언어",
+      "영어 독해와 작문"
+    ],
+    "rec": [
+      "언어생활 탐구",
+      "제2외국어",
+      "인공지능 기초"
+    ],
+    "tip": "국어·외국어 문법 체계 및 인공지능 자연어 처리(LLM) 연계 탐구 권장",
+    "books": [
+      "왜 우리만이 언어를 사용하는가 (노엄 촘스키 외)",
+      "언어의 탄생 (빌 브라이슨)",
+      "외국어 전파담/학습담 (로버트 파우저)",
+      "언어학이 만나는 인공 신경망 언어 모델 (박명관)",
+      "쉽게 읽는 언어철학 (박병철)"
+    ]
+  },
+  {
+    "id": "euro_lang",
+    "name": "유럽언어학과",
+    "group": "인문 계열",
+    "group_id": "hum",
+    "page": "68~69",
+    "core": [
+      "독일어/프랑스어/스페인어/러시아어"
+    ],
+    "rec": [
+      "제2외국어 회화",
+      "제2외국어 문화",
+      "세계사"
+    ],
+    "tip": "목표 유럽 언어의 회화·독해 및 유럽 문화권 심층 비교 분석 권장",
+    "books": [
+      "새 독일문학사 (안삼환)",
+      "프랑스 현대 시 155편 깊이 읽기 (오생근)",
+      "스페인 중세·황금세기 문학 (민용태)",
+      "러시아 문학의 맛있는 코드 (석영중)",
+      "브레히트 선집 (한국브레히트학회)"
+    ]
+  },
+  {
+    "id": "religion",
+    "name": "종교학과",
+    "group": "인문 계열",
+    "group_id": "hum",
+    "page": "70~71",
+    "core": [
+      "윤리와 사상",
+      "삶과 종교"
+    ],
+    "rec": [
+      "인문학과 윤리",
+      "세계사",
+      "인간과 철학"
+    ],
+    "tip": "동서양 종교 문화유산 비교 및 종교 간 대화와 사회적 역할 탐구 권장",
+    "books": [
+      "성과 속 (미르치아 엘리아데)",
+      "우리 인간의 종교들 (아르빈드 샤르마 외)",
+      "종교 전쟁: 종교에 미래는 있는가 (신재식 외)",
+      "축의 시대 (카렌 암스트롱)",
+      "청소년을 위한 세계 종교 여행 (김나미)"
+    ]
+  },
+  {
+    "id": "library_sci",
+    "name": "문헌정보학과",
+    "group": "인문 계열",
+    "group_id": "hum",
+    "page": "72~73",
+    "core": [
+      "독서와 작문",
+      "정보"
+    ],
+    "rec": [
+      "주제 탐구 독서",
+      "데이터 과학",
+      "미디어 의사소통"
+    ],
+    "tip": "정보 분류 체계 및 빅데이터 검색 알고리즘 연계 탐구 권장",
+    "books": [
+      "도서관 친구들 이야기 (여희숙 외)",
+      "세상은 한 권의 책이었다 (소피 카사뉴 브루케)",
+      "아름다운 삶, 아름다운 도서관 (전국학교도서관담당교사)",
+      "문헌정보학의 이해 (한국문헌정보학회)",
+      "궁극의 리스트 (움베르토 에코)"
+    ]
+  },
+  {
+    "id": "chinese_lit",
+    "name": "중어중문학과",
+    "group": "인문 계열",
+    "group_id": "hum",
+    "page": "74~75",
+    "core": [
+      "중국어",
+      "한문"
+    ],
+    "rec": [
+      "중국어 회화",
+      "중국 문화",
+      "한문 고전 읽기"
+    ],
+    "tip": "중국어 어학 능력과 함께 동아시아 국제 관계 및 중국 고전문학 탐구 권장",
+    "books": [
+      "중국의 체온 (쑨거)",
+      "중국을 만든 문장들 (김근)",
+      "새로 읽는 이야기 동양 신화 (정재서)",
+      "사기 열전 (사마천)",
+      "루쉰 문학선 (루쉰)"
+    ]
+  },
+  {
+    "id": "japanese_lit",
+    "name": "일어일문학과",
+    "group": "인문 계열",
+    "group_id": "hum",
+    "page": "76~77",
+    "core": [
+      "일본어",
+      "한문"
+    ],
+    "rec": [
+      "일본어 회화",
+      "일본 문화",
+      "동아시아 역사 기행"
+    ],
+    "tip": "일본어 회화 능력과 일본 근현대 사회문화 및 한일 교류사 탐구 권장",
+    "books": [
+      "국화와 칼 (루스 베네딕트)",
+      "일본 근대문학의 기원 (가라타니 고진)",
+      "인간 실격 (다자이 오사무)",
+      "노르웨이의 숲 (무라카미 하루키)",
+      "은근 몰랐던 일본 문화사 (조재면)"
+    ]
+  },
+  {
+    "id": "economics",
+    "name": "경제학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "80~81",
+    "core": [
+      "미적분Ⅰ",
+      "경제",
+      "확률과 통계"
+    ],
+    "rec": [
+      "경제 수학",
+      "미적분Ⅱ",
+      "금융과 경제생활"
+    ],
+    "tip": "경제 현상을 수학적으로 모델링하는 수리적 역량과 경제 지표 분석 권장",
+    "books": [
+      "잘 산다는 것 (강수돌)",
+      "왜 세계의 절반은 굶주리는가? (장 지글러)",
+      "장하준의 경제학 강의 (장하준)",
+      "괴짜 경제학 (스티븐 더브너 외)",
+      "죽은 경제학자의 이상한 돈과 어린 세 자매 (추정경)"
+    ]
+  },
+  {
+    "id": "business",
+    "name": "경영학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "82~83",
+    "core": [
+      "확률과 통계",
+      "경제"
+    ],
+    "rec": [
+      "경제 수학",
+      "사회와 문화",
+      "금융과 경제생활"
+    ],
+    "tip": "기업가 정신 및 ESG 경영 전략, 마케팅 데이터 분석 프로젝트 권장",
+    "books": [
+      "누가 내 머릿속에 브랜드를 넣었지? (박지혜)",
+      "경영학 콘서트 (장영재)",
+      "우리는 작은 가게에서 어른이 되는 중입니다 (박진숙)",
+      "돈의 심리학 (모건 하우절)",
+      "빅데이터, 경영을 바꾸다 (함유근 외)"
+    ]
+  },
+  {
+    "id": "media_comm",
+    "name": "미디어커뮤니케이션학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "84~85",
+    "core": [
+      "화법과 언어",
+      "사회와 문화"
+    ],
+    "rec": [
+      "매체 의사소통",
+      "사회문제 탐구",
+      "미디어 영어"
+    ],
+    "tip": "미디어 리터러시 및 뉴미디어 콘텐츠 기획, 여론 분석 탐구 권장",
+    "books": [
+      "뉴스, 믿어도 될까? (구본권)",
+      "슬기로운 미디어 생활 (권혜령 외)",
+      "미디어의 이해 (마셜 맥루언)",
+      "읽는 인간 리터러시를 경험하라 (조병영)",
+      "저널리즘 글쓰기의 논리 (남재일 외)"
+    ]
+  },
+  {
+    "id": "advertising",
+    "name": "광고홍보학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "86~87",
+    "core": [
+      "사회와 문화",
+      "화법과 언어"
+    ],
+    "rec": [
+      "매체 의사소통",
+      "인간과 심리",
+      "소비자 심리"
+    ],
+    "tip": "브랜드 네이밍, 소비자 행동 분석 및 창의적 광고 캠페인 기획 권장",
+    "books": [
+      "광고는 왜 10대를 좋아할까? (샤리 그레이든)",
+      "인문학으로 광고하다 (박웅현 외)",
+      "팝콘을 먹는 동안 일어나는 일 (김선희)",
+      "카피라이터 정철의 머리를 9하라 (정철)",
+      "디지털 마케팅과 페이스북 광고 (이민규)"
+    ]
+  },
+  {
+    "id": "psychology",
+    "name": "심리학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "88~89",
+    "core": [
+      "확률과 통계",
+      "생명과학"
+    ],
+    "rec": [
+      "인간과 심리",
+      "사회와 문화",
+      "실용 통계"
+    ],
+    "tip": "인지심리·뇌과학 연계 탐구 및 사회통계 조사를 통한 심리 데이터 분석 권장",
+    "books": [
+      "간단명료한 심리학 (마이클 아이젠크)",
+      "인지심리학은 처음이지 (김경일 외)",
+      "마음의 법칙 (폴커 키츠 외)",
+      "꿈의 해석 (지그문트 프로이트)",
+      "청소년에게 심리학이 뭔 소용이람? (이남석)"
+    ]
+  },
+  {
+    "id": "cultural_contents",
+    "name": "문화콘텐츠학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "90~91",
+    "core": [
+      "문학",
+      "사회와 문화"
+    ],
+    "rec": [
+      "문학과 영상",
+      "음악과 미디어",
+      "미술과 매체"
+    ],
+    "tip": "K-콘텐츠 글로벌 스토리텔링 및 문화예술 산업 트렌드 기획 권장",
+    "books": [
+      "나는 게임한다 고로 존재한다 (이동은)",
+      "이 장면, 나만 불편한가요 (태지원)",
+      "유튜브 쫌 아는 10대 (금준경)",
+      "벤야민 & 아도르노 대중문화의 기만 혹은 해방 (신혜경)",
+      "만화의 이해 (스콧 맥클라우드)"
+    ]
+  },
+  {
+    "id": "sociology",
+    "name": "사회학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "92~93",
+    "core": [
+      "사회와 문화",
+      "확률과 통계"
+    ],
+    "rec": [
+      "사회문제 탐구",
+      "정치",
+      "법과 사회"
+    ],
+    "tip": "저출생·고령화, 불평등 등 현대 사회구조 문제에 대한 사회조사 분석 권장",
+    "books": [
+      "세상물정의 사회학 (노명우)",
+      "사회학적 상상력 (C. 라이트 밀즈)",
+      "위험사회 (울리히 벡)",
+      "청소년을 위한 사회학 에세이 (구정화)",
+      "난장이가 쏘아올린 작은 공 (조세희)"
+    ]
+  },
+  {
+    "id": "social_welfare",
+    "name": "사회복지학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "94~95",
+    "core": [
+      "사회와 문화",
+      "현대사회와 윤리"
+    ],
+    "rec": [
+      "사회문제 탐구",
+      "정치·법과 사회·경제",
+      "생애 설계와 자립"
+    ],
+    "tip": "사회보장 정책 분석 및 취약계층 복지 사각지대 해소 프로젝트 권장",
+    "books": [
+      "그냥, 사람 (홍은전)",
+      "가난한 아이들은 어떻게 어른이 되는가 (강지나)",
+      "연결된 고통 (이기병)",
+      "사회복지사가 말하는 사회복지사 (김세진 외)",
+      "올리버 트위스트 (찰스 디킨스)"
+    ]
+  },
+  {
+    "id": "political_sci",
+    "name": "정치외교학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "96~97",
+    "core": [
+      "정치",
+      "국제 관계의 이해"
+    ],
+    "rec": [
+      "세계사",
+      "현대 세계의 변화",
+      "영어 발표와 토론"
+    ],
+    "tip": "모의 유엔, 국제 분쟁 및 외교 안보 정책 비교 분석 권장",
+    "books": [
+      "국제정세의 이해 (유현석)",
+      "민주화 이후의 민주주의 (최장집)",
+      "정치학으로의 산책 (이병화 외)",
+      "지도 위의 붉은 선 (페데리코 람피니)",
+      "공정하다는 착각 (마이클 샌델)"
+    ]
+  },
+  {
+    "id": "public_admin",
+    "name": "행정학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "98~99",
+    "core": [
+      "정치",
+      "법과 사회"
+    ],
+    "rec": [
+      "경제",
+      "사회문제 탐구",
+      "데이터 과학"
+    ],
+    "tip": "공공 정책 평가 및 스마트 전자정부 데이터 분석, 행정제도 개선안 작성 권장",
+    "books": [
+      "공리주의 (존 스튜어트 밀)",
+      "정선 목민심서 (정약용)",
+      "사회계약론 (장 자크 루소)",
+      "세상을 바꾼 놀라운 정책들 (조성주 외)",
+      "시민참여론 (이승종 외)"
+    ]
+  },
+  {
+    "id": "international_studies",
+    "name": "국제학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "100~101",
+    "core": [
+      "국제 관계의 이해",
+      "영어 독해와 작문"
+    ],
+    "rec": [
+      "국제 경제",
+      "세계시민과 지리",
+      "세계 문제와 미래 사회"
+    ],
+    "tip": "국제기구 활동 탐구 및 글로벌 통상·기후위기 국제 조약 분석 권장",
+    "books": [
+      "국제분쟁의 이해 (조지프 나이)",
+      "국제정세의 이해 (유현석)",
+      "문명의 충돌 (새뮤얼 헌팅턴)",
+      "빈곤의 종말 (제프리 D. 삭스)",
+      "세계화 시대의 정치학 (홍익표 외)"
+    ]
+  },
+  {
+    "id": "accounting",
+    "name": "회계학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "102~103",
+    "core": [
+      "확률과 통계",
+      "경제"
+    ],
+    "rec": [
+      "경제 수학",
+      "금융과 경제생활",
+      "실용 통계"
+    ],
+    "tip": "기업 재무제표 분석 및 조세 제도, 회계 투명성 관련 탐구 권장",
+    "books": [
+      "세금의 세계사 (도미닉 프리스비)",
+      "세금 풍경 (법무법인 정안)",
+      "7대 이슈로 보는 돈의 역사 2 (홍춘욱)",
+      "하마터면 회계를 모르고 일할 뻔했다! (김수헌 외)",
+      "회계학 리스타트 (유관희)"
+    ]
+  },
+  {
+    "id": "trade",
+    "name": "무역학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "104~105",
+    "core": [
+      "경제",
+      "영어 독해와 작문"
+    ],
+    "rec": [
+      "국제 경제",
+      "세계시민과 지리",
+      "제2외국어"
+    ],
+    "tip": "글로벌 공급망 분석 및 국제 무역 통상 정책, 전자상거래 탐구 권장",
+    "books": [
+      "무역의 세계사 (윌리엄 번스타인)",
+      "문명충돌과 미중무역전쟁 (정인갑 외)",
+      "세계사를 바꾼 15번의 무역전쟁 (자오타오 외)",
+      "인간의 얼굴을 한 시장경제, 공정무역 (마일즈 리트비노프)",
+      "처음 시작하는 무역 (김용수)"
+    ]
+  },
+  {
+    "id": "geography",
+    "name": "지리학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "106~107",
+    "core": [
+      "세계시민과 지리",
+      "지구과학"
+    ],
+    "rec": [
+      "한국지리 탐구",
+      "도시의 미래 탐구",
+      "정보"
+    ],
+    "tip": "GIS 지리정보시스템을 활용한 공간 분석 및 기후변화 영향 조사 권장",
+    "books": [
+      "지식정보사회의 지리학 탐색 (박삼옥 외)",
+      "경제를 읽는 쿨한 지리 이야기 (성정원)",
+      "내가 사랑한 지구 (최덕근)",
+      "문학 속의 지리 이야기 (조지욱)",
+      "세상을 변화시킨 열 가지 지리학 아이디어 (수잔 핸슨)"
+    ]
+  },
+  {
+    "id": "tourism",
+    "name": "관광학과",
+    "group": "사회 계열",
+    "group_id": "soc",
+    "page": "108~109",
+    "core": [
+      "세계시민과 지리",
+      "영어 회화"
+    ],
+    "rec": [
+      "여행지리",
+      "사회와 문화",
+      "제2외국어 문화"
+    ],
+    "tip": "지역 문화관광 자원 개발 및 친환경 지속가능한 에코투어리즘 기획 권장",
+    "books": [
+      "나도 호텔리어가 될 수 있다 (권성애)",
+      "넥스트 투어리즘 (윤지환 외)",
+      "도시를 살리는 문화관광 (이광희 외)",
+      "여행의 기술 (알랭 드 보통)",
+      "우물 밖 여고생 (슬구)"
+    ]
+  },
+  {
+    "id": "edu_general",
+    "name": "교육학과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "112~113",
+    "core": [
+      "교육의 이해",
+      "사회와 문화"
+    ],
+    "rec": [
+      "인간과 심리",
+      "독서 토론과 글쓰기",
+      "사회문제 탐구"
+    ],
+    "tip": "교육 철학 및 미래 에듀테크·공교육 정책 비교 연구 권장",
+    "books": [
+      "서머힐 (A. S. 닐)",
+      "교육심리학 (임규혁 외)",
+      "민주주의와 교육 (존 듀이)",
+      "교육의 미래, 티칭이 아니라 코칭이다 (폴 김 외)",
+      "아동을 위한 세계시민교육 (마거릿 콜린스)"
+    ]
+  },
+  {
+    "id": "edu_korean",
+    "name": "국어교육과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "114~115",
+    "core": [
+      "화법과 언어",
+      "문학",
+      "교육의 이해"
+    ],
+    "rec": [
+      "주제 탐구 독서",
+      "문학과 영상",
+      "언어생활 탐구"
+    ],
+    "tip": "학습 멘토링 활동 및 국어 교과 문해력 신장 교수학습 자료 개발 권장",
+    "books": [
+      "말들의 풍경 (고종석)",
+      "열하일기 (박지원)",
+      "시를 잊은 그대에게 (정재찬)",
+      "청소년을 위한 고전 소설 에세이 (류수열)",
+      "한국문학통사 (조동일)"
+    ]
+  },
+  {
+    "id": "edu_english",
+    "name": "영어교육과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "116~117",
+    "core": [
+      "영어 독해와 작문",
+      "교육의 이해"
+    ],
+    "rec": [
+      "영어 발표와 토론",
+      "심화 영어",
+      "영미 문학 읽기"
+    ],
+    "tip": "영어 멘토링 및 실용 영어 의사소통 교수법 탐구 권장",
+    "books": [
+      "신화의 시대 (토머스 불핀치)",
+      "언어의 탄생 (빌 브라이슨)",
+      "영미문학의 길잡이 (영미문학연구회)",
+      "생일 그리고 축복 (장영희)",
+      "율리시스 (제임스 조이스)"
+    ]
+  },
+  {
+    "id": "edu_math",
+    "name": "수학교육과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "118~119",
+    "core": [
+      "미적분Ⅰ",
+      "기하",
+      "미적분Ⅱ",
+      "교육의 이해"
+    ],
+    "rec": [
+      "확률과 통계",
+      "수학과제 탐구",
+      "전문 수학"
+    ],
+    "tip": "수학 학습 부진 요인 분석 및 수학적 개념의 시각화 지도안 작성 권장",
+    "books": [
+      "뫼비우스의 띠 (클리퍼드 픽오버)",
+      "수학이 불완전한 세상에 대처하는 방법 (박형주)",
+      "세상 모든 비밀을 푸는 수학 (이창옥 외)",
+      "유추를 통한 수학탐구 (한인기 외)",
+      "페르마의 마지막 정리 (사이먼 싱)"
+    ]
+  },
+  {
+    "id": "edu_social",
+    "name": "사회교육과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "120~121",
+    "core": [
+      "정치",
+      "법과 사회",
+      "경제",
+      "교육의 이해"
+    ],
+    "rec": [
+      "사회와 문화",
+      "윤리와 사상",
+      "사회문제 탐구"
+    ],
+    "tip": "민주시민 교육 지도안 작성 및 사회 현안 토론 수업 기획 권장",
+    "books": [
+      "구별짓기 (피에르 부르디외)",
+      "미래를 여는 역사 (한중일3국공동역사편찬위)",
+      "살아있는 지리 교과서 (전국지리교사연합회)",
+      "시민정부론 (존 로크)",
+      "페더럴리스트 (알렉산더 해밀턴 외)"
+    ]
+  },
+  {
+    "id": "edu_science",
+    "name": "과학교육과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "122~123",
+    "core": [
+      "물리학",
+      "화학",
+      "생명과학",
+      "지구과학",
+      "교육의 이해"
+    ],
+    "rec": [
+      "역학과 에너지",
+      "물질과 에너지",
+      "과학실험"
+    ],
+    "tip": "학생 눈높이에 맞춘 과학 실험 설계 및 STEAM 융합 지도안 제작 권장",
+    "books": [
+      "과학혁명의 구조 (토머스 S. 쿤)",
+      "모든 순간의 물리학 (카를로 로벨리)",
+      "생명과학 교과서는 살아있다 (유영제 외)",
+      "사이언스 101 지질학 (마크 맥메나민)",
+      "화학으로 이루어진 세상 (크리스틴 메데페셀헤르만 외)"
+    ]
+  },
+  {
+    "id": "edu_tech_home",
+    "name": "기술·가정교육과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "124~125",
+    "core": [
+      "기술·가정",
+      "교육의 이해"
+    ],
+    "rec": [
+      "로봇과 공학세계",
+      "생활과학 탐구",
+      "창의 공학 설계"
+    ],
+    "tip": "생활 속 발명 아이디어 키트 제작 및 가족 복지·소비생활 지도안 작성 권장",
+    "books": [
+      "과학을 달리는 십대: 스마트 테크놀로지 (구정은 외)",
+      "에밀 (장 자크 루소)",
+      "의복과 환경 (수잔 M. 와트킨스)",
+      "이상한 정상가족 (김희경)",
+      "컴퓨터과학이 여는 세계 (이광근)"
+    ]
+  },
+  {
+    "id": "edu_computer",
+    "name": "컴퓨터교육과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "126~127",
+    "core": [
+      "정보",
+      "인공지능 기초",
+      "교육의 이해"
+    ],
+    "rec": [
+      "데이터 과학",
+      "미적분Ⅰ",
+      "정보과학"
+    ],
+    "tip": "정보 소프트웨어 코딩 교육 및 피지컬 컴퓨팅 교구 활용 지도안 기획 권장",
+    "books": [
+      "미래를 바꾼 아홉 가지 알고리즘 (존 맥코믹)",
+      "실용주의 프로그래머 (데이비드 토머스 외)",
+      "역사 속의 소프트웨어 오류 (김종하)",
+      "아는 만큼 보이는 IT지식 (민완기)",
+      "컴퓨팅 사고력을 키우는 이산수학 (박주미)"
+    ]
+  },
+  {
+    "id": "edu_pe",
+    "name": "체육교육과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "128~129",
+    "core": [
+      "체육1",
+      "체육2",
+      "교육의 이해"
+    ],
+    "rec": [
+      "운동과 건강",
+      "스포츠 과학",
+      "스포츠 문화"
+    ],
+    "tip": "학교 스포츠클럽 리그 운영 및 학생 맞춤형 체력 증진 프로그램 기획 권장",
+    "books": [
+      "건강생활과 레저스포츠 즐기기 (강선희 외)",
+      "쫌 이상한 체육 시간 (최진환)",
+      "스포츠 문화사 (이종성)",
+      "운동화 신은 뇌 (존 레이티 외)",
+      "체육과 스포츠의 역사 (하남길 외)"
+    ]
+  },
+  {
+    "id": "edu_early_childhood",
+    "name": "유아교육과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "130~131",
+    "core": [
+      "교육의 이해",
+      "인간과 심리"
+    ],
+    "rec": [
+      "아동발달과 부모",
+      "미술 창작",
+      "음악 연주와 창작"
+    ],
+    "tip": "유아 발달 특성 분석 및 놀이 중심 유아 교육 프로그램 기획 권장",
+    "books": [
+      "내가 정말 알아야 할 모든 것은 유치원에서 배웠다 (로버트 풀검)",
+      "모리와 함께한 화요일 (미치 앨봄)",
+      "몬테소리 유아교육 (김지영)",
+      "창가의 토토 (구로야나기 테츠코)",
+      "훌륭한 교사는 무엇이 다른가 (토드 휘태커)"
+    ]
+  },
+  {
+    "id": "edu_elementary",
+    "name": "초등교육과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "132~133",
+    "core": [
+      "전 교과 균형 이수",
+      "교육의 이해"
+    ],
+    "rec": [
+      "인간과 심리",
+      "음악",
+      "미술",
+      "체육"
+    ],
+    "tip": "전 과목에 걸친 고른 학업 역량과 초등 학습 지도 멘토링 경험 권장",
+    "books": [
+      "그렇게 초등교사가 되었습니다 (박현진)",
+      "들꽃처럼 피어나라 교육의 봄날 (이성대)",
+      "무엇을 가르칠 것인가 (허버트 스펜서)",
+      "아이들은 무엇을 어떻게 배워야 하는가 (비노바 바베)",
+      "핀란드 교육의 기적 (아울리 툼 외)"
+    ]
+  },
+  {
+    "id": "edu_special",
+    "name": "특수교육과",
+    "group": "교육 계열",
+    "group_id": "edu",
+    "page": "134~135",
+    "core": [
+      "교육의 이해",
+      "생명과학"
+    ],
+    "rec": [
+      "인간과 심리",
+      "사회복지",
+      "생애 설계와 자립"
+    ],
+    "tip": "장애인식 개선 캠페인 및 특수아동 맞춤형 보조공학 탐구 권장",
+    "books": [
+      "나를 대단하다고 하지 마라 (해릴린 루소)",
+      "장애학의 도전 (김도현)",
+      "평범한 대화 (유인비)",
+      "한국에서 장애학 하기 (강민희 외)",
+      "한 아이 (토리 헤이든)"
+    ]
+  },
+  {
+    "id": "math_major",
+    "name": "수학과",
+    "group": "자연 계열",
+    "group_id": "nat",
+    "page": "138~139",
+    "core": [
+      "미적분Ⅰ",
+      "미적분Ⅱ",
+      "기하"
+    ],
+    "rec": [
+      "확률과 통계",
+      "수학과제 탐구",
+      "전문 수학"
+    ],
+    "tip": "수학적 추론과 증명, 현대 암호학 및 수학 모델링 탐구 권장",
+    "books": [
+      "박경미의 수학 콘서트 플러스 (박경미)",
+      "수학의 역사 (지즈강)",
+      "수학의 오솔길 (이정례)",
+      "수학, 인문으로 수를 읽다 (이광연)",
+      "어느 수학자의 변명 (G. H. 하디)"
+    ]
+  },
+  {
+    "id": "physics_major",
+    "name": "물리학과",
+    "group": "자연 계열",
+    "group_id": "nat",
+    "page": "140~141",
+    "core": [
+      "물리학",
+      "미적분Ⅰ",
+      "미적분Ⅱ",
+      "기하"
+    ],
+    "rec": [
+      "역학과 에너지",
+      "전자기와 양자",
+      "고급 물리학"
+    ],
+    "tip": "고전역학 및 양자물리, 상대성이론 심화 탐구 및 물리 실험 권장",
+    "books": [
+      "모든 순간의 물리학 (카를로 로벨리)",
+      "세상을 바꾼 과학 이야기 (권기균)",
+      "찻잔 속 물리학 (헬렌 체르스키)",
+      "힉스: 신의 입자를 찾아서 (사이언티픽 아메리칸)",
+      "떨림과 울림 (김상욱)"
+    ]
+  },
+  {
+    "id": "bio_major",
+    "name": "생명과학과",
+    "group": "자연 계열",
+    "group_id": "nat",
+    "page": "142~143",
+    "core": [
+      "생명과학",
+      "화학",
+      "미적분Ⅰ"
+    ],
+    "rec": [
+      "세포와 물질대사",
+      "생물의 유전",
+      "고급 생명과학"
+    ],
+    "tip": "유전자 편집 기술(CRISPR) 및 분자생물학, 면역학 심화 탐구 권장",
+    "books": [
+      "단백질의 일생 (나가노 히로유키)",
+      "생명과학, 신에게 도전하다 (김응빈 외)",
+      "이기적 유전자 (리처드 도킨스)",
+      "종의 기원 (찰스 다윈)",
+      "질병 정복의 꿈, 바이오 사이언스 (이성규)"
+    ]
+  },
+  {
+    "id": "chemistry_major",
+    "name": "화학과",
+    "group": "자연 계열",
+    "group_id": "nat",
+    "page": "144~145",
+    "core": [
+      "화학",
+      "물리학",
+      "미적분Ⅰ"
+    ],
+    "rec": [
+      "물질과 에너지",
+      "화학 반응의 세계",
+      "고급 화학"
+    ],
+    "tip": "유기화학 합성 및 나노소재 화학, 배터리 화학 반응 실험 권장",
+    "books": [
+      "기초 화학 사전 (다케다 준이치로)",
+      "미술관에 간 화학자 (전창림)",
+      "역사를 바꾼 17가지 화학 이야기 (제이 버레슨 외)",
+      "화학 교과서는 살아있다 (문상흡 외)",
+      "화학 연대기 (장홍제)"
+    ]
+  },
+  {
+    "id": "earth_env_major",
+    "name": "지구환경과학과",
+    "group": "자연 계열",
+    "group_id": "nat",
+    "page": "146~147",
+    "core": [
+      "지구과학",
+      "물리학",
+      "화학"
+    ],
+    "rec": [
+      "지구시스템과학",
+      "행성우주과학",
+      "기후변화와 환경생태"
+    ],
+    "tip": "대기·해양 순환, 판구조론 및 기후변화 예측 모델링 탐구 권장",
+    "books": [
+      "거의 모든 것의 역사 (빌 브라이슨)",
+      "인간이 만든 재앙, 기후변화와 환경의 역습 (반기성)",
+      "천재들의 과학노트 5 해양학 (캐서린 쿨렌)",
+      "라이엘이 들려주는 지질 조사 이야기 (이한조)",
+      "야누스의 과학 (김명진)"
+    ]
+  },
+  {
+    "id": "stat_major",
+    "name": "통계학과",
+    "group": "자연 계열",
+    "group_id": "nat",
+    "page": "148~149",
+    "core": [
+      "확률과 통계",
+      "미적분Ⅰ",
+      "정보"
+    ],
+    "rec": [
+      "실용 통계",
+      "데이터 과학",
+      "미적분Ⅱ"
+    ],
+    "tip": "빅데이터 분석 도구(R/Python)를 활용한 통계적 가설 검정 프로젝트 권장",
+    "books": [
+      "벌거벗은 통계학 (찰스 윌런)",
+      "빅데이터를 지배하는 통계의 힘 (니시우치 히로무)",
+      "세상을 읽는 새로운 언어, 빅데이터 (조성준)",
+      "통계의 미학 (최제호)",
+      "틀리지 않는 법 (조던 엘렌버그)"
+    ]
+  },
+  {
+    "id": "food_nutrition",
+    "name": "식품영양학과",
+    "group": "자연 계열",
+    "group_id": "nat",
+    "page": "150~151",
+    "core": [
+      "생명과학",
+      "화학"
+    ],
+    "rec": [
+      "세포와 물질대사",
+      "물질과 에너지",
+      "생활과학 탐구"
+    ],
+    "tip": "영양 대사 메커니즘 및 기능성 식품, 만성질환 식이요법 분석 권장",
+    "books": [
+      "맥도날드 그리고 맥도날드화 (조지 리처)",
+      "식사가 잘못됐습니다 (마키타 젠지)",
+      "영양의 비밀 (프레드 프로벤자)",
+      "채소의 인문학 (정혜경)",
+      "희망의 밥상 (제인 구달 외)"
+    ]
+  },
+  {
+    "id": "clothing_textiles",
+    "name": "의류학과",
+    "group": "자연 계열",
+    "group_id": "nat",
+    "page": "152~153",
+    "core": [
+      "화학",
+      "미술"
+    ],
+    "rec": [
+      "생활과학 탐구",
+      "미술 창작",
+      "물질과 에너지"
+    ],
+    "tip": "스마트 스마트 섬유 및 친환경 바이오 소재, 의복 디자인 탐구 권장",
+    "books": [
+      "샤넬, 미술관에 가다 (김홍기)",
+      "옷을 바꾸고 상식을 바꾸고 세상을 바꾼다 (나기노 준조)",
+      "패션, 문화를 말하다 (이재정 외)",
+      "패션 디자이너, 미래가 찬란한 너에게 (박민지)",
+      "MT 의류학 (채금석)"
+    ]
+  },
+  {
+    "id": "animal_resources",
+    "name": "동물자원학과",
+    "group": "자연 계열",
+    "group_id": "nat",
+    "page": "154~155",
+    "core": [
+      "생명과학",
+      "화학"
+    ],
+    "rec": [
+      "세포와 물질대사",
+      "생물의 유전",
+      "기후변화와 환경생태"
+    ],
+    "tip": "동물 유전육종 및 반려동물 영양학, 동물 복지 생태 탐구 권장",
+    "books": [
+      "동물 기계 (루스 해리슨 외)",
+      "동물 윤리 대논쟁 (최훈)",
+      "동물을 먹는다는 것에 대하여 (조너선 사프란 포어)",
+      "숲은 고요하지 않다 (마들렌 치게)",
+      "최재천의 인간과 동물 (최재천)"
+    ]
+  },
+  {
+    "id": "forest_sciences",
+    "name": "산림과학과",
+    "group": "자연 계열",
+    "group_id": "nat",
+    "page": "156~157",
+    "core": [
+      "생명과학",
+      "지구과학"
+    ],
+    "rec": [
+      "기후변화와 환경생태",
+      "세포와 물질대사",
+      "생태와 환경"
+    ],
+    "tip": "산림 탄소 흡수원 분석 및 산림 생태계 보전, 수목 병리학 탐구 권장",
+    "books": [
+      "나무를 심은 사람 (장 지오노)",
+      "숲 생태학 강의 (차윤정 외)",
+      "숲에게 길을 묻다 (김용규)",
+      "최재천의 생태경영 (최재천)",
+      "산림 녹화 (배상원)"
+    ]
+  },
+  {
+    "id": "semi_eng",
+    "name": "반도체공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "160~161",
+    "core": [
+      "물리학",
+      "미적분Ⅰ",
+      "미적분Ⅱ",
+      "기하"
+    ],
+    "rec": [
+      "전자기와 양자",
+      "물질과 에너지",
+      "고급 물리학"
+    ],
+    "tip": "반도체 소자 물리학(HBM 등) 및 나노 공정, 집적회로 설계 탐구 권장",
+    "books": [
+      "반도체의 미래 (수재 킹류 외)",
+      "반도체 제대로 이해하기 (강구창)",
+      "쉽게 읽는 반도체 이야기 1 (손진석)",
+      "일렉트릭 유니버스 (데이비드 보더니스)",
+      "대학생을 위한 공학윤리 (김문정)"
+    ]
+  },
+  {
+    "id": "cs_eng",
+    "name": "컴퓨터공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "162~163",
+    "core": [
+      "미적분Ⅰ",
+      "미적분Ⅱ",
+      "기하",
+      "정보"
+    ],
+    "rec": [
+      "인공지능 수학",
+      "물리학",
+      "데이터 과학"
+    ],
+    "tip": "자료구조·알고리즘 구현 및 컴퓨터 시스템 구조, 네트워크 보안 탐구 권장",
+    "books": [
+      "컴퓨팅 사고력을 키우는 이산수학 (박주미)",
+      "컴퓨터과학이 여는 세계 (이광근)",
+      "역사 속의 소프트웨어 오류 (김종하)",
+      "아는 만큼 보이는 IT지식 (민완기)",
+      "비전공자들을 위한 이해할 수 있는 IT지식 (최원영)"
+    ]
+  },
+  {
+    "id": "sw_eng",
+    "name": "소프트웨어학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "164~165",
+    "core": [
+      "미적분Ⅰ",
+      "정보",
+      "인공지능 기초"
+    ],
+    "rec": [
+      "확률과 통계",
+      "소프트웨어와 생활",
+      "데이터 과학"
+    ],
+    "tip": "웹/앱 풀스택 개발 프로젝트 및 오픈소스 기여, 알고리즘 최적화 권장",
+    "books": [
+      "거의 모든 IT의 역사 (정지훈)",
+      "누워서 읽는 알고리즘 (임백준)",
+      "소프트웨어 세상을 여는 컴퓨터 과학 (김종훈)",
+      "역사 속의 소프트웨어 오류 (김종하)",
+      "한 권으로 시작하는 소프트웨어 (한옥영)"
+    ]
+  },
+  {
+    "id": "ai_eng",
+    "name": "인공지능학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "166~167",
+    "core": [
+      "미적분Ⅰ",
+      "미적분Ⅱ",
+      "인공지능 수학",
+      "정보"
+    ],
+    "rec": [
+      "데이터 과학",
+      "확률과 통계",
+      "기하"
+    ],
+    "tip": "머신러닝/딥러닝 알고리즘 모델링 및 AI 윤리, 컴퓨터 비전 탐구 권장",
+    "books": [
+      "기계는 어떻게 생각하고 학습하는가 (닉 보스트롬 외)",
+      "누워서 읽는 알고리즘 (임백준)",
+      "전혀 다른 생성형 AI (심영환)",
+      "컴퓨팅 사고 (데이비드 D. 라일리 외)",
+      "AI 최강의 수업 (김진형)"
+    ]
+  },
+  {
+    "id": "ee_eng",
+    "name": "전자전기공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "168~169",
+    "core": [
+      "물리학",
+      "미적분Ⅰ",
+      "미적분Ⅱ",
+      "기하"
+    ],
+    "rec": [
+      "전자기와 양자",
+      "화학",
+      "로봇과 공학세계"
+    ],
+    "tip": "전기회로 설계, 스마트그리드 전력망 및 통신 신호처리 탐구 권장",
+    "books": [
+      "짜릿짜릿 전자회로 DIY (찰스 플랫)",
+      "처음 읽는 2차전지 이야기 (시라이시 다쿠)",
+      "뉴턴의 프린키피아 (안상현)",
+      "일렉트릭 빅뱅 (한근우)",
+      "일렉트릭 유니버스 (데이비드 보더니스)"
+    ]
+  },
+  {
+    "id": "chem_bio_eng",
+    "name": "화학생명공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "170~171",
+    "core": [
+      "화학",
+      "물리학",
+      "미적분Ⅰ",
+      "미적분Ⅱ"
+    ],
+    "rec": [
+      "물질과 에너지",
+      "세포와 물질대사",
+      "화학 반응의 세계"
+    ],
+    "tip": "화공 양론 및 배터리·에너지 공정, 바이오 프로세스 설계 탐구 권장",
+    "books": [
+      "공학철학 (루이스 L. 부치아렐리)",
+      "원소의 왕국 (피터 앳킨스)",
+      "일상적이지만 절대적인 화학지식 50 (헤일리 버치)",
+      "엔트로피 (제러미 리프킨)",
+      "화학 교과서는 살아있다 (문상흡 외)"
+    ]
+  },
+  {
+    "id": "mech_eng",
+    "name": "기계공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "172~173",
+    "core": [
+      "물리학",
+      "미적분Ⅰ",
+      "미적분Ⅱ",
+      "기하"
+    ],
+    "rec": [
+      "역학과 에너지",
+      "로봇과 공학세계",
+      "고급 물리학"
+    ],
+    "tip": "4대 역학(열·유체·고체·동역학) 기초 및 기계 메커니즘 설계 실습 권장",
+    "books": [
+      "공학자의 세상 보는 눈 (유만선)",
+      "공학이 필요한 시간 (이인식 외)",
+      "기계의 재발견 (나카야마 히데타로)",
+      "제2의 기계 시대 (에릭 브린욜프슨 외)",
+      "공학의 눈으로 미래를 설계하라 (연세대 공대)"
+    ]
+  },
+  {
+    "id": "robot_eng",
+    "name": "로봇공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "174~175",
+    "core": [
+      "물리학",
+      "미적분Ⅰ",
+      "기하",
+      "정보"
+    ],
+    "rec": [
+      "로봇과 공학세계",
+      "전자기와 양자",
+      "인공지능 기초"
+    ],
+    "tip": "아두이노/라즈베리파이 기반 로봇 제어 및 기구학, 센서 융합 탐구 권장",
+    "books": [
+      "공학이란 무엇인가 (성풍현 외)",
+      "로봇 수업 (존 조던)",
+      "기술의 충격 (케빈 켈리)",
+      "공학철학 (루이스 L. 부치아렐리)",
+      "기계비평 (이영준)"
+    ]
+  },
+  {
+    "id": "mobility_eng",
+    "name": "스마트모빌리티학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "176~177",
+    "core": [
+      "물리학",
+      "미적분Ⅰ",
+      "미적분Ⅱ",
+      "기하"
+    ],
+    "rec": [
+      "역학과 에너지",
+      "정보",
+      "인공지능 기초"
+    ],
+    "tip": "자율주행 비전 알고리즘 및 전기·수소차 배터리 제어 시스템 탐구 권장",
+    "books": [
+      "자동차 구조 교과서 (아오야마 모토오)",
+      "자동차 인터페이스 디자인 (박수레)",
+      "공학철학 (루이스 L. 부치아렐리)",
+      "미래자동차 모빌리티 혁명 (정지훈 외)",
+      "전기자동차 혁명 (무라사와 요시히사)"
+    ]
+  },
+  {
+    "id": "arch_eng",
+    "name": "건축공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "178~179",
+    "core": [
+      "물리학",
+      "미적분Ⅰ",
+      "기하"
+    ],
+    "rec": [
+      "역학과 에너지",
+      "지구과학",
+      "창의 공학 설계"
+    ],
+    "tip": "건축 구조역학 및 내진설계, 친환경 제로에너지 건축 설비 분석 권장",
+    "books": [
+      "건축학교에서 배운 101가지 (매튜 프레더릭)",
+      "만인의 건축 만인의 도시 (김석철)",
+      "빌트, 우리가 지어 올린 모든 것들의 과학 (로마 아그라왈)",
+      "사람 건축 도시 (정기용)",
+      "건축 속 재미있는 과학 이야기 (이재인)"
+    ]
+  },
+  {
+    "id": "arch_design",
+    "name": "건축학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "180~181",
+    "core": [
+      "미적분Ⅰ",
+      "물리학",
+      "미술"
+    ],
+    "rec": [
+      "기하",
+      "사회와 문화",
+      "도시의 미래 탐구"
+    ],
+    "tip": "공간 조형 설계 및 건축 역사철학, 친환경 도시 건축 디자인 포트폴리오 권장",
+    "books": [
+      "공간에게 말을 걸다 (조재현)",
+      "건축, 음악처럼 듣고 미술처럼 보다 (서현)",
+      "알기 쉬운 건축 이야기 (장정제)",
+      "풍경류행 (백진)",
+      "건축가의 공간 일기 (조성익)"
+    ]
+  },
+  {
+    "id": "industrial_eng",
+    "name": "산업경영공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "182~183",
+    "core": [
+      "확률과 통계",
+      "미적분Ⅰ",
+      "경제"
+    ],
+    "rec": [
+      "데이터 과학",
+      "미적분Ⅱ",
+      "정보"
+    ],
+    "tip": "스마트팩토리 공정 최적화 및 물류 알고리즘, 공급망(SCM) 분석 권장",
+    "books": [
+      "공학과 경영 (김상균)",
+      "공학의 눈으로 미래를 설계하라 (연세대 공대)",
+      "링크 (A. L. 바라바시)",
+      "스마트 세상을 여는 산업공학 (대한산업공학회)",
+      "스마트 스웜 (피터 밀러)"
+    ]
+  },
+  {
+    "id": "urban_eng",
+    "name": "도시공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "184~185",
+    "core": [
+      "미적분Ⅰ",
+      "세계시민과 지리"
+    ],
+    "rec": [
+      "도시의 미래 탐구",
+      "확률과 통계",
+      "한국지리 탐구"
+    ],
+    "tip": "스마트 도시 계획 및 교통 네트워크 설계, 도시 재생 프로젝트 권장",
+    "books": [
+      "동네 걷기 동네 계획 (박소현 외)",
+      "공학의 눈으로 미래를 설계하라 (연세대 공대)",
+      "도시, 인간과 공간의 커뮤니케이션 (대한국토도시계획학회)",
+      "사람 건축 도시 (정기용)",
+      "우리, 마을 만들기 (김기호 외)"
+    ]
+  },
+  {
+    "id": "bio_eng",
+    "name": "생명공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "186~187",
+    "core": [
+      "생명과학",
+      "화학",
+      "미적분Ⅰ"
+    ],
+    "rec": [
+      "세포와 물질대사",
+      "생물의 유전",
+      "미적분Ⅱ"
+    ],
+    "tip": "바이오의약품 생산 공정 및 유전공학, 합성생물학 탐구 권장",
+    "books": [
+      "크리스퍼가 온다 (제니퍼 다우드나 외)",
+      "생명과학, 공학을 만나다 (유영제)",
+      "이중나선 (제임스 왓슨)",
+      "바이오테크 시대 (제러미 리프킨)",
+      "뇌과학자는 영화에서 인간을 본다 (정재승)"
+    ]
+  },
+  {
+    "id": "materials_eng",
+    "name": "신소재공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "188~189",
+    "core": [
+      "화학",
+      "물리학",
+      "미적분Ⅰ",
+      "기하"
+    ],
+    "rec": [
+      "물질과 에너지",
+      "전자기와 양자",
+      "고급 화학"
+    ],
+    "tip": "초전도체·이차전지 신소재 및 나노재료의 물리화학적 특성 분석 권장",
+    "books": [
+      "부분과 전체 (베르너 하이젠베르크)",
+      "바이오미메틱스 (로버트 앨런 외)",
+      "세계사를 바꾼 12가지 신소재 (사토 겐타로)",
+      "탄소 문명 (사토 겐타로)",
+      "파인만의 여섯가지 물리 이야기 (리처드 파인만)"
+    ]
+  },
+  {
+    "id": "energy_eng",
+    "name": "에너지자원공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "190~191",
+    "core": [
+      "물리학",
+      "화학",
+      "지구과학",
+      "미적분Ⅰ"
+    ],
+    "rec": [
+      "지구시스템과학",
+      "물질과 에너지",
+      "기후변화와 지속가능한 세계"
+    ],
+    "tip": "신재생에너지(태양광·수소 등) 발전 효율 개선 및 지하 자원 탐사 공학 권장",
+    "books": [
+      "객관성의 칼날 (찰스 길리스피)",
+      "에너지와 기후변화 (김정배 외)",
+      "더 오래, 더 깨끗하게 신재생에너지 (손재익 외)",
+      "대통령을 위한 에너지 강의 (리처드 A. 뮬러)",
+      "에너지 상식사전 (이찬복)"
+    ]
+  },
+  {
+    "id": "ict_eng",
+    "name": "정보통신공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "192~193",
+    "core": [
+      "물리학",
+      "미적분Ⅰ",
+      "정보"
+    ],
+    "rec": [
+      "전자기와 양자",
+      "미적분Ⅱ",
+      "데이터 과학"
+    ],
+    "tip": "무선 이동통신(5G/6G) 프로토콜 및 IoT 사물인터넷 네트워크 구축 권장",
+    "books": [
+      "해커와 화가 (폴 그레이엄)",
+      "십 대가 알아야 할 인공지능과 4차 산업혁명의 미래 (전승민)",
+      "하룻밤에 읽는 블록체인 (정민아 외)",
+      "컴퓨팅 사고 (데이비드 D. 라일리 외)",
+      "모스에서 잡스까지 (신동흔)"
+    ]
+  },
+  {
+    "id": "naval_eng",
+    "name": "조선해양공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "194~195",
+    "core": [
+      "물리학",
+      "미적분Ⅰ",
+      "기하"
+    ],
+    "rec": [
+      "역학과 에너지",
+      "지구과학",
+      "창의 공학 설계"
+    ],
+    "tip": "선박 유체역학 저항 추진 원리 및 해양 플랜트 구조 설계 탐구 권장",
+    "books": [
+      "새로워진 세계의 바다와 해양생물 (김기태)",
+      "과학으로 만드는 배 (유병용)",
+      "천재들의 과학노트 5 해양학 (캐서린 쿨렌)",
+      "교양으로 읽는 조선공학 (해리 벤포드)",
+      "한국의 배 (김효철)"
+    ]
+  },
+  {
+    "id": "civil_eng",
+    "name": "건설환경공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "196~197",
+    "core": [
+      "물리학",
+      "미적분Ⅰ",
+      "지구과학"
+    ],
+    "rec": [
+      "역학과 에너지",
+      "기하",
+      "기후변화와 지속가능한 세계"
+    ],
+    "tip": "대형 교량·터널 구조해석 및 상하수도 수자원 관리 공학 탐구 권장",
+    "books": [
+      "더 나은 세상을 디자인하다 (장승필 외)",
+      "명화 속에 담긴 그 도시의 다리 (이종세)",
+      "미로, 길의 인문학 (김재성)",
+      "자연과 문명의 조화 토목공학 (대한토목학회)",
+      "재미있는 흙 이야기 (히메노 켄지 외)"
+    ]
+  },
+  {
+    "id": "env_eng",
+    "name": "환경공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "198~199",
+    "core": [
+      "화학",
+      "생명과학",
+      "미적분Ⅰ"
+    ],
+    "rec": [
+      "물질과 에너지",
+      "기후변화와 환경생태",
+      "지구과학"
+    ],
+    "tip": "탄소 포집·활용·저장(CCUS) 기술 및 대기·수질 오염 정화 메커니즘 권장",
+    "books": [
+      "매일매일 유해화학물질 (이동수 외)",
+      "미래혁신기술, 자연에서 답을 찾다 (김완두)",
+      "에너지 세계 일주 (블랑딘 앙투안 외)",
+      "월든 (헨리 데이비드 소로우)",
+      "지구별에서 함께 살아가기 (박강리)"
+    ]
+  },
+  {
+    "id": "aerospace_eng",
+    "name": "항공우주공학과",
+    "group": "공학 계열",
+    "group_id": "eng",
+    "page": "200~201",
+    "core": [
+      "물리학",
+      "미적분Ⅰ",
+      "미적분Ⅱ",
+      "기하"
+    ],
+    "rec": [
+      "역학과 에너지",
+      "지구과학",
+      "행성우주과학"
+    ],
+    "tip": "비행체 공기역학 양력 원리 및 우주 발사체(누리호 등) 궤도역학 탐구 권장",
+    "books": [
+      "누리호, 우주로 가는 길을 열다 (오승협)",
+      "로켓 컴퍼니 (패트릭 J. G. 스티넌 외)",
+      "처음 읽는 미래과학 교과서 5 우주공학 (채연석)",
+      "플레인 센스 (김동현)",
+      "하늘의 과학 (장조원)"
+    ]
+  },
+  {
+    "id": "med_doctor",
+    "name": "의학과(의예과)",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "204~205",
+    "core": [
+      "생명과학",
+      "화학",
+      "미적분Ⅰ",
+      "미적분Ⅱ"
+    ],
+    "rec": [
+      "세포와 물질대사",
+      "생물의 유전",
+      "기하"
+    ],
+    "tip": "인체 해부생리학, 질병 기전 탐구 및 의료윤리·생명존중 의식 심층 형성 권장",
+    "books": [
+      "생명의료윤리 (구영모 외)",
+      "인체 구조 교과서 (다케우치 슈지)",
+      "미래의 의사에게 (페리 클라스)",
+      "불량의학 (크리스토퍼 완제크)",
+      "청진기가 사라진다 (에릭 토폴)"
+    ]
+  },
+  {
+    "id": "dentistry",
+    "name": "치의학과",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "206~207",
+    "core": [
+      "생명과학",
+      "화학",
+      "미적분Ⅰ"
+    ],
+    "rec": [
+      "세포와 물질대사",
+      "물질과 에너지",
+      "물리학"
+    ],
+    "tip": "구강 생체재료학 및 치주질환 예방, 3D 디지털 치아 프린팅 탐구 권장",
+    "books": [
+      "입속에서 시작하는 미생물 이야기 (김혜성)",
+      "이 상한 나라의 치과 (건강사회를 위한 치과의사회)",
+      "치과의사 (피에르 포샤르)",
+      "치과의사가 말하는 치과의사 (안현세 외)",
+      "생명의료윤리 (구영모 외)"
+    ]
+  },
+  {
+    "id": "korean_med",
+    "name": "한의학과",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "208~209",
+    "core": [
+      "생명과학",
+      "화학",
+      "한문"
+    ],
+    "rec": [
+      "세포와 물질대사",
+      "인간과 철학",
+      "중국어"
+    ],
+    "tip": "동양의학 철학적 기전과 현대 생명과학의 융합, 천연물 약재 탐구 권장",
+    "books": [
+      "동의보감, 몸과 우주 그리고 삶의 비전을 찾아서 (고미숙)",
+      "하이브리드 한의학 (김종영)",
+      "중국 의학은 어떻게 시작되었는가 (야마다 게이지)",
+      "흐름의 철학 경락 (이혜정 외)",
+      "몸, 한의학으로 다시 태어나다 (안세영 외)"
+    ]
+  },
+  {
+    "id": "pharmacy",
+    "name": "약학과",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "210~211",
+    "core": [
+      "화학",
+      "생명과학",
+      "미적분Ⅰ",
+      "미적분Ⅱ"
+    ],
+    "rec": [
+      "물질과 에너지",
+      "화학 반응의 세계",
+      "세포와 물질대사"
+    ],
+    "tip": "신약 분자 구조 설계 및 약물 작용 메커니즘, 유기합성화학 심화 권장",
+    "books": [
+      "위대하고 위험한 약 이야기 (정진호)",
+      "세계사를 바꾼 10가지 약 (사토 겐타로)",
+      "약사 (고기현 외)",
+      "약국에는 없는 의약품 이야기 (김영식)",
+      "약사 어떻게 되었을까? (심주아)"
+    ]
+  },
+  {
+    "id": "veterinary",
+    "name": "수의학과",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "212~213",
+    "core": [
+      "생명과학",
+      "화학",
+      "미적분Ⅰ"
+    ],
+    "rec": [
+      "세포와 물질대사",
+      "생물의 유전",
+      "확률과 통계"
+    ],
+    "tip": "인수공통 감염병 역학 조사 및 동물 생리학, 동물 복지 윤리 탐구 권장",
+    "books": [
+      "날개 달린 형제, 꼬리 달린 친구 (제인 구달 외)",
+      "미리 가보는 수의학 교실 (충북대 수의학교재편찬위)",
+      "인류 역사를 바꾼 동물과 수의학 (임동주)",
+      "인수공통 모든 전염병의 열쇠 (데이비드 콰먼)",
+      "최재천의 인간과 동물 (최재천)"
+    ]
+  },
+  {
+    "id": "nursing",
+    "name": "간호학과",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "214~215",
+    "core": [
+      "생명과학",
+      "화학",
+      "확률과 통계"
+    ],
+    "rec": [
+      "세포와 물질대사",
+      "인간과 심리",
+      "보건"
+    ],
+    "tip": "환자 치료돌봄 역량, 공중보건 및 임상 간호 실무 소통 능력 함양 권장",
+    "books": [
+      "간호사, 너 자신이 되어라 (한화순)",
+      "아파야 산다 (샤론 모알렘)",
+      "미스터 나이팅게일 (문광기)",
+      "간호사가 말하는 간호사 (권혜림 외)",
+      "생명윤리 이야기 (권복규)"
+    ]
+  },
+  {
+    "id": "phys_therapy",
+    "name": "물리치료학과",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "216~217",
+    "core": [
+      "생명과학",
+      "물리학"
+    ],
+    "rec": [
+      "운동과 건강",
+      "역학과 에너지",
+      "보건"
+    ],
+    "tip": "근골격계 운동역학 및 재활 치료 기구의 물리학적 원리 분석 권장",
+    "books": [
+      "뼈·관절 구조 교과서 (마쓰무라 다카히로)",
+      "나는 날마다 성장하는 물리치료사입니다 (안병택)",
+      "근육 관절 통증을 즉각 해소하는 브릴 운동법 (페기 W. 브릴 외)",
+      "물리치료사로 살아가기 (오덕원 외)",
+      "나는 대한민국 물리치료사다 (이문환)"
+    ]
+  },
+  {
+    "id": "dental_hygiene",
+    "name": "치위생학과",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "218~219",
+    "core": [
+      "생명과학",
+      "화학"
+    ],
+    "rec": [
+      "세포와 물질대사",
+      "보건",
+      "사회와 문화"
+    ],
+    "tip": "지역사회 구강 보건 교육 및 치위생 관리 프로토콜 분석 권장",
+    "books": [
+      "한국 치과의 역사 (치과의사학교수협의회)",
+      "나는 치과위생사로 살기로 했다 (허소윤)",
+      "치아건강과 구강관리 (한유나)",
+      "뇌 노화를 멈추려면 35세부터 치아 관리 습관을 바꿔라 (하세가와 요시야)",
+      "치아·구강의 관리와 치료 (김종열)"
+    ]
+  },
+  {
+    "id": "clinical_path",
+    "name": "임상병리학과",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "220~221",
+    "core": [
+      "생명과학",
+      "화학"
+    ],
+    "rec": [
+      "세포와 물질대사",
+      "생물의 유전",
+      "확률과 통계"
+    ],
+    "tip": "혈액·체액 검사 시약 반응 및 분자진단 유전자 검사 기술 탐구 권장",
+    "books": [
+      "평등해야 건강하다 (리처드 윌킨슨)",
+      "이해하기 쉬운 병리학의 기본과 구조 (다무라 고이치)",
+      "병리학 이야기 (나카노 토오루)",
+      "병리학-그림으로 읽는 이야기 (성안당)",
+      "내 몸 안의 질병 원리 병리학 (하야카와 긴야)"
+    ]
+  },
+  {
+    "id": "radiology",
+    "name": "방사선학과",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "222~223",
+    "core": [
+      "물리학",
+      "생명과학"
+    ],
+    "rec": [
+      "전자기와 양자",
+      "화학",
+      "보건"
+    ],
+    "tip": "X-ray, CT, MRI 영상 진단 장비의 전자기학 원리 및 방사선 방호 권장",
+    "books": [
+      "마리 퀴리 (이렌 코엔-장카)",
+      "머릿속에 쏙쏙! 방사선 노트 (고다마 가즈야)",
+      "방사능 무섭니? (방사선안전전문가포럼)",
+      "방사선 피폭의 역사 (나카가와 야스오)",
+      "알기 쉬운 방사능·방사선 & 식품안전 (권중호)"
+    ]
+  },
+  {
+    "id": "emergency_care",
+    "name": "응급구조학과",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "224~225",
+    "core": [
+      "생명과학",
+      "체육1/2"
+    ],
+    "rec": [
+      "운동과 건강",
+      "보건",
+      "인간과 심리"
+    ],
+    "tip": "심폐소생술(CPR) 및 외상 응급처치, 재난 상황 대응 시스템 탐구 권장",
+    "books": [
+      "난생처음 응급구조 (이태양)",
+      "당신도 한 생명을 구할 수 있다 (박성무)",
+      "만약은 없다 (남궁인)",
+      "위기의 지구에서 살아남는 응급치료법 (박은기 외)",
+      "출동 중인 119구급대원입니다 (윤현정)"
+    ]
+  },
+  {
+    "id": "optometry",
+    "name": "안경광학과",
+    "group": "의약보건 계열",
+    "group_id": "med",
+    "page": "226~227",
+    "core": [
+      "물리학",
+      "생명과학"
+    ],
+    "rec": [
+      "전자기와 양자",
+      "기하",
+      "보건"
+    ],
+    "tip": "기하광학 렌즈 굴절 원리 및 시각 생리학, 시력 교정 기구 제작 권장",
+    "books": [
+      "빛의 핵심 (고재현)",
+      "빛이 매혹이 될 때 (서민아)",
+      "빛 Light (김성근 외)",
+      "내 안경이 왜 이래 (최병무)",
+      "인공지능 안경 (류영환)"
+    ]
+  },
+  {
+    "id": "music_classical",
+    "name": "음악학과",
+    "group": "예체능 계열",
+    "group_id": "arts",
+    "page": "230~231",
+    "core": [
+      "음악",
+      "음악 연주와 창작"
+    ],
+    "rec": [
+      "음악 감상과 비평",
+      "음악 이론",
+      "음악사"
+    ],
+    "tip": "작곡, 성악, 기악 등 실기 심화 및 서양 음악사 분석 권장",
+    "books": [
+      "나의 서양음악 순례 (서경식)",
+      "음악에서 무엇을 들어 낼 것인가 (에런 코플런드)",
+      "쉬운 화성학 (길일섭 외)",
+      "직업으로서의 예술가 (박희아)",
+      "비하인드 클래식 (여자경)"
+    ]
+  },
+  {
+    "id": "music_applied",
+    "name": "실용음악과",
+    "group": "예체능 계열",
+    "group_id": "arts",
+    "page": "232~233",
+    "core": [
+      "음악",
+      "음악과 미디어"
+    ],
+    "rec": [
+      "음악 연주와 창작",
+      "음악 감상과 비평",
+      "시창·청음"
+    ],
+    "tip": "대중음악 작곡·편곡, 미디(MIDI) 컴퓨터 음악 및 보컬 퍼포먼스 실기 권장",
+    "books": [
+      "음악편애 (서정민갑)",
+      "김도훈 작곡법 (김도훈)",
+      "실용음악 기초 화성학 (이채현)",
+      "음악은 왜 중요할까? (데이비드 헤즈먼드핼시)",
+      "랩으로 인문학 하기 (박하재홍)"
+    ]
+  },
+  {
+    "id": "fine_arts",
+    "name": "미술학과",
+    "group": "예체능 계열",
+    "group_id": "arts",
+    "page": "234~235",
+    "core": [
+      "미술",
+      "미술 창작"
+    ],
+    "rec": [
+      "미술 감상과 비평",
+      "드로잉",
+      "미술사"
+    ],
+    "tip": "회화(동·서양화) 및 조소 창작 실기, 현대 미술사 비평 포트폴리오 권장",
+    "books": [
+      "난처한 미술 이야기 1-8 (양정무)",
+      "현대미술 강의 (조주연)",
+      "반 고흐, 영혼의 편지 (빈센트 반 고흐)",
+      "무량수전 배흘림기둥에 기대서서 (최순우)",
+      "조각에 나타난 몸 (톰 플린)"
+    ]
+  },
+  {
+    "id": "design_major",
+    "name": "디자인학과",
+    "group": "예체능 계열",
+    "group_id": "arts",
+    "page": "236~237",
+    "core": [
+      "미술",
+      "미술 창작"
+    ],
+    "rec": [
+      "미술과 매체",
+      "생활과학 탐구",
+      "정보"
+    ],
+    "tip": "시각·산업·패션 디자인 포트폴리오 및 UX/UI 인터페이스 기획 권장",
+    "books": [
+      "인간을 위한 디자인 (빅터 파파넥)",
+      "상품의 탄생, 그리고 디자인 이야기 (하비 몰로치)",
+      "그래픽 디자인의 역사 (필립 B. 멕스)",
+      "패션, 근대를 만나다 (변경희 외)",
+      "상상력에 엔진을 달아라 (임헌우)"
+    ]
+  },
+  {
+    "id": "animation_major",
+    "name": "애니메이션학과",
+    "group": "예체능 계열",
+    "group_id": "arts",
+    "page": "238~239",
+    "core": [
+      "미술",
+      "미술과 매체"
+    ],
+    "rec": [
+      "미술 창작",
+      "문학과 영상",
+      "정보"
+    ],
+    "tip": "스토리보드 기획 및 웹툰, 2D/3D 애니메이션 그래픽 제작 실습 권장",
+    "books": [
+      "애니메이션은 이렇게 써라 (제프리 스캇)",
+      "당장 써! CREATE NOW! (맥라우드 형제)",
+      "캐릭터 애니메이션 (허성회)",
+      "애니메이터 서바이벌 키트 (리처드 윌리엄스)",
+      "냥도리의 그림 수업 (박순찬)"
+    ]
+  },
+  {
+    "id": "pe_major",
+    "name": "체육학과",
+    "group": "예체능 계열",
+    "group_id": "arts",
+    "page": "240~241",
+    "core": [
+      "체육1",
+      "체육2",
+      "운동과 건강"
+    ],
+    "rec": [
+      "스포츠 문화",
+      "스포츠 개론",
+      "스포츠 경기 기술"
+    ],
+    "tip": "전공 실기 숙련 및 체육 행사 기획, 스포츠 경영·지도 역량 개발 권장",
+    "books": [
+      "스포츠 인문학 수업 (강현희)",
+      "스포츠 문화사 (이종성)",
+      "체육과 스포츠의 역사 (하남길 외)",
+      "New 근육운동가이드 (프레데릭 데라비에)",
+      "새로 만든 내몸 사용설명서 (마이클 로이젠 외)"
+    ]
+  },
+  {
+    "id": "sport_science",
+    "name": "스포츠과학과",
+    "group": "예체능 계열",
+    "group_id": "arts",
+    "page": "242~243",
+    "core": [
+      "체육1",
+      "생명과학",
+      "물리학"
+    ],
+    "rec": [
+      "스포츠 과학",
+      "운동과 건강",
+      "확률과 통계"
+    ],
+    "tip": "운동생리학, 스포츠 데이터 분석 및 부상 예방 재활 트레이닝 권장",
+    "books": [
+      "스포츠의 과학 (사이언티픽 아메리칸)",
+      "심장을 뛰게 하라 (추일승)",
+      "달리기의 과학 (크리스 네이피어)",
+      "운동화 신은 뇌 (존 레이티 외)",
+      "인공지능이 스포츠 심판이라면 (스포츠문화연구소)"
+    ]
+  },
+  {
+    "id": "theater_film",
+    "name": "연극영화학과",
+    "group": "예체능 계열",
+    "group_id": "arts",
+    "page": "244~245",
+    "core": [
+      "연극",
+      "문학과 영상"
+    ],
+    "rec": [
+      "연기",
+      "영화의 이해",
+      "연극 제작 실습"
+    ],
+    "tip": "희곡 분석 및 연기 실습, 영화 연출·시나리오 창작 포트폴리오 권장",
+    "books": [
+      "액팅 원 (로버트 코헨)",
+      "브레히트 연극 사전 (한국브레히트학회)",
+      "영화를 찍으며 생각한 것 (고레에다 히로카즈)",
+      "배우 수업 (콘스탄틴 스타니슬랍스키)",
+      "필름메이커의 눈 (구스타보 메르카도)"
+    ]
+  },
+  {
+    "id": "film_media",
+    "name": "영상학과",
+    "group": "예체능 계열",
+    "group_id": "arts",
+    "page": "246~247",
+    "core": [
+      "미술과 매체",
+      "문학과 영상"
+    ],
+    "rec": [
+      "영화의 이해",
+      "촬영·조명",
+      "편집·사운드"
+    ],
+    "tip": "영상 기획, 촬영, 컷편집 및 특수효과 종합 미디어 프로젝트 권장",
+    "books": [
+      "영상학 카페 (강승묵)",
+      "영혼의 시선 (앙리 카르티에 브레송)",
+      "디지털 가상성, 영상예술과 이미지 미학의 모색 (정헌)",
+      "깊고 충실한 사진 강의 (바버라 런던)",
+      "시선을 사로잡는 매력적인 영상 만들기 (강수석)"
+    ]
+  },
+  {
+    "id": "free_major",
+    "name": "자유전공학과(학부)",
+    "group": "자유전공",
+    "group_id": "free",
+    "page": "248~249",
+    "core": [
+      "국어·수학·영어·탐구 고른 이수"
+    ],
+    "rec": [
+      "독서 토론과 글쓰기",
+      "수학과제 탐구",
+      "인공지능 기초"
+    ],
+    "tip": "특정 전공에 치우치지 않는 융합적 탐구 능력과 자기주도적 진로 탐색 이력 증명 권장",
+    "books": [
+      "클루지 (개리 마커스)",
+      "총, 균, 쇠 (재레드 다이아몬드)",
+      "사피엔스 (유발 하라리)",
+      "코스모스 (칼 세이건)",
+      "정의란 무엇인가 (마이클 샌델)"
+    ]
+  }
+];
 
     const subjects = {
-      math: ["대수", "미적분", "확률과통계", "기하", "경제수학", "인공지능수학"],
-      sci: ["물리학", "화학", "생명과학", "지구과학", "정보", "데이터과학"],
-      soc: ["사회문화", "경제", "정치와법", "윤리와사상", "세계지리"]
+      math: ["대수", "미적분Ⅰ", "미적분Ⅱ", "확률과 통계", "기하", "경제 수학", "인공지능 수학", "실용 통계", "수학과제 탐구"],
+      sci: ["물리학", "화학", "생명과학", "지구과학", "역학과 에너지", "전자기와 양자", "물질과 에너지", "화학 반응의 세계", "세포와 물질대사", "생물의 유전", "지구시스템과학", "행성우주과학", "정보", "인공지능 기초", "데이터 과학", "로봇과 공학세계", "융합과학 탐구"],
+      soc: ["세계시민과 지리", "세계사", "사회와 문화", "현대사회와 윤리", "한국지리 탐구", "도시의 미래 탐구", "동아시아 역사 기행", "정치", "법과 사회", "경제", "윤리와 사상", "인문학과 윤리", "국제 관계의 이해", "사회문제 탐구", "금융과 경제생활", "윤리문제 탐구", "기후변화와 지속가능한 세계", "문학과 영상", "주제 탐구 독서"]
     };
 
-    let currentGroup = "engineering";
-    let selectedSubjects = new Set(["대수", "미적분", "물리학", "정보"]);
+    // 간이 검사 문항 데이터 (부록 332~343p 기반)
+    const riasecQuestions = [
+      { id: 1, text: "생명체의 진화 과정이나 질병 원인에 대해 연구하기", type: "I" },
+      { id: 2, text: "물건이나 서류를 정해진 규칙에 따라 꼼꼼히 정리하기", type: "C" },
+      { id: 3, text: "내 의견을 따르도록 다른 사람들을 설득하고 리드하기", type: "E" },
+      { id: 4, text: "어려움을 겪는 이웃이나 친구를 위해 헌신적으로 봉사하기", type: "S" },
+      { id: 5, text: "기계 장치나 실험 도구를 직접 조립하고 조작하기", type: "R" },
+      { id: 6, text: "새로운 소설, 웹툰, 음악, 시 등 예술 작품을 창작하기", type: "A" },
+      { id: 7, text: "수학 기호나 통계 데이터를 분석하여 원인 파악하기", type: "I" },
+      { id: 8, text: "모둠 활동에서 팀장이 되어 목표 달성을 지휘하기", type: "E" }
+    ];
+
+    const aptitudeQuestions = [
+      { id: "apt_math", name: "수리·논리력", text: "수학 기호나 통계 도표를 빠르게 해석하고 논리적으로 문제 해결하기" },
+      { id: "apt_space", name: "공간지각력", text: "입체도형의 전개도를 머릿속으로 떠올리거나 지도를 쉽게 파악하기" },
+      { id: "apt_lang", name: "언어능력", text: "글의 논리적 맥락을 파악하고 말과 글로 내 생각을 정교하게 표현하기" },
+      { id: "apt_create", name: "창의력", text: "기존의 방식과 다른 새로운 아이디어나 해결책을 남다르게 제시하기" }
+    ];
+
+    const valueQuestions = [
+      { id: "val_achieve", name: "성취 & 자율성", text: "스스로 목표를 설정하고 달성하여 높은 성취감과 인정을 얻는 것" },
+      { id: "val_stable", name: "안전성 & 워라밸", text: "정년이 보장되고 일과 개인 생활의 균형을 안정적으로 유지하는 것" },
+      { id: "val_meaning", name: "즐거움 & 자기계발", text: "일 자체에서 보람과 흥미를 느끼며 끊임없이 성장해 나가는 것" },
+      { id: "val_change", name: "도전 & 사회적기여", text: "변화를 두려워하지 않고 사회와 다른 사람의 삶에 긍정적 기여를 하는 것" }
+    ];
+
+    let currentSelectedMajor = majorsData.find(m => m.id === "cs_eng");
+    let activeGroupFilter = "all";
+    let selectedSubjects = new Set(["대수", "미적분Ⅰ", "물리학", "정보"]);
 
     function init() {
-      renderGroupButtons();
-      updateMajorSelect();
+      renderMajorsGrid(majorsData);
       renderSubjectBoxes();
+      renderTests();
+      selectMajor(currentSelectedMajor.id);
     }
 
     function switchTab(tabId) {
@@ -542,48 +2902,146 @@
       }
     }
 
-    function renderGroupButtons() {
-      const container = document.getElementById("group-buttons");
+    function switchSubTest(subId) {
+      document.querySelectorAll(".sub-test-view").forEach(el => el.classList.add("hidden"));
+      document.querySelectorAll(".sub-tab-btn").forEach(b => {
+        b.className = "sub-tab-btn pb-2 border-b-2 border-transparent text-slate-500 hover:text-slate-800";
+      });
+
+      document.getElementById(subId).classList.remove("hidden");
+      const activeBtn = document.getElementById(`btn-${subId}`);
+      if (activeBtn) {
+        activeBtn.className = "sub-tab-btn pb-2 border-b-2 border-indigo-600 text-indigo-600";
+      }
+    }
+
+    // 검사 렌더링
+    function renderTests() {
+      const riasecBox = document.getElementById("riasec-items-box");
+      riasecBox.innerHTML = "";
+      riasecQuestions.forEach(q => {
+        const div = document.createElement("div");
+        div.className = "p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs flex items-center justify-between";
+        div.innerHTML = `
+          <span class="font-medium text-slate-800 pr-2">${q.text}</span>
+          <div class="flex gap-2 shrink-0 font-bold">
+            <label class="cursor-pointer"><input type="radio" name="r_${q.id}" value="4" checked class="text-indigo-600"> 좋아함</label>
+            <label class="cursor-pointer"><input type="radio" name="r_${q.id}" value="2" class="text-indigo-600"> 보통/싫음</label>
+          </div>
+        `;
+        riasecBox.appendChild(div);
+      });
+
+      const aptBox = document.getElementById("aptitude-items-box");
+      aptBox.innerHTML = "";
+      aptitudeQuestions.forEach(a => {
+        const div = document.createElement("div");
+        div.className = "p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs";
+        div.innerHTML = `
+          <strong class="text-slate-900 block mb-1">📌 ${a.name}</strong>
+          <p class="text-slate-600 mb-2">${a.text}</p>
+          <div class="flex gap-3 font-semibold text-[11px]">
+            <label><input type="radio" name="${a.id}" value="5" checked class="text-emerald-600"> 매우 우수</label>
+            <label><input type="radio" name="${a.id}" value="4" class="text-emerald-600"> 보통 이상</label>
+          </div>
+        `;
+        aptBox.appendChild(div);
+      });
+
+      const valBox = document.getElementById("value-items-box");
+      valBox.innerHTML = "";
+      valueQuestions.forEach(v => {
+        const div = document.createElement("div");
+        div.className = "p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs";
+        div.innerHTML = `
+          <strong class="text-slate-900 block mb-1">⭐ ${v.name}</strong>
+          <p class="text-slate-600 mb-2">${v.text}</p>
+          <div class="flex gap-3 font-semibold text-[11px]">
+            <label><input type="radio" name="${v.id}" value="5" checked class="text-amber-600"> 최우선 가치</label>
+            <label><input type="radio" name="${v.id}" value="3" class="text-amber-600"> 보통</label>
+          </div>
+        `;
+        valBox.appendChild(div);
+      });
+    }
+
+    function applyTestRecommendation(type) {
+      if (type === 'I' || type === 'apt') {
+        filterByGroup('공학 계열');
+      } else if (type === 'val') {
+        filterByGroup('사회 계열');
+      }
+      switchTab('tab-major');
+    }
+
+    function renderMajorsGrid(list) {
+      const container = document.getElementById("majors-grid-container");
       container.innerHTML = "";
-      Object.keys(majorData).forEach(key => {
-        const item = majorData[key];
+      document.getElementById("majors-count-badge").textContent = list.length;
+
+      list.forEach(m => {
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = `p-3 rounded-2xl border text-xs sm:text-sm font-bold flex flex-col items-center gap-1.5 transition ${
-          currentGroup === key ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-300'
+        const isSelected = currentSelectedMajor && currentSelectedMajor.id === m.id;
+        btn.className = `p-2.5 rounded-xl border text-left font-semibold transition flex items-center justify-between ${
+          isSelected ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs' : 'bg-white border-slate-200 text-slate-800 hover:border-indigo-400'
         }`;
-        btn.innerHTML = `<i class="fa-solid ${item.icon} text-base"></i> <span>${item.name}</span>`;
-        btn.onclick = () => {
-          currentGroup = key;
-          renderGroupButtons();
-          updateMajorSelect();
-        };
+        btn.innerHTML = `<span class="truncate">${m.name}</span><span class="text-[10px] ${isSelected ? 'text-indigo-200' : 'text-slate-400'} shrink-0 ml-1">p.${m.page.split('~')[0]}</span>`;
+        btn.onclick = () => selectMajor(m.id);
         container.appendChild(btn);
       });
     }
 
-    function updateMajorSelect() {
-      const select = document.getElementById("major-select");
-      select.innerHTML = "";
-      const group = majorData[currentGroup];
-      group.majors.forEach(m => {
-        const opt = document.createElement("option");
-        opt.value = m.id;
-        opt.textContent = `${m.name} (도서 p.${m.page} 가이드)`;
-        select.appendChild(opt);
+    function selectMajor(majorId) {
+      const found = majorsData.find(m => m.id === majorId);
+      if (!found) return;
+      currentSelectedMajor = found;
+
+      document.getElementById("selected-major-group-label").textContent = found.group;
+      document.getElementById("selected-major-title").textContent = found.name;
+      document.getElementById("selected-major-page-badge").textContent = `📖 본문 p.${found.page} 수록`;
+      document.getElementById("selected-major-tip").textContent = found.tip;
+      document.getElementById("selected-major-core").textContent = found.core.join(", ");
+      document.getElementById("selected-major-rec").textContent = found.rec.join(", ");
+
+      document.getElementById("sim-target-major-name").textContent = found.name;
+
+      // 추천도서 5권 렌더링
+      const booksContainer = document.getElementById("selected-major-books-container");
+      booksContainer.innerHTML = "";
+      (found.books || []).forEach(b => {
+        const bDiv = document.createElement("div");
+        bDiv.className = "bg-white p-2.5 rounded-xl border border-indigo-100 flex items-center gap-2 font-medium text-slate-800";
+        bDiv.innerHTML = `<i class="fa-solid fa-book text-indigo-500 text-xs"></i> <span>${b}</span>`;
+        booksContainer.appendChild(bDiv);
       });
-      updateSelectedMajorInfo();
+
+      renderMajorsGrid(getCurrentFilteredList());
     }
 
-    function updateSelectedMajorInfo() {
-      const select = document.getElementById("major-select");
-      const mId = select.value;
-      const group = majorData[currentGroup];
-      const major = group.majors.find(m => m.id === mId);
-      if (major) {
-        document.getElementById("card-major-name").textContent = major.name;
-        document.getElementById("card-book-page").textContent = `도서 p.${major.page} 수록`;
-      }
+    function getCurrentFilteredList() {
+      const search = document.getElementById("major-search-input").value.trim().toLowerCase();
+      return majorsData.filter(m => {
+        const matchesGroup = (activeGroupFilter === "all" || m.group === activeGroupFilter);
+        const matchesSearch = (!search || m.name.toLowerCase().includes(search) || m.group.toLowerCase().includes(search));
+        return matchesGroup && matchesSearch;
+      });
+    }
+
+    function filterByGroup(grp) {
+      activeGroupFilter = grp;
+      document.querySelectorAll(".grp-btn").forEach(b => {
+        if (b.dataset.group === grp) {
+          b.className = "grp-btn px-3 py-1.5 rounded-xl border bg-indigo-600 text-white border-indigo-600";
+        } else {
+          b.className = "grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:bg-slate-100";
+        }
+      });
+      renderMajorsGrid(getCurrentFilteredList());
+    }
+
+    function filterMajors() {
+      renderMajorsGrid(getCurrentFilteredList());
     }
 
     function renderSubjectBoxes() {
@@ -594,10 +3052,10 @@
           const btn = document.createElement("button");
           btn.type = "button";
           const active = selectedSubjects.has(subj);
-          btn.className = `p-2.5 rounded-xl border text-left font-semibold transition flex items-center justify-between ${
+          btn.className = `p-2 rounded-xl border text-left font-medium transition flex items-center justify-between ${
             active ? 'bg-indigo-50 border-indigo-600 text-indigo-900 font-bold' : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
           }`;
-          btn.innerHTML = `<span>${subj}</span> <i class="fa-solid ${active ? 'fa-check text-indigo-600' : 'fa-plus text-slate-300'} text-xs"></i>`;
+          btn.innerHTML = `<span>${subj}</span> <i class="fa-solid ${active ? 'fa-check text-indigo-600' : 'fa-plus text-slate-300'} text-[11px]"></i>`;
           btn.onclick = () => {
             if (selectedSubjects.has(subj)) selectedSubjects.delete(subj);
             else selectedSubjects.add(subj);
@@ -609,42 +3067,34 @@
     }
 
     function runDiagnosis() {
-      const select = document.getElementById("major-select");
-      const mId = select.value;
-      const group = majorData[currentGroup];
-      const major = group.majors.find(m => m.id === mId);
-
+      const major = currentSelectedMajor;
       document.getElementById("rep-major-title").textContent = major.name;
-      document.getElementById("lock-page-1").textContent = `도서 p.${major.page} 수록`;
+      document.getElementById("rep-major-page-guide").textContent = `『고1 학업 설계』 2부 p.${major.page} 기준 정밀 분석`;
+      document.getElementById("lock-page-ref").textContent = `도서 p.${major.page} 수록`;
       document.getElementById("lock-span-page").textContent = `${major.page}쪽`;
 
-      let score = 65 + Math.min(selectedSubjects.size * 4, 18);
-      let missing = false;
+      let matchedCore = 0;
+      major.core.forEach(req => {
+        if (selectedSubjects.has(req)) matchedCore++;
+      });
 
-      if (major.reqMath && major.reqMath.length > 0) {
-        major.reqMath.forEach(req => {
-          if (selectedSubjects.has(req)) score += 5;
-          else missing = true;
-        });
-      }
-
-      if (score > 92) score = 92;
+      let score = 60 + Math.min(matchedCore * 12, 30);
+      if (selectedSubjects.size >= 5) score += 6;
+      if (score > 94) score = 94;
 
       document.getElementById("rep-score").textContent = `${score}점`;
-      if (missing) {
-        document.getElementById("rep-status").innerHTML = "⚠️ 필수 과목<br>누락 주의";
+      if (matchedCore < major.core.length) {
+        document.getElementById("rep-status").innerHTML = "⚠️ 필수 과목<br>보완 권장";
+        document.getElementById("rep-missing-alert").textContent = `대학 평가관이 권장하는 핵심 과목 중 [${major.core.filter(c => !selectedSubjects.has(c)).join(', ') || '핵심 과목'}] 등이 미선택되어 있습니다.`;
       } else {
         document.getElementById("rep-status").innerHTML = "✅ 우수 조합<br>(세특 집중 권장)";
+        document.getElementById("rep-missing-alert").textContent = "핵심 권장 과목이 균형 있게 이수 계획되었습니다. 이제 과목별 세특 탐구 계획에 집중하세요.";
       }
     }
 
     function buildStudyPlan() {
-      const select = document.getElementById("major-select");
-      const mId = select.value;
-      const group = majorData[currentGroup];
-      const major = group.majors.find(m => m.id === mId);
-
-      document.getElementById("out-group").textContent = group.name;
+      const major = currentSelectedMajor;
+      document.getElementById("out-group").textContent = major.group;
       document.getElementById("out-major").textContent = major.name;
       document.getElementById("out-page").textContent = `『고1 학업 설계』 p.${major.page}`;
 
@@ -655,6 +3105,9 @@
       document.getElementById("out-sub-math").textContent = mathList;
       document.getElementById("out-sub-sci").textContent = sciList;
       document.getElementById("out-sub-soc").textContent = socList;
+
+      const booksList = (major.books || []).map((b, i) => `${i+1}. ${b}`).join("  |  ");
+      document.getElementById("out-books-list").textContent = booksList;
     }
 
     function openAuthModal() {
@@ -668,7 +3121,7 @@
     function submitAuth() {
       const val = document.getElementById("auth-code-input").value.trim();
       if (val === "학업설계" || val.length >= 2) {
-        alert("『고1 학업 설계』 도서 인증이 완료되었습니다!\n모든 잠금이 해제되었습니다.");
+        alert("『고1 학업 설계』 도서 인증이 완료되었습니다!\n모든 학과의 세부 권장 과목 및 추천 도서 잠금이 해제되었습니다.");
         closeAuthModal();
         document.querySelectorAll(".blur-lock").forEach(el => el.classList.remove("blur-lock"));
         document.querySelectorAll(".backdrop-blur-\\[2px\\]").forEach(el => el.style.display = "none");
