@@ -166,8 +166,8 @@
 
         <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm">
           <span class="font-bold text-slate-800">
-            3. 목표 대학과 학과마다 학생을 평가할 때 중요하게 보는 '전공 연계 핵심 권장 과목'이 정해져 있다.
-          </span>
+            3. 대학에서 발표하는 ‘전공 연계 권장 과목’을 선택하는 것이 입시에 유리하다.
+            </span>
           <div class="flex items-center gap-3 shrink-0 font-bold">
             <label class="flex items-center gap-1 cursor-pointer px-3 py-1.5 bg-white border border-slate-300 rounded-xl hover:border-indigo-500">
               <input type="radio" name="chk_3" value="O" onchange="checkSurveyCompletion()" class="accent-indigo-600"> 맞다 (O)
@@ -194,8 +194,8 @@
 
         <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm">
           <span class="font-bold text-slate-800">
-            5. 고교학점제에서는 학교가 시간표를 지정해 주므로 개인이 3개년 학업 설계서를 직접 짤 필요가 없다.
-          </span>
+            5. 어떤 과목을 이수할지 신경 써야 하는 대입 전형은 ‘학생부종합전형’뿐이다.
+            </span>
           <div class="flex items-center gap-3 shrink-0 font-bold">
             <label class="flex items-center gap-1 cursor-pointer px-3 py-1.5 bg-white border border-slate-300 rounded-xl hover:border-indigo-500">
               <input type="radio" name="chk_5" value="O" onchange="checkSurveyCompletion()" class="accent-indigo-600"> 맞다 (O)
@@ -215,7 +215,7 @@
             과목 선택과 학점 관리, 『고1 학업 설계』가 3년의 확실한 길잡이가 됩니다!
           </h3>
           <p class="text-xs sm:text-sm text-slate-700 max-w-xl mx-auto leading-relaxed">
-            (1번: O, 2번: X [2·3학년 선택과목 필수], 3번: O [대학별 권장과목 존재], 4번: X [5등급 및 절대평가 병행], 5번: X [학생 자율 설계 필수])<br>
+            (1번: O, 2번: X [2·3학년 선택과목 필수], 3번: O [대학별 권장과목 선택 시 입시 유리], 4번: X [5등급 및 절대평가 병행], 5번: X [학종뿐만 아니라 교과·수능 정시도 과목 이수 반영])<br>
             막막했던 고교 3년 시간표, 입시 전문 선생님들이 집필한 교재와 함께 웹에서 직접 설계해 보세요.
           </p>
         </div>
@@ -1122,6 +1122,37 @@
     const aptitudeQuickData = [{"num": 1, "cat": "신체·운동능력", "text": "운동기구를 능숙하게 다루고 새로운 동작을 빠르게 익힐 수 있다."}, {"num": 2, "cat": "손재능", "text": "도구나 정밀 측정 장비를 다루고 부품을 조립·수리할 수 있다."}, {"num": 3, "cat": "공간지각력", "text": "입체도형의 전개도를 떠올리거나 지도의 지형·위치를 잘 파악한다."}, {"num": 4, "cat": "음악능력", "text": "악보를 보고 음정을 잘 구별하며 음악 감상과 연주를 즐긴다."}, {"num": 5, "cat": "창의력", "text": "다양한 분야를 융합하여 새로운 문제 해결 아이디어를 제안할 수 있다."}, {"num": 6, "cat": "언어능력", "text": "글의 맥락을 빠르고 정확히 파악하며 생각을 논리적으로 말과 글로 쓴다."}, {"num": 7, "cat": "수리·논리력", "text": "통계 도표나 수학 기호를 잘 이해하고 과학적 인과관계를 단계별로 파악한다."}, {"num": 8, "cat": "자기성찰능력", "text": "목표 달성 계획을 세워 실천하고 내 감정과 시간을 책임감 있게 관리한다."}, {"num": 9, "cat": "대인관계능력", "text": "사람들과 원만한 관계를 맺고 갈등을 중재하며 조직을 이끄는 리더십이 있다."}, {"num": 10, "cat": "자연친화력", "text": "식물, 동물, 생태계 현상에 관심이 많고 환경 보전의 가치를 깊이 인식한다."}, {"num": 11, "cat": "예술시각능력", "text": "영상 화면의 구도를 주의 깊게 보며 디자인, 패션, 색채 감각이 뛰어나다."}];
     const valueQuickData = [{"num": 1, "group": "안정지향형", "val": "안전성", "text": "고용과 재정 상태가 안정적이며 정년이 보장되는 직업이 중요하다."}, {"num": 2, "group": "안정지향형", "val": "보수", "text": "일을 통해 충분한 경제적 보상과 높은 소득을 얻는 것이 중요하다."}, {"num": 3, "group": "안정지향형", "val": "일과 삶의 균형", "text": "일과 개인 생활(여가, 휴식)이 조화롭게 양립하는 것이 중요하다."}, {"num": 4, "group": "의미지향형", "val": "즐거움", "text": "일 자체에서 보람과 흥미를 느끼고 행복을 찾는 것이 중요하다."}, {"num": 5, "group": "의미지향형", "val": "소속감", "text": "직장 동료들과 좋은 인간관계를 맺고 팀워크를 이루는 것이 중요하다."}, {"num": 6, "group": "의미지향형", "val": "자기 계발", "text": "자신의 역량과 전문 지식을 끊임없이 발전시킬 수 있는 일이 중요하다."}, {"num": 7, "group": "변화지향형", "val": "도전성", "text": "새롭고 혁신적인 일에 실패를 두려워하지 않고 도전하는 것이 중요하다."}, {"num": 8, "group": "변화지향형", "val": "영향력", "text": "조직의 방향을 제시하고 다른 사람을 이끌며 영향력을 발휘하는 것이 중요하다."}, {"num": 9, "group": "변화지향형", "val": "사회적 기여", "text": "사회 전체의 복지와 타인의 행복에 기여하고 도움을 주는 것이 중요하다."}, {"num": 10, "group": "성취지향형", "val": "성취", "text": "자신의 잠재력을 최대로 발휘하여 높은 목표를 달성하는 것이 중요하다."}, {"num": 11, "group": "성취지향형", "val": "사회적 인정", "text": "전문가로서 사회와 타인으로부터 높은 평가와 인정을 받는 것이 중요하다."}, {"num": 12, "group": "성취지향형", "val": "자율성", "text": "타인의 지시보다 스스로 계획하고 결정하여 일하는 환경이 중요하다."}];
 
+    // 전공 연계 추천 일반선택 과목 알약 뱃지 렌더링 (학점 조정 실시간 반영)
+    function renderGeneralPills(major) {
+      const found = major || currentSelectedMajor;
+      const genBox = document.getElementById("selected-major-general-pills");
+      if (!genBox || !found) return;
+      genBox.innerHTML = "";
+      (found.general_subjects || []).forEach(sub => {
+        let meta = subjectMetaMap[sub];
+        if (!meta) {
+          if (sub.includes("영어")) meta = subjectMetaMap["영어Ⅰ·Ⅱ"];
+          else if (sub.includes("국어") || sub.includes("문학") || sub.includes("독서") || sub.includes("화법")) meta = { cat: "국어", track: "일반선택", eval: "상대평가(5등급)+절대평가", suneung: true };
+          else if (sub.includes("수학") || sub.includes("대수") || sub.includes("미적분") || sub.includes("확률")) meta = { cat: "수학", track: "일반선택", eval: "상대평가(5등급)+절대평가", suneung: true };
+          else if (sub.includes("물리") || sub.includes("화학") || sub.includes("생명") || sub.includes("지구")) meta = { cat: "과학", track: "일반선택", eval: "상대평가(5등급)+절대평가", suneung: false };
+          else if (sub.includes("사회") || sub.includes("역사") || sub.includes("지리") || sub.includes("윤리") || sub.includes("경제")) meta = { cat: "사회", track: "일반선택", eval: "상대평가(5등급)+절대평가", suneung: false };
+        }
+
+        const isSuneung = meta && meta.suneung;
+        const badgeInfo = getEvalBadgeInfo(meta ? meta.eval : "상대평가(5등급)+절대평가");
+        const curCr = getSubjectCredit(sub);
+
+        const pill = document.createElement("span");
+        pill.className = `px-2.5 py-1 ${badgeInfo.bgClass} border font-bold text-xs rounded-xl shadow-2xs inline-flex items-center gap-1.5`;
+        
+        let suneungTag = isSuneung ? `<span class="px-1 py-0.2 rounded text-[9px] font-black bg-rose-500 text-white shadow-2xs">수능</span>` : "";
+        let evalTag = `<span class="text-[9px] font-black">[${badgeInfo.text}]</span>`;
+
+        pill.innerHTML = `<span>${sub} (${curCr})</span> ${suneungTag} ${evalTag}`;
+        genBox.appendChild(pill);
+      });
+    }
+
     let currentTestMode = 'quick';
 
     // 272개 전체 과목 메타정보 맵 구축
@@ -1200,6 +1231,7 @@
       customSubjectCredits[sName] = parseInt(credit);
       renderSelectedTags();
       renderSubjectContent();
+      renderGeneralPills();
       runDiagnosis();
       buildStudyPlan();
     }
@@ -1747,34 +1779,7 @@
         });
       }
 
-      // [핵심 버그 수정] 전공 연계 추천 일반선택 과목 뱃지 렌더링:
-      // 영어1, 영어2, 영어Ⅰ·Ⅱ 과목이 [절대]로 잘못 뜨지 않고 [상대(5등급)]으로 완벽 렌더링!
-      const genBox = document.getElementById("selected-major-general-pills");
-      if (genBox) {
-        genBox.innerHTML = "";
-        (found.general_subjects || []).forEach(sub => {
-          let meta = subjectMetaMap[sub];
-          if (!meta) {
-            if (sub.includes("영어")) meta = subjectMetaMap["영어Ⅰ·Ⅱ"];
-            else if (sub.includes("국어") || sub.includes("문학") || sub.includes("독서") || sub.includes("화법")) meta = { cat: "국어", track: "일반선택", eval: "상대평가(5등급)+절대평가", suneung: true };
-            else if (sub.includes("수학") || sub.includes("대수") || sub.includes("미적분") || sub.includes("확률")) meta = { cat: "수학", track: "일반선택", eval: "상대평가(5등급)+절대평가", suneung: true };
-            else if (sub.includes("물리") || sub.includes("화학") || sub.includes("생명") || sub.includes("지구")) meta = { cat: "과학", track: "일반선택", eval: "상대평가(5등급)+절대평가", suneung: false };
-            else if (sub.includes("사회") || sub.includes("역사") || sub.includes("지리") || sub.includes("윤리") || sub.includes("경제")) meta = { cat: "사회", track: "일반선택", eval: "상대평가(5등급)+절대평가", suneung: false };
-          }
-
-          const isSuneung = meta && meta.suneung;
-          const badgeInfo = getEvalBadgeInfo(meta ? meta.eval : "상대평가(5등급)+절대평가");
-
-          const pill = document.createElement("span");
-          pill.className = `px-2.5 py-1 ${badgeInfo.bgClass} border font-bold text-xs rounded-xl shadow-2xs inline-flex items-center gap-1.5`;
-          
-          let suneungTag = isSuneung ? `<span class="px-1 py-0.2 rounded text-[9px] font-black bg-rose-500 text-white shadow-2xs">수능</span>` : "";
-          let evalTag = `<span class="text-[9px] font-black">[${badgeInfo.text}]</span>`;
-
-          pill.innerHTML = `<span>${sub} (4)</span> ${suneungTag} ${evalTag}`;
-          genBox.appendChild(pill);
-        });
-      }
+      renderGeneralPills(found);
 
       const simMajorName = document.getElementById("sim-target-major-name");
       if (simMajorName) simMajorName.textContent = found.name;
@@ -1897,18 +1902,14 @@
           const bInfo = getEvalBadgeInfo(s.eval);
           evalBadgeHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-black ${bInfo.bgClass} shrink-0">${bInfo.text}</span>`;
 
-          // 과목 카드에 학점 표시: 교양은 (1~4)로 유연 표시, 체육예술은 (2~4), 보통교과는 (3~5)
-          const defCr = getDefaultCredit(s.name);
-          let creditLabel = `(${defCr})`;
-          if (activeSubjectCategory === "교양") {
-            creditLabel = `(1~4)`;
-          } else if (activeSubjectCategory === "체육·예술") {
-            creditLabel = `(2~4)`;
-          }
+          // [사용자 요구사항 100% 반영] 과목 카드에 사용자가 조정한 학점(getSubjectCredit) 실시간 반영!
+          const curCr = getSubjectCredit(s.name);
+          const isCustomized = (customSubjectCredits[s.name] !== undefined);
+          const creditLabel = `(${curCr})`;
 
           btn.innerHTML = `
             <div class="flex items-center justify-between w-full mb-1">
-              <span class="text-xs font-black truncate ${s.suneung ? 'text-indigo-950 font-black' : ''}">${s.name} <span class="text-indigo-600 font-extrabold text-[11px]">${creditLabel}</span></span>
+              <span class="text-xs font-black truncate ${s.suneung ? 'text-indigo-950 font-black' : ''}">${s.name} <span class="${isCustomized ? 'text-indigo-700 font-black underline' : 'text-indigo-600 font-extrabold'} text-[11px]">${creditLabel}</span></span>
               <i class="fa-solid ${isSelected ? 'fa-check text-indigo-600' : 'fa-plus text-slate-300'} text-[11px]"></i>
             </div>
             <div class="flex items-center justify-between w-full text-[10px] text-slate-400 mt-1">
@@ -2386,7 +2387,8 @@
     "경기여자고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=c97bad52-a3a3-4ee2-b6e3-2dc5a92244cb",
     "경동고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=b815d46b-8596-4c3b-b939-69755d8bbbe3",
     "경문고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=0fc9d0f0-fb30-4ee9-a00a-8eab46dba570",
-    "경복고등학교": "https://www.schoolinfo.go.kr/viewer/skin/doc.html?fn=2e11a63b94a84b8686b4449173d693f6.hwpx&rs=/viewer/result/202609/",
+    "경복고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=7334aee9-119c-4735-8a26-d5e582e146be",
+        "경복고": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=7334aee9-119c-4735-8a26-d5e582e146be",
     "경복비즈니스고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=a1e7e037-4361-4ca1-85be-5dd1844d6d66",
     "경복여자고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=bab2b65f-daa7-48f0-bf96-d72bec8efddf",
     "경성고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=9dd76952-2533-4f7d-86c8-50b0b0a8889b",
@@ -2690,6 +2692,8 @@
     "효문고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=8d1cab1b-f2b2-4fad-98c2-12fd0446c75e",
     "휘경여자고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=22af7def-1885-4221-a1b7-5f739a0ccfb2",
     "휘문고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=eccbb3e4-dace-4f32-8f02-4c4858dc6c53",
+        "휘문중학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=ba6838f9-7eb0-4695-9620-a8012e4c4451",
+        "휘문중": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=ba6838f9-7eb0-4695-9620-a8012e4c4451",
     "휘봉고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=b61b4a0c-fd93-433a-a09a-ebacb1df7414",
     "흑석고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=6fad0991-1df3-4ae4-84f0-0531387cfa14",
     "가야고등학교": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=e4458bff-2987-46ca-9353-bac0c037b7d5",
@@ -5029,8 +5033,10 @@
     // 학교알리미 직결 링크 조회
     function getDirectViewerUrl(schoolName) {
       if (!schoolName) return null;
-      if (typeof EMBEDDED_SCHOOL_VIEWERS === "object" && EMBEDDED_SCHOOL_VIEWERS[schoolName]) {
-        return EMBEDDED_SCHOOL_VIEWERS[schoolName];
+      if (typeof EMBEDDED_SCHOOL_VIEWERS === "object") {
+        if (EMBEDDED_SCHOOL_VIEWERS[schoolName]) return EMBEDDED_SCHOOL_VIEWERS[schoolName];
+        if (!schoolName.endsWith("학교") && EMBEDDED_SCHOOL_VIEWERS[schoolName + "학교"]) return EMBEDDED_SCHOOL_VIEWERS[schoolName + "학교"];
+        if (schoolName.endsWith("학교") && EMBEDDED_SCHOOL_VIEWERS[schoolName.slice(0, -2)]) return EMBEDDED_SCHOOL_VIEWERS[schoolName.slice(0, -2)];
       }
       return null;
     }
