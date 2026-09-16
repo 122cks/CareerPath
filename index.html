@@ -1014,194 +1014,6 @@
           </div>
         </div>
 
-        <!-- [요구사항 반영 6] 학교 유형별 '표준 편제표 프리셋(Preset)' & 편제표 OCR 분석 모달 버튼 -->
-        <div
-          class="p-5 bg-gradient-to-br from-slate-50 to-indigo-50/50 rounded-2xl border border-slate-200 space-y-3"
-        >
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <strong class="text-xs sm:text-sm font-black text-slate-900 flex items-center gap-1.5">
-                <i class="fa-solid fa-wand-magic-sparkles text-indigo-600"></i> 학교 유형별 표준 편제표 프리셋 (1-Click 원클릭 기본 세팅)
-              </strong>
-              <p class="text-[11px] text-slate-500 font-medium">
-                학교알리미 편제표 보기가 어려운 학생들을 위해 고교 유형별 기본 편제를 원클릭으로 자동 구성합니다.
-              </p>
-            </div>
-            <!-- 편제표 OCR 분석 모달 트리거 버튼 [요구사항 반영 7] -->
-            <button
-              type="button"
-              onclick="openOcrModal()"
-              class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-xs transition shadow-xs flex items-center gap-1.5 shrink-0 self-start sm:self-auto"
-            >
-              <i class="fa-solid fa-file-arrow-up text-xs"></i>
-              <span>편제표 업로드 OCR 분석 ⚡</span>
-            </button>
-          </div>
-
-          <!-- 학교 및 계열별 8대 표준 편제표 프리셋 버튼 (반응형 그리드) -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
-            <!-- 1. 일반고 · 인문·어문·사범 -->
-            <button
-              type="button"
-              onclick="applyPreset('general_humanities')"
-              class="p-3.5 bg-white border border-slate-300 hover:border-indigo-500 rounded-2xl font-bold text-slate-800 text-left transition shadow-2xs hover:bg-indigo-50/60 flex flex-col justify-between group cursor-pointer"
-            >
-              <div>
-                <span class="inline-flex items-center gap-1.5 text-indigo-700 font-black text-xs mb-1 group-hover:text-indigo-900">
-                  <span class="text-base">🏫</span>
-                  <span>일반고 · 인문·어문·사범</span>
-                </span>
-                <p class="text-[11px] text-slate-500 font-normal leading-relaxed">
-                  국·영 심화독해 + 사회교과(윤리/세계사/사회문화) 집중 + 제2외국어
-                </p>
-              </div>
-              <span class="mt-2 text-[10px] text-indigo-600 font-bold flex items-center gap-1">
-                <i class="fa-solid fa-arrow-right text-[9px]"></i> 원클릭 프리셋 적용
-              </span>
-            </button>
-
-            <!-- 2. 일반고 · 사회과학·상경 -->
-            <button
-              type="button"
-              onclick="applyPreset('general_social')"
-              class="p-3.5 bg-white border border-slate-300 hover:border-blue-500 rounded-2xl font-bold text-slate-800 text-left transition shadow-2xs hover:bg-blue-50/60 flex flex-col justify-between group cursor-pointer"
-            >
-              <div>
-                <span class="inline-flex items-center gap-1.5 text-blue-700 font-black text-xs mb-1 group-hover:text-blue-900">
-                  <span class="text-base">⚖️</span>
-                  <span>일반고 · 사회과학·상경</span>
-                </span>
-                <p class="text-[11px] text-slate-500 font-normal leading-relaxed">
-                  경제·정치와 법·사회문화 + 대수/확통/경제수학 + 사회문제탐구
-                </p>
-              </div>
-              <span class="mt-2 text-[10px] text-blue-600 font-bold flex items-center gap-1">
-                <i class="fa-solid fa-arrow-right text-[9px]"></i> 원클릭 프리셋 적용
-              </span>
-            </button>
-
-            <!-- 3. 일반고 · 자연·공학·IT -->
-            <button
-              type="button"
-              onclick="applyPreset('general_engineering')"
-              class="p-3.5 bg-white border border-slate-300 hover:border-cyan-500 rounded-2xl font-bold text-slate-800 text-left transition shadow-2xs hover:bg-cyan-50/60 flex flex-col justify-between group cursor-pointer"
-            >
-              <div>
-                <span class="inline-flex items-center gap-1.5 text-cyan-700 font-black text-xs mb-1 group-hover:text-cyan-900">
-                  <span class="text-base">⚙️</span>
-                  <span>일반고 · 자연·공학·IT</span>
-                </span>
-                <p class="text-[11px] text-slate-500 font-normal leading-relaxed">
-                  대수/미적Ⅰ·Ⅱ/기하 + 물리학·화학 중심 + 인공지능기초/정보
-                </p>
-              </div>
-              <span class="mt-2 text-[10px] text-cyan-600 font-bold flex items-center gap-1">
-                <i class="fa-solid fa-arrow-right text-[9px]"></i> 원클릭 프리셋 적용
-              </span>
-            </button>
-
-            <!-- 4. 일반고 · 의약·생명·보건 -->
-            <button
-              type="button"
-              onclick="applyPreset('general_medical')"
-              class="p-3.5 bg-white border border-slate-300 hover:border-teal-500 rounded-2xl font-bold text-slate-800 text-left transition shadow-2xs hover:bg-teal-50/60 flex flex-col justify-between group cursor-pointer"
-            >
-              <div>
-                <span class="inline-flex items-center gap-1.5 text-teal-700 font-black text-xs mb-1 group-hover:text-teal-900">
-                  <span class="text-base">🧬</span>
-                  <span>일반고 · 의약·생명·보건</span>
-                </span>
-                <p class="text-[11px] text-slate-500 font-normal leading-relaxed">
-                  대수/미적Ⅰ·Ⅱ/기하 + 화학·생명과학 심화실험 + 세포물질대사/보건
-                </p>
-              </div>
-              <span class="mt-2 text-[10px] text-teal-600 font-bold flex items-center gap-1">
-                <i class="fa-solid fa-arrow-right text-[9px]"></i> 원클릭 프리셋 적용
-              </span>
-            </button>
-
-            <!-- 5. 과학중점학교 · 이공심화 -->
-            <button
-              type="button"
-              onclick="applyPreset('science_core')"
-              class="p-3.5 bg-white border border-slate-300 hover:border-emerald-500 rounded-2xl font-bold text-slate-800 text-left transition shadow-2xs hover:bg-emerald-50/60 flex flex-col justify-between group cursor-pointer"
-            >
-              <div>
-                <span class="inline-flex items-center gap-1.5 text-emerald-700 font-black text-xs mb-1 group-hover:text-emerald-900">
-                  <span class="text-base">🔬</span>
-                  <span>과학중점학교 · 이공심화</span>
-                </span>
-                <p class="text-[11px] text-slate-500 font-normal leading-relaxed">
-                  수·과학 45% 이상 편성 + 물화생지 전과목 8개 이수 & 전문실험
-                </p>
-              </div>
-              <span class="mt-2 text-[10px] text-emerald-600 font-bold flex items-center gap-1">
-                <i class="fa-solid fa-arrow-right text-[9px]"></i> 원클릭 프리셋 적용
-              </span>
-            </button>
-
-            <!-- 6. 외고·국제고 · 어문·국제 -->
-            <button
-              type="button"
-              onclick="applyPreset('foreign_international')"
-              class="p-3.5 bg-white border border-slate-300 hover:border-amber-500 rounded-2xl font-bold text-slate-800 text-left transition shadow-2xs hover:bg-amber-50/60 flex flex-col justify-between group cursor-pointer"
-            >
-              <div>
-                <span class="inline-flex items-center gap-1.5 text-amber-700 font-black text-xs mb-1 group-hover:text-amber-900">
-                  <span class="text-base">🌐</span>
-                  <span>외고·국제고 · 어문·국제</span>
-                </span>
-                <p class="text-[11px] text-slate-500 font-normal leading-relaxed">
-                  심화 영어 독해작문 + 전공외국어Ⅰ·Ⅱ 회화 + 국제정치/세계문제
-                </p>
-              </div>
-              <span class="mt-2 text-[10px] text-amber-600 font-bold flex items-center gap-1">
-                <i class="fa-solid fa-arrow-right text-[9px]"></i> 원클릭 프리셋 적용
-              </span>
-            </button>
-
-            <!-- 7. 자율형사립고 · 수능·학종 -->
-            <button
-              type="button"
-              onclick="applyPreset('autonomous_private')"
-              class="p-3.5 bg-white border border-slate-300 hover:border-purple-500 rounded-2xl font-bold text-slate-800 text-left transition shadow-2xs hover:bg-purple-50/60 flex flex-col justify-between group cursor-pointer"
-            >
-              <div>
-                <span class="inline-flex items-center gap-1.5 text-purple-700 font-black text-xs mb-1 group-hover:text-purple-900">
-                  <span class="text-base">🏛️</span>
-                  <span>자율형사립고 · 수능·학종</span>
-                </span>
-                <p class="text-[11px] text-slate-500 font-normal leading-relaxed">
-                  수능 일반선택 조기완성 + 고급수학/고급과학/전문교과 심화
-                </p>
-              </div>
-              <span class="mt-2 text-[10px] text-purple-600 font-bold flex items-center gap-1">
-                <i class="fa-solid fa-arrow-right text-[9px]"></i> 원클릭 프리셋 적용
-              </span>
-            </button>
-
-            <!-- 8. 예술·체육 · 문화콘텐츠 -->
-            <button
-              type="button"
-              onclick="applyPreset('arts_physical_media')"
-              class="p-3.5 bg-white border border-slate-300 hover:border-rose-500 rounded-2xl font-bold text-slate-800 text-left transition shadow-2xs hover:bg-rose-50/60 flex flex-col justify-between group cursor-pointer"
-            >
-              <div>
-                <span class="inline-flex items-center gap-1.5 text-rose-700 font-black text-xs mb-1 group-hover:text-rose-900">
-                  <span class="text-base">🎨</span>
-                  <span>예술·체육 · 문화콘텐츠</span>
-                </span>
-                <p class="text-[11px] text-slate-500 font-normal leading-relaxed">
-                  음악/미술/체육 실기 및 비평 + 매체와 창작/문화콘텐츠 산업 일반
-                </p>
-              </div>
-              <span class="mt-2 text-[10px] text-rose-600 font-bold flex items-center gap-1">
-                <i class="fa-solid fa-arrow-right text-[9px]"></i> 원클릭 프리셋 적용
-              </span>
-            </button>
-          </div>
-        </div>
-
         <!-- [요구사항 반영 5] 고교학점제 규정 기반 '과목 이수 위계 및 제한' 실시간 자동 검증 대시보드 -->
         <div
           id="verification-dashboard-box"
@@ -1308,28 +1120,19 @@
             class="border-b border-slate-800 pb-4 flex flex-col md:flex-row md:items-center justify-between gap-4"
           >
             <div>
-              <div class="flex items-center gap-2 mb-1.5">
-                <span
-                  class="px-2.5 py-0.5 rounded-md bg-indigo-500 text-white font-black text-[11px]"
-                  >선택된 목표 학과</span
-                >
-                <span
-                  class="text-xs text-indigo-300 font-bold"
-                  id="sim-target-major-group"
-                  >인문 계열</span
-                >
-                <span
-                  class="text-[11px] text-slate-400"
-                  id="sim-target-major-page"
-                  >고1 학업설계 도서 p.58~59</span
-                >
-              </div>
-              <h3
-                class="text-3xl sm:text-4xl font-black text-white tracking-tight flex items-center gap-3"
-                id="sim-target-major-name"
-              >
-                국어국문학과
-              </h3>
+              <div class="flex items-center gap-2 mb-2">
+    <span class="px-2.5 py-0.5 rounded-md bg-indigo-500 text-white font-black text-[11px]">선택된 목표 학과</span>
+    <span class="text-xs text-indigo-300 font-bold" id="sim-target-major-group">인문 계열</span>
+</div>
+<div class="flex flex-wrap items-center gap-3.5 mb-2">
+    <h3 class="text-3xl sm:text-4xl font-black text-white tracking-tight flex items-center gap-3" id="sim-target-major-name">
+        국어국문학과
+    </h3>
+    <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-400 to-yellow-400 text-slate-950 font-black rounded-2xl text-sm sm:text-base shadow-md border-2 border-amber-300">
+        <i class="fa-solid fa-book-open text-lg"></i>
+        <span class="text-sm sm:text-base font-black" id="sim-target-major-page">고1 학업설계 도서 p.58~59쪽 가이드 참조</span>
+    </div>
+</div>
               <p class="text-xs text-slate-300 mt-1.5" id="rep-missing-alert">
                 전공 연계 과목을 담을 때만 전공 적합도 점수가 상승합니다.
               </p>
@@ -1449,16 +1252,53 @@
           </div>
         </div>
 
-        <!-- 10대 교과군 선택 탭 -->
-        <div
-          class="flex flex-wrap gap-1.5 text-xs font-bold border-b border-slate-200 pb-3"
-          id="subject-category-tabs"
-        ></div>
+        <!-- [개편] 272개 선택과목 드롭다운 검색 & 직접 추가 시스템 -->
+<div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+        <div>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                <i class="fa-solid fa-layer-group"></i> 272개 전체 과목 검색 & 추가
+            </span>
+            <h4 class="text-sm sm:text-base font-black text-slate-900 mt-1">교과군 필터 및 과목 직접 검색</h4>
+        </div>
+        <div class="text-xs text-slate-500">
+            원하는 과목을 선택하고 <span class="font-bold text-indigo-600">[과목 추가]</span> 버튼을 누르세요.
+        </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5">
+        <!-- 1. 교과군 필터 -->
+        <div class="sm:col-span-4">
+            <label class="block text-[11px] font-bold text-slate-600 mb-1">1. 교과군 필터</label>
+            <select id="search-category-select" onchange="onCategoryDropdownChange(this.value)" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 bg-white font-medium focus:border-indigo-600 focus:outline-none">
+                <option value="all">전체 교과군 (전체 과목)</option>
+            </select>
+        </div>
+        <!-- 2. 과목명 검색어 입력 -->
+        <div class="sm:col-span-8">
+            <label class="block text-[11px] font-bold text-slate-600 mb-1">2. 과목명 검색</label>
+            <div class="relative">
+                <input type="text" id="subject-search-input" oninput="onSubjectSearchInput(this.value)" placeholder="과목명을 입력하세요 (예: 물리학, 미적분, 데이터...)" class="w-full text-xs p-2.5 pl-8 rounded-xl border border-slate-300 bg-white font-medium focus:border-indigo-600 focus:outline-none">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+            </div>
+        </div>
+    </div>
+    <!-- 과목 드롭다운 선택 및 추가 버튼 -->
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1">
+        <div class="flex-1">
+            <select id="subject-dropdown-select" class="w-full text-xs sm:text-sm p-3 rounded-xl border-2 border-indigo-200 bg-indigo-50/30 font-bold text-indigo-950 focus:border-indigo-600 focus:outline-none">
+                <option value="">-- 과목을 선택하세요 --</option>
+            </select>
+        </div>
+        <button type="button" id="btn-add-subject" onclick="addSubjectFromDropdown()" class="px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-1.5 shadow-md shrink-0">
+            <i class="fa-solid fa-plus text-xs"></i>
+            <span>설계서에 과목 추가</span>
+        </button>
+    </div>
+    <!-- 선택 과목 도서 페이지 & 상세 정보 인포바 -->
+    <div id="dropdown-info-bar" class="hidden"></div>
+</div>
 
-        <!-- 과목 카드 그리드 -->
-        <div id="subject-category-content" class="space-y-6"></div>
-
-        <!-- 내가 선택한 과목 요약 태그 리스트 -->
+  <!-- 내가 선택한 과목 요약 태그 리스트 -->
         <div
           class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2"
         >
@@ -3131,108 +2971,217 @@
     // ==========================================
     // 3단계. 272개 선택과목 설계
     // ==========================================
-    function renderSubjectTabs() {
-      const container = document.getElementById("subject-category-tabs");
-      if (!container) return;
-      container.innerHTML = "";
-      Object.keys(curriculumSubjects).forEach(catName => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        const isActive = (activeSubjectCategory === catName);
-        btn.className = `px-3 py-1.5 rounded-xl border transition text-xs font-bold ${
-          isActive ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs' : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
-        }`;
-        btn.textContent = catName;
-        btn.onclick = () => {
-          activeSubjectCategory = catName;
-          renderSubjectTabs();
-          renderSubjectContent();
-        };
-        container.appendChild(btn);
-      });
-    }
+    
+// ==========================================
+// [개편] 272개 공식 과목 중복제거 & 단일 과목 완전 제공 시스템
+// ==========================================
 
-    function renderSubjectContent() {
-      const container = document.getElementById("subject-category-content");
-      if (!container) return;
-      container.innerHTML = "";
-      const catData = curriculumSubjects[activeSubjectCategory];
-      if (!catData) return;
+function getAllSubjectsList() {
+    const list = [];
+    const seen = new Set();
 
-      ["일반선택", "진로선택", "융합선택"].forEach(trackType => {
-        const subList = catData[trackType];
-        if (!subList || subList.length === 0) return;
+    // 1. curriculumSubjects 순회 (공식 272개 정규 과목 추출)
+    if (typeof curriculumSubjects !== 'undefined' && curriculumSubjects) {
+        Object.keys(curriculumSubjects).forEach(catKey => {
+            const catObj = curriculumSubjects[catKey];
+            if (!catObj) return;
+            Object.keys(catObj).forEach(trackKey => {
+                const subArr = catObj[trackKey];
+                if (Array.isArray(subArr)) {
+                    subArr.forEach(s => {
+                        const sName = (typeof s === 'string') ? s : (s.name || '');
+                        if (!sName) return;
 
-        let trackColor = "bg-slate-700";
-        if (trackType === "일반선택") trackColor = "bg-blue-600";
-        else if (trackType === "진로선택") trackColor = "bg-indigo-600";
-        else if (trackType === "융합선택") trackColor = "bg-emerald-600";
+                        // 묶음 표기(영어Ⅰ·Ⅱ, 영어1·2 등) 및 중복 철저 배제
+                        if (seen.has(sName)) return;
+                        if (sName.includes('·') && (sName.includes('Ⅰ') || sName.includes('Ⅱ') || sName.includes('1') || sName.includes('2'))) return;
 
-        const sec = document.createElement("div");
-        sec.className = "space-y-2.5";
-        sec.innerHTML = `
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full ${trackColor}"></span>
-            <span class="font-bold text-xs sm:text-sm text-slate-900">${trackType} (${subList.length}개 과목)</span>
-          </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 text-xs" id="track-box-${trackType}"></div>
-        `;
-        container.appendChild(sec);
-
-        const trackBox = sec.querySelector(`#track-box-${trackType}`);
-        subList.forEach(s => {
-          const btn = document.createElement("button");
-          btn.type = "button";
-          const isSelected = selectedSubjects.has(s.name);
-          btn.className = `p-3 rounded-xl border text-left font-medium transition flex flex-col justify-between ${
-            isSelected ? 'bg-indigo-50 border-indigo-600 text-indigo-950 font-bold shadow-xs' : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300'
-          }`;
-
-          // [핵심] 평가방식 정밀 분리 (수능 / 상대 5등급 / 절대 5단계 / 절대 3단계 / P/F)
-          let evalBadgeHtml = "";
-
-          if (s.suneung) {
-            evalBadgeHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-black bg-rose-50 text-rose-700 border border-rose-200 shadow-2xs flex items-center gap-0.5 shrink-0"><i class="fa-solid fa-graduation-cap text-[8px]"></i>수능</span>`;
-          }
-
-          const bInfo = getEvalBadgeInfo(s.eval);
-          evalBadgeHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-black ${bInfo.bgClass} shrink-0">${bInfo.text}</span>`;
-
-          // [사용자 요구사항 100% 반영] 과목 카드에 사용자가 조정한 학점(getSubjectCredit) 실시간 반영!
-          const curCr = getSubjectCredit(s.name);
-          const isCustomized = (customSubjectCredits[s.name] !== undefined);
-          const creditLabel = `(${curCr})`;
-
-          btn.innerHTML = `
-            <div class="flex items-center justify-between w-full mb-1">
-              <span class="text-xs font-black truncate ${s.suneung ? 'text-indigo-950 font-black' : ''}">${s.name} <span class="${isCustomized ? 'text-indigo-700 font-black underline' : 'text-indigo-600 font-extrabold'} text-[11px]">${creditLabel}</span></span>
-              <i class="fa-solid ${isSelected ? 'fa-check text-indigo-600' : 'fa-plus text-slate-300'} text-[11px]"></i>
-            </div>
-            <div class="flex items-center justify-between w-full text-[10px] text-slate-400 mt-1">
-              <span class="font-bold text-indigo-600 shrink-0">📖 p.${s.page}</span>
-              <div class="flex items-center gap-1 overflow-hidden">
-                ${evalBadgeHtml}
-              </div>
-            </div>
-          `;
-          btn.onclick = () => {
-            if (selectedSubjects.has(s.name)) selectedSubjects.delete(s.name);
-            else selectedSubjects.add(s.name);
-            renderSubjectContent();
-            renderSelectedTags();
-            runDiagnosis();
-            buildStudyPlan();
-          };
-          trackBox.appendChild(btn);
+                        seen.add(sName);
+                        list.push({
+                            name: sName,
+                            cat: s.cat || catKey,
+                            track: s.track || trackKey,
+                            page: s.page || (typeof subjectMetaMap !== 'undefined' && subjectMetaMap[sName] ? subjectMetaMap[sName].page : ''),
+                            eval: s.eval || (typeof subjectMetaMap !== 'undefined' && subjectMetaMap[sName] ? subjectMetaMap[sName].eval : ''),
+                            suneung: !!s.suneung || (typeof subjectMetaMap !== 'undefined' && subjectMetaMap[sName] ? !!subjectMetaMap[sName].suneung : false)
+                        });
+                    });
+                }
+            });
         });
-      });
-
-      renderSelectedTags();
     }
 
-    // [핵심] 내가 선택한 과목 요약 태그 리스트
-    // 교양 과목은 1학점, 2학점, 3학점, 4학점을 모두 선택할 수 있도록 [1, 2, 3, 4] 제공!
-    function renderSelectedTags() {
+    // 2. 단일 과목 보충 (묶음 기호 '·', ',', '/' 완전 배제)
+    if (typeof subjectMetaMap !== 'undefined' && subjectMetaMap) {
+        Object.keys(subjectMetaMap).forEach(sName => {
+            if (seen.has(sName)) return;
+            if (sName.includes('·') || sName.includes('/') || sName.includes(',')) return;
+            seen.add(sName);
+            const m = subjectMetaMap[sName] || {};
+            list.push({
+                name: sName,
+                cat: m.cat || '기타',
+                track: m.track || '선택',
+                page: m.page || '',
+                eval: m.eval || '',
+                suneung: !!m.suneung
+            });
+        });
+    }
+
+    return list;
+}
+
+function setupCategoryFilter() {
+    const catSelect = document.getElementById("search-category-select");
+    if (!catSelect) return;
+    const all = getAllSubjectsList();
+    const categories = Array.from(new Set(all.map(s => s.cat))).filter(Boolean);
+    const prevVal = catSelect.value || "all";
+    let html = '<option value="all">전체 교과군 (총 ' + all.length + '개 과목)</option>';
+    categories.forEach(c => {
+        const cCount = all.filter(s => s.cat === c).length;
+        html += '<option value="' + c + '">' + c + ' (' + cCount + '개)</option>';
+    });
+    catSelect.innerHTML = html;
+    catSelect.value = prevVal;
+}
+
+function populateSubjectDropdown(cat, query) {
+    const select = document.getElementById("subject-dropdown-select");
+    if (!select) return;
+    const all = getAllSubjectsList();
+    const q = (query || "").trim().toLowerCase().replace(/\s+/g, "");
+    const filtered = all.filter(s => {
+        if (cat && cat !== 'all') {
+            if (s.cat !== cat && !s.cat.includes(cat) && !cat.includes(s.cat)) return false;
+        }
+        if (q) {
+            const cleanName = s.name.toLowerCase().replace(/\s+/g, "");
+            if (!cleanName.includes(q)) return false;
+        }
+        return true;
+    });
+    select.innerHTML = '';
+    const defaultOpt = document.createElement("option");
+    defaultOpt.value = "";
+    defaultOpt.textContent = filtered.length > 0 ? '-- 과목을 선택하세요 (검색된 과목: ' + filtered.length + '개) --' : "-- 일치하는 과목이 없습니다 --";
+    select.appendChild(defaultOpt);
+    filtered.forEach(s => {
+        const opt = document.createElement("option");
+        opt.value = s.name;
+        const bInfo = (typeof getEvalBadgeInfo === 'function') ? getEvalBadgeInfo(s.eval) : { text: s.eval || '' };
+        const pageText = s.page ? '  ★[도서 p.' + s.page + '쪽]★' : '';
+        const suneungText = s.suneung ? ' [수능]' : '';
+        const trackLabel = s.track ? '/' + s.track.replace('선택', '') : '';
+        opt.textContent = '[' + s.cat + trackLabel + '] ' + s.name + pageText + ' (' + bInfo.text + suneungText + ')';
+        select.appendChild(opt);
+    });
+}
+
+function initSubjectDropdown() {
+    setupCategoryFilter();
+    const catSelect = document.getElementById("search-category-select");
+    const searchInput = document.getElementById("subject-search-input");
+    const currentCat = catSelect ? catSelect.value : "all";
+    const currentQ = searchInput ? searchInput.value : "";
+    populateSubjectDropdown(currentCat, currentQ);
+    const select = document.getElementById("subject-dropdown-select");
+    if (select) {
+        select.onchange = function () {
+            updateDropdownInfoBar(this.value);
+        };
+    }
+}
+
+function onCategoryDropdownChange(cat) {
+    const searchInput = document.getElementById("subject-search-input");
+    const q = searchInput ? searchInput.value : "";
+    populateSubjectDropdown(cat, q);
+}
+
+function onSubjectSearchInput(q) {
+    const catSelect = document.getElementById("search-category-select");
+    const cat = catSelect ? catSelect.value : "all";
+    populateSubjectDropdown(cat, q);
+}
+
+function updateDropdownInfoBar(sName) {
+    const bar = document.getElementById("dropdown-info-bar");
+    if (!bar) return;
+    if (!sName) {
+        bar.classList.add("hidden");
+        bar.innerHTML = "";
+        return;
+    }
+    const all = getAllSubjectsList();
+    const s = all.find(item => item.name === sName);
+    if (!s) {
+        bar.classList.add("hidden");
+        bar.innerHTML = "";
+        return;
+    }
+    bar.classList.remove("hidden");
+    const bInfo = (typeof getEvalBadgeInfo === 'function') ? getEvalBadgeInfo(s.eval) : { text: s.eval || '', bgClass: 'bg-slate-100 text-slate-700' };
+    const suneungBadge = s.suneung ? '<span class="px-2.5 py-1 rounded-lg text-xs font-black bg-rose-50 text-rose-700 border border-rose-200"><i class="fa-solid fa-graduation-cap mr-1"></i>2028 수능 출제</span>' : '';
+    const pageBadge = s.page ? `
+        <div class="flex items-center gap-2 bg-gradient-to-r from-amber-400 to-yellow-400 text-slate-950 px-5 py-2.5 rounded-xl font-black text-sm sm:text-base shadow-sm border border-amber-500 shrink-0">
+            <i class="fa-solid fa-book-open text-lg"></i>
+            <span>도서 확인: <strong class="text-lg sm:text-xl underline underline-offset-4 decoration-slate-950">p.${s.page}쪽</strong></span>
+        </div>
+    ` : '';
+
+    bar.innerHTML = `
+        <div class="p-4 bg-indigo-50/90 border-2 border-indigo-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs mt-2">
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="text-lg sm:text-xl font-black text-indigo-950">${s.name}</span>
+                <span class="px-3 py-1 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-200">[${s.cat} · ${s.track}]</span>
+                <span class="px-3 py-1 rounded-lg text-xs font-bold ${bInfo.bgClass || 'bg-slate-100'}">${bInfo.text}</span>
+                ${suneungBadge}
+            </div>
+            ${pageBadge}
+        </div>
+    `;
+}
+
+function addSubjectFromDropdown() {
+    const dropdown = document.getElementById("subject-dropdown-select");
+    if (!dropdown || !dropdown.value) {
+        alert("추가할 과목을 선택해주세요.");
+        return;
+    }
+    const sName = dropdown.value;
+    if (selectedSubjects.has(sName)) {
+        alert("[" + sName + "] 과목은 이미 설계서에 추가되어 있습니다.");
+        return;
+    }
+    selectedSubjects.add(sName);
+    if (typeof renderSelectedTags === 'function') renderSelectedTags();
+    if (typeof runDiagnosis === 'function') runDiagnosis();
+    if (typeof buildStudyPlan === 'function') buildStudyPlan();
+    if (typeof saveSessionState === 'function') saveSessionState();
+    const btn = document.getElementById("btn-add-subject");
+    if (btn) {
+        const originHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check text-xs"></i><span>추가 완료!</span>';
+        btn.classList.replace("bg-indigo-600", "bg-emerald-600");
+        btn.classList.replace("hover:bg-indigo-700", "hover:bg-emerald-700");
+        setTimeout(() => {
+            btn.innerHTML = originHtml;
+            btn.classList.replace("bg-emerald-600", "bg-indigo-600");
+            btn.classList.replace("hover:bg-emerald-700", "hover:bg-indigo-700");
+        }, 800);
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(initSubjectDropdown, 150));
+} else {
+    setTimeout(initSubjectDropdown, 150);
+}
+
+
+function renderSelectedTags() {
       const container = document.getElementById("selected-tags-container");
       if (!container) return;
       container.innerHTML = "";
