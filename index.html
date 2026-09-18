@@ -4915,10 +4915,58 @@ button#btn-sub-value.text-indigo-600,
   </style>
 
   <!-- CareerPath 정밀 UI 교정 스타일 -->
+  <!-- CareerPath 정밀 UI 교정 스타일 -->
   <style id="careerpath-ui-fine-tune-style">
-/* CareerPath 사용자 지적 사항 정밀 교정 CSS */
+/* CareerPath 사용자 요청 사항 전용 정밀 교정 스타일 */
 
-/* 1. 일반 선택 과목 알약 양식 통일 */
+/* 1. 추천 학과 TOP 5: 1 2 3 4 5 동등 5열 그리드 복원 */
+#top5-cards-container {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+}
+
+@media (max-width: 1024px) {
+    #top5-cards-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    #top5-cards-container {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* 1위 카드의 인위적 대형화 및 가상 뱃지 무차별 해제 -> 1 2 3 4 5 동등 형태 */
+#top5-cards-container > div,
+#top5-cards-container > div:nth-child(n) {
+    grid-column: span 1 !important;
+    width: 100% !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    transition: all 0.2s ease !important;
+}
+
+#top5-cards-container > div:hover {
+    border-color: #93C5FD !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px -2px rgba(37, 99, 235, 0.08) !important;
+}
+
+#top5-cards-container > div::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* 2. 일반 선택 과목 알약 양식 통일 */
 #selected-major-general-pills {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -4953,7 +5001,7 @@ button#btn-sub-value.text-indigo-600,
     line-height: 1 !important;
 }
 
-/* 2. 192학점 졸업 요건 달성도 카드 (오버플로우 방지) */
+/* 3. 192학점 졸업 요건 달성도 카드 (오버플로우 방지) */
 #graduation-requirement-card {
     box-sizing: border-box !important;
     width: 100% !important;
@@ -5818,59 +5866,8 @@ button#btn-sub-value.text-indigo-600,
           <button onclick="filterByGroup('자유전공')" class="grp-btn px-3 py-1.5 rounded-xl border bg-white text-slate-700 hover:border-slate-400 transition" data-group="자유전공">자유전공 (1)</button>
         </div>
       </div>
-  <!-- [진로 심리 간이 검사 상단 헤더: SaaS Progressive Disclosure] -->
-  <div class="border-b border-slate-200 pb-5">
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2.5">
-      <div class="flex items-center gap-2">
-        <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">STEP 01</span>
-        <span class="text-xs text-slate-500 font-medium">약 5~7분 · 41문항</span>
-      </div>
-      <a href="#step-2" class="text-xs font-semibold text-slate-500 hover:text-blue-600 flex items-center gap-1 transition self-start sm:self-auto">
-        <span>이미 목표 학과가 있다면 건너뛰기</span>
-        <svg class="w-3.5 h-3.5 cp-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </a>
-    </div>
-
-    <h2 class="text-2xl font-bold text-slate-900 tracking-tight mb-1.5">진로 심리 간이 검사</h2>
-    <p class="text-sm text-slate-600 leading-relaxed max-w-xl mb-4">
-      나에게 맞는 진로 방향을 찾아볼까요?
-    </p>
-
-    <!-- [핵심 인터랙션]: 검사 시작하기 Primary Action 버튼 & 검사 원리 토글 -->
-    <div class="flex flex-wrap items-center gap-3">
-      <button type="button" onclick="toggleCareerTestView()" id="btn-toggle-test" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-sm cursor-pointer">
-        <span>검사 시작하기</span>
-        <svg class="w-4 h-4 cp-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </button>
-
-      <button type="button" onclick="cpToggleCollapse('career-test-principles', this, '검사 원리 알아보기 +', '검사 원리 닫기 ⌃')" class="btn-principles-toggle px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-blue-600 rounded-lg hover:bg-slate-100 transition cursor-pointer flex items-center gap-1">
-        <span class="cp-toggle-text">검사 원리 알아보기 +</span>
-      </button>
-    </div>
-
-    <!-- 검사 원리 알아보기 아코디언 (누르면 펼쳐짐) -->
-    <div id="career-test-principles" class="hidden mt-4 p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-2.5">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-center">
-        <div class="principle-card p-3 bg-white rounded-lg border border-slate-200 shadow-2xs">
-          <strong class="font-bold text-blue-700 text-sm block mb-0.5">흥미 40%</strong>
-          <span class="text-slate-500 text-[11px]">RIASEC 6대 성향 진단</span>
-        </div>
-        <div class="principle-card p-3 bg-white rounded-lg border border-slate-200 shadow-2xs">
-          <strong class="font-bold text-emerald-700 text-sm block mb-0.5">적성 35%</strong>
-          <span class="text-slate-500 text-[11px]">8대 핵심 직업 역량</span>
-        </div>
-        <div class="principle-card p-3 bg-white rounded-lg border border-slate-200 shadow-2xs">
-          <strong class="font-bold text-amber-700 text-sm block mb-0.5">가치관 25%</strong>
-          <span class="text-slate-500 text-[11px]">4대 직업 가치관 지향</span>
-        </div>
-      </div>
-      <p class="text-center text-slate-600 text-xs pt-1">
-        총 3가지 영역을 종합하여 나에게 가장 적합한 <strong>추천 학과 TOP 5</strong>를 실시간 계산합니다. (고1 학업설계 도서 부록 332~343쪽)
-      </p>
-    </div>
-  </div>
-
-      <!-- 검색창 & 드롭다운 -->
+  
+  <!-- 검색창 & 드롭다운 -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div class="relative">
           <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none cp-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
@@ -6241,110 +6238,7 @@ button#btn-sub-value.text-indigo-600,
           </div>
         </div>
 
-        <!-- [요구사항 반영 5] 고교학점제 규정 기반 '과목 이수 위계 및 제한' 실시간 자동 검증 대시보드 -->
-        <!-- 학업 설계 검증 상태 대시보드 (Publisher Standard Status Component) -->
-<div id="verification-dashboard-box" class="p-5 bg-white rounded-2xl border border-slate-200 space-y-4">
-  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
-    <div>
-      <h4 class="text-base font-bold text-slate-900">학업 설계 검증</h4>
-      <p class="text-xs text-slate-500 mt-0.5">2022 개정 고교학점제 법정 이수 기준 자동 검증 결과</p>
-    </div>
-    <span id="overall-rule-status-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 self-start sm:self-auto flex items-center gap-1.5">
-      <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> 현재까지 문제 없음
-    </span>
-  </div>
-  
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between">
-      <span class="text-slate-500 font-medium">과목 위계</span>
-      <div class="flex items-baseline justify-between mt-1">
-        <strong id="prereq-status-tag" class="text-sm font-bold text-slate-900">✓ 정상</strong>
-        <span class="text-[11px] text-slate-400">선이수 준수</span>
-      </div>
-    </div>
-    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between">
-      <span class="text-slate-500 font-medium">기초교과(국·영·수)</span>
-      <div class="flex items-baseline justify-between mt-1">
-        <strong id="kme-limit-tag" class="text-sm font-bold text-slate-900"><span id="kme-current-credits">24</span> / 81학점</strong>
-        <span class="text-[11px] text-slate-400">한도 81 준수</span>
-      </div>
-    </div>
-    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between">
-      <span class="text-slate-500 font-medium">필수 이수학점</span>
-      <div class="flex items-baseline justify-between mt-1">
-        <strong id="req-credits-tag" class="text-sm font-bold text-slate-900">진행 중</strong>
-        <span class="text-[11px] text-slate-400">체육·예술·교양</span>
-      </div>
-    </div>
-  </div>
-  
-  <div class="pt-1 flex items-center justify-between border-t border-slate-100 text-xs">
-    <span class="text-[11px] text-slate-400">※ 과목을 추가하거나 변경하면 법정 기준이 실시간 재진단됩니다.</span>
-    <button type="button" onclick="cpToggleCollapse('verification-detail-grid', this, '검증 상세 보기 →', '검증 요약만 보기 ⌃')" class="btn-tertiary">
-      <span class="cp-toggle-text">검증 상세 보기 →</span>
-    </button>
-  </div>
-</div>
-              <span class="text-[10px] text-slate-400 block pt-1 border-t border-slate-200">
-                대수/미적Ⅰ➔미적Ⅱ, 물리학➔역학과에너지 등
-              </span>
-            </div>
-
-            <!-- 2. 기초교과(국·영·수) 총 이수학점 제한 체크 (81학점 한도) -->
-            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2 flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between">
-                  <span class="font-black text-slate-900 flex items-center gap-1">
-                    <i class="fa-solid fa-chart-pie text-blue-600"></i> 2. 기초교과(국영수) 81학점 제한
-                  </span>
-                  <span id="kme-limit-tag" class="text-[10px] font-black px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">준수</span>
-                </div>
-                <div class="flex justify-between items-center text-[11px] font-bold mt-1">
-                  <span>국·영·수 합산 학점:</span>
-                  <span class="text-indigo-700 font-black"><span id="kme-current-credits">24</span> / 81학점</span>
-                </div>
-                <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden my-1">
-                  <div id="kme-progress-bar" class="bg-indigo-600 h-2 rounded-full transition-all" style="width: 30%"></div>
-                </div>
-                <div class="text-[11px] text-slate-600 leading-tight" id="kme-msg-box">
-                  기초교과 이수 비율 규정(교과 174학점의 50% 이하)을 충족합니다.
-                </div>
-              </div>
-              <span class="text-[10px] text-slate-400 block pt-1 border-t border-slate-200">
-                초과 시 타 교과 추가 이수 필요 (도서 44·52쪽)
-              </span>
-            </div>
-
-            <!-- 3. 체육·예술, 생활·교양 필수 이수학점 충족 여부 -->
-            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2 flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between">
-                  <span class="font-black text-slate-900 flex items-center gap-1">
-                    <i class="fa-solid fa-list-check text-emerald-600"></i> 3. 필수 이수학점 충족
-                  </span>
-                  <span id="req-credits-tag" class="text-[10px] font-black px-2 py-0.5 rounded bg-indigo-100 text-indigo-800">진행 중</span>
-                </div>
-                <div class="space-y-1 text-[10px] font-bold text-slate-600 mt-1">
-                  <div class="flex justify-between">
-                    <span>체육 (기준 10학점):</span>
-                    <span id="req-pe-text" class="font-black text-slate-800">0 / 10</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span>예술 (기준 10학점):</span>
-                    <span id="req-art-text" class="font-black text-slate-800">0 / 10</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span>생활·교양 (기준 16학점):</span>
-                    <span id="req-gen-text" class="font-black text-slate-800">0 / 16</span>
-                  </div>
-                </div>
-              </div>
-              <span class="text-[10px] text-slate-400 block pt-1 border-t border-slate-200">
-                국·수·영·사·과는 공통과목으로 기본 충족 완료
-              </span>
-            </div>
-          </div>
-        </div>
+        
 
         <!-- 3단계 상단: 대형 학과 이름 & 전공 연계 적합도 대시보드 -->
 <div class="bg-white text-slate-900 p-6 rounded-3xl space-y-5 shadow-sm border border-slate-200">
@@ -6557,7 +6451,108 @@ button#btn-sub-value.text-indigo-600,
           </div>
         </div>
 
-        <!-- [요구사항 반영 2] 나의 3개년 학업 설계서 과목 실시간 배치 현황 아래로 이동 배치된 '교재 부록 연계 추천 도서 5선' 영역 -->
+        
+
+<!-- [요구사항 반영 5] 고교학점제 규정 기반 '과목 이수 위계 및 제한' 실시간 자동 검증 (과목 설계 완료 후 배치 & 컴팩트 버튼형) -->
+<div id="verification-dashboard-box" class="p-4 sm:p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-3 mt-6">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <div class="flex items-center gap-2.5 flex-wrap">
+      <span class="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold flex items-center gap-1">
+        <i class="fa-solid fa-scale-balanced text-blue-600"></i> 학업 설계 검증
+      </span>
+      <h4 class="text-sm sm:text-base font-extrabold text-slate-900">
+        2022 개정 고교학점제 법정 이수 기준 자동 검증 결과
+      </h4>
+      <span id="overall-rule-status-badge" class="px-3 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> 모든 법정 규정 충족 중 ✓
+      </span>
+    </div>
+    
+    <!-- 최대한 버튼으로 컴팩트하게 열고 닫기 -->
+    <button type="button" onclick="cpToggleCollapse('verification-detail-grid', this, '검증 상세 내역 보기 ⌄', '검증 상세 접기 ⌃')" class="px-4 py-2 bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200 hover:border-blue-300 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-2xs self-start sm:self-auto">
+      <span class="cp-toggle-text">검증 상세 내역 보기 ⌄</span>
+    </button>
+  </div>
+
+  <!-- 기본 접힘: 버튼 클릭 시 펼쳐지는 상세 3대 검증 기준 -->
+  <div id="verification-detail-grid" class="hidden pt-3 border-t border-slate-100 space-y-3">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+      <!-- 1. 과목 위계 -->
+      <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-slate-700 flex items-center gap-1.5">
+            <i class="fa-solid fa-sitemap text-indigo-600"></i> 1. 과목 위계 준수
+          </span>
+          <strong id="prereq-status-tag" class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">✓ 정상</strong>
+        </div>
+        <p class="text-[11px] text-slate-600 leading-relaxed" id="prereq-msg-box">
+          선이수 과목 규정을 준수하고 있습니다.
+        </p>
+        <span class="text-[10px] text-slate-400 block pt-1 border-t border-slate-200">
+          대수/미적Ⅰ➔미적Ⅱ, 물리학➔역학과에너지 등
+        </span>
+      </div>
+
+      <!-- 2. 기초교과 81학점 제한 -->
+      <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-slate-700 flex items-center gap-1.5">
+            <i class="fa-solid fa-chart-pie text-blue-600"></i> 2. 기초교과(국영수) 81학점 제한
+          </span>
+          <span id="kme-limit-tag" class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">준수</span>
+        </div>
+        <div>
+          <div class="flex justify-between items-center text-[11px] font-bold mb-1">
+            <span class="text-slate-600">국·영·수 합산 학점:</span>
+            <span class="text-indigo-700 font-extrabold"><span id="kme-current-credits">24</span> / 81학점</span>
+          </div>
+          <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden my-1">
+            <div id="kme-progress-bar" class="bg-indigo-600 h-2 rounded-full transition-all" style="width: 30%"></div>
+          </div>
+          <div class="text-[11px] text-slate-600 leading-tight" id="kme-msg-box">
+            기초교과 이수 비율 규정(교과 174학점의 50% 이하)을 충족합니다. (여유: 37학점)
+          </div>
+        </div>
+        <span class="text-[10px] text-slate-400 block pt-1 border-t border-slate-200">
+          초과 시 타 교과 추가 이수 필요 (도서 44·52쪽)
+        </span>
+      </div>
+
+      <!-- 3. 필수 이수학점 충족 -->
+      <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-slate-700 flex items-center gap-1.5">
+            <i class="fa-solid fa-list-check text-emerald-600"></i> 3. 필수 이수학점 충족
+          </span>
+          <span id="req-credits-tag" class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">진행 중</span>
+        </div>
+        <div class="space-y-1 text-[11px] font-semibold text-slate-600">
+          <div class="flex justify-between">
+            <span>체육 (기준 10학점):</span>
+            <span id="req-pe-text" class="font-bold text-slate-800">0 / 10</span>
+          </div>
+          <div class="flex justify-between">
+            <span>예술 (기준 10학점):</span>
+            <span id="req-art-text" class="font-bold text-slate-800">0 / 10</span>
+          </div>
+          <div class="flex justify-between">
+            <span>생활·교양 (기준 16학점):</span>
+            <span id="req-gen-text" class="font-bold text-slate-800">0 / 16</span>
+          </div>
+        </div>
+        <span class="text-[10px] text-slate-400 block pt-1 border-t border-slate-200">
+          국·수·영·사·과는 공통과목으로 기본 충족 완료
+        </span>
+      </div>
+    </div>
+    <div class="text-[11px] text-slate-400 pt-1 text-right">
+      ※ 과목을 추가하거나 변경하면 법정 기준이 실시간 재진단됩니다.
+    </div>
+  </div>
+</div>
+
+
+<!-- [요구사항 반영 2] 나의 3개년 학업 설계서 과목 실시간 배치 현황 아래로 이동 배치된 '교재 부록 연계 추천 도서 5선' 영역 -->
         <div
           id="moved-book-section"
           class="p-5 sm:p-6 bg-gradient-to-r from-indigo-50/90 via-white to-amber-50/90 rounded-3xl border-2 border-indigo-200 shadow-sm space-y-3.5"
@@ -20881,6 +20876,55 @@ window.cpToggleCollapse = function(targetId, btn, showText, hideText) {
 </script>
 <script id="careerpath-precise-fix-js">
 (function() {
+    // 1. 추천 학과 5개를 1 2 3 4 5 동등한 카드 형태로 렌더링
+    window.renderTop5Cards = function(top5List) {
+        var container = document.getElementById("top5-cards-container");
+        if (!container) return;
+        container.innerHTML = "";
+        if (!top5List || top5List.length === 0) return;
+
+        top5List.slice(0, 5).forEach(function(m, idx) {
+            var rank = idx + 1;
+            var p = m.profile || {};
+            var pageClean = m.page ? m.page.split('~')[0].replace(/[^0-9]/g, '') : '';
+            var card = document.createElement("div");
+            card.className = "bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs hover:border-blue-400 transition flex flex-col justify-between space-y-3";
+            
+            card.innerHTML = 
+                '<div>' +
+                    '<div class="flex items-center justify-between pb-2 border-b border-slate-100">' +
+                        '<span class="w-6 h-6 rounded-lg ' + (rank === 1 ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700') + ' flex items-center justify-center text-xs font-black">' +
+                            rank +
+                        '</span>' +
+                        (pageClean ? '<span class="text-[11px] text-slate-400 font-semibold">교재 p.' + pageClean + '</span>' : '') +
+                    '</div>' +
+                    '<div class="mt-2 mb-2">' +
+                        '<span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">' + (m.group || '') + '</span>' +
+                        '<h4 class="text-base font-extrabold text-slate-900 mt-1 truncate" title="' + m.name + '">' + m.name + '</h4>' +
+                    '</div>' +
+                    '<div class="space-y-1 mb-2.5">' +
+                        '<div class="flex justify-between text-xs font-bold">' +
+                            '<span class="text-slate-500 text-[11px]">종합 일치도</span>' +
+                            '<strong class="text-blue-600 font-black">' + (m.currentComprehensiveScore || 0) + '%</strong>' +
+                        '</div>' +
+                        '<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">' +
+                            '<div class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: ' + (m.currentComprehensiveScore || 0) + '%"></div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="flex flex-wrap gap-1 text-[10px] text-slate-600 font-medium">' +
+                        '<span class="bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded">흥미 ' + (p.riasec ? p.riasec.join('/') : '-') + '</span>' +
+                        '<span class="bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded">적성 ' + (p.aptitudes ? p.aptitudes[0] : '-') + '</span>' +
+                    '</div>' +
+                '</div>' +
+                '<button type="button" onclick="chooseMajorFromTop5('' + m.id + '')" class="w-full py-2 bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 hover:border-transparent font-bold text-xs rounded-xl transition cursor-pointer flex items-center justify-center gap-1 shadow-2xs">' +
+                    '<span>선택하기</span>' +
+                    '<i class="fa-solid fa-arrow-right text-[10px]"></i>' +
+                '</button>';
+            container.appendChild(card);
+        });
+    };
+
+    // 2. 수능 과목 뱃지 및 일반선택 과목 렌더러
     var suneungSubjects = [
         '화법과 언어', '독서와 작문', '문학', '언어와 매체',
         '대수', '미적분Ⅰ', '확률과 통계', '수학Ⅰ', '수학Ⅱ', '미적분',
@@ -20931,6 +20975,26 @@ window.cpToggleCollapse = function(targetId, btn, showText, hideText) {
             }
         };
     }
+
+    // 공통 토글 함수 등록
+    window.cpToggleCollapse = window.cpToggleCollapse || function(targetId, btn, showText, hideText) {
+        var target = document.getElementById(targetId);
+        if (!target) return;
+        var isHidden = target.classList.contains('hidden');
+        if (isHidden) {
+            target.classList.remove('hidden');
+            if (btn) {
+                var textEl = btn.querySelector('.cp-toggle-text') || btn;
+                if (hideText) textEl.textContent = hideText;
+            }
+        } else {
+            target.classList.add('hidden');
+            if (btn) {
+                var textEl = btn.querySelector('.cp-toggle-text') || btn;
+                if (showText) textEl.textContent = showText;
+            }
+        }
+    };
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
