@@ -5786,7 +5786,7 @@ a[href*="cmassedumall.com"].cp-book-link-btn {
 </p>
 
 <!-- 1단계 액션: [ 새 수업 시작 ] -->
-<div style="margin-bottom: 18px;">
+<div style="margin-bottom: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
 <button
   type="button"
   id="btn-start-teacher-class"
@@ -5798,8 +5798,8 @@ a[href*="cmassedumall.com"].cp-book-link-btn {
   <span>새 수업 시작</span>
   <i class="fa-solid fa-arrow-right text-xs"></i>
 </button>
-<span id="teacher-class-status-badge" style="display: none; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 700; color: #16A34A; background: #DCFCE7; border: 1px solid #BBF7D0; padding: 6px 14px; border-radius: 9999px; margin-left: 10px;">
-  <i class="fa-solid fa-circle-check"></i> <span>수업 세션 활성화됨</span>
+<span id="teacher-class-status-badge" style="display: none; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #15803D; background: #DCFCE7; border: 1.5px solid #86EFAC; padding: 7px 16px; border-radius: 9999px; box-shadow: 0 2px 6px rgba(22, 163, 74, 0.15);">
+  <i class="fa-solid fa-circle-check text-emerald-600"></i> <span id="teacher-class-status-text">수업 세션 활성화됨</span>
 </span>
 </div>
 
@@ -5809,13 +5809,15 @@ a[href*="cmassedumall.com"].cp-book-link-btn {
 </div>
 
 <!-- 2단계 영역: 학생용 참여 링크 & QR 카드 -->
-<div id="teacher-student-share-card" style="background: #FFFFFF; border: 1.5px solid #CBD5E1; border-radius: 16px; padding: 18px 20px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05); margin-bottom: 22px; max-width: 560px;">
+<div id="teacher-student-share-card" style="background: #FFFFFF; border: 1.5px solid #CBD5E1; border-radius: 16px; padding: 18px 20px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05); margin-bottom: 22px; max-width: 600px;">
   <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
     <span style="font-size: 14px; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 6px;">
       <i class="fa-solid fa-link text-indigo-600"></i>
       <span>학생용 참여 링크</span>
     </span>
-    <span style="font-size: 11px; font-weight: 600; color: #64748B; background: #F1F5F9; padding: 2px 8px; border-radius: 6px;">실시간 접속 가능</span>
+    <span id="teacher-session-chip" style="font-size: 11.5px; font-weight: 700; color: #2563EB; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 3px 10px; border-radius: 6px;">
+      고유 수업 링크
+    </span>
   </div>
 
   <!-- 링크 주소 표시 및 복사 버튼 -->
@@ -5824,14 +5826,14 @@ a[href*="cmassedumall.com"].cp-book-link-btn {
       type="text"
       id="teacher-student-share-url"
       readonly
-      value="https://122cks.github.io/"
-      style="flex: 1; min-width: 220px; height: 42px !important; font-size: 13px !important; background-color: #F8FAFC !important; border: 1px solid #CBD5E1 !important; border-radius: 10px !important; padding: 0 12px !important; font-family: monospace !important; color: #334155 !important;"
+      value="https://122cks.github.io/CareerPath/"
+      style="flex: 1; min-width: 240px; height: 44px !important; font-size: 13px !important; background-color: #F8FAFC !important; border: 1.5px solid #CBD5E1 !important; border-radius: 10px !important; padding: 0 12px !important; font-family: monospace !important; color: #1E293B !important; font-weight: 600 !important;"
     />
     <button
       type="button"
       id="btn-copy-student-link"
       onclick="copyTeacherStudentLink()"
-      style="height: 42px; padding: 0 18px; background: #2563EB; color: #FFFFFF; font-weight: 700; font-size: 13px; border: none; border-radius: 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25); transition: all 0.15s ease;"
+      style="height: 44px; padding: 0 18px; background: #2563EB; color: #FFFFFF; font-weight: 700; font-size: 13px; border: none; border-radius: 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25); transition: all 0.15s ease;"
     >
       <i class="fa-solid fa-copy"></i>
       <span id="copy-btn-text">링크 복사</span>
@@ -5840,7 +5842,7 @@ a[href*="cmassedumall.com"].cp-book-link-btn {
       type="button"
       id="btn-view-student-qr"
       onclick="toggleTeacherQrCodeModal()"
-      style="height: 42px; padding: 0 16px; background: #FFFFFF; color: #475569; font-weight: 700; font-size: 13px; border: 1.5px solid #CBD5E1; border-radius: 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s ease;"
+      style="height: 44px; padding: 0 16px; background: #FFFFFF; color: #475569; font-weight: 700; font-size: 13px; border: 1.5px solid #CBD5E1; border-radius: 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s ease;"
     >
       <i class="fa-solid fa-qrcode text-indigo-600"></i>
       <span>QR 코드 보기</span>
@@ -5849,14 +5851,16 @@ a[href*="cmassedumall.com"].cp-book-link-btn {
 
   <!-- QR 코드 토글 영역 -->
   <div id="teacher-qr-container" style="display: none; padding-top: 14px; border-top: 1px dashed #E2E8F0; text-align: center;">
-    <div style="display: inline-block; padding: 12px; background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+    <div style="display: inline-block; padding: 14px; background: #FFFFFF; border: 1.5px solid #CBD5E1; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
       <img
         id="teacher-qr-image"
-        src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://122cks.github.io/"
+        src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2F122cks.github.io%2FCareerPath%2F"
         alt="학생용 참여 QR 코드"
-        style="width: 160px; height: 160px; display: block; margin: 0 auto;"
+        style="width: 180px; height: 180px; display: block; margin: 0 auto; border-radius: 8px;"
       />
-      <span style="display: block; font-size: 11px; font-weight: 700; color: #64748B; margin-top: 8px;">스마트폰 카메라로 스캔하여 참여</span>
+      <span style="display: block; font-size: 12px; font-weight: 750; color: #475569; margin-top: 10px;">
+        <i class="fa-solid fa-camera text-indigo-600 mr-1"></i> 스마트폰 카메라로 스캔하여 참여
+      </span>
     </div>
   </div>
 </div>
@@ -5923,46 +5927,136 @@ class="cp-book-link-btn">
 </div>
 </div>
 
-<!-- [교사용 첫 화면 최소 인라인 스크립트] 링크 복사, QR 토글, 수업 시작 -->
+<!-- ========================================================================= -->
+<!-- [학생 세션 + 학생용 링크 + QR 생성 전용 스크립트] -->
+<!-- ========================================================================= -->
 <script id="teacher-hero-interaction-script">
+// 1. 고유 세션 ID 생성 함수 (8~12자리 영문 대소문자 + 숫자 조합, 충돌 방지)
+function generateClassSessionId(length) {
+  length = length || 10;
+  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
+  var result = '';
+  for (var i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+// 2. GitHub Pages /CareerPath/ 경로를 보장하는 기본 URL 계산 (루트 404 절대 방어)
+function getStudentBaseUrl() {
+  var origin = window.location.origin;
+  var pathname = window.location.pathname || '';
+
+  if (origin && origin.indexOf('http') === 0) {
+    if (origin.indexOf('122cks.github.io') !== -1) {
+      return 'https://122cks.github.io/CareerPath/';
+    }
+    if (pathname.indexOf('/CareerPath') !== -1) {
+      var idx = pathname.indexOf('/CareerPath');
+      var base = pathname.substring(0, idx + '/CareerPath/'.length);
+      return origin + (base.endsWith('/') ? base : base + '/');
+    }
+    // 기타 도메인 또는 로컬 서버 환경
+    var cleanPath = pathname.replace(/index\.html$/i, '');
+    if (!cleanPath.endsWith('/')) cleanPath += '/';
+    return origin + cleanPath;
+  }
+  return 'https://122cks.github.io/CareerPath/';
+}
+
+// 3. 학생용 세션 URL 조립 함수
+function buildStudentSessionUrl(sessionId) {
+  var baseUrl = getStudentBaseUrl();
+  // https://122cks.github.io/ 단독 루트가 되지 않도록 방어
+  if (baseUrl === 'https://122cks.github.io/' || baseUrl === 'https://122cks.github.io') {
+    baseUrl = 'https://122cks.github.io/CareerPath/';
+  }
+  var separator = baseUrl.indexOf('?') === -1 ? '?session=' : '&session=';
+  return baseUrl + separator + encodeURIComponent(sessionId);
+}
+
+// 4. [ 새 수업 시작 ]: 실제 세션 생성 및 학생 URL/QR/뱃지 즉시 갱신
 function startTeacherClassSession() {
+  // 매번 새로운 고유 세션 ID 생성
+  var newSessionId = generateClassSessionId(10);
+  sessionStorage.setItem('cp_teacher_active_session', newSessionId);
+
+  // 학생용 URL 생성
+  var studentUrl = buildStudentSessionUrl(newSessionId);
+
+  // input 필드에 학생용 URL 표시
+  var urlInput = document.getElementById('teacher-student-share-url');
+  if (urlInput) {
+    urlInput.value = studentUrl;
+  }
+
+  // QR 코드 이미지 갱신
+  var qrImg = document.getElementById('teacher-qr-image');
+  if (qrImg) {
+    qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(studentUrl);
+  }
+
+  // 칩 텍스트 갱신
+  var chip = document.getElementById('teacher-session-chip');
+  if (chip) {
+    chip.innerHTML = '세션: <strong>' + newSessionId + '</strong>';
+  }
+
+  // 세션 활성화 뱃지 표시
   var badge = document.getElementById('teacher-class-status-badge');
+  var badgeText = document.getElementById('teacher-class-status-text');
   if (badge) {
+    if (badgeText) {
+      badgeText.innerHTML = '수업 세션 활성화됨 (코드: <strong>' + newSessionId + '</strong>)';
+    }
     badge.style.display = 'inline-flex';
   }
+
+  // 학생 공유 카드 강조 표시 및 스크롤
   var shareCard = document.getElementById('teacher-student-share-card');
   if (shareCard) {
     shareCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
     shareCard.style.borderColor = '#2563EB';
-    shareCard.style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.2)';
+    shareCard.style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.25)';
   }
 }
 
+// 5. [ 링크 복사 ]: 표시된 학생용 URL을 클립보드에 정확하게 복사
 function copyTeacherStudentLink() {
   var urlInput = document.getElementById('teacher-student-share-url');
-  var currentUrl = (window.location && window.location.href && window.location.href.indexOf('http') === 0) ? window.location.href : (urlInput ? urlInput.value : 'https://122cks.github.io/');
-  if (urlInput) urlInput.value = currentUrl;
-  
+  var targetUrl = '';
+
+  if (urlInput && urlInput.value && urlInput.value.indexOf('session=') !== -1) {
+    targetUrl = urlInput.value;
+  } else {
+    // 세션이 미생성 상태이면 새 세션 즉시 생성 후 복사
+    var activeSession = sessionStorage.getItem('cp_teacher_active_session') || generateClassSessionId(10);
+    sessionStorage.setItem('cp_teacher_active_session', activeSession);
+    targetUrl = buildStudentSessionUrl(activeSession);
+    if (urlInput) urlInput.value = targetUrl;
+  }
+
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(currentUrl).then(function() {
+    navigator.clipboard.writeText(targetUrl).then(function() {
       showCopyToast();
     }).catch(function() {
-      fallbackCopy(urlInput);
+      fallbackCopy(urlInput, targetUrl);
     });
   } else {
-    fallbackCopy(urlInput);
+    fallbackCopy(urlInput, targetUrl);
   }
 }
 
-function fallbackCopy(inputEl) {
-  if (!inputEl) return;
-  inputEl.select();
-  inputEl.setSelectionRange(0, 99999);
+function fallbackCopy(inputEl, textToCopy) {
+  if (inputEl) {
+    inputEl.select();
+    inputEl.setSelectionRange(0, 99999);
+  }
   try {
     document.execCommand('copy');
     showCopyToast();
   } catch (err) {
-    alert('참여 링크: ' + inputEl.value);
+    alert('참여 링크: ' + textToCopy);
   }
 }
 
@@ -5977,34 +6071,92 @@ function showCopyToast() {
   }
 }
 
+// 6. [ QR 코드 보기 ]: 동일한 현재 세션 URL을 바탕으로 QR 토글
 function toggleTeacherQrCodeModal() {
   var qrContainer = document.getElementById('teacher-qr-container');
   if (!qrContainer) return;
+
   if (qrContainer.style.display === 'none' || qrContainer.style.display === '') {
     qrContainer.style.display = 'block';
-    var qrImg = document.getElementById('teacher-qr-image');
+
     var urlInput = document.getElementById('teacher-student-share-url');
-    var currentUrl = (window.location && window.location.href && window.location.href.indexOf('http') === 0) ? window.location.href : (urlInput ? urlInput.value : 'https://122cks.github.io/');
+    var currentUrl = '';
+    if (urlInput && urlInput.value && urlInput.value.indexOf('session=') !== -1) {
+      currentUrl = urlInput.value;
+    } else {
+      var activeSession = sessionStorage.getItem('cp_teacher_active_session') || generateClassSessionId(10);
+      sessionStorage.setItem('cp_teacher_active_session', activeSession);
+      currentUrl = buildStudentSessionUrl(activeSession);
+      if (urlInput) urlInput.value = currentUrl;
+    }
+
+    var qrImg = document.getElementById('teacher-qr-image');
     if (qrImg) {
-      qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=' + encodeURIComponent(currentUrl);
+      qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(currentUrl);
     }
   } else {
     qrContainer.style.display = 'none';
   }
 }
 
-// 초기 로딩 시 현재 페이지 URL로 링크 자동 동기화
-(function() {
-  function initShareUrl() {
-    var urlInput = document.getElementById('teacher-student-share-url');
-    if (urlInput && window.location && window.location.href && window.location.href.indexOf('http') === 0) {
-      urlInput.value = window.location.href;
+// 7. 학생 접속 감지 및 세션 초기화 (학생 URL ?session=... 인식 및 일반 접속 완벽 호환)
+(function initSessionRecognition() {
+  function runCheck() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var sessionId = params.get('session');
+
+      // 7-1. 학생이 ?session=ABC1234567 링크로 접속한 경우
+      if (sessionId && sessionId.trim() !== '') {
+        sessionId = sessionId.trim();
+        sessionStorage.setItem('cp_current_session_id', sessionId);
+        sessionStorage.setItem('cp_is_student_mode', 'true');
+
+        // 상단 안내 뱃지 전환 (학생 참여 세션 연결 알림)
+        var badge = document.getElementById('teacher-class-status-badge');
+        var badgeText = document.getElementById('teacher-class-status-text');
+        if (badge) {
+          badge.style.display = 'inline-flex';
+          badge.style.backgroundColor = '#EFF6FF';
+          badge.style.borderColor = '#BFDBFE';
+          badge.style.color = '#1D4ED8';
+          if (badgeText) {
+            badgeText.innerHTML = '수업 세션 참여 중 (세션 코드: <strong>' + sessionId + '</strong>)';
+          }
+        }
+
+        var heroDesc = document.querySelector('.cp-hero-desc');
+        if (heroDesc) {
+          heroDesc.innerHTML = '선생님의 수업 세션에 성공적으로 연결되었습니다. 나의 3개년 학업설계를 시작해 보세요.';
+        }
+      } else {
+        // 7-2. 세션 ID가 없는 일반 접속 시:
+        // 기존 세션이 있다면 input에 유지, 없다면 기본 /CareerPath/ URL 표시
+        var urlInput = document.getElementById('teacher-student-share-url');
+        var savedTeacherSession = sessionStorage.getItem('cp_teacher_active_session');
+        if (urlInput) {
+          if (savedTeacherSession) {
+            urlInput.value = buildStudentSessionUrl(savedTeacherSession);
+            var badge = document.getElementById('teacher-class-status-badge');
+            var badgeText = document.getElementById('teacher-class-status-text');
+            if (badge && badgeText) {
+              badgeText.innerHTML = '수업 세션 활성화됨 (코드: <strong>' + savedTeacherSession + '</strong>)';
+              badge.style.display = 'inline-flex';
+            }
+          } else {
+            urlInput.value = getStudentBaseUrl();
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('Session init warning:', e);
     }
   }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initShareUrl);
+    document.addEventListener('DOMContentLoaded', runCheck);
   } else {
-    initShareUrl();
+    runCheck();
   }
 })();
 </script>
@@ -9932,8 +10084,53 @@ function saveSessionState() {
             const found = majorsData.find((m) => m.id === state.majorId);
             if (found) currentSelectedMajor = found;
           }
-        } catch (e) {}
+        
+    // [세션 복원 후 화면 UI 동기화]
+    if (typeof currentSelectedMajor !== 'undefined' && currentSelectedMajor && typeof selectMajor === 'function') {
+      try { selectMajor(currentSelectedMajor.id); } catch (e) {}
+    }
+    if (typeof renderSubjectContent === 'function') {
+      try { renderSubjectContent(); } catch (e) {}
+    }
+    if (typeof renderSelectedTags === 'function') {
+      try { renderSelectedTags(); } catch (e) {}
+    }
+    if (typeof runDiagnosis === 'function') {
+      try { runDiagnosis(); } catch (e) {}
+    }
+    if (typeof buildStudyPlan === 'function') {
+      try { buildStudyPlan(); } catch (e) {}
+    }
+    if (typeof updateStudentHeader === 'function') {
+      try { updateStudentHeader(); } catch (e) {}
+    }
+  } catch (e) {}
       }
+
+// =========================================================================
+// [앱 초기화 연동] 페이지 로드 시 loadSessionState() 1회 자동 실행
+// (새로고침 시 저장된 학업설계 데이터 복원, 전체 초기화 시 미복원, 학생 세션 충돌 방지)
+// =========================================================================
+(function initCareerPathSessionRestore() {
+  function runSessionRestore() {
+    try {
+      if (typeof loadSessionState === 'function') {
+        loadSessionState();
+      }
+    } catch (err) {
+      console.warn('loadSessionState 초기화 실행 중 경고:', err);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(runSessionRestore, 150);
+    });
+  } else {
+    setTimeout(runSessionRestore, 150);
+  }
+})();
+
 
 
 function applyPreset(presetType) {
@@ -21336,33 +21533,6 @@ function runDiagnosis() {
     </button>
   </nav>
 
-  <!-- ==================== Mobile Bottom Compact QUICK Bar (<= 768px) ==================== -->
-  <nav class="cp-mobile-bottom-quickbar no-print" id="careerpath-mobile-quickbar">
-    <button type="button" class="cp-m-btn active" data-target="section-checklist" onclick="cpQuickScroll('section-checklist')">
-      <i class="fa-solid fa-clipboard-check"></i>
-      <span>팩트체크</span>
-    </button>
-    <button type="button" class="cp-m-btn" data-target="step-1" onclick="cpQuickScroll('step-1')">
-      <i class="fa-solid fa-compass"></i>
-      <span>진로진단</span>
-    </button>
-    <button type="button" class="cp-m-btn" data-target="step-2" onclick="cpQuickScroll('step-2')">
-      <i class="fa-solid fa-graduation-cap"></i>
-      <span>목표학과</span>
-    </button>
-    <button type="button" class="cp-m-btn" data-target="step-3" onclick="cpQuickScroll('step-3')">
-      <i class="fa-solid fa-book-open"></i>
-      <span>과목설계</span>
-    </button>
-    <button type="button" class="cp-m-btn" data-target="step-4" onclick="cpQuickScroll('step-4')">
-      <i class="fa-solid fa-file-signature"></i>
-      <span>학업설계</span>
-    </button>
-    <button type="button" class="cp-m-btn cp-m-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
-      <i class="fa-solid fa-arrow-up"></i>
-      <span>TOP</span>
-    </button>
-  </nav>
 
 
   <!-- CareerPath Sidebar Navigation Helper -->
@@ -21929,7 +22099,7 @@ window.cpToggleCollapse = function(targetId, btn, showText, hideText) {
                         '<span class="bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded">적성 ' + (p.aptitudes ? p.aptitudes[0] : '-') + '</span>' +
                     '</div>' +
                 '</div>' +
-                '<button type="button" onclick="chooseMajorFromTop5('' + m.id + '')" class="w-full py-2 bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 hover:border-transparent font-bold text-xs rounded-xl transition cursor-pointer flex items-center justify-center gap-1 shadow-2xs">' +
+                '<button type="button" onclick="chooseMajorFromTop5(\'' + m.id + '\')" class="w-full py-2 bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 hover:border-transparent font-bold text-xs rounded-xl transition cursor-pointer flex items-center justify-center gap-1 shadow-2xs">' +
                     '<span>선택하기</span>' +
                     '<i class="fa-solid fa-arrow-right text-[10px]"></i>' +
                 '</button>';
@@ -22019,6 +22189,188 @@ window.cpToggleCollapse = function(targetId, btn, showText, hideText) {
     } else {
         syncMajorTip();
     }
+})();
+</script>
+
+<!-- ========================================================================= -->
+<!-- [기능 복구] savePlanAsImage() 구현 (html2canvas 기반 고해상도 PNG 자동 다운로드) -->
+<!-- ========================================================================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script id="careerpath-save-plan-as-image-script">
+(function() {
+  window.savePlanAsImage = function() {
+    var target = document.getElementById('printable-study-plan');
+    if (!target) {
+      alert('학업설계서 인쇄/저장 영역(printable-study-plan)을 찾을 수 없습니다.');
+      return;
+    }
+
+    // 시각적 피드백: 저장 버튼 상태 변경
+    var saveBtns = document.querySelectorAll('button[onclick*="savePlanAsImage"]');
+    var origStates = [];
+    saveBtns.forEach(function(btn, i) {
+      origStates[i] = { html: btn.innerHTML, disabled: btn.disabled };
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>PNG 생성 중...</span>';
+      btn.disabled = true;
+    });
+
+    function restoreBtns() {
+      saveBtns.forEach(function(btn, i) {
+        if (origStates[i]) {
+          btn.innerHTML = origStates[i].html;
+          btn.disabled = origStates[i].disabled;
+        }
+      });
+    }
+
+    function executeCapture() {
+      try {
+        var schoolInput = document.getElementById('input-school');
+        var nameInput = document.getElementById('input-name');
+        var dateInput = document.getElementById('input-date');
+
+        var schoolName = (schoolInput && schoolInput.value.trim()) || '';
+        var studentName = (nameInput && nameInput.value.trim()) || '학생';
+        var dateStr = (dateInput && dateInput.value.replace(/-/g, '')) || (function() {
+          var d = new Date();
+          var m = String(d.getMonth() + 1).padStart(2, '0');
+          var day = String(d.getDate()).padStart(2, '0');
+          return '' + d.getFullYear() + m + day;
+        })();
+
+        var fileName = '고1_3개년_개인학업설계서_' + (schoolName ? schoolName + '_' : '') + studentName + '_' + dateStr + '.png';
+
+        html2canvas(target, {
+          scale: 2, // 고해상도 2배율(레티나 품질) 캡처
+          useCORS: true,
+          allowTaint: true,
+          backgroundColor: '#ffffff',
+          logging: false
+        }).then(function(canvas) {
+          var dataUrl = canvas.toDataURL('image/png');
+          var downloadLink = document.createElement('a');
+          downloadLink.download = fileName;
+          downloadLink.href = dataUrl;
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+          restoreBtns();
+        }).catch(function(err) {
+          console.error('savePlanAsImage 에러:', err);
+          restoreBtns();
+          alert('PNG 이미지 생성 중 오류가 발생했습니다. [A4 인쇄 / PDF 저장] 기능을 이용해 주세요.');
+        });
+      } catch (e) {
+        console.error('savePlanAsImage 예외 발생:', e);
+        restoreBtns();
+        alert('PNG 이미지 처리 중 오류가 발생했습니다: ' + e.message);
+      }
+    }
+
+    if (typeof html2canvas === 'function') {
+      executeCapture();
+    } else {
+      var script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+      script.onload = function() {
+        executeCapture();
+      };
+      script.onerror = function() {
+        restoreBtns();
+        alert('이미지 저장 라이브러리(html2canvas)를 로드하지 못했습니다. 네트워크 연결을 확인하시거나 [A4 인쇄 / PDF 저장]을 이용해 주세요.');
+      };
+      document.head.appendChild(script);
+    }
+  };
+})();
+</script>
+
+<!-- ========================================================================= -->
+<!-- [기능 구현] resetAllDataWithConfirm() 전체 초기화 (학생 세션 유지 + 학업설계 데이터 리셋) -->
+<!-- ========================================================================= -->
+<script id="careerpath-reset-all-data-script">
+(function() {
+  window.resetAllDataWithConfirm = function() {
+    var confirmMsg = '작성한 학업설계 데이터를 모두 초기화하시겠습니까?\n(인적사항, 선택 학과, 선택 과목, 검사 결과가 모두 초기화됩니다.)';
+    if (!window.confirm(confirmMsg)) {
+      return;
+    }
+
+    try {
+      // 1. 학생 및 교사 세션 ID 보존 (세션 자체는 유지)
+      var teacherSession = sessionStorage.getItem('cp_teacher_active_session');
+      var studentSession = sessionStorage.getItem('cp_current_session_id');
+      var isStudentMode = sessionStorage.getItem('cp_is_student_mode');
+
+      // 2. sessionStorage 및 localStorage 내 학업설계 데이터 완전 삭제
+      sessionStorage.clear();
+      localStorage.clear();
+
+      // 3. 학생 및 교사 세션 ID 복원 (현재 참여 세션 유지)
+      if (teacherSession) sessionStorage.setItem('cp_teacher_active_session', teacherSession);
+      if (studentSession) sessionStorage.setItem('cp_current_session_id', studentSession);
+      if (isStudentMode) sessionStorage.setItem('cp_is_student_mode', isStudentMode);
+
+      // 4. 인적사항 입력 필드 초기화
+      var inputIds = [
+        'input-school',
+        'input-school-step3',
+        'input-name',
+        'input-grade',
+        'input-class',
+        'input-num',
+        'input-custom-book'
+      ];
+      inputIds.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+
+      // 5. 날짜 필드 오늘 날짜로 재설정
+      var dateEl = document.getElementById('input-date');
+      if (dateEl) {
+        dateEl.value = new Date().toISOString().slice(0, 10);
+      }
+
+      // 6. 도서 선택 체크박스 및 액티브 카드 해제
+      var bookChecks = document.querySelectorAll('#book-selection-boxes input[type="checkbox"]');
+      bookChecks.forEach(function(cb) { cb.checked = false; });
+
+      // 7. 진로 심리검사, 적성검사, 가치관검사, 팩트체크 등 모든 설문 라디오/체크박스 해제
+      var testInputs = document.querySelectorAll('#step-1 input[type="radio"], #step-1 input[type="checkbox"], input[name*="test"], input[name*="quest"], input[name*="eval"]');
+      testInputs.forEach(function(inp) { inp.checked = false; });
+
+      // 8. 선택 과목 초기화 함수 호출
+      if (typeof clearAllSelectedSubjects === 'function') {
+        try { clearAllSelectedSubjects(); } catch (e) {}
+      }
+
+      // 9. 전역 과목 배열 초기화 (존재하는 경우)
+      if (typeof selectedSubjects !== 'undefined' && Array.isArray(selectedSubjects)) {
+        selectedSubjects.length = 0;
+      }
+      if (typeof userSelectedSubjects !== 'undefined' && Array.isArray(userSelectedSubjects)) {
+        userSelectedSubjects.length = 0;
+      }
+
+      // 10. 화면 동기화 함수 호출
+      if (typeof updateStudentHeader === 'function') {
+        try { updateStudentHeader(); } catch (e) {}
+      }
+      if (typeof renderAllSelectedSubjects === 'function') {
+        try { renderAllSelectedSubjects(); } catch (e) {}
+      }
+      if (typeof calculateCredits === 'function') {
+        try { calculateCredits(); } catch (e) {}
+      }
+
+      // 11. 현재 URL의 ?session=... 파라미터를 온전히 유지하며 새로고침하여 완전한 초기 상태 보장
+      window.location.reload();
+    } catch (err) {
+      console.error('resetAllDataWithConfirm 오류:', err);
+      window.location.reload();
+    }
+  };
 })();
 </script>
 </body>
