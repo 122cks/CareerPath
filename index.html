@@ -682,7 +682,7 @@ textarea {
 
 .cp-hero-title {
   font-size: clamp(28px, 3.8vw, 38px) !important;
-  font-weight: 850 !important;
+  font-weight: 800 !important;
   color: #0F172A !important;
   line-height: 1.3 !important;
   letter-spacing: -0.03em !important;
@@ -1328,8 +1328,8 @@ button#btn-sub-value.text-indigo-600,
 }
 
 #majors-grid-container {
-  display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+ display: grid !important;
+ grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
   gap: 14px !important;
   width: 100% !important;
   box-sizing: border-box !important;
@@ -1394,7 +1394,7 @@ button#btn-sub-value.text-indigo-600,
 #majors-grid-container .font-black,
 #majors-grid-container .font-bold {
   font-size: 14.5px !important;
-  color: #0F172A !important;
+  color: inherit;
   font-weight: 800 !important;
   letter-spacing: -0.015em;
 }
@@ -1412,7 +1412,7 @@ button#btn-sub-value.text-indigo-600,
 
 #selected-major-title {
   font-size: clamp(22px, 2.5vw, 28px) !important;
-  font-weight: 850 !important;
+  font-weight: 800 !important;
   color: #0F172A !important;
   letter-spacing: -0.025em;
 }
@@ -3663,15 +3663,15 @@ span.bg-rose-600,
   border: 1.5px solid #E2E8F0 !important;
 }
 
-#majors-grid-container button span:first-child {
-  color: #0F172A !important;
-  font-weight: 700 !important;
-}
-
-#majors-grid-container button span[class*="text-[10px]"],
-#majors-grid-container button span:last-child {
-  color: #64748B !important;
-  font-weight: 600 !important;
+#majors-grid-container button:not(.selected-major-btn):not(.active-major):not([data-selected="true"]):not(.bg-blue-600):not(.bg-indigo-600) span:first-child {  
+ color: #0F172A !important;  
+ font-weight: 700 !important;  
+}  
+  
+#majors-grid-container button:not(.selected-major-btn):not(.active-major):not([data-selected="true"]):not(.bg-blue-600):not(.bg-indigo-600) span[class*="text-[10px]"],  
+#majors-grid-container button:not(.selected-major-btn):not(.active-major):not([data-selected="true"]):not(.bg-blue-600):not(.bg-indigo-600) span:last-child {  
+ color: #64748B !important;  
+ font-weight: 600 !important;  
 }
 
 #majors-grid-container button.selected-major-btn,
@@ -3961,7 +3961,7 @@ button .fa-brands {
 
 .cp-hero-title {
   font-size: clamp(26px, 3.5vw, 36px) !important;
-  font-weight: 850 !important;
+  font-weight: 800 !important;
   color: #0F172A !important;
   line-height: 1.28 !important;
   letter-spacing: -0.03em !important;
@@ -4460,7 +4460,7 @@ button#btn-sub-value.text-indigo-600,
 #step-3 #sim-target-major-name {
   color: #0F172A !important;
   font-size: clamp(26px, 3.2vw, 34px) !important;
-  font-weight: 850 !important;
+  font-weight: 800 !important;
 }
 
 #step-3 #sim-target-major-group {
@@ -4633,7 +4633,7 @@ button#btn-sub-value.text-indigo-600,
 
 #step-3 #sim-target-major-name {
     color: #0F172A !important;
-    font-weight: 850 !important;
+    font-weight: 800 !important;
 }
 
 #step-3 #sim-target-major-group {
@@ -4838,7 +4838,7 @@ button#btn-sub-value.text-indigo-600,
 
 #step-3 #sim-target-major-name {
     color: #0F172A !important;
-    font-weight: 850 !important;
+    font-weight: 800 !important;
 }
 
 #step-3 #sim-target-major-group {
@@ -5386,8 +5386,8 @@ a[href*="cmassedumall.com"].cp-book-link-btn {
   color: #2563EB !important;
 }
 #step-1 h2, #step-1 .step02-title {
-  font-size: 24px !important;
-  font-weight: 850 !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
   color: #0F172A !important;
   letter-spacing: -0.025em !important;
   margin: 8px 0 6px 0 !important;
@@ -5505,8 +5505,8 @@ div#step-1 {
 }
 
 #step-1 h2, #step-1 .step02-title {
-  font-size: 24px !important;
-  font-weight: 850 !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
   color: #0F172A !important;
   letter-spacing: -0.025em !important;
   margin: 8px 0 6px 0 !important;
@@ -5551,7 +5551,7 @@ div#step-1 {
   transition: all 0.2s ease !important;
 }
 
-/* 2. 학업 설계 현황 카드 (#graduation-requirement-card) 레이아웃 및 여백/오버플로우 방지 */
+/* 2. 학업 설계 현황 카드 (#graduation-requirement-card) 디자인 & 여백 최적화 */
 #graduation-requirement-card {
   background-color: #FFFFFF !important;
   border: 1.5px solid #CBD5E1 !important;
@@ -5567,6 +5567,7 @@ div#step-1 {
 
 #graduation-requirement-card .border-t {
   border-top: 1px solid #F1F5F9 !important;
+  margin: 18px 0 !important;
 }
 
 #graduation-requirement-card .flex {
@@ -5606,11 +5607,18 @@ div#step-1 {
   gap: 12px !important;
 }
 
+/* 학업 설계 현황 수치 & 퍼센트 폰트 강화 */
 #calc-total-credits-card {
   font-size: clamp(26px, 3vw, 32px) !important;
   font-weight: 900 !important;
   color: #2563EB !important;
   letter-spacing: -0.02em !important;
+}
+
+#calc-credit-pct {
+  font-size: clamp(18px, 2.2vw, 22px) !important;
+  font-weight: 900 !important;
+  color: #16A34A !important;
 }
 
 #calc-credit-diff {
@@ -5624,7 +5632,24 @@ div#step-1 {
   color: #2563EB !important;
 }
 
-/* 3. 학업 설계 점검 카드 (#verification-dashboard-box) 레이아웃 및 여백/오버플로우 방지 */
+/* 하단 이수 영역별 요약 뱃지 스타일 (공통, 일반, 진로·융합, 창체) */
+#graduation-requirement-card #pill-common,
+#graduation-requirement-card #pill-general,
+#graduation-requirement-card #pill-career,
+#graduation-requirement-card #pill-creative {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 4px 10px !important;
+  background-color: #F8FAFC !important;
+  color: #334155 !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* 3. 학업 설계 점검 카드 (#verification-dashboard-box) 디자인 & 여백 최적화 */
 #verification-dashboard-box {
   background-color: #FFFFFF !important;
   border: 1.5px solid #CBD5E1 !important;
@@ -5654,6 +5679,29 @@ div#step-1 {
   min-width: 0 !important;
 }
 
+/* 📋 학업 설계 점검 뱃지 */
+#check-collapsed-summary-card span.bg-blue-50 {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 14px !important;
+  background-color: #EFF6FF !important;
+  color: #1D4ED8 !important;
+  border: 1px solid #BFDBFE !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  margin-bottom: 6px !important;
+}
+
+#check-collapsed-summary-card p {
+  font-size: 13.5px !important;
+  color: #475569 !important;
+  font-weight: 500 !important;
+  margin: 4px 0 10px 0 !important;
+  line-height: 1.5 !important;
+}
+
 #check-collapsed-summary-card .flex-wrap {
   display: flex !important;
   flex-wrap: wrap !important;
@@ -5661,6 +5709,20 @@ div#step-1 {
   gap: 12px !important;
 }
 
+#check-current-credits {
+  color: #2563EB !important;
+  font-weight: 900 !important;
+  font-size: 15.5px !important;
+}
+
+#check-remaining-credits {
+  color: #0F172A !important;
+  font-weight: 900 !important;
+  font-size: 15.5px !important;
+}
+
+/* 상세 보기 ＋ 버튼 (아이디 호환 지원) */
+#btn-toggle-verification-details,
 #btn-toggle-verification-detail {
   background-color: #F8FAFC !important;
   color: #334155 !important;
@@ -5678,6 +5740,7 @@ div#step-1 {
   white-space: nowrap !important;
 }
 
+#btn-toggle-verification-details:hover,
 #btn-toggle-verification-detail:hover {
   background-color: #EFF6FF !important;
   color: #1D4ED8 !important;
@@ -5813,6 +5876,1396 @@ div#step-1 {
 }
 
 </style>
+<style id="careerpath-two-cards-perfect-design">
+/* ==========================================================================
+   CareerPath Two Dashboard Cards Dedicated Design & Padding Protection
+   ========================================================================== */
+
+/* 1. 학업 설계 현황 카드 (안쪽 사방 여백 28px 32px 절대 보장) */
+#graduation-requirement-card {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important;
+  border-radius: 24px !important;
+  padding: 28px 32px !important;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.05) !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin-top: 20px !important;
+  margin-bottom: 24px !important;
+}
+
+/* 상단 텍스트 테두리 닿음 방지 */
+#graduation-requirement-card > div:first-child,
+#graduation-requirement-card .text-xs.font-bold.text-slate-500 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #475569 !important;
+}
+
+/* 메인 학점 수치 및 퍼센트 가시성 강화 */
+#calc-total-credits-card {
+  font-size: clamp(28px, 3.2vw, 34px) !important;
+  font-weight: 900 !important;
+  color: #2563EB !important;
+  letter-spacing: -0.02em !important;
+}
+
+#calc-credit-pct {
+  font-size: clamp(19px, 2.2vw, 24px) !important;
+  font-weight: 900 !important;
+  color: #16A34A !important;
+}
+
+/* 우측 설계할 학점 텍스트 */
+#calc-credit-diff {
+  color: #0F172A !important;
+  font-size: 13px !important;
+}
+
+#calc-credit-diff-num {
+  font-size: clamp(19px, 2.2vw, 24px) !important;
+  font-weight: 900 !important;
+  color: #2563EB !important;
+}
+
+/* 프로그레스 바 상하 간격 */
+#graduation-requirement-card .bg-slate-100.h-2\.5,
+#graduation-requirement-card .rounded-full.overflow-hidden {
+  margin: 16px 0 !important;
+  height: 10px !important;
+}
+
+/* 하단 뱃지 영역 상단 구분선 및 여백 */
+#graduation-requirement-card .border-t {
+  border-top: 1px solid #F1F5F9 !important;
+  margin-top: 16px !important;
+  padding-top: 14px !important;
+}
+
+/* 개별 뱃지 스타일 (공통, 일반, 진로·융합, 창체) */
+#graduation-requirement-card #pill-common,
+#graduation-requirement-card #pill-general,
+#graduation-requirement-card #pill-career,
+#graduation-requirement-card #pill-creative,
+#graduation-requirement-card span:has(> #calc-common-credits),
+#graduation-requirement-card span:has(> #calc-gen-credits),
+#graduation-requirement-card span:has(> #calc-sel-credits),
+#graduation-requirement-card span:has(> #calc-changche-credits) {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 4px 10px !important;
+  background-color: #F8FAFC !important;
+  color: #334155 !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* 2. 학업 설계 점검 카드 (안쪽 사방 여백 24px 28px 절대 보장) */
+#verification-dashboard-box {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important;
+  border-radius: 20px !important;
+  padding: 24px 28px !important;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04) !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+#check-collapsed-summary-card {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 상단 📋 뱃지 테두리 닿음 방지 및 독립 칩 스타일 */
+#check-collapsed-summary-card span.bg-blue-50,
+#check-collapsed-summary-card span:has(.fa-clipboard-list) {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 14px !important;
+  background-color: #EFF6FF !important;
+  color: #1D4ED8 !important;
+  border: 1px solid #BFDBFE !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  margin-bottom: 8px !important;
+}
+
+/* 설명 문구 여백 */
+#check-collapsed-summary-card p {
+  font-size: 13.5px !important;
+  color: #475569 !important;
+  font-weight: 500 !important;
+  margin: 4px 0 12px 0 !important;
+  line-height: 1.55 !important;
+}
+
+#check-collapsed-summary-card .flex-wrap {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-top: 4px !important;
+}
+
+#check-current-credits {
+  color: #2563EB !important;
+  font-weight: 900 !important;
+  font-size: 15.5px !important;
+}
+
+#check-remaining-credits {
+  color: #0F172A !important;
+  font-weight: 900 !important;
+  font-size: 15.5px !important;
+}
+
+/* 상세 보기 ＋ 버튼 여백 */
+#btn-toggle-verification-details,
+#btn-toggle-verification-detail {
+  background-color: #F8FAFC !important;
+  color: #334155 !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  border: 1px solid #CBD5E1 !important;
+  border-radius: 12px !important;
+  padding: 10px 18px !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex-shrink: 0 !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+#btn-toggle-verification-details:hover,
+#btn-toggle-verification-detail:hover {
+  background-color: #EFF6FF !important;
+  color: #1D4ED8 !important;
+  border-color: #93C5FD !important;
+}
+</style>
+<style id="careerpath-checklist-result-style">
+/* 체크리스트 결과 카드 및 워크플로우 카드 고대비 시인성 보장 */
+#checklist-result-box {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important;
+  border-radius: 24px !important;
+  padding: clamp(24px, 3.5vw, 36px) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
+}
+
+#checklist-result-box .workflow-step-btn,
+#checklist-result-box button.workflow-step-btn {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 14px !important;
+  padding: 16px !important;
+  color: #0F172A !important;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04) !important;
+  text-align: left !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 120px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#checklist-result-box .workflow-step-btn:hover,
+#checklist-result-box button.workflow-step-btn:hover {
+  background-color: #F8FAFC !important;
+  background: #F8FAFC !important;
+  border-color: #93C5FD !important;
+  box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+#checklist-result-box .workflow-step-btn div {
+  color: inherit !important;
+}
+</style>
+<!-- ========================================================================= -->
+<!-- [CareerPath] 사용자 요청 전용 정밀 스타일 & 실시간 학점 연동 스크립트 (v2)       -->
+<!-- ========================================================================= -->
+<style id="careerpath-user-feedback-patch-style">
+  /* [PDF 공통 개선 1] 폰트 크기 및 계층 일체화 */
+  h1, .h1, .cp-hero-title {
+    font-size: 30px !important;
+    line-height: 1.3 !important;
+  }
+  h2, .h2, .cp-unified-section-title, #section-checklist h2, #step-1 h2, #step-2 h2, #step-4 h2 {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.35 !important;
+  }
+  h3, .h3, .text-body, p:not(.text-xs):not(.text-sm):not(.text-[10px]):not(.text-[11px]):not(.text-[12px]) {
+    font-size: 16px !important;
+    line-height: 1.65 !important;
+  }
+  h4, .h4 {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+  body {
+    font-size: 16px !important;
+  }
+
+  /* [PDF Page 2] 5단계 진행 순서 나란히 5열 배치 */
+  #cp-global-progress-card .cp-progress-steps,
+  .cp-progress-steps {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  /* [PDF Page 5] STEP 03 목표 학과: 학과 탐색 결과 5열 그리드 */
+  #majors-grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  @media (max-width: 1024px) {
+    #majors-grid-container {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+  }
+  @media (max-width: 640px) {
+    #majors-grid-container {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+  }
+
+  /* [PDF 공통 개선 4 & Page 5] 파란색 버튼 및 선택된 학과 카드 안쪽 텍스트 100% 흰색(#FFFFFF) 통일 */
+  .bg-blue-600, .bg-blue-700, .bg-indigo-600, .bg-indigo-700, .btn-primary,
+  .selected-major-btn, #majors-grid-container button.selected-major-btn,
+  #majors-grid-container button.active-major, #majors-grid-container button.active,
+  #majors-grid-container button[data-selected="true"], #majors-grid-container button[aria-selected="true"],
+  .active-credit {
+    background-color: #2563EB !important;
+    border-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+  }
+
+  .bg-blue-600 *, .bg-blue-700 *, .bg-indigo-600 *, .bg-indigo-700 *, .btn-primary *,
+  .selected-major-btn *, #majors-grid-container button.selected-major-btn *,
+  #majors-grid-container button.selected-major-btn span,
+  #majors-grid-container button.selected-major-btn span:first-child,
+  #majors-grid-container button.selected-major-btn .font-bold,
+  #majors-grid-container button.selected-major-btn .font-black,
+  #majors-grid-container button.active-major *,
+  #majors-grid-container button.border-indigo-600 *,
+  #majors-grid-container button.bg-indigo-600 *,
+  #majors-grid-container button.bg-blue-600 *,
+  #majors-grid-container button[class*="bg-blue-"] *,
+  #majors-grid-container button[class*="bg-indigo-"] *,
+  #majors-grid-container button[class*="bg-slate-900"] *,
+  #majors-grid-container button.active *,
+  #majors-grid-container button[data-selected="true"] *,
+  #majors-grid-container button[data-selected="true"] span,
+  #majors-grid-container button[data-selected="true"] span:first-child,
+  #majors-grid-container button[data-selected="true"] .font-bold,
+  #majors-grid-container button[data-selected="true"] .font-black,
+  #majors-grid-container button[aria-selected="true"] *,
+  .active-credit * {
+    color: #FFFFFF !important;
+  }
+
+  /* 학생용 모드 접속 시 선생님용 패들렛 가이드 완전 숨김 */
+  [data-user-role="student"] #teacher-padlet-setup-guide,
+  [data-user-role="student"] .teacher-padlet-setup-guide,
+  [data-user-role="student"] #padlet-tab-content-2 #teacher-padlet-setup-guide,
+  [data-user-role="student"] #padlet-tab-content-2 .teacher-padlet-setup-guide,
+  [data-user-role="student"] #tab-btn-padlet-1,
+  body.student-mode #teacher-padlet-setup-guide,
+  body.student-mode .teacher-padlet-setup-guide,
+  body.student-mode #tab-btn-padlet-1,
+  #padlet-tab-content-2 .teacher-padlet-setup-guide,
+  #padlet-tab-content-2 #teacher-padlet-setup-guide {
+    display: none !important;
+  }
+
+  /* 📋 학업 설계 점검 카드 테두리 좌우 여백(Padding) 36px~56px 대폭 확대 */
+  #verification-dashboard-box {
+    background-color: #FFFFFF !important;
+    border: 1.5px solid #CBD5E1 !important;
+    border-radius: 24px !important;
+    padding: clamp(26px, 3.5vw, 36px) clamp(36px, 5.5vw, 56px) !important;
+    box-shadow: 0 2px 12px -2px rgba(15, 23, 42, 0.05) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    margin: 32px 0 !important;
+    overflow: hidden !important;
+  }
+
+  #check-collapsed-summary-card {
+    padding: 6px 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #verification-detail-grid {
+    padding: 16px 14px 6px 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* [가독성 긴급 보완] 버튼 안쪽 텍스트 100% 선명한 시인성 보장 */
+  #btn-add-subject, button#btn-add-subject {
+    background: #2563EB !important;
+    background-color: #2563EB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #1D4ED8 !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
+    cursor: pointer !important;
+  }
+  #btn-add-subject *, button#btn-add-subject * {
+    color: #FFFFFF !important;
+    font-weight: 800 !important;
+  }
+
+  /* 약식 검사 vs 전체 정밀 검사 버튼 시인성 보장 */
+  #btn-mode-quick {
+    background-color: #2563EB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #1D4ED8 !important;
+    font-weight: 800 !important;
+  }
+  #btn-mode-quick * {
+    color: #FFFFFF !important;
+  }
+  #btn-mode-full {
+    background-color: #F1F5F9 !important;
+    color: #334155 !important;
+    border: 1px solid #CBD5E1 !important;
+    font-weight: 700 !important;
+  }
+  #btn-mode-full * {
+    color: #334155 !important;
+  }
+
+  /* [긴급 개선: STEP 03 학과 선택 시 텍스트 100% 흰색(#FFFFFF) 통일] */
+  #majors-grid-container button.selected-major-btn,
+  #majors-grid-container button.active-major,
+  #majors-grid-container button.active,
+  #majors-grid-container button[data-selected="true"],
+  #majors-grid-container button[aria-selected="true"],
+  #majors-grid-container button.bg-indigo-600,
+  #majors-grid-container button.bg-blue-600,
+  #majors-grid-container button.border-indigo-600,
+  #majors-grid-container button.border-blue-600,
+  .major-card.selected,
+  .major-card.active {
+    background-color: #2563EB !important;
+    background: #2563EB !important;
+    border-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+  }
+
+  #majors-grid-container button.selected-major-btn *,
+  #majors-grid-container button.active-major *,
+  #majors-grid-container button.active *,
+  #majors-grid-container button[data-selected="true"] *,
+  #majors-grid-container button[aria-selected="true"] *,
+  #majors-grid-container button.bg-indigo-600 *,
+  #majors-grid-container button.bg-blue-600 *,
+  #majors-grid-container button.border-indigo-600 *,
+  #majors-grid-container button.border-blue-600 *,
+  #majors-grid-container button.selected-major-btn span,
+  #majors-grid-container button.active-major span,
+  #majors-grid-container button[data-selected="true"] span,
+  #majors-grid-container button.selected-major-btn span:first-child,
+  #majors-grid-container button.active-major span:first-child,
+  #majors-grid-container button[data-selected="true"] span:first-child,
+  #majors-grid-container button.selected-major-btn span:last-child,
+  #majors-grid-container button.active-major span:last-child,
+  #majors-grid-container button[data-selected="true"] span:last-child,
+  #majors-grid-container button.selected-major-btn .font-bold,
+  #majors-grid-container button.selected-major-btn .font-black,
+  .major-card.selected *,
+  .major-card.active * {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+    text-shadow: none !important;
+  }
+</style>
+
+<script id="careerpath-user-feedback-sync-script">
+(function() {
+  // 약식 검사 vs 전체 정밀 검사 토글 시 스타일 및 시인성 즉시 전환
+  window.setTestMode = function(mode) {
+    var bQuick = document.getElementById("btn-mode-quick");
+    var bFull = document.getElementById("btn-mode-full");
+    if (mode === "quick") {
+      if (bQuick) {
+        bQuick.style.setProperty("background-color", "#2563EB", "important");
+        bQuick.style.setProperty("color", "#FFFFFF", "important");
+        bQuick.querySelectorAll("*").forEach(function(c) { c.style.setProperty("color", "#FFFFFF", "important"); });
+      }
+      if (bFull) {
+        bFull.style.setProperty("background-color", "#F1F5F9", "important");
+        bFull.style.setProperty("color", "#334155", "important");
+        bFull.querySelectorAll("*").forEach(function(c) { c.style.setProperty("color", "#334155", "important"); });
+      }
+    } else {
+      if (bFull) {
+        bFull.style.setProperty("background-color", "#2563EB", "important");
+        bFull.style.setProperty("color", "#FFFFFF", "important");
+        bFull.querySelectorAll("*").forEach(function(c) { c.style.setProperty("color", "#FFFFFF", "important"); });
+      }
+      if (bQuick) {
+        bQuick.style.setProperty("background-color", "#F1F5F9", "important");
+        bQuick.style.setProperty("color", "#334155", "important");
+        bQuick.querySelectorAll("*").forEach(function(c) { c.style.setProperty("color", "#334155", "important"); });
+      }
+    }
+  };
+
+  // =========================================================================
+  // 1. 단일 기준 과목 메타데이터 사전 (교과군, 구분, 평가방식, 수능여부, 기본학점)
+  // =========================================================================
+  var SUBJECT_META_MAP = {
+    // 국어 / 인문 어문
+    "화법과 언어": { group: "kor", groupTitle: "국어 / 인문 어문", type: "일반", eval: "상대(5등급)", suneung: true, def: 4 },
+    "독서와 작문": { group: "kor", groupTitle: "국어 / 인문 어문", type: "일반", eval: "상대(5등급)", suneung: true, def: 4 },
+    "문학": { group: "kor", groupTitle: "국어 / 인문 어문", type: "일반", eval: "상대(5등급)", suneung: true, def: 4 },
+    "문학과 영상": { group: "kor", groupTitle: "국어 / 인문 어문", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+    "주제 탐구 독서": { group: "kor", groupTitle: "국어 / 인문 어문", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+    "독서 토론과 글쓰기": { group: "kor", groupTitle: "국어 / 인문 어문", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+    "매체 의사소통": { group: "kor", groupTitle: "국어 / 인문 어문", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+    "언어생활 탐구": { group: "kor", groupTitle: "국어 / 인문 어문", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+
+    // 영어 / 외국어
+    "영어Ⅰ·Ⅱ": { group: "eng", groupTitle: "영어 / 외국어", type: "일반", eval: "상대(5등급)", suneung: true, def: 4 },
+    "영어Ⅰ": { group: "eng", groupTitle: "영어 / 외국어", type: "일반", eval: "상대(5등급)", suneung: true, def: 4 },
+    "영어Ⅱ": { group: "eng", groupTitle: "영어 / 외국어", type: "일반", eval: "상대(5등급)", suneung: true, def: 4 },
+    "영어 독해와 작문": { group: "eng", groupTitle: "영어 / 외국어", type: "일반", eval: "상대(5등급)", suneung: true, def: 4 },
+    "심화 영어 독해와 작문": { group: "eng", groupTitle: "영어 / 외국어", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+    "실무 영어": { group: "eng", groupTitle: "영어 / 외국어", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+
+    // 수학 교과군
+    "대수": { group: "math", groupTitle: "수학 교과군", type: "일반", eval: "상대(5등급)", suneung: true, def: 4 },
+    "미적분Ⅰ": { group: "math", groupTitle: "수학 교과군", type: "일반", eval: "상대(5등급)", suneung: true, def: 4 },
+    "확률과 통계": { group: "math", groupTitle: "수학 교과군", type: "일반", eval: "상대(5등급)", suneung: true, def: 4 },
+    "기하": { group: "math", groupTitle: "수학 교과군", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+    "미적분Ⅱ": { group: "math", groupTitle: "수학 교과군", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+    "경제 수학": { group: "math", groupTitle: "수학 교과군", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+    "인공지능 수학": { group: "math", groupTitle: "수학 교과군", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+
+    // 사회 / 역사·도덕 / 교양
+    "세계사": { group: "soc", groupTitle: "사회 / 역사·도덕 / 교양", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "현대사회와 윤리": { group: "soc", groupTitle: "사회 / 역사·도덕 / 교양", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "사회와 문화": { group: "soc", groupTitle: "사회 / 역사·도덕 / 교양", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "경제": { group: "soc", groupTitle: "사회 / 역사·도덕 / 교양", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "정치": { group: "soc", groupTitle: "사회 / 역사·도덕 / 교양", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "법과 사회": { group: "soc", groupTitle: "사회 / 역사·도덕 / 교양", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "세계시민과 지리": { group: "soc", groupTitle: "사회 / 역사·도덕 / 교양", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "사회문제 탐구": { group: "soc", groupTitle: "사회 / 역사·도덕 / 교양", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+
+    // 과학 / 기술·정보
+    "물리학": { group: "sci", groupTitle: "과학 / 기술·정보", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "화학": { group: "sci", groupTitle: "과학 / 기술·정보", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "생명과학": { group: "sci", groupTitle: "과학 / 기술·정보", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "지구과학": { group: "sci", groupTitle: "과학 / 기술·정보", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "역학과 에너지": { group: "sci", groupTitle: "과학 / 기술·정보", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+    "물질과 에너지": { group: "sci", groupTitle: "과학 / 기술·정보", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+    "세포와 물질대사": { group: "sci", groupTitle: "과학 / 기술·정보", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+    "정보": { group: "sci", groupTitle: "과학 / 기술·정보", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "인공지능 기초": { group: "sci", groupTitle: "과학 / 기술·정보", type: "진로", eval: "절대(5단계)", suneung: false, def: 4 },
+
+    // 체육·예술 / 기타
+    "음악": { group: "etc", groupTitle: "체육·예술 / 기타", type: "일반", eval: "절대(3단계)", suneung: false, def: 3 },
+    "미술": { group: "etc", groupTitle: "체육·예술 / 기타", type: "일반", eval: "절대(3단계)", suneung: false, def: 3 },
+    "체육": { group: "etc", groupTitle: "체육·예술 / 기타", type: "일반", eval: "절대(3단계)", suneung: false, def: 3 },
+    "체육1": { group: "etc", groupTitle: "체육·예술 / 기타", type: "일반", eval: "절대(3단계)", suneung: false, def: 3 },
+    "독일어": { group: "etc", groupTitle: "체육·예술 / 기타", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "프랑스어": { group: "etc", groupTitle: "체육·예술 / 기타", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "일본어": { group: "etc", groupTitle: "체육·예술 / 기타", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "중국어": { group: "etc", groupTitle: "체육·예술 / 기타", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 },
+    "한문": { group: "etc", groupTitle: "체육·예술 / 기타", type: "일반", eval: "상대(5등급)", suneung: false, def: 4 }
+  };
+  window.SUBJECT_META_MAP = SUBJECT_META_MAP;
+
+  // 전역 과목별 변경 학점 저장소 로드
+  if (!window.selectedSubjectCredits) {
+    try {
+      window.selectedSubjectCredits = JSON.parse(localStorage.getItem('careerpath_subject_credits') || '{}');
+    } catch(e) {
+      window.selectedSubjectCredits = {};
+    }
+  }
+
+  // =========================================================================
+  // 2. [핵심] 학점 수정 시 양대 테이블(Table 1 & Table 2) 및 수치 실시간 갱신 함수
+  // =========================================================================
+  window.updateAllStudyPlanTables = function() {
+    var subjects = [];
+
+    // 1. window.selectedSubjects가 Set 형태이면 추출
+    if (window.selectedSubjects && typeof window.selectedSubjects.forEach === 'function') {
+      window.selectedSubjects.forEach(function(s) {
+        if (s && subjects.indexOf(s) === -1) subjects.push(s);
+      });
+    }
+
+    // 2. 화면의 #selected-tags-container 내부 카드 스캔
+    var tagCards = document.querySelectorAll('#selected-tags-container > div, .selected-subject-card, .selected-subject-pill');
+    tagCards.forEach(function(card) {
+      var sName = card.getAttribute('data-subject') || card.getAttribute('data-subject-name');
+      if (!sName) {
+        var cardText = card.textContent;
+        for (var k in window.SUBJECT_META_MAP) {
+          if (cardText.indexOf(k) !== -1) { sName = k; break; }
+        }
+      }
+      if (sName && subjects.indexOf(sName) === -1) {
+        subjects.push(sName);
+      }
+    });
+
+    // 3. 비어있는 경우 기본 권장 과목 목록 보장
+    if (subjects.length === 0) {
+      var curMajor = window.selectedDepartment || window.currentSelectedMajor || window.selectedMajor;
+      if (curMajor && curMajor.recommendedSubjects && curMajor.recommendedSubjects.length > 0) {
+        subjects = curMajor.recommendedSubjects.slice();
+      } else {
+        subjects = ["화법과 언어", "독서와 작문", "문학", "영어Ⅰ·Ⅱ", "세계사", "현대사회와 윤리", "문학과 영상"];
+      }
+    }
+
+    var groups = [
+      { key: "kor", title: "국어 / 인문 어문", outId: "out-sub-kor" },
+      { key: "eng", title: "영어 / 외국어", outId: "out-sub-eng" },
+      { key: "math", title: "수학 교과군", outId: "out-sub-math" },
+      { key: "soc", title: "사회 / 역사·도덕 / 교양", outId: "out-sub-soc" },
+      { key: "sci", title: "과학 / 기술·정보", outId: "out-sub-sci" },
+      { key: "etc", title: "체육·예술 / 기타", outId: "out-sub-etc" }
+    ];
+
+    var totalSelectedCredits = 0;
+    var genCredits = 0;
+    var careerCredits = 0;
+    var kmeCredits = 0;
+
+    var tbody = document.getElementById("step3-live-table-body");
+    var table1Html = "";
+
+    groups.forEach(function(g) {
+      var matched = subjects.filter(function(s) {
+        var meta = window.SUBJECT_META_MAP[s];
+        return meta && meta.group === g.key;
+      });
+
+      if (g.key === "etc") {
+        var knownOtherKeys = subjects.filter(function(s) {
+          return window.SUBJECT_META_MAP[s] && window.SUBJECT_META_MAP[s].group !== "etc";
+        });
+        subjects.forEach(function(s) {
+          if (knownOtherKeys.indexOf(s) === -1 && matched.indexOf(s) === -1) {
+            matched.push(s);
+          }
+        });
+      }
+
+      var itemsHtml = "";
+      var outItemsTextList = [];
+
+      if (matched.length === 0) {
+        itemsHtml = '<span class="text-slate-400 font-normal text-xs">(미선택)</span>';
+        var outCell = document.getElementById(g.outId);
+        if (outCell) outCell.innerHTML = '<span class="text-slate-400 font-normal">(미선택)</span>';
+      } else {
+        matched.forEach(function(s) {
+          var meta = window.SUBJECT_META_MAP[s] || { type: "일반", eval: "상대(5등급)", suneung: false, def: 4 };
+          var credit = (window.selectedSubjectCredits && window.selectedSubjectCredits[s] !== undefined) 
+                       ? parseInt(window.selectedSubjectCredits[s], 10) 
+                       : (meta.def || 4);
+
+          totalSelectedCredits += credit;
+          if (meta.type === "일반") genCredits += credit;
+          else careerCredits += credit;
+
+          if (g.key === "kor" || g.key === "eng" || g.key === "math") {
+            kmeCredits += credit;
+          }
+
+          var suneungBadge = meta.suneung 
+            ? '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">수능</span>' 
+            : '';
+
+          var evalBadgeCls = (meta.eval.indexOf("상대") !== -1)
+            ? 'bg-blue-100 text-blue-800 border border-blue-200'
+            : (meta.eval.indexOf("3단계") !== -1 || meta.eval.indexOf("5단계") !== -1)
+              ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+              : 'bg-purple-100 text-purple-800 border border-purple-200';
+          var evalBadge = '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold ' + evalBadgeCls + '">' + meta.eval + '</span>';
+
+          var typeBadgeCls = (meta.type === "일반")
+            ? 'text-blue-700 bg-blue-50 border border-blue-200'
+            : (meta.type === "진로")
+              ? 'text-emerald-700 bg-emerald-50 border border-emerald-200'
+              : 'text-purple-700 bg-purple-50 border border-purple-200';
+          var typeBadge = '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold ' + typeBadgeCls + '">[' + meta.type + ']</span>';
+
+          // Table 1 Item
+          itemsHtml += '<div class="inline-flex items-center gap-1.5 flex-wrap mr-3 my-1 p-1 bg-slate-50/70 rounded-lg border border-slate-200/80">' +
+            '<span class="font-bold text-slate-900 text-xs">' + s + ' (' + credit + '학점)</span>' +
+            suneungBadge + evalBadge + typeBadge +
+          '</div>';
+
+          // Table 2 Item
+          outItemsTextList.push(
+            '<span class="inline-block mr-2 my-0.5"><strong class="text-slate-900 font-bold">' + s + ' (' + credit + '학점)</strong> ' +
+            (meta.suneung ? '수능 ' : '') + meta.eval + ' [' + meta.type + ']</span>'
+          );
+        });
+
+        var outCell = document.getElementById(g.outId);
+        if (outCell) {
+          outCell.innerHTML = outItemsTextList.join(', ');
+        }
+      }
+
+      table1Html += '<tr class="border-b border-indigo-100 hover:bg-slate-50/60 transition">' +
+        '<td class="border border-indigo-200 p-2.5 font-bold text-slate-800 bg-slate-50/80 w-1/4">' + g.title + '</td>' +
+        '<td class="border border-indigo-200 p-2.5 text-xs leading-relaxed">' + itemsHtml + '</td>' +
+      '</tr>';
+    });
+
+    if (tbody) {
+      tbody.innerHTML = table1Html;
+    }
+
+    // 4. 수치 대시보드 실시간 동기화
+    var commonCredits = 48;
+    var changcheCredits = 18;
+    var totalPlanned = commonCredits + changcheCredits + totalSelectedCredits;
+    var remaining = Math.max(0, 192 - totalPlanned);
+    var pct = Math.min(100, Math.round((totalPlanned / 192) * 100));
+
+    var elTotal = document.getElementById("calc-total-credits-card") || document.getElementById("calc-total-credits");
+    if (elTotal) elTotal.textContent = totalPlanned;
+    var elDiff = document.getElementById("calc-credit-diff-num");
+    if (elDiff) elDiff.textContent = remaining;
+    var elPct = document.getElementById("calc-credit-pct");
+    if (elPct) elPct.textContent = pct;
+    var elPctBar = document.getElementById("credit-progress-bar");
+    if (elPctBar) elPctBar.style.width = pct + "%";
+
+    var elGen = document.getElementById("calc-gen-credits");
+    if (elGen) elGen.textContent = genCredits;
+    var elCareer = document.getElementById("calc-sel-credits");
+    if (elCareer) elCareer.textContent = careerCredits;
+
+    var elChkCur = document.getElementById("check-current-credits");
+    if (elChkCur) elChkCur.textContent = totalPlanned;
+    var elChkRem = document.getElementById("check-remaining-credits");
+    if (elChkRem) elChkRem.textContent = remaining;
+
+    var elKmeCur = document.getElementById("kme-current-credits");
+    if (elKmeCur) elKmeCur.textContent = kmeCredits;
+
+    var elOutSummary = document.getElementById("out-credit-summary");
+    if (elOutSummary) {
+      elOutSummary.textContent = "총 설계 학점: " + totalPlanned + " / 192학점 (공통 48학점 + 일반 " + genCredits + "학점 + 진로·융합 " + careerCredits + "학점 + 창체 18학점)";
+    }
+
+    if (typeof window.updateCheckCards === 'function') {
+      window.updateCheckCards();
+    }
+  };
+
+  // 과목 학점 명시적 변경 핸들러
+  window.setSubjectCredit = function(subjName, creditVal) {
+    creditVal = parseInt(creditVal, 10);
+    if (!creditVal || isNaN(creditVal)) return;
+
+    if (!window.selectedSubjectCredits) window.selectedSubjectCredits = {};
+    window.selectedSubjectCredits[subjName] = creditVal;
+
+    try {
+      localStorage.setItem('careerpath_subject_credits', JSON.stringify(window.selectedSubjectCredits));
+      sessionStorage.setItem('careerpath_subject_credits', JSON.stringify(window.selectedSubjectCredits));
+    } catch(e) {}
+
+    // 과목 카드 내의 학점 버튼 Active 클래스 실시간 전환
+    document.querySelectorAll(".selected-subject-card, .selected-subject-pill, [data-subject-card], tr, div").forEach(function(card) {
+      if (card.textContent.indexOf(subjName) !== -1) {
+        card.querySelectorAll(".btn-credit, [data-credit], button").forEach(function(b) {
+          var t = b.textContent.trim();
+          var bVal = parseInt(b.getAttribute("data-credit") || t, 10);
+          if (bVal === 3 || bVal === 4 || bVal === 5) {
+            if (bVal === creditVal) {
+              b.classList.add("active-credit", "bg-blue-600", "text-white");
+              b.classList.remove("text-slate-600", "hover:bg-slate-200");
+              b.style.setProperty("background-color", "#2563EB", "important");
+              b.style.setProperty("color", "#FFFFFF", "important");
+            } else {
+              b.classList.remove("active-credit", "bg-blue-600", "text-white");
+              b.classList.add("text-slate-600");
+              b.style.removeProperty("background-color");
+              b.style.removeProperty("color");
+            }
+          }
+        });
+      }
+    });
+
+    // 1. Table 1 & Table 2 내부의 (4학점) 텍스트를 즉시 (3학점)/(5학점)으로 직접 치환
+    document.querySelectorAll('#step3-live-table-body, tbody[id*="step3-live"]').forEach(function(tb) {
+      var re = new RegExp(subjName + ' \([345]학점\)', 'g');
+      tb.innerHTML = tb.innerHTML.replace(re, subjName + ' (' + creditVal + '학점)');
+    });
+    ['out-sub-kor', 'out-sub-eng', 'out-sub-math', 'out-sub-soc', 'out-sub-sci', 'out-sub-etc'].forEach(function(cid) {
+      var cell = document.getElementById(cid);
+      if (cell) {
+        var re = new RegExp(subjName + ' \([345]학점\)', 'g');
+        cell.innerHTML = cell.innerHTML.replace(re, subjName + ' (' + creditVal + '학점)');
+      }
+    });
+
+    // 2. 전체 수치 및 양대 테이블 동기화
+    window.updateAllStudyPlanTables();
+  };
+
+  // [초정밀 전역 이벤트 위임] 3, 4, 5학점 클릭 및 변경 시 100% 즉시 실시간 동기화
+  function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\]/g, '\$&');
+  }
+
+  ['click', 'mousedown', 'change'].forEach(function(evtType) {
+    document.addEventListener(evtType, function(e) {
+      var target = e.target;
+      if (!target) return;
+
+      var text = target.textContent ? target.textContent.trim() : '';
+      var val = null;
+
+      if (target.getAttribute && target.getAttribute('data-credit')) {
+        val = parseInt(target.getAttribute('data-credit'), 10);
+      } else if (text === '3' || text === '4' || text === '5' || text === '3학점' || text === '4학점' || text === '5학점') {
+        val = parseInt(text, 10);
+      } else if (target.tagName === 'INPUT' && (target.value === '3' || target.value === '4' || target.value === '5')) {
+        val = parseInt(target.value, 10);
+      } else {
+        var el = target.closest('button, label, input, .btn-credit, [data-credit], span, div');
+        if (el) {
+          var elText = el.textContent ? el.textContent.trim() : '';
+          if (el.getAttribute && el.getAttribute('data-credit')) {
+            val = parseInt(el.getAttribute('data-credit'), 10);
+          } else if (elText === '3' || elText === '4' || elText === '5' || elText === '3학점' || elText === '4학점' || elText === '5학점') {
+            val = parseInt(elText, 10);
+          } else if (el.tagName === 'INPUT' && (el.value === '3' || el.value === '4' || el.value === '5')) {
+            val = parseInt(el.value, 10);
+          }
+        }
+      }
+
+      if (val !== 3 && val !== 4 && val !== 5) return;
+
+      // 부모 노드를 탐색하여 단일 과목 카드를 정확히 식별 (길이 내림차순 정렬로 부분일치 오인 차단)
+      var subjName = null;
+      var cur = target.parentElement;
+      var allSubjects = Object.keys(window.SUBJECT_META_MAP || {}).concat([
+        "화법과 언어", "독서와 작문", "문학", "영어Ⅰ·Ⅱ", "세계사", "현대사회와 윤리", "문학과 영상",
+        "대수", "미적분Ⅰ", "확률과 통계", "물리학", "화학", "생명과학", "지구과학"
+      ]);
+      // 중복 제거 및 길이 내림차순 정렬
+      var uniqueKeys = [];
+      allSubjects.forEach(function(k) { if (uniqueKeys.indexOf(k) === -1) uniqueKeys.push(k); });
+      uniqueKeys.sort(function(a, b) { return b.length - a.length; });
+
+      while (cur && cur !== document.body && cur !== document.documentElement) {
+        if (cur.getAttribute && cur.getAttribute('data-subject')) {
+          subjName = cur.getAttribute('data-subject');
+          break;
+        }
+        if (cur.getAttribute && cur.getAttribute('data-subject-name')) {
+          subjName = cur.getAttribute('data-subject-name');
+          break;
+        }
+
+        var curText = cur.textContent || '';
+        var matchCount = 0;
+        var matchedSubj = null;
+        for (var i = 0; i < uniqueKeys.length; i++) {
+          var k = uniqueKeys[i];
+          if (curText.indexOf(k) !== -1) {
+            matchCount++;
+            if (!matchedSubj) matchedSubj = k;
+            if (matchCount > 1) break; // 여러 과목이 포함된 상위 컨테이너는 패스
+          }
+        }
+
+        if (matchCount === 1) {
+          subjName = matchedSubj;
+          break;
+        }
+
+        cur = cur.parentElement;
+      }
+
+      if (subjName) {
+        window.setSubjectCredit(subjName, val);
+      }
+    }, true);
+  });
+
+  // 과목 학점 변경 핸들러
+  window.setSubjectCredit = function(subjName, creditVal) {
+    creditVal = parseInt(creditVal, 10);
+    if (!creditVal || isNaN(creditVal)) return;
+
+    if (!window.selectedSubjectCredits) window.selectedSubjectCredits = {};
+    window.selectedSubjectCredits[subjName] = creditVal;
+
+    try {
+      localStorage.setItem("careerpath_subject_credits", JSON.stringify(window.selectedSubjectCredits));
+      sessionStorage.setItem("careerpath_subject_credits", JSON.stringify(window.selectedSubjectCredits));
+    } catch(e) {}
+
+    // 1. 해당 과목 카드의 3, 4, 5학점 버튼 시각적 Active 상태 갱신
+    document.querySelectorAll('.selected-subject-card, .selected-subject-pill, [data-subject-card], tr, div').forEach(function(card) {
+      if (card.textContent && card.textContent.indexOf(subjName) !== -1 && card.textContent.indexOf('나의 3개년') === -1) {
+        card.querySelectorAll('button, span, div, a, label').forEach(function(b) {
+          var t = b.textContent.trim();
+          var bVal = parseInt(b.getAttribute("data-credit") || t, 10);
+          if (bVal === 3 || bVal === 4 || bVal === 5) {
+            if (bVal === creditVal) {
+              b.classList.add("active-credit", "bg-blue-600", "text-white");
+              b.classList.remove("text-slate-600", "hover:bg-slate-200");
+              b.style.setProperty("background-color", "#2563EB", "important");
+              b.style.setProperty("color", "#FFFFFF", "important");
+            } else {
+              b.classList.remove("active-credit", "bg-blue-600", "text-white");
+              b.classList.add("text-slate-600");
+              b.style.removeProperty("background-color");
+              b.style.removeProperty("color");
+            }
+          }
+        });
+      }
+    });
+
+    // 2. Table 1 & Table 2 내부의 기존 학점 텍스트를 즉시 새 학점으로 직접 치환 (정규식 치환)
+    document.querySelectorAll('#step3-live-table-body, tbody[id*="step3-live"]').forEach(function(tb) {
+      var re = new RegExp(escapeRegExp(subjName) + '\s*\(\s*\d+\s*학점\s*\)', 'g');
+      tb.innerHTML = tb.innerHTML.replace(re, subjName + ' (' + creditVal + '학점)');
+    });
+    ['out-sub-kor', 'out-sub-eng', 'out-sub-math', 'out-sub-soc', 'out-sub-sci', 'out-sub-etc'].forEach(function(cid) {
+      var cell = document.getElementById(cid);
+      if (cell) {
+        var re = new RegExp(escapeRegExp(subjName) + '\s*\(\s*\d+\s*학점\s*\)', 'g');
+        cell.innerHTML = cell.innerHTML.replace(re, subjName + ' (' + creditVal + '학점)');
+      }
+    });
+
+    // 3. 전체 테이블 및 대시보드 수치 재계산 동기화
+    window.updateAllStudyPlanTables();
+  };
+
+  // STEP 03 학과 카드 클릭 즉시 선택 상태(#2563EB) 및 학과명 100% 흰색(#FFFFFF) 실시간 강제 (Capture Phase)
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('#majors-grid-container button, .major-card, [data-major-id]');
+    if (btn && btn.closest('#majors-grid-container')) {
+      var container = document.getElementById('majors-grid-container');
+      if (container) {
+        container.querySelectorAll('button').forEach(function(b) {
+          b.classList.remove('selected-major-btn', 'active-major');
+          b.removeAttribute('data-selected');
+          b.style.removeProperty('background-color');
+          b.style.removeProperty('border-color');
+          b.style.removeProperty('color');
+          b.querySelectorAll('*').forEach(function(c) {
+            c.style.removeProperty('color');
+          });
+        });
+      }
+      btn.classList.add('selected-major-btn', 'active-major');
+      btn.setAttribute('data-selected', 'true');
+      btn.style.setProperty('background-color', '#2563EB', 'important');
+      btn.style.setProperty('border-color', '#1D4ED8', 'important');
+      btn.style.setProperty('color', '#FFFFFF', 'important');
+      btn.querySelectorAll('*').forEach(function(c) {
+        c.style.setProperty('color', '#FFFFFF', 'important');
+      });
+      setTimeout(syncSelectedMajorButtonStyles, 30);
+      setTimeout(syncSelectedMajorButtonStyles, 120);
+    }
+  }, true);
+
+  // A. 학생용 모드 감지 및 교사용 패들렛 개설 가이드 완전 숨김
+  function applyStudentModePadletSecurity() {
+    var isStudent = false;
+    try {
+      var p = new URLSearchParams(window.location.search);
+      if (p.get('session') || p.get('mode') === 'student' || p.get('padlet')) isStudent = true;
+      if (sessionStorage.getItem('cp_is_student_mode') === 'true') isStudent = true;
+      if (document.body.getAttribute('data-user-role') === 'student') isStudent = true;
+    } catch(e){}
+
+    if (isStudent) {
+      document.body.classList.add('student-mode');
+      document.querySelectorAll('#teacher-padlet-setup-guide, .teacher-padlet-setup-guide').forEach(function(el) {
+        el.style.setProperty('display', 'none', 'important');
+      });
+      var tBtn = document.getElementById('tab-btn-padlet-1');
+      if (tBtn) tBtn.style.setProperty('display', 'none', 'important');
+      
+      var triggerBar = document.getElementById('padlet-guide-trigger-bar');
+      if (triggerBar) {
+        var firstBtn = triggerBar.querySelector('button:first-child');
+        if (firstBtn && firstBtn.textContent.indexOf('교사용') !== -1) {
+          firstBtn.style.setProperty('display', 'none', 'important');
+        }
+      }
+    }
+  }
+
+  // B. 패들렛 링크 학생 링크 실시간 연동 & 학생 화면 접속 버튼 생성 엔진
+  window.updateStudentShareUrlWithPadlet = function() {
+    var padletInput = document.getElementById('teacher-padlet-url-input');
+    var padletUrl = (padletInput ? padletInput.value : '').trim();
+    var shareInput = document.getElementById('teacher-student-share-url');
+    var qrImg = document.getElementById('teacher-qr-image');
+
+    if (shareInput) {
+      var curVal = shareInput.value;
+      curVal = curVal.replace(/([?&])padlet=[^&]*/g, '');
+      curVal = curVal.replace(/\?&/, '?').replace(/&&/, '&');
+      if (curVal.endsWith('?') || curVal.endsWith('&')) curVal = curVal.slice(0, -1);
+
+      if (padletUrl) {
+        var sep = curVal.indexOf('?') === -1 ? '?' : '&';
+        shareInput.value = curVal + sep + 'padlet=' + encodeURIComponent(padletUrl);
+      } else {
+        shareInput.value = curVal;
+      }
+
+      if (qrImg) {
+        qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(shareInput.value);
+      }
+    }
+  };
+
+  // 학생 화면에서 패들렛 링크 감지 시 접속 버튼 렌더링
+  window.checkAndRenderStudentPadletAccess = function() {
+    var padletUrl = null;
+    try {
+      var p = new URLSearchParams(window.location.search);
+      padletUrl = p.get('padlet');
+      if (padletUrl) {
+        sessionStorage.setItem('cp_student_padlet_url', padletUrl);
+      } else {
+        padletUrl = sessionStorage.getItem('cp_student_padlet_url');
+      }
+    } catch(e) {}
+
+    if (!padletUrl) return;
+
+    // 1. 상단 네비게이션 헤더에 '선생님 패들렛 바로가기' 버튼 생성
+    var headerNav = document.querySelector('header .nav-container') || document.querySelector('header nav') || document.querySelector('header > div > div:last-child');
+    if (headerNav && !document.getElementById('header-student-padlet-btn')) {
+      var hBtn = document.createElement('a');
+      hBtn.id = 'header-student-padlet-btn';
+      hBtn.href = padletUrl;
+      hBtn.target = '_blank';
+      hBtn.rel = 'noopener noreferrer';
+      hBtn.className = 'px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 shadow-xs transition';
+      hBtn.innerHTML = '<i class="fa-solid fa-chalkboard-user"></i><span>선생님 패들렛(Padlet) 바로가기 ↗</span>';
+      headerNav.insertBefore(hBtn, headerNav.firstChild);
+    }
+
+    // 2. STEP 05 최종 설계서 인쇄/출력 영역 상단에 과제 제출 배너 생성
+    var step4 = document.getElementById('step-4') || document.getElementById('printable-study-plan');
+    if (step4 && !document.getElementById('step5-padlet-submit-banner')) {
+      var banner = document.createElement('div');
+      banner.id = 'step5-padlet-submit-banner';
+      banner.className = 'p-4 sm:p-5 bg-gradient-to-r from-rose-50 via-white to-amber-50 rounded-2xl border border-rose-200 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs my-4 no-print';
+      banner.innerHTML = '<div class="flex items-center gap-3">' +
+        '<div class="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center font-bold text-base shadow-2xs shrink-0"><i class="fa-solid fa-chalkboard-user"></i></div>' +
+        '<div>' +
+          '<h4 class="font-bold text-sm text-slate-900 flex items-center gap-2">' +
+            '<span>선생님 패들렛(Padlet) 보드로 학업설계서 제출</span>' +
+            '<span class="text-[10px] font-bold bg-rose-100 text-rose-800 px-2 py-0.5 rounded-full border border-rose-200">과제 제출</span>' +
+          '</h4>' +
+          '<p class="text-xs text-slate-600 mt-0.5">' +
+            '학업설계서를 인쇄하거나 PDF로 저장한 후, 선생님 패들렛 보드에 업로드하세요.' +
+          '</p>' +
+        '</div>' +
+      '</div>' +
+      '<a href="' + padletUrl + '" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-xs transition cursor-pointer shrink-0">' +
+        '<i class="fa-solid fa-arrow-up-right-from-square"></i>' +
+        '<span>선생님 패들렛 보드 열기 ↗</span>' +
+      '</a>';
+
+      step4.parentNode.insertBefore(banner, step4);
+    }
+  };
+
+  // C. STEP 03 선택된 학과 카드 흰색 텍스트 동적 동기화
+  function syncSelectedMajorButtonStyles() {
+    var titleEl = document.getElementById('selected-major-title');
+    var currentMajor = titleEl ? titleEl.textContent.trim() : '';
+    var grid = document.getElementById('majors-grid-container');
+    if (!grid) return;
+
+    var btns = grid.querySelectorAll('button');
+    btns.forEach(function(btn) {
+      var txt = btn.textContent.trim();
+      var isMatch = currentMajor && txt.indexOf(currentMajor) !== -1;
+      var hasActiveCls = btn.classList.contains('border-indigo-600') ||
+                         btn.classList.contains('bg-indigo-600') ||
+                         btn.classList.contains('bg-blue-600') ||
+                         btn.classList.contains('selected-major-btn') ||
+                         btn.classList.contains('active-major') ||
+                         btn.classList.contains('active') ||
+                         btn.getAttribute('data-selected') === 'true';
+
+      if (isMatch || hasActiveCls) {
+        btn.setAttribute('data-selected', 'true');
+        btn.classList.add('selected-major-btn', 'active-major');
+        btn.style.setProperty('background-color', '#2563EB', 'important');
+        btn.style.setProperty('background', '#2563EB', 'important');
+        btn.style.setProperty('border-color', '#1D4ED8', 'important');
+        btn.style.setProperty('color', '#FFFFFF', 'important');
+        btn.querySelectorAll('*').forEach(function(c) {
+          c.style.setProperty('color', '#FFFFFF', 'important');
+        });
+      } else {
+        btn.removeAttribute('data-selected');
+        btn.classList.remove('selected-major-btn', 'active-major', 'border-indigo-600', 'bg-indigo-600', 'bg-blue-600');
+        btn.style.setProperty('background-color', '#FFFFFF', 'important');
+        btn.style.setProperty('background', '#FFFFFF', 'important');
+        btn.style.setProperty('border-color', '#E2E8F0', 'important');
+        btn.style.setProperty('color', '#0F172A', 'important');
+        btn.querySelectorAll('*').forEach(function(c) {
+          c.style.removeProperty('color');
+        });
+      }
+    });
+  }
+
+  // STEP 03 학과 카드 클릭 시 100% 즉각 흰색 글씨 강제 적용 (Capture Phase)
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('#majors-grid-container button, .major-card, [data-major-id]');
+    if (btn && btn.closest('#majors-grid-container')) {
+      var container = document.getElementById('majors-grid-container');
+      if (container) {
+        container.querySelectorAll('button').forEach(function(b) {
+          b.classList.remove('selected-major-btn', 'active-major', 'border-indigo-600', 'bg-indigo-600', 'bg-blue-600');
+          b.removeAttribute('data-selected');
+          b.style.setProperty('background-color', '#FFFFFF', 'important');
+          b.style.setProperty('background', '#FFFFFF', 'important');
+          b.style.setProperty('border-color', '#E2E8F0', 'important');
+          b.style.setProperty('color', '#0F172A', 'important');
+          b.querySelectorAll('*').forEach(function(c) {
+            c.style.removeProperty('color');
+          });
+        });
+      }
+      btn.classList.add('selected-major-btn', 'active-major');
+      btn.setAttribute('data-selected', 'true');
+      btn.style.setProperty('background-color', '#2563EB', 'important');
+      btn.style.setProperty('background', '#2563EB', 'important');
+      btn.style.setProperty('border-color', '#1D4ED8', 'important');
+      btn.style.setProperty('color', '#FFFFFF', 'important');
+      btn.querySelectorAll('*').forEach(function(c) {
+        c.style.setProperty('color', '#FFFFFF', 'important');
+      });
+      setTimeout(syncSelectedMajorButtonStyles, 30);
+      setTimeout(syncSelectedMajorButtonStyles, 100);
+      setTimeout(syncSelectedMajorButtonStyles, 300);
+    }
+  }, true);
+
+  // D. STEP 04 학교 검색 & 학교알리미 연동 & 5단계 설계서 학교명 100% 자동 동기화
+  window.updateSchoolEverywhere = function(schoolName) {
+    if (!schoolName) return;
+    var inStep3 = document.getElementById("input-school-step3");
+    if (inStep3 && inStep3.value !== schoolName) inStep3.value = schoolName;
+
+    var inStudent = document.getElementById("input-school");
+    if (inStudent && inStudent.value !== schoolName) inStudent.value = schoolName;
+
+    // STEP 05 인쇄 서식 상단 인적사항 표의 학교명(#out-school) 실시간 반영!
+    var outSchool = document.getElementById("out-school");
+    if (outSchool) {
+      outSchool.textContent = schoolName;
+      outSchool.style.fontWeight = "bold";
+      outSchool.style.color = "#0F172A";
+    }
+
+    var cBox = document.getElementById("step3-school-confirmed-box");
+    var cText = document.getElementById("step3-confirmed-school-text");
+    if (cBox && cText) {
+      cText.textContent = "선택된 학교: " + schoolName;
+      cBox.classList.remove("hidden");
+    }
+
+    var btnLabel = document.getElementById("btn-schoolinfo-label");
+    if (btnLabel) {
+      btnLabel.textContent = "[" + schoolName + "] 편성표 바로가기 ↗";
+    }
+
+    try {
+      sessionStorage.setItem("careerpath_school_name", schoolName);
+      localStorage.setItem("careerpath_school_name", schoolName);
+    } catch(e) {}
+  };
+
+  var debounceTimer = null;
+  var cachedSchools = [
+    { name: "서울고등학교", region: "서울" },
+    { name: "경기고등학교", region: "서울" },
+    { name: "경복고등학교", region: "서울" },
+    { name: "상문고등학교", region: "서울" },
+    { name: "단국대학교사범대학부속고등학교", region: "서울" },
+    { name: "휘문고등학교", region: "서울" },
+    { name: "중동고등학교", region: "서울" },
+    { name: "현대고등학교", region: "서울" },
+    { name: "세화고등학교", region: "서울" },
+    { name: "배재고등학교", region: "서울" },
+    { name: "보성고등학교", region: "서울" },
+    { name: "양천고등학교", region: "서울" },
+    { name: "강서고등학교", region: "서울" },
+    { name: "목동고등학교", region: "서울" },
+    { name: "진선여자고등학교", region: "서울" },
+    { name: "숙명여자고등학교", region: "서울" },
+    { name: "은광여자고등학교", region: "서울" },
+    { name: "경기여자고등학교", region: "서울" },
+    { name: "서초고등학교", region: "서울" },
+    { name: "반포고등학교", region: "서울" },
+    { name: "한영고등학교", region: "서울" },
+    { name: "명덕고등학교", region: "서울" },
+    { name: "대일고등학교", region: "서울" },
+    { name: "마포고등학교", region: "서울" },
+    { name: "신목고등학교", region: "서울" },
+    { name: "인천고등학교", region: "인천" },
+    { name: "제물포고등학교", region: "인천" },
+    { name: "송도고등학교", region: "인천" },
+    { name: "부평고등학교", region: "인천" },
+    { name: "부천고등학교", region: "경기" },
+    { name: "수원고등학교", region: "경기" },
+    { name: "안양고등학교", region: "경기" },
+    { name: "분당고등학교", region: "경기" },
+    { name: "낙생고등학교", region: "경기" },
+    { name: "서현고등학교", region: "경기" },
+    { name: "수지고등학교", region: "경기" },
+    { name: "풍덕고등학교", region: "경기" },
+    { name: "고양고등학교", region: "경기" },
+    { name: "일산동고등학교", region: "경기" },
+    { name: "백석고등학교", region: "경기" },
+    { name: "대전고등학교", region: "대전" },
+    { name: "충남고등학교", region: "대전" },
+    { name: "대구고등학교", region: "대구" },
+    { name: "경북고등학교", region: "대구" },
+    { name: "부산고등학교", region: "부산" },
+    { name: "경남고등학교", region: "부산" },
+    { name: "광주고등학교", region: "광주" },
+    { name: "전주고등학교", region: "전북" },
+    { name: "청주고등학교", region: "충북" },
+    { name: "춘천고등학교", region: "강원" },
+    { name: "제주고등학교", region: "제주" }
+  ];
+
+  window.onStep3SchoolInput = function(query) {
+    var val = (query || "").trim();
+    var dropdown = document.getElementById("step3-autocomplete-dropdown");
+    var spinner = document.getElementById("step3-search-spinner");
+    if (!dropdown) return;
+
+    // 입력하는 동안에도 실시간으로 5단계 설계서 학교명 동기화
+    window.updateSchoolEverywhere(val);
+
+    if (debounceTimer) clearTimeout(debounceTimer);
+
+    if (!val) {
+      dropdown.innerHTML = "";
+      dropdown.classList.add("hidden");
+      if (spinner) spinner.classList.add("hidden");
+      return;
+    }
+
+    if (spinner) spinner.classList.remove("hidden");
+
+    debounceTimer = setTimeout(function() {
+      var neisUrl = "https://open.neis.go.kr/hub/schoolInfo?Type=json&pIndex=1&pSize=15&SCHUL_KND_SC_NM=%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90&SCHUL_NM=" + encodeURIComponent(val);
+      
+      fetch(neisUrl)
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (spinner) spinner.classList.add("hidden");
+          var rows = [];
+          if (data && data.schoolInfo && data.schoolInfo[1] && data.schoolInfo[1].row) {
+            rows = data.schoolInfo[1].row.map(function(r) {
+              return {
+                name: r.SCHUL_NM,
+                region: r.LCTN_SC_NM || (r.ATPT_OFCDC_SC_NM ? r.ATPT_OFCDC_SC_NM.substring(0, 2) : "고교")
+              };
+            });
+          }
+          if (rows.length === 0) {
+            rows = cachedSchools.filter(function(s) {
+              return s.name.indexOf(val) !== -1;
+            });
+          }
+          renderSchoolResults(val, rows);
+        })
+        .catch(function() {
+          if (spinner) spinner.classList.add("hidden");
+          var rows = cachedSchools.filter(function(s) {
+            return s.name.indexOf(val) !== -1;
+          });
+          renderSchoolResults(val, rows);
+        });
+    }, 200);
+  };
+
+  function renderSchoolResults(query, list) {
+    var dropdown = document.getElementById("step3-autocomplete-dropdown");
+    if (!dropdown) return;
+
+    if (!list || list.length === 0) {
+      dropdown.innerHTML = '<div class="p-3 text-slate-500 text-center"><span>'' + query + '' 검색 결과가 없습니다.</span></div>';
+      dropdown.classList.remove("hidden");
+      return;
+    }
+
+    var html = '<div class="py-1">';
+    list.forEach(function(s) {
+      html += '<button type="button" onclick="selectSchoolStep3('' + s.name + '', '' + (s.region || '') + '')" class="w-full text-left px-3.5 py-2.5 hover:bg-indigo-50/80 transition flex items-center justify-between gap-2 border-b border-slate-100 last:border-0 cursor-pointer">' +
+        '<div class="flex items-center gap-2"><i class="fa-solid fa-school text-slate-400 text-xs"></i><span class="font-bold text-slate-900">' + s.name + '</span></div>' +
+        '<span class="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">' + (s.region || '고교') + '</span>' +
+      '</button>';
+    });
+    html += '</div>';
+    dropdown.innerHTML = html;
+    dropdown.classList.remove("hidden");
+  }
+
+  window.selectSchoolStep3 = function(schoolName, region) {
+    window.updateSchoolEverywhere(schoolName);
+    var dropdown = document.getElementById("step3-autocomplete-dropdown");
+    if (dropdown) dropdown.classList.add("hidden");
+  };
+
+  window.openSmartSchoolCurriculum = function() {
+    var inStep3 = document.getElementById("input-school-step3");
+    var inStudent = document.getElementById("input-school");
+    var name = (inStep3 && inStep3.value ? inStep3.value : (inStudent ? inStudent.value : "")).trim();
+
+    if (!name) {
+      if (inStep3) {
+        inStep3.focus();
+        inStep3.classList.add("ring-2", "ring-indigo-500");
+        setTimeout(function() { inStep3.classList.remove("ring-2", "ring-indigo-500"); }, 1500);
+      }
+      window.open("https://www.schoolinfo.go.kr/", "_blank");
+      return;
+    }
+
+    var form = document.getElementById("schoolinfo-euckr-form");
+    if (form) {
+      var fName = document.getElementById("form-euc-school-name");
+      var fKey = document.getElementById("form-euc-school-keyword");
+      if (fName) fName.value = name;
+      if (fKey) fKey.value = name;
+      try {
+        form.submit();
+        return;
+      } catch(e) {}
+    }
+
+    var targetUrl = "https://www.schoolinfo.go.kr/ei/ss/Pneiss_f01_l0.do?SEARCH_KEYWORD=" + encodeURIComponent(name);
+    window.open(targetUrl, "_blank");
+  };
+
+  document.addEventListener("click", function(e) {
+    if (!e.target.closest("#step3-school-search-card") && !e.target.closest("#input-school-step3") && !e.target.closest("#step3-autocomplete-dropdown")) {
+      var dropdown = document.getElementById("step3-autocomplete-dropdown");
+      if (dropdown) dropdown.classList.add("hidden");
+    }
+  });
+
+  // 인적사항 실시간 반영 리스너
+  document.addEventListener("input", function(e) {
+    if (e.target && (e.target.id === "input-school-step3" || e.target.id === "input-school")) {
+      window.updateSchoolEverywhere(e.target.value.trim());
+    }
+    if (e.target && e.target.id === "input-name") {
+      var outName = document.getElementById("out-name");
+      if (outName) outName.textContent = e.target.value.trim() || "________";
+    }
+    if (e.target && (e.target.id === "input-grade" || e.target.id === "input-class" || e.target.id === "input-num")) {
+      var g = (document.getElementById("input-grade")?.value || "_");
+      var c = (document.getElementById("input-class")?.value || "_");
+      var n = (document.getElementById("input-num")?.value || "_");
+      var outId = document.getElementById("out-student-id");
+      if (outId) outId.textContent = g + " 학년 " + c + " 반 " + n + " 번";
+    }
+  });
+
+  // 초기화 및 DOM 감시자 연결
+  var observer = new MutationObserver(function() {
+    applyStudentModePadletSecurity();
+    syncSelectedMajorButtonStyles();
+  });
+
+  function initFeedbackEngine() {
+    applyStudentModePadletSecurity();
+    syncSelectedMajorButtonStyles();
+    checkAndRenderStudentPadletAccess();
+
+    var targetTitle = document.getElementById('selected-major-title');
+    if (targetTitle) observer.observe(targetTitle, { childList: true, characterData: true, subtree: true });
+
+    var grid = document.getElementById('majors-grid-container');
+    if (grid) observer.observe(grid, { childList: true, subtree: true });
+
+    // 저장된 학교명 로드 및 동기화
+    var savedSchool = sessionStorage.getItem("careerpath_school_name") || localStorage.getItem("careerpath_school_name");
+    var inStudent = document.getElementById("input-school");
+    var inStep3 = document.getElementById("input-school-step3");
+    if (!savedSchool && inStudent && inStudent.value) savedSchool = inStudent.value;
+    if (!savedSchool && inStep3 && inStep3.value) savedSchool = inStep3.value;
+    if (savedSchool) {
+      window.updateSchoolEverywhere(savedSchool);
+    }
+
+    // 양대 과목 테이블 초기 렌더링
+    window.updateAllStudyPlanTables();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFeedbackEngine);
+  } else {
+    initFeedbackEngine();
+  }
+
+  window.addEventListener('load', function() {
+    initFeedbackEngine();
+  });
+
+  setTimeout(initFeedbackEngine, 200);
+  setTimeout(initFeedbackEngine, 800);
+})();
+</script>
+
 </head>
 <body class="bg-[#f8fafc] text-slate-900 min-h-screen flex flex-col justify-between antialiased pb-16 md:pb-0">
   <!-- ==================== CareerPath EdTech SaaS Sidebar ==================== -->
@@ -5973,23 +7426,7 @@ div#step-1 {
         </div>
       </div>
 
-      <div class="flex items-center space-x-2 sm:space-x-3">
-        <a href="#section-checklist" class="text-xs sm:text-sm font-semibold text-slate-700 hover:text-indigo-600 px-2.5 py-1.5 rounded-lg border border-slate-300 hover:border-slate-400 transition hidden sm:inline-block">
-          체크리스트(OX)
-        </a>
-        <a href="#step-1" class="text-xs sm:text-sm font-semibold text-slate-700 hover:text-indigo-600 px-2.5 py-1.5 rounded-lg border border-slate-300 hover:border-slate-400 transition hidden sm:inline-block">
-          진로검사(선택)
-        </a>
-        <a href="#step-2" class="text-xs sm:text-sm font-semibold text-slate-700 hover:text-indigo-600 px-2.5 py-1.5 rounded-lg border border-slate-300 hover:border-slate-400 transition hidden sm:inline-block">
-          학과선택
-        </a>
-        <a href="#step-3" class="text-xs sm:text-sm font-semibold text-slate-700 hover:text-indigo-600 px-2.5 py-1.5 rounded-lg border border-slate-300 hover:border-slate-400 transition hidden sm:inline-block">
-          과목설계(272개)
-        </a>
-        <button onclick="quickPrint()" class="text-xs sm:text-sm font-extrabold bg-slate-900 hover:bg-slate-800 text-white px-3.5 py-1.5 rounded-xl shadow-xs transition flex items-center gap-1.5">
-          <i class="fa-solid fa-print text-xs"></i> <span>설계서 인쇄/PDF</span>
-        </button>
-      </div>
+      
     </div>
   </header>
 
@@ -6005,6 +7442,18 @@ div#step-1 {
   </div>
   <!-- 메인 컨테이너 -->
   <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 flex-1 w-full">
+
+  
+
+
+  
+
+
+  
+
+
+  
+
   <!-- ========================================================= -->
     <!-- [0] 맨 처음: 고교학점제 체크리스트 (맞다 O / 틀리다 X 5문항) -->
     <!-- ========================================================= -->
@@ -6015,9 +7464,7 @@ div#step-1 {
         <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-1.5"><i class="fa-solid fa-clipboard-check"></i> STEP 01 · 고교학점제</span>
-            <h2 class="text-xl sm:text-2xl font-black text-slate-950">
-              고1 학생을 위한 고교학점제 상식 팩트체크 (맞다 O / 틀리다 X)
-            </h2>
+            <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title">고1 학생을 위한 고교학점제 상식 팩트체크 (맞다 O / 틀리다 X)</h2>
             <p class="text-xs sm:text-sm text-slate-600 mt-1">
               본격적인 과목 설계 전, 고교학점제 핵심 제도를 맞다(O)와 틀리다(X)로 확인해 보세요. (문항 선택 시 즉시 채점 및 도서 해설 제공)
             </p>
@@ -6137,122 +7584,129 @@ div#step-1 {
 
         <!-- 체크리스트 진단 완료 배너 & 구매 링크 (요청대로 중복 설명 문구 삭제) -->
         <!-- 배너 & 구매 링크 및 나만의 3개년 학업 설계 실전 워크플로우 연계 (완료 시 노출) -->
-        <div
-          id="checklist-result-box"
-          class="hidden p-6 sm:p-8 bg-gradient-to-br from-amber-50 via-white to-indigo-50/70 rounded-3xl border-2 border-indigo-300 shadow-xl space-y-7 transition-all duration-300"
-        >
-          <!-- 1. 상단: 진단 완료 헤더 & 결과 요약 -->
-          <div class="text-center space-y-2.5">
-            <span class="inline-flex items-center gap-1.5 text-xs font-black text-indigo-900 bg-indigo-100 px-3.5 py-1 rounded-full uppercase tracking-wider border border-indigo-200">
-              <i class="fa-solid fa-circle-check text-indigo-600"></i> 체크리스트 진단 완료
-            </span>
-            <h3 class="text-xl sm:text-2xl font-black text-slate-950 mt-1 tracking-tight">
-              과목 선택과 학점 관리, 『고1 학업 설계』가 3년의 확실한 길잡이가 됩니다!
-            </h3>
-            <div id="checklist-score-summary" class="inline-flex flex-wrap items-center justify-center gap-2 px-5 py-2 bg-white rounded-full border border-indigo-200 text-xs sm:text-sm font-black text-indigo-950 shadow-2xs">
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-black text-emerald-700 bg-emerald-100 border-emerald-300">5문항 중 3개 정답 (60점)</span>
-              <span class="text-slate-700 font-bold text-xs">👍 고교학점제 기본 개념 숙지 완료! 오답 해설을 확인하고 3개년 선택과목을 구성해 보세요.</span>
-            </div>
-            <p class="text-xs sm:text-sm text-slate-600 font-medium max-w-2xl mx-auto">
-              고교학점제 핵심 개념을 잘 확인하셨습니다! 이제 진단 결과를 바탕으로 아래 <strong class="text-indigo-700 font-bold">진로 심리검사</strong>와 <strong class="text-indigo-700 font-bold">3개년 교육과정 과목 설계</strong>를 본격적으로 시작해 보세요.
-            </p>
-          </div>
-
-          <!-- 3. 핵심 연계: 나만의 3개년 고1 학업 설계 실전 워크플로우 시작하기 -->
-          <div class="bg-white p-5 sm:p-6 rounded-2xl border border-indigo-200/90 shadow-sm space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
-              <div>
-                <h4 class="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
-                  <span class="w-6 h-6 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs">
-                    <i class="fa-solid fa-compass"></i>
-                  </span>
-                  <span>나만의 3개년 고1 학업 설계 실전 워크플로우 시작하기</span>
-                </h4>
-                <p class="text-xs text-slate-500 mt-0.5">
-                  아래 단계별 버튼을 누르면 해당 설계 및 검사 영역으로 즉시 이동합니다.
-                </p>
-              </div>
-              <span class="text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100 self-start sm:self-auto">
-                <i class="fa-solid fa-bolt text-amber-500 mr-1"></i> 원클릭 즉시 이동
-              </span>
-            </div>
-
-            <!-- 4단계 워크플로우 미니 카드 그리드 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              <!-- 단계 A: 진로 심리검사 -->
-              <button
-                type="button"
-                onclick="startWorkflowStep('career')"
-                class="p-3.5 bg-slate-50 hover:bg-indigo-50/70 border border-slate-200 hover:border-indigo-400 rounded-2xl text-left transition group space-y-1.5 cursor-pointer"
-              >
-                <div class="flex items-center justify-between">
-                  <span class="text-[10px] font-black uppercase text-indigo-600 bg-indigo-100/70 px-2 py-0.5 rounded-md">STEP 0</span>
-                  <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-0.5 transition"></i>
-                </div>
-                <div class="font-black text-xs text-slate-900 group-hover:text-indigo-700">진로 심리검사 3종</div>
-                <div class="text-[11px] text-slate-500 font-medium leading-snug">흥미(RIASEC)·적성·가치관 종합 검사로 내게 맞는 계열 찾기</div>
-              </button>
-
-              <!-- 단계 B: 표준 편제표 세팅 -->
-              <button
-                type="button"
-                onclick="startWorkflowStep('step-1')"
-                class="p-3.5 bg-slate-50 hover:bg-emerald-50/70 border border-slate-200 hover:border-emerald-400 rounded-2xl text-left transition group space-y-1.5 cursor-pointer"
-              >
-                <div class="flex items-center justify-between">
-                  <span class="text-[10px] font-black uppercase text-emerald-600 bg-emerald-100/70 px-2 py-0.5 rounded-md">STEP 1</span>
-                  <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-0.5 transition"></i>
-                </div>
-                <div class="font-black text-xs text-slate-900 group-hover:text-emerald-700">학교 편제표 & 과목 설계</div>
-                <div class="text-[11px] text-slate-500 font-medium leading-snug">8개 고교유형 프리셋 및 192학점 이수 기준 자동 검증</div>
-              </button>
-
-              <!-- 단계 C: 학과 및 대입전형 -->
-              <button
-                type="button"
-                onclick="startWorkflowStep('step-2')"
-                class="p-3.5 bg-slate-50 hover:bg-amber-50/70 border border-slate-200 hover:border-amber-400 rounded-2xl text-left transition group space-y-1.5 cursor-pointer"
-              >
-                <div class="flex items-center justify-between">
-                  <span class="text-[10px] font-black uppercase text-amber-600 bg-amber-100/70 px-2 py-0.5 rounded-md">STEP 2</span>
-                  <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-amber-600 group-hover:translate-x-0.5 transition"></i>
-                </div>
-                <div class="font-black text-xs text-slate-900 group-hover:text-amber-700">90개 학과 & 대입 요강</div>
-                <div class="text-[11px] text-slate-500 font-medium leading-snug">2028 대입 필수 권장과목 연계 및 입시 지원 전략 분석</div>
-              </button>
-
-              <!-- 단계 D: 세특 도서 및 학업설계서 -->
-              <button
-                type="button"
-                onclick="startWorkflowStep('step-4')"
-                class="p-3.5 bg-slate-50 hover:bg-purple-50/70 border border-slate-200 hover:border-purple-400 rounded-2xl text-left transition group space-y-1.5 cursor-pointer"
-              >
-                <div class="flex items-center justify-between">
-                  <span class="text-[10px] font-black uppercase text-purple-600 bg-purple-100/70 px-2 py-0.5 rounded-md">STEP 3·4</span>
-                  <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-purple-600 group-hover:translate-x-0.5 transition"></i>
-                </div>
-                <div class="font-black text-xs text-slate-900 group-hover:text-purple-700">공식 학업설계서 완성</div>
-                <div class="text-[11px] text-slate-500 font-medium leading-snug">부록 도서 직접 기입 후 최종 3개년 학업 설계서 PDF 출력</div>
-              </button>
-            </div>
-
-            <!-- 하단 원클릭 메인 액션 버튼 -->
-            <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 bg-gradient-to-r from-indigo-50 to-emerald-50 p-4 rounded-xl border border-indigo-100">
-              <div class="text-xs font-bold text-slate-800 text-center sm:text-left">
-                💡 <span class="text-indigo-900 font-black">추천 시작 경로:</span> 먼저 <strong>진로 심리검사</strong>로 적성을 파악한 후, <strong>학교 편제표 프리셋</strong>을 적용해 보세요!
-              </div>
-              <div class="flex items-center gap-2 w-full sm:w-auto shrink-0">
-                <button
-                  type="button"
-                  onclick="startWorkflowStep('career')"
-                  class="w-full sm:w-auto px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-xs shadow-sm transition flex items-center justify-center gap-1.5 cursor-pointer"
-                >
-                  <i class="fa-solid fa-play"></i>
-                  <span>검사 및 설계 바로 시작하기 →</span>
-                </button>
-              </div>
-            </div>
-          </div>
+        <!-- 체크리스트 진단 완료 결과 화면 (모던 프리미엄 EdTech SaaS 디자인) -->
+  <div  
+    id="checklist-result-box"  
+    class="hidden p-6 sm:p-8 bg-white rounded-3xl border border-slate-200 shadow-md space-y-6 transition-all duration-300"  
+    style="background-color: #FFFFFF !important; border: 1.5px solid #CBD5E1 !important; border-radius: 24px !important; padding: clamp(24px, 3.5vw, 36px) !important; box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;"
+  >  
+    <!-- 1. 상단: 진단 완료 헤더 & 결과 요약 -->  
+    <div class="text-center space-y-3">  
+      <span class="inline-flex items-center gap-1.5 text-xs font-black text-blue-700 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200">  
+        <i class="fa-solid fa-circle-check text-blue-600"></i> 체크리스트 진단 완료  
+      </span>  
+      <h3 class="text-xl sm:text-2xl font-black text-slate-900 mt-1 tracking-tight">  
+        과목 선택과 학점 관리, 『고1 학업 설계』가 3년의 확실한 길잡이가 됩니다!  
+      </h3>  
+      <div id="checklist-score-summary" class="inline-flex flex-wrap items-center justify-center gap-2.5 px-5 py-2.5 bg-slate-50 rounded-2xl border border-slate-200 text-xs sm:text-sm font-bold text-slate-800 shadow-2xs">  
+        <span class="px-2.5 py-0.5 rounded-lg text-xs font-black text-emerald-700 bg-emerald-100 border border-emerald-300">5문항 중 2개 정답 (40점)</span>  
+        <span class="text-slate-600 font-medium text-xs">💡 고교학점제 핵심 규정을 확인했습니다. 각 문항별 해설을 살피며 맞춤형 학업 설계를 진행하세요.</span>  
+      </div>  
+      <p class="text-xs sm:text-sm text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">  
+        고교학점제 핵심 개념을 잘 확인하셨습니다! 이제 진단 결과를 바탕으로 아래 <strong class="text-blue-700 font-bold">진로 심리검사</strong>와 <strong class="text-blue-700 font-bold">3개년 교육과정 과목 설계</strong>를 본격적으로 시작해 보세요.  
+      </p>  
+    </div>  
+  
+    <!-- 2. 핵심 연계: 나만의 3개년 고1 학업 설계 실전 워크플로우 시작하기 -->  
+    <div class="bg-slate-50/70 p-5 sm:p-6 rounded-2xl border border-slate-200 space-y-4">  
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200/80 pb-3">  
+        <div>  
+          <h4 class="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">  
+            <span class="w-6 h-6 rounded-lg bg-blue-600 text-white flex items-center justify-center text-xs shadow-2xs">  
+              <i class="fa-solid fa-compass"></i>  
+            </span>  
+            <span>나만의 3개년 고1 학업 설계 실전 워크플로우 시작하기</span>  
+          </h4>  
+          <p class="text-xs text-slate-500 mt-0.5 font-medium">  
+            아래 단계별 카드를 클릭하면 해당 설계 및 검사 영역으로 즉시 이동합니다.  
+          </p>  
+        </div>  
+        <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200 self-start sm:self-auto">  
+          <i class="fa-solid fa-bolt text-amber-500 mr-1"></i> 원클릭 즉시 이동  
+        </span>  
+      </div>  
+  
+      <!-- 4단계 워크플로우 화이트 카드 그리드 (글씨 시인성 100% 보장) -->  
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 workflow-step-grid">  
+        <!-- 단계 A: 진로 심리검사 -->  
+        <button  
+          type="button"  
+          onclick="var el=document.getElementById('step-1'); if(el) el.scrollIntoView({behavior:'smooth', block:'start'});"  
+          class="workflow-step-btn p-4 bg-white hover:bg-blue-50/50 border border-slate-200 hover:border-blue-400 rounded-xl text-left transition-all duration-200 group space-y-2 cursor-pointer shadow-2xs hover:shadow-sm"  
+          style="background-color: #FFFFFF !important; background: #FFFFFF !important; border: 1.5px solid #E2E8F0 !important; border-radius: 14px !important; padding: 16px !important; text-align: left !important; box-sizing: border-box !important;"
+        >  
+          <div class="flex items-center justify-between">  
+            <span class="text-[11px] font-black uppercase text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-md">STEP 02</span>  
+            <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition"></i>  
+          </div>  
+          <div class="font-bold text-sm text-slate-900 group-hover:text-blue-700 transition" style="color: #0F172A !important;">진로 심리검사 3종</div>  
+          <div class="text-xs text-slate-500 font-medium leading-relaxed" style="color: #64748B !important;">흥미(RIASEC)·적성·가치관 종합 검사로 내게 맞는 계열 찾기</div>  
+        </button>  
+  
+        <!-- 단계 B: 목표 학과 탐색 -->  
+        <button  
+          type="button"  
+          onclick="var el=document.getElementById('step-2'); if(el) el.scrollIntoView({behavior:'smooth', block:'start'});"  
+          class="workflow-step-btn p-4 bg-white hover:bg-indigo-50/50 border border-slate-200 hover:border-indigo-400 rounded-xl text-left transition-all duration-200 group space-y-2 cursor-pointer shadow-2xs hover:shadow-sm"  
+          style="background-color: #FFFFFF !important; background: #FFFFFF !important; border: 1.5px solid #E2E8F0 !important; border-radius: 14px !important; padding: 16px !important; text-align: left !important; box-sizing: border-box !important;"
+        >  
+          <div class="flex items-center justify-between">  
+            <span class="text-[11px] font-black uppercase text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded-md">STEP 03</span>  
+            <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-0.5 transition"></i>  
+          </div>  
+          <div class="font-bold text-sm text-slate-900 group-hover:text-indigo-700 transition" style="color: #0F172A !important;">90개 학과 & 대입 요강</div>  
+          <div class="text-xs text-slate-500 font-medium leading-relaxed" style="color: #64748B !important;">2028 대입 필수 권장과목 연계 및 입시 지원 전략 분석</div>  
+        </button>  
+  
+        <!-- 단계 C: 학교 편제표 & 과목 설계 -->  
+        <button  
+          type="button"  
+          onclick="var el=document.getElementById('step-3'); if(el) el.scrollIntoView({behavior:'smooth', block:'start'});"  
+          class="workflow-step-btn p-4 bg-white hover:bg-purple-50/50 border border-slate-200 hover:border-purple-400 rounded-xl text-left transition-all duration-200 group space-y-2 cursor-pointer shadow-2xs hover:shadow-sm"  
+          style="background-color: #FFFFFF !important; background: #FFFFFF !important; border: 1.5px solid #E2E8F0 !important; border-radius: 14px !important; padding: 16px !important; text-align: left !important; box-sizing: border-box !important;"
+        >  
+          <div class="flex items-center justify-between">  
+            <span class="text-[11px] font-black uppercase text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-md">STEP 04</span>  
+            <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-purple-600 group-hover:translate-x-0.5 transition"></i>  
+          </div>  
+          <div class="font-bold text-sm text-slate-900 group-hover:text-purple-700 transition" style="color: #0F172A !important;">학교 편제표 & 과목 설계</div>  
+          <div class="text-xs text-slate-500 font-medium leading-relaxed" style="color: #64748B !important;">8개 고교유형 프리셋 및 192학점 이수 기준 자동 검증</div>  
+        </button>  
+  
+        <!-- 단계 D: 세특 도서 및 학업설계서 -->  
+        <button  
+          type="button"  
+          onclick="if(typeof quickPrint==='function'){quickPrint();}else{var el=document.getElementById('printable-study-plan')||document.getElementById('graduation-requirement-card'); if(el) el.scrollIntoView({behavior:'smooth'});}"  
+          class="workflow-step-btn p-4 bg-white hover:bg-emerald-50/50 border border-slate-200 hover:border-emerald-400 rounded-xl text-left transition-all duration-200 group space-y-2 cursor-pointer shadow-2xs hover:shadow-sm"  
+          style="background-color: #FFFFFF !important; background: #FFFFFF !important; border: 1.5px solid #E2E8F0 !important; border-radius: 14px !important; padding: 16px !important; text-align: left !important; box-sizing: border-box !important;"
+        >  
+          <div class="flex items-center justify-between">  
+            <span class="text-[11px] font-black uppercase text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">STEP 05</span>  
+            <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-0.5 transition"></i>  
+          </div>  
+          <div class="font-bold text-sm text-slate-900 group-hover:text-emerald-700 transition" style="color: #0F172A !important;">공식 학업설계서 완성</div>  
+          <div class="text-xs text-slate-500 font-medium leading-relaxed" style="color: #64748B !important;">나만의 3개년 공식 학업설계서 미리보기 및 PDF 출력</div>  
+        </button>  
+      </div>  
+  
+      <!-- 하단 원클릭 메인 액션 버튼 바 -->  
+      <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 bg-white p-3.5 rounded-xl border border-slate-200">  
+        <div class="text-xs text-slate-600 font-medium flex items-center gap-1.5">  
+          <i class="fa-solid fa-lightbulb text-amber-500 text-sm"></i>  
+          <span><strong class="text-slate-800 font-bold">추천 시작 경로:</strong> 먼저 진로 심리검사로 적성을 파악한 후, 학교 편제표 프리셋을 적용해 보세요!</span>  
+        </div>  
+        <button  
+          type="button"  
+          onclick="var el=document.getElementById('step-1'); if(el) el.scrollIntoView({behavior:'smooth', block:'start'});"  
+          class="w-full sm:w-auto px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-sm transition flex items-center justify-center gap-2 cursor-pointer shrink-0"  
+          style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%) !important; color: #FFFFFF !important; border: none !important;"
+        >  
+          <i class="fa-solid fa-play text-[10px]"></i>  
+          <span>검사 및 설계 바로 시작하기 →</span>  
+        </button>  
+      </div>  
+    </div>  
+  </div>
         </div>
       </section>
 
@@ -6339,7 +7793,27 @@ div#step-1 {
       </button>
     </div>
 
-    <div id="teacher-qr-container" style="display: none; padding-top: 14px; border-top: 1px dashed #E2E8F0; text-align: center;">
+    
+          <div style="margin-top: 12px; padding-top: 12px; border-top: 1px dashed #CBD5E1;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <span style="font-size: 12.5px; font-weight: 800; color: #1E293B; display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-chalkboard-user text-amber-500"></i>
+                <span>선생님 패들렛(Padlet) 링크 연동</span>
+              </span>
+              <span style="font-size: 11px; color: #64748B;">입력 시 학생용 링크에 자동 반영</span>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <input
+                type="text"
+                id="teacher-padlet-url-input"
+                placeholder="https://padlet.com/선생님계정/보드주소"
+                oninput="if(typeof updateStudentShareUrlWithPadlet==='function') updateStudentShareUrlWithPadlet();"
+                style="flex: 1; height: 40px !important; font-size: 12.5px !important; background-color: #F8FAFC !important; border: 1.5px solid #CBD5E1 !important; border-radius: 8px !important; padding: 0 10px !important;"
+              />
+            </div>
+          </div>
+
+<div id="teacher-qr-container" style="display: none; padding-top: 14px; border-top: 1px dashed #E2E8F0; text-align: center;">
       <div style="display: inline-block; padding: 14px; background: #FFFFFF; border: 1.5px solid #CBD5E1; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
         <img
           id="teacher-qr-image"
@@ -6354,21 +7828,7 @@ div#step-1 {
     </div>
   </div>
 
-  <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-    <button
-      type="button"
-      onclick="document.getElementById('section-checklist').scrollIntoView({ behavior: 'smooth', block: 'start' });"
-      class="cursor-pointer"
-      style="display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; background: #F8FAFC; color: #334155; font-size: 13.5px; font-weight: 750; border-radius: 12px; border: 1.5px solid #CBD5E1; box-shadow: 0 1px 2px rgba(15,23,42,0.04); cursor: pointer; transition: all 0.2s ease;"
-    >
-      <i class="fa-solid fa-chalkboard-user text-indigo-600"></i>
-      <span>기존 학업설계 관리 화면으로 이동</span>
-      <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
-    </button>
-    <span style="font-size: 12px; color: #64748B; font-weight: 600;">
-      진로 검사, 학과/과목 탐색 및 3개년 학업설계서 실습 화면으로 바로 이동합니다.
-    </span>
-  </div>
+  
 </div>
 
 <!-- [VIEW 2: 학생용 화면 (교사용 내용 일체 배제, 학생 접속 시 단독 노출 - 요구사항 1~4)] -->
@@ -6646,38 +8106,7 @@ function toggleTeacherQrCodeModal() {
 })();
 </script>
 
-      <!-- 학업 설계 5단계 진행 순서 -->
-      <section class="cp-progress-card" style="background-color: #FFFFFF !important; border: 1.5px solid #CBD5E1 !important; border-radius: 24px !important; padding: clamp(24px, 3.5vw, 36px) !important; box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04) !important; margin-bottom: 48px !important; display: block !important; box-sizing: border-box !important;">
-        <div class="cp-progress-header">
-          <div class="cp-progress-title">
-            <i class="fa-solid fa-list-check text-blue-600"></i>
-            <span>학업 설계 5단계 진행 순서</span>
-          </div>
-          <span class="text-xs text-slate-500 font-semibold hidden sm:inline">단계를 클릭하면 해당 영역으로 바로 이동합니다</span>
-        </div>
-        <div class="cp-progress-steps">
-          <div class="cp-step-item" onclick="document.getElementById('section-checklist').scrollIntoView({ behavior: 'smooth', block: 'start' });">
-            <div class="cp-step-num">01</div>
-            <div class="cp-step-name">고교학점제</div>
-          </div>
-          <div class="cp-step-item" onclick="document.getElementById('step-1').scrollIntoView({ behavior: 'smooth', block: 'start' });">
-            <div class="cp-step-num">02</div>
-            <div class="cp-step-name">진로 진단</div>
-          </div>
-          <div class="cp-step-item" onclick="document.getElementById('step-2').scrollIntoView({ behavior: 'smooth', block: 'start' });">
-            <div class="cp-step-num">03</div>
-            <div class="cp-step-name">목표 학과</div>
-          </div>
-          <div class="cp-step-item" onclick="document.getElementById('step-3').scrollIntoView({ behavior: 'smooth', block: 'start' });">
-            <div class="cp-step-num">04</div>
-            <div class="cp-step-name">과목 설계</div>
-          </div>
-          <div class="cp-step-item" onclick="if (typeof quickPrint === 'function') { quickPrint(); } else { document.getElementById('printable-study-plan').scrollIntoView({ behavior: 'smooth' }); }">
-            <div class="cp-step-num">05</div>
-            <div class="cp-step-name">학업설계서</div>
-          </div>
-        </div>
-      </section>
+      
     </div>
 
 
@@ -6779,7 +8208,7 @@ function toggleTeacherQrCodeModal() {
       </a>
     </div>
 
-    <h2 class="text-2xl font-bold text-slate-900 tracking-tight mb-1.5">진로 심리 간이 검사</h2>
+    <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title">진로 심리 간이 검사</h2>
     <p class="text-sm text-slate-600 leading-relaxed max-w-xl mb-4">
       나에게 맞는 진로 방향을 찾아볼까요?
     </p>
@@ -6838,49 +8267,7 @@ function toggleTeacherQrCodeModal() {
         </div>
 
         <!-- 검사별 소요 시간 및 종합 매칭 안내 카드 -->
-        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs text-slate-700 space-y-2">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-200 pb-2">
-            <strong class="text-xs sm:text-sm font-black text-slate-900 flex items-center gap-1.5">
-              <i class="fa-solid fa-clock text-indigo-600"></i> 검사별 소요 시간 및 척도 안내 (<span id="guide-mode-title" class="text-indigo-600 font-black">약식 모드 기준</span>)
-            </strong>
-            <span class="text-[11px] text-slate-500 font-medium" id="guide-mode-time">예상 총 소요 시간: 약 5~7분</span>
-          </div>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-0.5 text-[11px]">
-            <div class="p-2.5 bg-white rounded-xl border border-slate-200 shadow-2xs flex flex-col justify-between">
-              <div>
-                <span class="font-black text-indigo-600 block">① 직업 흥미 검사 (가중치 40%)</span>
-                <span class="text-[10px] text-slate-500" id="box-riasec-subinfo">핵심 18문항 (4점 척도: 1매우싫다~4매우좋다)</span>
-              </div>
-              <div class="mt-2 pt-1.5 border-t border-slate-100 font-bold text-slate-800 flex justify-between">
-                <span>소요 시간</span>
-                <span class="text-indigo-600 font-black" id="box-riasec-time">약 2분</span>
-              </div>
-            </div>
-
-            <div class="p-2.5 bg-white rounded-xl border border-slate-200 shadow-2xs flex flex-col justify-between">
-              <div>
-                <span class="font-black text-emerald-700 block">② 직업 적성 검사 (가중치 35%)</span>
-                <span class="text-[10px] text-slate-500" id="box-aptitude-subinfo">핵심 11문항 (5점 척도: 1전혀아님~5매우그렇다)</span>
-              </div>
-              <div class="mt-2 pt-1.5 border-t border-slate-100 font-bold text-slate-800 flex justify-between">
-                <span>소요 시간</span>
-                <span class="text-emerald-700 font-black" id="box-aptitude-time">약 2~3분</span>
-              </div>
-            </div>
-
-            <div class="p-2.5 bg-white rounded-xl border border-slate-200 shadow-2xs flex flex-col justify-between">
-              <div>
-                <span class="font-black text-amber-700 block">③ 직업 가치관 검사 (가중치 25%)</span>
-                <span class="text-[10px] text-slate-500" id="box-value-subinfo">핵심 12문항 (5점 척도: 1전혀아님~5매우그렇다)</span>
-              </div>
-              <div class="mt-2 pt-1.5 border-t border-slate-100 font-bold text-slate-800 flex justify-between">
-                <span>소요 시간</span>
-                <span class="text-amber-700 font-black" id="box-value-time">약 2분</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
         <!-- 3개 서브 검사 선택 탭 -->
         <div class="flex border-b border-slate-200 space-x-4 text-xs sm:text-sm font-bold">
@@ -7020,7 +8407,7 @@ function toggleTeacherQrCodeModal() {
  <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">STEP 03 · 목표 학과</span>
  <span class="text-xs font-bold text-indigo-600 uppercase">고1 학업설계 도서 2부 54~249쪽 연계</span>  
  </div>  
- <h2 class="text-xl font-black text-slate-900 mt-1">목표 학과 선택 & 기초 권장 과목 확인</h2>  
+ <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title">목표 학과 선택 & 기초 권장 과목 확인</h2>  
  <p class="text-xs text-slate-500 mt-0.5">  
  희망 학과를 선택하면 해당 학과의 도서 페이지 가이드, 공통 과목 및 일반 선택 과목이 로드됩니다.  
  </p>  
@@ -7425,8 +8812,8 @@ function switchMajorInfoTab(targetPaneId) {
  #majors-grid-container .font-black,  
  #majors-grid-container .font-bold {  
    font-size: 14.5px !important;  
-   font-weight: 850 !important;  
-   color: #0F172A !important;  
+   font-weight: 800 !important;  
+   color: inherit;  
    letter-spacing: -0.02em !important;  
    display: block !important;  
  }  
@@ -7496,7 +8883,7 @@ function switchMajorInfoTab(targetPaneId) {
   </div>
 
   <!-- 🎓 [통합 카드] 나의 3개년 학업 설계 (교재 연계 + 학업 설계 현황 단일 카드 통합 - 요청 1, 3) -->
-  <div id="graduation-requirement-card" class="bg-white p-5 sm:p-7 rounded-3xl border border-slate-200 shadow-sm space-y-4" style="background-color: #FFFFFF !important; border: 1.5px solid #CBD5E1 !important; border-radius: 24px !important; padding: 28px 32px !important; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important; box-sizing: border-box !important; margin: 20px 0 !important; width: 100% !important;">
+  <div id="graduation-requirement-card" class="bg-white p-5 sm:p-7 rounded-3xl border border-slate-200 shadow-sm space-y-4" style="padding: 24px 28px !important; background-color: #FFFFFF !important; border: 1.5px solid #CBD5E1 !important; border-radius: 24px !important; padding: 28px 32px !important; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important; box-sizing: border-box !important; margin: 20px 0 !important; width: 100% !important; overflow: hidden !important;">
     <!-- 1. 상단: 제목 & 목표 학과 영역 -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-slate-100">
       <div class="flex items-center gap-2 flex-wrap">
@@ -7514,94 +8901,67 @@ function switchMajorInfoTab(targetPaneId) {
       </div>
     </div>
 
-    <!-- 2. 중단: 📖 『고1 학업 설계』 교재 연계 (별도 카드/박스 형태 없이 카드 내부에서 자연스러운 여백으로 통합) -->
-    <div class="pt-2 pb-1 space-y-2.5">
+    <!-- 기존 스크립트 호환용 hidden 요소 (교재 안내 UI 삭제 완료) -->
+    <span id="dynamic-guide-major-name" class="hidden"></span>
+    <span id="dynamic-guide-page-badge" class="hidden"></span>
+    <span id="dynamic-guide-major-target" class="hidden"></span>
+<!-- 구분선 (────────────) -->
+    <div class="border-t border-slate-200/80 my-2.5"></div>
+
+    <!-- 3. 하단: 학업 설계 현황 (단일 일체형 초슬림 컴팩트 고밀도 대시보드) -->
+    <div id="academic-design-status-section" class="px-2 sm:px-3 space-y-3">
+      
+      <!-- [1행: 핵심 진행 상황 + 남은 학점 (좌우 압축 배치)] -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <div class="space-y-1">
-          <div class="flex items-center gap-2 flex-wrap">
-            <span class="text-xs font-black text-amber-700 flex items-center gap-1.5">
-              <i class="fa-solid fa-book-open text-amber-600"></i> 📖 『고1 학업 설계』
+        <!-- 좌측: 학업 설계 현황 + 90 / 192학점 + 47% 진행률 -->
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="text-xs font-bold text-slate-700">학업 설계 현황</span>
+          <div class="flex items-baseline gap-1.5">
+            <span class="text-2xl sm:text-3xl font-black text-blue-600 tracking-tight">
+              <span id="calc-total-credits-card">90</span>
             </span>
-            <span class="text-slate-300">·</span>
-            <h5 class="text-sm sm:text-base font-black text-slate-900 tracking-tight">
-              <span id="dynamic-guide-major-name" class="text-blue-600 font-extrabold">선택 학과</span> 선택과목 가이드
-            </h5>
+            <span class="text-sm sm:text-base font-bold text-slate-500">/ 192학점</span>
           </div>
-          <p class="text-xs sm:text-sm text-slate-600 font-medium">
-            교재 <span id="dynamic-guide-page-badge" class="text-blue-700 font-extrabold underline decoration-blue-300 underline-offset-4">2부 페이지 준비 중</span>을 함께 펼쳐 해당 학과의 추천 선택과목을 확인하세요.
-            <span id="dynamic-guide-major-target" class="hidden">선택 학과</span>
-          </p>
-        </div>
-        <div class="self-start sm:self-center shrink-0">
-          <button type="button" onclick="if(typeof openMajorBookGuideModal==='function'){openMajorBookGuideModal();}else if(typeof openBookModal==='function'){openBookModal();}" class="px-3.5 py-2 bg-amber-500 hover:bg-amber-600 text-white font-extrabold rounded-xl text-xs shadow-2xs transition flex items-center gap-1.5 cursor-pointer">
-            <i class="fa-solid fa-book-bookmark"></i>
-            <span>교재 안내 보기</span>
-            <i class="fa-solid fa-chevron-right text-[10px]"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-xs text-slate-500 pt-0.5">
-        <span class="font-medium text-slate-600">교재에서 살펴본 추천 과목을 아래 [선택과목 추가]에서 직접 찾아 담으세요.</span>
-        <span class="text-[11px] font-semibold text-slate-400 flex items-center gap-1">
-          <i class="fa-solid fa-layer-group text-slate-400"></i>
-          <span>전체 선택과목 안내: 『고1 학업 설계』 3부 p.250~311</span>
-        </span>
-      </div>
-    </div>
-
-    <!-- 구분선 (────────────) -->
-    <div class="border-t border-slate-200/80 my-3"></div>
-
-    <!-- 3. 하단: 학업 설계 현황 (앞으로 설계할 학점 102학점 / 졸업 기준 192학점) -->
-    <div class="space-y-3 pt-1">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div class="space-y-0.5">
-          <span class="text-xs font-bold text-slate-500">학업 설계 현황</span>
-          <div class="flex items-baseline gap-2">
-            <div class="text-2xl sm:text-3xl font-black text-blue-600 tracking-tight">
-              <span id="calc-total-credits-card">90</span><span class="text-base font-bold text-slate-500"> / 192학점</span>
-            </div>
-            <span class="text-lg sm:text-xl font-black text-emerald-600 ml-1">
-              <span id="calc-credit-pct">47</span>%
-            </span>
-          </div>
-        </div>
-        <div class="text-left sm:text-right" id="calc-credit-diff">
-          <span class="text-xs font-bold text-slate-700 block">
-            앞으로 설계할 학점 <span id="calc-credit-diff-num" class="text-lg sm:text-xl font-black text-blue-600">102</span>학점
+          <span class="px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold">
+            <span id="calc-credit-pct">47</span>%
           </span>
-          <span class="text-[11px] text-slate-400 font-medium">졸업 기준 192학점</span>
+        </div>
+
+        <!-- 우측: 앞으로 설계할 학점 102학점 · 졸업 기준 192학점 -->
+        <div id="calc-credit-diff" class="flex items-center gap-2 px-3 py-1 bg-slate-50 border border-slate-200/80 rounded-xl text-xs self-start sm:self-auto">
+          <span class="text-slate-500 font-medium">앞으로 설계할 학점</span>
+          <span class="font-black text-blue-600 text-sm"><span id="calc-credit-diff-num">102</span>학점</span>
+          <span class="text-slate-300">·</span>
+          <span class="text-[11px] text-slate-400">졸업 기준 192학점</span>
         </div>
       </div>
 
-      <!-- 시각적 Progress Bar -->
-      <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden p-0.5 border border-slate-200">
+      <!-- [2행: 초슬림 시각적 Progress Bar] -->
+      <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden p-0.5 border border-slate-200/80">
         <div id="credit-progress-bar" class="bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-500 h-full rounded-full transition-all duration-500 shadow-2xs" style="width: 47%"></div>
       </div>
       <span id="calc-credit-pct-bar-label" class="hidden">47</span>
 
-      <!-- 이수 구성 상세 및 졸업 요건 -->
+      <!-- [3행: 졸업 학점 구성 4대 영역 컴팩트 칩 + 보조 정보 (단일 행 배치)] -->
       <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs border-t border-slate-100">
-        <div class="flex flex-wrap items-center gap-2 font-semibold text-slate-700">
-          <span>공통 <strong class="text-slate-900 font-black"><span id="calc-common-credits">48</span></strong></span>
-          <span class="text-slate-300">·</span>
-          <span>일반 <strong class="text-blue-700 font-black"><span id="calc-gen-credits">16</span></strong></span>
-          <span class="text-slate-300">·</span>
-          <span>진로·융합 <strong class="text-purple-700 font-black"><span id="calc-sel-credits">4</span></strong></span>
-          <span class="text-slate-300">·</span>
-          <span>창체 <strong class="text-emerald-700 font-black"><span id="calc-changche-credits">18</span></strong></span>
-          <span class="text-slate-400 text-[11px]">(단위: 학점)</span>
+        <!-- 4개 영역 컴팩트 칩 (공통 48 · 일반 16 · 진로·융합 4 · 창체 18) -->
+        <div class="flex flex-wrap items-center gap-1.5 font-semibold text-slate-700">
+          <span class="text-slate-500 font-medium mr-1">졸업 학점 구성 <span class="text-[11px] text-slate-400">(단위: 학점)</span> :</span>
+          <span class="px-2 py-0.5 bg-slate-50 border border-slate-200/80 rounded-md text-[11.5px]">공통 <strong class="text-slate-900 font-bold ml-1"><span id="calc-common-credits">48</span></strong></span>
+          <span class="px-2 py-0.5 bg-slate-50 border border-slate-200/80 rounded-md text-[11.5px]">일반 <strong class="text-blue-700 font-bold ml-1"><span id="calc-gen-credits">16</span></strong></span>
+          <span class="px-2 py-0.5 bg-slate-50 border border-slate-200/80 rounded-md text-[11.5px]">진로·융합 <strong class="text-purple-700 font-bold ml-1"><span id="calc-sel-credits">4</span></strong></span>
+          <span class="px-2 py-0.5 bg-slate-50 border border-slate-200/80 rounded-md text-[11.5px]">창체 <strong class="text-emerald-700 font-bold ml-1"><span id="calc-changche-credits">18</span></strong></span>
         </div>
-        <div class="text-[11px] text-slate-400 font-medium self-start sm:self-center">
+
+        <!-- 우측 보조 정보: 교과 174 + 창체 18 -->
+        <div class="text-[11px] text-slate-400 font-medium self-start sm:self-center shrink-0">
           교과 174 + 창체 18
         </div>
       </div>
+
     </div>
   </div>
-
-  <!-- 4. 선택과목 추가 카드 (PART B-4, B-5: 항상 화면에 바로 보이는 핵심 검색 및 추가 기능) -->
-  <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+<div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
     <div class="border-b border-slate-100 pb-3">
       <div class="flex items-center gap-2 mb-1">
         <span class="w-7 h-7 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-bold shadow-2xs">
@@ -7644,21 +9004,95 @@ function switchMajorInfoTab(targetPaneId) {
         </button>
       </div>
 
-      <!-- 학교 교육과정 확인 보조 기능 -->
-      <div class="flex flex-wrap items-center justify-between gap-2 p-2.5 bg-slate-50/80 rounded-xl border border-slate-200 text-xs">
-        <div class="flex items-center gap-1.5">
-          <span>🏫</span>
-          <span class="text-slate-600 font-medium">우리 학교 개설 교육과정 확인:</span>
+                                          <!-- 🏫 [내 학교 검색 & 학교알리미 교육과정 편성표 연동 위젯] -->
+      <div id="step3-school-search-card" class="p-4 sm:p-5 bg-gradient-to-br from-indigo-50/70 via-white to-slate-50 rounded-2xl border border-indigo-100 shadow-xs space-y-3 mt-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-indigo-100/80 pb-2.5">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-sm shadow-2xs">
+              🏫
+            </div>
+            <div>
+              <h4 class="font-bold text-sm sm:text-base text-slate-900">
+                우리 학교 개설 교육과정 확인(학교알리미)
+              </h4>
+              <p class="text-[11px] text-slate-500 font-medium mt-0.5">
+                학교명을 검색하면 학교알리미 편성표 페이지로 바로 연결됩니다.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center gap-2">
-          <input type="text" id="input-school-step3" value="" oninput="onStep3SchoolInput(this.value)" onfocus="onStep3SchoolInput(this.value)" placeholder="학교명 검색" autocomplete="off" class="hidden sm:inline-block px-2.5 py-1 text-xs border border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500 w-28">
-          <button type="button" onclick="openSmartSchoolCurriculum()" id="btn-open-schoolinfo" class="inline-flex items-center gap-1.5 px-3 py-1 bg-white hover:bg-slate-100 text-slate-700 font-bold rounded-lg border border-slate-200 transition cursor-pointer text-xs shadow-2xs">
-            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
-            <span id="btn-schoolinfo-label">학교알리미 편성표 바로가기 ↗</span>
+
+        <!-- 학교 검색창 & 학교알리미 바로가기 버튼 -->
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 items-start">
+          <div class="sm:col-span-8 relative">
+            <div class="relative">
+              <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none cp-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+              <input
+                type="text"
+                id="input-school-step3"
+                value=""
+                oninput="onStep3SchoolInput(this.value)"
+                onfocus="onStep3SchoolInput(this.value)"
+                onkeydown="if(event.key==='Enter'){event.preventDefault(); openSmartSchoolCurriculum();}"
+                placeholder="학교명을 입력하세요 (예: 서울고, 경기고, 대전고 등)"
+                autocomplete="off"
+                class="w-full pl-9 pr-8 py-2.5 bg-white border border-slate-300 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-2xs"
+              />
+              <div id="step3-search-spinner" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-indigo-600 text-xs">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+              </div>
+            </div>
+            <!-- 실시간 자동완성 드롭다운 -->
+            <div
+              id="step3-autocomplete-dropdown"
+              class="hidden absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-xl shadow-xl z-50 max-h-56 overflow-y-auto divide-y divide-slate-100 text-xs"
+            ></div>
+          </div>
+
+          <div class="sm:col-span-4">
+            <button
+              type="button"
+              onclick="openSmartSchoolCurriculum()"
+              id="btn-open-schoolinfo"
+              class="w-full py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+              <span id="btn-schoolinfo-label">학교알리미 편성표 바로가기 ↗</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 학교 선택 완료 확인 박스 -->
+        <div
+          id="step3-school-confirmed-box"
+          class="hidden p-2.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-1.5"
+        >
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i>
+            <span class="text-emerald-950 font-bold" id="step3-confirmed-school-text">선택된 학교: 학교명</span>
+          </div>
+          <span class="text-[10px] text-emerald-700 font-bold bg-white px-2 py-0.5 rounded border border-emerald-200 self-start sm:self-auto">
+            선택 완료
+          </span>
+        </div>
+
+        <!-- 2-가 교육과정 편성표 찾는 법 원포인트 안내 -->
+        <div class="pt-1 no-print">
+          <button type="button" onclick="cpToggleCollapse('school-info-guide-content', this, '학교알리미에서 편성표 찾는 방법 ⌄', '편성표 찾는 방법 닫기 ⌃')" class="text-xs font-semibold text-slate-500 hover:text-indigo-600 flex items-center gap-1 cursor-pointer">
+            <i class="fa-solid fa-circle-question text-amber-500"></i>
+            <span class="cp-toggle-text">학교알리미에서 편성표 찾는 방법 ⌄</span>
           </button>
-          <div id="step3-search-spinner" class="hidden"></div>
-          <div id="step3-autocomplete-dropdown" class="hidden"></div>
-          <div id="step3-school-confirmed-box" class="hidden"><strong id="step3-confirmed-school-text"></strong></div>
+          <div id="school-info-guide-content" class="cp-collapsible-content hidden mt-2">
+            <div class="p-3 bg-amber-50/90 border border-amber-200/90 rounded-xl text-xs text-amber-950 space-y-1">
+              <div class="font-bold text-amber-950 flex items-center gap-1.5">
+                <i class="fa-solid fa-circle-info text-amber-600 text-xs"></i>
+                <span>학교알리미에서 [2-가 교육과정 편성표] 확인하는 방법:</span>
+              </div>
+              <div class="text-[11px] text-slate-700 pl-4 font-medium leading-relaxed">
+                위 <strong>[학교알리미 편성표 바로가기]</strong> 버튼 클릭 ➔ 열린 학교알리미 학교 페이지 아래 <strong>[교육활동]</strong> 탭에서 <strong>[학교교육과정 편성·운영 및 평가]</strong> 버튼을 누르시면 <strong>2-가 학교교육과정 편성표 및 [미리보기] 버튼</strong>이 바로 나옵니다!
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -8019,7 +9453,7 @@ function switchMajorInfoTab(targetPaneId) {
 <!-- [학업 설계 점검 영역 (검증->점검, 기본 접힘, 비판정형 안내 - 요청 2)] -->
 <!-- [학업 설계 점검 영역 (검증->점검, 기본 접힘, 비판정형 안내 - 요청 2)] -->
 <!-- [학업 설계 점검 영역 (검증->점검, 기본 접힘, 비판정형 안내 - 요청 2)] -->
-<div id="verification-dashboard-box" class="p-4 sm:p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-3 mt-6" style="background-color: #FFFFFF !important; border: 1.5px solid #CBD5E1 !important; border-radius: 20px !important; padding: 24px 28px !important; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important; box-sizing: border-box !important; margin: 24px 0 !important; width: 100% !important;">
+<div id="verification-dashboard-box" class="p-4 sm:p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-3 mt-6" style="padding: clamp(26px, 3.5vw, 36px) clamp(36px, 5.5vw, 56px) !important; background-color: #FFFFFF !important; border: 1.5px solid #CBD5E1 !important; border-radius: 24px !important; box-shadow: 0 2px 12px -2px rgba(15, 23, 42, 0.05) !important; box-sizing: border-box !important; margin: 32px 0 !important; width: 100% !important; overflow: hidden !important;">
   <!-- 기본 접힌 상태의 UI 요약 카드 -->
   <div id="check-collapsed-summary-card" class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
     <div class="space-y-1.5">
@@ -8217,9 +9651,7 @@ function toggleCheckDetailGrid(btn) {
                 개인정보 서버 미수집 (안심 보증)
               </span>
             </div>
-            <h2 class="text-xl sm:text-2xl font-black text-slate-900">
-              고등학교 3개년 개인 학업 설계서 (A4 2페이지 인쇄 최적화)
-            </h2>
+            <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title">고등학교 3개년 개인 학업 설계서 (A4 2페이지 인쇄 최적화)</h2>
             <p class="text-xs text-slate-500 mt-1">
               학생 인적사항을 입력하고 탐구 도서를 선택한 후, 하단 완성본을 A4
               규격으로 인쇄하거나 이미지(PNG)/PDF로 저장하세요.
@@ -8563,11 +9995,11 @@ function toggleCheckDetailGrid(btn) {
       </div>
       <div class="cp-plan-metric-box">
         <div class="cp-plan-metric-label">총 이수 설계 학점</div>
-        <div class="cp-plan-metric-value text-emerald-400" id="completion-card-credits">192 / 192학점</div>
+        <div class="cp-plan-metric-value text-emerald-400" id="completion-card-credits">90 / 192학점</div>
       </div>
       <div class="cp-plan-metric-box">
         <div class="cp-plan-metric-label">학업 설계 완성률</div>
-        <div class="cp-plan-metric-value text-yellow-400" id="completion-card-pct">100%</div>
+        <div class="cp-plan-metric-value text-yellow-400" id="completion-card-pct">47%</div>
       </div>
     </div>
 
@@ -21512,6 +22944,47 @@ function runDiagnosis() {
 
           <!-- [파트 1] 5단계 표준 수업 로드맵 -->
           <div id="padlet-tab-content-1" class="space-y-4">
+  <!-- [선생님용] 수업 전 패들렛 보드 개설 방법 -->
+            <div id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide p-4 bg-purple-50/70 rounded-2xl border border-purple-200 space-y-2">
+              <div id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide flex items-center justify-between">
+                <strong id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide text-xs sm:text-sm font-black text-purple-950 flex items-center gap-1.5">
+                  <i id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide fa-solid fa-chalkboard text-purple-600"></i> [선생님용] 수업 전 패들렛(Padlet) 보드 개설 방법 (1분 완성)
+                </strong>
+                <span id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide text-[10px] font-bold bg-purple-200/80 text-purple-900 px-2 py-0.5 rounded-md">교사용</span>
+              </div>
+              <ul id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide space-y-1.5 text-[11px] text-slate-700 pl-1 leading-relaxed">
+                <li>• <strong>패들렛 접속:</strong> <a href="https://padlet.com" target="_blank" id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide text-indigo-600 underline font-bold">padlet.com</a> 로그인 후 [패들렛 만들기] 클릭</li>
+                <li>• <strong>서식 선택:</strong> <strong>[선반(Shelf)]</strong> 형식 선택 권장 (계열별 또는 학생 번호별 열 구분 용이)</li>
+                <li>
+                  • <strong>열(섹션) 이름 구성 예시:</strong>
+                  <div id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide mt-1 flex flex-wrap gap-1.5 font-bold text-[10px]">
+                    <span id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide px-2 py-0.5 bg-white border border-purple-200 rounded text-purple-800">1열: 인문·어문·사범계열</span>
+                    <span id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide px-2 py-0.5 bg-white border border-purple-200 rounded text-purple-800">2열: 사회과학·상경계열</span>
+                    <span id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide px-2 py-0.5 bg-white border border-purple-200 rounded text-purple-800">3열: 자연·공학·IT계열</span>
+                    <span id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide px-2 py-0.5 bg-white border border-purple-200 rounded text-purple-800">4열: 의약학·바이오·보건</span>
+                    <span id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide px-2 py-0.5 bg-white border border-purple-200 rounded text-purple-800">5열: 예체능·문화콘텐츠</span>
+                  </div>
+                </li>
+                <li>• <strong>공유 링크 배포:</strong> 패들렛 [공유] 메뉴에서 링크 복사 또는 QR코드를 생성하여 학생들에게 전달!</li>
+              </ul>
+            </div>
+
+            <!-- [학생용] 패들렛에 나만의 학업설계서 제출하는 방법 (4단계) -->
+            <div id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide p-4 bg-pink-50/70 rounded-2xl border border-pink-200 space-y-2.5">
+              <div id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide flex items-center justify-between">
+                <strong id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide text-xs sm:text-sm font-black text-pink-950 flex items-center gap-1.5">
+                  <i id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide fa-solid fa-cloud-arrow-up text-pink-600"></i> [학생용] 패들렛에 나만의 학업설계서 제출하는 방법 (4단계)
+                </strong>
+                <span id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide text-[10px] font-bold bg-pink-200/80 text-pink-900 px-2 py-0.5 rounded-md">학생용</span>
+              </div>
+              <div id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide space-y-2 text-[11px] text-slate-700 leading-relaxed">
+                <div id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide flex items-start gap-2">
+                  <span id="teacher-padlet-setup-guide" class="teacher-padlet-setup-guide w-4 h-4 rounded-full bg-pink-600 text-white font-black text-[10px] flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <div>
+                    <strong>학업설계서 이미지 다운로드:</strong> 아래 4단계 [공식 학업설계서] 상단의 <strong>[이미지(PNG) 저장]</strong> 버튼을 누르면 <code>2026_고1_3개년_학업설계서_OOO.png</code> 파일이 컴퓨터/스마트폰에 자동 저장됩니다.
+                  </div>
+                </div>
+
             <div class="p-4 bg-indigo-50/80 rounded-2xl border border-indigo-200 space-y-1">
               <strong class="text-sm font-black text-indigo-950 flex items-center gap-1.5">
                 <i class="fa-solid fa-clock text-indigo-600"></i> 1차시(50분) 고교학점제 진로학업설계 수업 진행 순서
@@ -21582,46 +23055,7 @@ function runDiagnosis() {
 
           <!-- [파트 2] 패들렛(Padlet) 과제 연동 & 제출법 -->
           <div id="padlet-tab-content-2" class="space-y-4 hidden">
-            <!-- [선생님용] 수업 전 패들렛 보드 개설 방법 -->
-            <div class="p-4 bg-purple-50/70 rounded-2xl border border-purple-200 space-y-2">
-              <div class="flex items-center justify-between">
-                <strong class="text-xs sm:text-sm font-black text-purple-950 flex items-center gap-1.5">
-                  <i class="fa-solid fa-chalkboard text-purple-600"></i> [선생님용] 수업 전 패들렛(Padlet) 보드 개설 방법 (1분 완성)
-                </strong>
-                <span class="text-[10px] font-bold bg-purple-200/80 text-purple-900 px-2 py-0.5 rounded-md">교사용</span>
-              </div>
-              <ul class="space-y-1.5 text-[11px] text-slate-700 pl-1 leading-relaxed">
-                <li>• <strong>패들렛 접속:</strong> <a href="https://padlet.com" target="_blank" class="text-indigo-600 underline font-bold">padlet.com</a> 로그인 후 [패들렛 만들기] 클릭</li>
-                <li>• <strong>서식 선택:</strong> <strong>[선반(Shelf)]</strong> 형식 선택 권장 (계열별 또는 학생 번호별 열 구분 용이)</li>
-                <li>
-                  • <strong>열(섹션) 이름 구성 예시:</strong>
-                  <div class="mt-1 flex flex-wrap gap-1.5 font-bold text-[10px]">
-                    <span class="px-2 py-0.5 bg-white border border-purple-200 rounded text-purple-800">1열: 인문·어문·사범계열</span>
-                    <span class="px-2 py-0.5 bg-white border border-purple-200 rounded text-purple-800">2열: 사회과학·상경계열</span>
-                    <span class="px-2 py-0.5 bg-white border border-purple-200 rounded text-purple-800">3열: 자연·공학·IT계열</span>
-                    <span class="px-2 py-0.5 bg-white border border-purple-200 rounded text-purple-800">4열: 의약학·바이오·보건</span>
-                    <span class="px-2 py-0.5 bg-white border border-purple-200 rounded text-purple-800">5열: 예체능·문화콘텐츠</span>
-                  </div>
-                </li>
-                <li>• <strong>공유 링크 배포:</strong> 패들렛 [공유] 메뉴에서 링크 복사 또는 QR코드를 생성하여 학생들에게 전달!</li>
-              </ul>
-            </div>
-
-            <!-- [학생용] 패들렛에 나만의 학업설계서 제출하는 방법 (4단계) -->
-            <div class="p-4 bg-pink-50/70 rounded-2xl border border-pink-200 space-y-2.5">
-              <div class="flex items-center justify-between">
-                <strong class="text-xs sm:text-sm font-black text-pink-950 flex items-center gap-1.5">
-                  <i class="fa-solid fa-cloud-arrow-up text-pink-600"></i> [학생용] 패들렛에 나만의 학업설계서 제출하는 방법 (4단계)
-                </strong>
-                <span class="text-[10px] font-bold bg-pink-200/80 text-pink-900 px-2 py-0.5 rounded-md">학생용</span>
-              </div>
-              <div class="space-y-2 text-[11px] text-slate-700 leading-relaxed">
-                <div class="flex items-start gap-2">
-                  <span class="w-4 h-4 rounded-full bg-pink-600 text-white font-black text-[10px] flex items-center justify-center shrink-0 mt-0.5">1</span>
-                  <div>
-                    <strong>학업설계서 이미지 다운로드:</strong> 아래 4단계 [공식 학업설계서] 상단의 <strong>[이미지(PNG) 저장]</strong> 버튼을 누르면 <code>2026_고1_3개년_학업설계서_OOO.png</code> 파일이 컴퓨터/스마트폰에 자동 저장됩니다.
-                  </div>
-                </div>
+            
                 <div class="flex items-start gap-2">
                   <span class="w-4 h-4 rounded-full bg-pink-600 text-white font-black text-[10px] flex items-center justify-center shrink-0 mt-0.5">2</span>
                   <div>
@@ -22856,6 +24290,7 @@ window.cpToggleCollapse = function(targetId, btn, showText, hideText) {
 
 
 
+
 <script id="careerpath-top5-keyword-sync-script">
 (function() {
   function syncTop5CardsKeywords() {
@@ -23022,5 +24457,122 @@ window.cpToggleCollapse = function(targetId, btn, showText, hideText) {
 
 
 
+
+<script id="careerpath-two-cards-runtime-enforcer">
+(function() {
+  function enforceTwoCardsPadding() {
+    var gradEl = document.getElementById("graduation-requirement-card");
+    if (gradEl) {
+      gradEl.style.padding = "28px 32px";
+      gradEl.style.backgroundColor = "#FFFFFF";
+      gradEl.style.border = "1.5px solid #CBD5E1";
+      gradEl.style.borderRadius = "24px";
+      gradEl.style.boxSizing = "border-box";
+    }
+    var verifEl = document.getElementById("verification-dashboard-box");
+    if (verifEl) {
+      verifEl.style.padding = "24px 28px";
+      verifEl.style.backgroundColor = "#FFFFFF";
+      verifEl.style.border = "1.5px solid #CBD5E1";
+      verifEl.style.borderRadius = "20px";
+      verifEl.style.boxSizing = "border-box";
+    }
+  }
+  document.addEventListener("DOMContentLoaded", enforceTwoCardsPadding);
+  window.addEventListener("load", enforceTwoCardsPadding);
+  setTimeout(enforceTwoCardsPadding, 100);
+  setTimeout(enforceTwoCardsPadding, 500);
+  setTimeout(enforceTwoCardsPadding, 1500);
+})();
+</script>
+<script id="careerpath-integrated-enhancements-script">
+(function() {
+  function getUrlParam(name) {
+    var params = new URLSearchParams(window.location.search);
+    return params.get(name);
+  }
+
+  window.updateStudentShareUrlWithPadlet = function() {
+    var padletInput = document.getElementById("teacher-padlet-url-input");
+    var shareInput = document.getElementById("teacher-student-share-url");
+    if (!shareInput) return;
+    
+    var baseUrl = shareInput.value.split("&padlet=")[0];
+    if (padletInput && padletInput.value.trim() !== "") {
+      var padletUrl = encodeURIComponent(padletInput.value.trim());
+      shareInput.value = baseUrl + "&padlet=" + padletUrl;
+      localStorage.setItem("cp_teacher_padlet_url", padletInput.value.trim());
+    } else {
+      shareInput.value = baseUrl;
+      localStorage.removeItem("cp_teacher_padlet_url");
+    }
+  };
+
+  function applyRoleAndPadletIntegration() {
+    var role = getUrlParam("role") || (getUrlParam("session") ? "student" : "");
+    var isStudent = role === "student" || sessionStorage.getItem("cp_is_student_mode") === "true";
+    var padletParam = getUrlParam("padlet") || localStorage.getItem("cp_teacher_padlet_url");
+
+    if (isStudent) {
+      var guideTrigger = document.getElementById("padlet-guide-trigger-bar");
+      if (guideTrigger) {
+        var teacherBtn = guideTrigger.querySelector("button:first-child");
+        if (teacherBtn) teacherBtn.style.display = "none";
+      }
+      
+      if (padletParam) {
+        var decodedPadlet = decodeURIComponent(padletParam);
+        var completionActions = document.querySelector(".cp-plan-actions-group");
+        if (completionActions && !document.getElementById("btn-student-padlet-submit")) {
+          var padletSubmitBtn = document.createElement("a");
+          padletSubmitBtn.id = "btn-student-padlet-submit";
+          padletSubmitBtn.href = decodedPadlet;
+          padletSubmitBtn.target = "_blank";
+          padletSubmitBtn.className = "px-4 py-3 bg-amber-500 hover:bg-amber-600 text-white font-black rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-sm text-decoration-none";
+          padletSubmitBtn.style.cssText = "background: #F59E0B !important; color: #FFFFFF !important; text-decoration: none !important;";
+          padletSubmitBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> <span>우리 학급 패들렛으로 학업설계서 제출하기 →</span>';
+          completionActions.prepend(padletSubmitBtn);
+        }
+      }
+    } else {
+      var savedPadlet = localStorage.getItem("cp_teacher_padlet_url");
+      var padletInput = document.getElementById("teacher-padlet-url-input");
+      if (padletInput && savedPadlet) {
+        padletInput.value = savedPadlet;
+      }
+    }
+  }
+
+  function syncCompletionCredits() {
+    var totalEl = document.getElementById("calc-total-credits-card") || document.getElementById("calc-total-credits");
+    if (!totalEl) return;
+    
+    var curCredits = 90;
+    var parsed = parseInt(totalEl.textContent.trim(), 10);
+    if (!isNaN(parsed) && parsed > 0) curCredits = parsed;
+    
+    var compCredits = document.getElementById("completion-card-credits");
+    if (compCredits) {
+      compCredits.textContent = curCredits + " / 192학점";
+    }
+    
+    var compPct = document.getElementById("completion-card-pct");
+    if (compPct) {
+      var pct = Math.round((curCredits / 192) * 100);
+      compPct.textContent = pct + "%";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    applyRoleAndPadletIntegration();
+    syncCompletionCredits();
+  });
+  window.addEventListener("load", function() {
+    applyRoleAndPadletIntegration();
+    syncCompletionCredits();
+  });
+  setInterval(syncCompletionCredits, 400);
+})();
+</script>
 </body>
 </html>
