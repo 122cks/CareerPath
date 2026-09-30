@@ -6589,6 +6589,661 @@ div#step-1 {
     color: #FFFFFF !important;
   }
 </style>
+<style id="cp-exact-typography-style">
+
+/* ==========================================================================
+   CareerPath Exact Custom Typography & STEP Header System
+   ========================================================================== */
+
+/* Desktop */
+h1, .h1 {
+  font-size: 30px !important;
+}
+
+h2, .h2 {
+  font-size: 24px !important;
+}
+
+h3, .h3 {
+  font-size: 16px !important;
+}
+
+h4, .h4 {
+  font-size: 14px !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  h1, .h1 {
+    font-size: 26px !important;
+  }
+  h2, .h2 {
+    font-size: 21px !important;
+  }
+  h3, .h3 {
+    font-size: 16px !important;
+  }
+  h4, .h4 {
+    font-size: 14px !important;
+  }
+}
+
+/* STEP Header Classes */
+.step-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+  letter-spacing: -0.005em !important;
+}
+
+.step-label .step-number {
+  font-weight: 800 !important;
+}
+
+.step-title {
+  font-weight: 600 !important;
+}
+
+.step-heading {
+  margin-top: 10px !important;
+}
+
+.step-description {
+  margin-top: 8px !important;
+}
+
+</style>
+<style id="cp-pure-pretendard-font-family">
+
+/* ==========================================================================
+   CareerPath Pure Pretendard Font Family & High-Definition Text Rendering
+   - STRICT CONSTRAINT: font-family & text-rendering / antialiasing ONLY.
+   - Absolutely NO size, weight, line-height, spacing, color, or design changes.
+   ========================================================================== */
+
+/* 1. 사이트 전체 모든 텍스트/입력 요소의 font-family를 요청 우선순위로 통일 */
+html,
+body,
+h1, h2, h3, h4, h5, h6,
+p, span, a, label, strong, b, em, i,
+button, input, select, textarea,
+.step-label, .step-title, .step-heading, .step-description,
+.cp-sidebar-brand, .cp-nav-item, .cp-mobile-header,
+#section-checklist, #step-1, #step-2, #step-3, #step-4,
+[id^="chk-card-"], #riasec-items-box, #aptitude-items-box, #value-items-box,
+#majors-grid-container, #subjects-grid-container,
+#printable-study-plan {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+
+
+</style>
+<style id="careerpath-canonical-hierarchy-spacing">
+
+/* ==========================================================================
+   CAREERPATH CANONICAL SMART WEB-APP HIERARCHY SYSTEM
+   - Purpose: Visual clarity, breathing room, and clear information hierarchy
+   - Tuned for: Hands-on interactive web app (NOT a landing page)
+   - Principle: "Big Core Results, Compact Catalog, Clear Contrast & Breathing Room"
+   - Absolutely NO changes to HTML, JS, data, colors, borders, shadows, or buttons.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. 숫자 고정폭(tnum) 및 시스템 폰트 기반
+   -------------------------------------------------------------------------- */
+body, input, button, select, textarea {
+  font-feature-settings: "tnum" 1, "cv05" 1 !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. STEP 외곽의 무거운 회색 테두리 제거 & 개방형 카드 레이아웃 전환
+   - 두꺼운 1.5px #CBD5E1 테두리를 걷어내어 '상자 속 상자'의 답답함 해소
+   - 화이트 캔버스 + 극도로 부드러운 그림자로 개방감 극대화
+   -------------------------------------------------------------------------- */
+main > section,
+main > div[id^="step-"],
+main > div[id^="section-"],
+section[id^="step-"],
+section[id^="section-"],
+#section-checklist,
+#step-1,
+#step-2,
+#step-3,
+#step-4 {
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(226, 232, 240, 0.6) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03), 0 1px 3px rgba(15, 23, 42, 0.02) !important;
+  margin-bottom: clamp(42px, 4.5vw, 52px) !important;
+  box-sizing: border-box !important;
+}
+
+main > section:last-child,
+main > div[id^="step-"]:last-child,
+#step-4 {
+  margin-bottom: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. 타이포그래피 계층 (씨마스 스마트 수업 자료 스타일)
+   - H1: 32px / 800 (최우선)
+   - H2: 26px / 750 (주요 섹션 제목)
+   - H3: 17px / 700 (카드 및 하위 제목)
+   - H4: 14.5px / 600 (카드 타이틀)
+   - 본문: 14~15px / 500~600
+   - 보조 설명문: 13.5px / 500 (#475569)
+   - 메타 정보: 12px / 400 (#64748B)
+   -------------------------------------------------------------------------- */
+/* Desktop */
+h1, .h1, .cp-hero-title, .saas-h1 {
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  letter-spacing: -0.02em !important;
+  color: #0F172A !important;
+}
+
+h2, .h2, .saas-h2, .cp-unified-section-title,
+#section-checklist h2, #step-1 h2, #step-2 h2, #step-3 h2, #step-4 h2 {
+  font-size: 26px !important;
+  font-weight: 750 !important;
+  line-height: 1.38 !important;
+  letter-spacing: -0.015em !important;
+  color: #0F172A !important;
+}
+
+h3, .h3, .saas-h3, .step-banner h3 {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  line-height: 1.5 !important;
+  letter-spacing: -0.01em !important;
+  color: #1E293B !important;
+}
+
+h4, .h4, .card-title, .cp-action-title {
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+  letter-spacing: -0.005em !important;
+  color: #1E293B !important;
+}
+
+/* Mobile (768px 이하) */
+@media (max-width: 768px) {
+  h1, .h1, .cp-hero-title, .saas-h1 {
+    font-size: 28px !important;
+  }
+  h2, .h2, .saas-h2, .cp-unified-section-title,
+  #section-checklist h2, #step-1 h2, #step-2 h2, #step-3 h2, #step-4 h2 {
+    font-size: 22px !important;
+  }
+  h3, .h3 {
+    font-size: 16px !important;
+  }
+  h4, .h4 {
+    font-size: 14px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. 스마트 수업 자료 시각적 리듬 (STEP 라벨 -> 큰 제목 -> 설명 -> 28px 여백)
+   -------------------------------------------------------------------------- */
+.step-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0 !important;
+  margin-bottom: 8px !important;
+}
+
+.step-label .step-number {
+  font-weight: 800 !important;
+}
+
+.step-heading,
+.cp-unified-section-title {
+  margin-top: 0 !important;
+  margin-bottom: 6px !important;
+}
+
+/* 설명문: slate-600(#475569) + Medium(500)으로 선명한 가독성 확보 */
+.step-description,
+.cp-unified-section-title + p,
+#section-checklist p.text-sm,
+#step-1 p.text-sm,
+#step-2 p.text-xs,
+#step-3 p.text-xs,
+#step-4 p.text-xs {
+  color: #475569 !important;
+  font-weight: 500 !important;
+  font-size: 13.5px !important;
+  line-height: 1.6 !important;
+  letter-spacing: -0.005em !important;
+  margin-top: 6px !important;
+  margin-bottom: 0 !important;
+}
+
+/* 헤더와 실제 콘텐츠 사이 28px의 쾌적한 호흡 여백 */
+.border-b.border-slate-200.pb-4,
+.border-b.border-slate-200.pb-5 {
+  padding-bottom: 16px !important;
+  margin-bottom: 28px !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. STEP 01 팩트체크 문항 카드 (Border -> Surface 전환 & 20~22px 패딩)
+   -------------------------------------------------------------------------- */
+#checklist-questions-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 24px !important;
+  margin-bottom: 28px !important;
+}
+
+#checklist-questions-container [id^="chk-card-"],
+#section-checklist [id^="chk-card-"] {
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  padding: 20px 22px !important;
+  margin-bottom: 0 !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02) !important;
+}
+
+#checklist-questions-container [id^="chk-card-"] span.font-bold,
+#checklist-questions-container [id^="chk-card-"] .flex-1 {
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  line-height: 1.58 !important;
+  letter-spacing: -0.005em !important;
+  color: #1E293B !important;
+}
+
+#checklist-questions-container [id^="chk-card-"] .flex-1 {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 8px !important;
+}
+
+#checklist-questions-container [id^="chk-card-"] label {
+  padding: 8px 16px !important;
+  font-size: 13.5px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0 !important;
+  gap: 7px !important;
+}
+
+[id^="chk-explain-"] {
+  margin-top: 12px !important;
+  padding: 14px 18px !important;
+  line-height: 1.62 !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  color: #334155 !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. STEP 02 진로 진단 및 추천 학과 TOP 5 결과 분리
+   -------------------------------------------------------------------------- */
+#step-1 .flex.flex-wrap.items-center.gap-3 {
+  margin-top: 16px !important;
+  gap: 10px !important;
+}
+
+#career-test-principles {
+  margin-top: 14px !important;
+  padding: 14px 16px !important;
+  gap: 10px !important;
+}
+
+#career-test-expandable {
+  margin-top: 22px !important;
+  padding-top: 18px !important;
+}
+
+#career-test-expandable > div.p-3\.5,
+#career-test-expandable > div.bg-indigo-50\/90 {
+  margin-bottom: 12px !important;
+  padding: 12px 16px !important;
+}
+
+#step-1 .flex.border-b.border-slate-200 {
+  margin-bottom: 12px !important;
+  gap: 8px 14px !important;
+}
+
+#riasec-items-box,
+#aptitude-items-box,
+#value-items-box {
+  padding: 10px 12px !important;
+}
+
+#riasec-items-box > div,
+#aptitude-items-box > div,
+#value-items-box > div {
+  padding: 12px 16px !important;
+  margin-bottom: 8px !important;
+  gap: 10px !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+}
+
+#riasec-items-box span,
+#aptitude-items-box span,
+#value-items-box span {
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  letter-spacing: -0.005em !important;
+  color: #1E293B !important;
+}
+
+/* 추천 학과 TOP 5 대시보드 (36px 공간 분리로 결과 부각) */
+#top5-recommendation-box {
+  margin-top: 36px !important;
+  padding: clamp(20px, 3vw, 26px) !important;
+  background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%) !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 20px !important;
+}
+
+#top5-recommendation-box h3 {
+  font-size: 20px !important;
+  font-weight: 750 !important;
+  line-height: 1.35 !important;
+  letter-spacing: -0.01em !important;
+  color: #0F172A !important;
+}
+
+#top5-cards-container {
+  margin-top: 14px !important;
+  gap: 12px !important;
+}
+
+#career-test-navigation {
+  margin-top: 24px !important;
+  padding-top: 18px !important;
+  gap: 12px !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. STEP 03 목표 학과 (탐색 그룹 컴팩트화 & 선택 학과 상세 확실한 36px 분리)
+   -------------------------------------------------------------------------- */
+#step-2 > div.border-b + div,
+#step-2 .space-y-1\.5:has(#group-filter-buttons) {
+  margin-top: 24px !important;
+  margin-bottom: 10px !important;
+}
+
+#group-filter-buttons {
+  margin-top: 6px !important;
+  margin-bottom: 10px !important;
+  gap: 6px 8px !important;
+}
+
+#step-2 .grid.grid-cols-1.sm\:grid-cols-2 {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+  gap: 10px 12px !important;
+}
+
+#step-2 div:has(> #majors-grid-container) {
+  margin-top: 10px !important;
+  margin-bottom: 0 !important;
+  padding: 12px 14px !important;
+}
+
+/* 90개 학과 목록: 컴팩트 유지 (가로 12px, 세로 10px) */
+#majors-grid-container {
+  margin-top: 8px !important;
+  column-gap: 12px !important;
+  row-gap: 10px !important;
+}
+
+#majors-grid-container button,
+#majors-grid-container > div {
+  padding: 10px 12px !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.005em !important;
+}
+
+/* 학과 탐색 그룹 ↔ 선택 학과 상세 정보: 36px 공간 분리로 단독 부각 */
+#step-2 > div[class*="bg-slate-50"][class*="rounded-3xl"],
+#step-2 > div.p-6.sm\:p-8.bg-slate-50 {
+  margin-top: 36px !important;
+  margin-bottom: 28px !important;
+  padding: clamp(20px, 3.2vw, 28px) !important;
+  background-color: #F8FAFC !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 20px !important;
+}
+
+/* 선택된 학과 메인 타이틀 (26px / 800) */
+#selected-major-title {
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  letter-spacing: -0.02em !important;
+  color: #0F172A !important;
+}
+
+#selected-major-tip {
+  font-size: 13.5px !important;
+  line-height: 1.62 !important;
+  font-weight: 500 !important;
+  padding: 14px 18px !important;
+  margin-top: 12px !important;
+  margin-bottom: 14px !important;
+  color: #334155 !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+}
+
+#selected-major-common-pills,
+#selected-major-general-pills {
+  margin-top: 6px !important;
+  gap: 6px 8px !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. STEP 04 과목 설계 & 학업 설계 현황 위계화
+   - '90 / 192학점', '47%' 최우선 강하게
+   - '앞으로 설계할 학점 102학점' 보조적으로
+   - '졸업 기준 192학점', '졸업 학점 구성 칩' 차분한 하위 정보
+   - 140개 과목 탐색 목록 컴팩트 유지
+   -------------------------------------------------------------------------- */
+#step-3 > div.bg-white.p-5,
+#step-3 > div#graduation-requirement-card {
+  margin-top: 0 !important;
+  margin-bottom: 28px !important;
+  padding: 20px 22px !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02) !important;
+}
+
+#graduation-requirement-card .grid {
+  margin-top: 10px !important;
+  gap: 10px 12px !important;
+}
+
+/* 학업 설계 현황 대시보드 위계 */
+#calc-total-credits-card {
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  color: #2563EB !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1 !important;
+}
+
+#academic-design-status-section .text-sm,
+#academic-design-status-section .text-base.font-bold {
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  color: #64748B !important;
+}
+
+#calc-credit-pct {
+  font-size: 14px !important;
+  font-weight: 800 !important;
+}
+
+#calc-credit-diff {
+  padding: 5px 12px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+  color: #64748B !important;
+}
+
+#calc-credit-diff-num {
+  font-size: 13.5px !important;
+  font-weight: 750 !important;
+  color: #2563EB !important;
+}
+
+/* 140개 과목 탐색 목록 컴팩트 유지 */
+#step-3 > div:has(#subject-group-buttons),
+#step-3 > div:has(#subject-search-input) {
+  margin-top: 0 !important;
+  margin-bottom: 30px !important;
+  padding: 18px 20px !important;
+}
+
+#subject-group-buttons {
+  margin-top: 8px !important;
+  margin-bottom: 10px !important;
+  gap: 6px 8px !important;
+}
+
+#step-3 .flex.flex-col.sm\:flex-row.gap-2 {
+  gap: 8px !important;
+  margin-bottom: 10px !important;
+}
+
+#subjects-grid-container {
+  margin-top: 10px !important;
+  column-gap: 12px !important;
+  row-gap: 10px !important;
+}
+
+#subjects-grid-container button,
+#subjects-grid-container > div {
+  padding: 10px 12px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.005em !important;
+}
+
+#step-3 > div:has(#plan-table-body),
+#step-3 > div.p-5.bg-indigo-50\/50 {
+  margin-top: 0 !important;
+  margin-bottom: 28px !important;
+  padding: 18px 20px !important;
+}
+
+#plan-table-body td,
+#plan-table-body th {
+  padding: 8px 10px !important;
+  font-size: 13px !important;
+}
+
+#verification-dashboard-box {
+  margin-top: 0 !important;
+  margin-bottom: 28px !important;
+  padding: 18px 20px !important;
+}
+
+#step-4 > div.bg-slate-50\/80 {
+  margin-top: 0 !important;
+  margin-bottom: 28px !important;
+  padding: 18px 20px !important;
+}
+
+#step-4 .grid.grid-cols-1.sm\:grid-cols-2,
+#step-4 .grid.grid-cols-2.sm\:grid-cols-4 {
+  gap: 10px 12px !important;
+}
+
+.cp-step-action-bar {
+  margin-top: 28px !important;
+  margin-bottom: 6px !important;
+  padding: 16px 20px !important;
+}
+
+</style>
+<style id="careerpath-border-simplification">
+/* ==========================================================================
+   불필요한 테두리(Border) 제거 및 클린 서피스(Clean Surface) 적용
+   - 상자 속 상자(Box-in-a-Box) 답답함 해소
+   - 선(Border) 대신 부드러운 배경색(Surface)과 여백으로 모던하게 구분
+   ========================================================================== */
+
+/* 1. 체크리스트 개별 질문 카드: 선을 지우고 은은한 쿨그레이 면(Surface)으로만 깔끔하게 구분 */
+#checklist-questions-container [id^="chk-card-"],
+#section-checklist [id^="chk-card-"],
+[id^="chk-card-"] {
+  border: none !important;
+  background-color: #F8FAFC !important;
+  box-shadow: none !important;
+}
+
+/* 2. 대시보드 상단 진행 현황(Progress Tracker) 내부 스텝 아이템: 갇힌 테두리 제거 */
+.cp-step-item {
+  border: none !important;
+  background-color: #F8FAFC !important;
+}
+.cp-step-item:hover {
+  border: none !important;
+  background-color: #EFF6FF !important;
+}
+
+/* 3. 진로검사(Step 02) 스크롤 박스 및 내부 문항: 4중 중첩 테두리 완전 해소 */
+#riasec-items-box,
+#aptitude-items-box,
+#value-items-box {
+  border: 1px solid rgba(226, 232, 240, 0.4) !important;
+  background-color: #F8FAFC !important;
+}
+
+#riasec-items-box > div,
+#aptitude-items-box > div,
+#value-items-box > div {
+  border: none !important; /* 개별 문항 테두리 제거 */
+  background-color: #FFFFFF !important;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04) !important;
+}
+
+/* 4. 섹션 메인 헤더의 짙은 하단 구분선 완화 */
+#section-checklist .border-b,
+#step-1 .border-b,
+#step-2 .border-b,
+#step-3 .border-b {
+  border-bottom-color: rgba(226, 232, 240, 0.6) !important;
+}
+
+/* 5. 체크리스트 결과 카드 테두리 톤다운 */
+#checklist-result-box {
+  border: 1px solid rgba(37, 99, 235, 0.15) !important;
+}
+</style>
 </head>
 <body class="bg-[#f8fafc] text-slate-900 min-h-screen flex flex-col justify-between antialiased pb-16 md:pb-0">
   <!-- ==================== CareerPath EdTech SaaS Sidebar ==================== -->
@@ -6743,7 +7398,7 @@ div#step-1 {
         <div>
           <div class="flex items-center gap-1.5">
             <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">고1 학업 설계 실습실</span>
-            <span class="text-[10px] bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded-full border border-indigo-200">Book Companion</span>
+            <span class="text-[10px] bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded-full border border-indigo-200 step-label">Book Companion</span>
           </div>
           <p class="text-[11px] text-slate-500 font-bold hidden sm:block">씨마스21 · 씨마스진로교육연구소</p>
         </div>
@@ -6786,9 +7441,10 @@ div#step-1 {
       >
         <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-1.5"><i class="fa-solid fa-clipboard-check"></i> STEP 01 · 고교학점제</span>
-            <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title">고1 학생을 위한 고교학점제 상식 팩트체크 (맞다 O / 틀리다 X)</h2>
-            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-1.5"><i class="fa-solid fa-clipboard-check"></i> <span class="step-number">STEP 01</span> · 고교학점제</span>
+            <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title step-heading step-title">고1 학생을 위한 고교학점제 상식 팩트체크 (맞다 O / 틀리다 X)</h2>
+            
+ <p class="text-xs sm:text-sm text-slate-600 mt-1 step-description">
               본격적인 과목 설계 전, 고교학점제 핵심 제도를 맞다(O)와 틀리다(X)로 확인해 보세요. (문항 선택 시 즉시 채점 및 도서 해설 제공)
             </p>
           </div>
@@ -6915,7 +7571,7 @@ div#step-1 {
   >  
     <!-- 1. 상단: 진단 완료 헤더 & 결과 요약 -->  
     <div class="text-center space-y-3">  
-      <span class="inline-flex items-center gap-1.5 text-xs font-black text-blue-700 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200">  
+      <span class="inline-flex items-center gap-1.5 text-xs font-black text-blue-700 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200 step-label">  
         <i class="fa-solid fa-circle-check text-blue-600"></i> 체크리스트 진단 완료  
       </span>  
       <h3 class="text-xl sm:text-2xl font-black text-slate-900 mt-1 tracking-tight">  
@@ -6959,7 +7615,7 @@ div#step-1 {
           style="background-color: #FFFFFF !important; background: #FFFFFF !important; border: 1.5px solid #E2E8F0 !important; border-radius: 14px !important; padding: 16px !important; text-align: left !important; box-sizing: border-box !important;"
         >  
           <div class="flex items-center justify-between">  
-            <span class="text-[11px] font-black uppercase text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-md">STEP 02</span>  
+            <span class="text-[11px] font-black uppercase text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-md"><span class="step-number">STEP 02</span></span>  
             <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition"></i>  
           </div>  
           <div class="font-bold text-sm text-slate-900 group-hover:text-blue-700 transition" style="color: #0F172A !important;">진로 심리검사 3종</div>  
@@ -7517,12 +8173,12 @@ function toggleTeacherQrCodeModal() {
 <!-- ========================================================= -->
     <!-- STEP 1. 진로 심리 간이 검사 (3대 검사 100% 실시간 종합 연계 추천) -->
     <!-- ========================================================= -->
-    <section id="step-1" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6 no-print" style="background-color: #FFFFFF !important; border: 1.5px solid #CBD5E1 !important; border-radius: 24px !important; padding: clamp(24px, 3.5vw, 36px) !important; box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04) !important; margin-bottom: 48px !important; display: block !important; box-sizing: border-box !important;">
+    <section id="step-1" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6 no-print">
   <!-- [진로 심리 간이 검사 상단 헤더: SaaS Progressive Disclosure] -->
   <div class="border-b border-slate-200 pb-5">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2.5">
       <div class="flex items-center gap-2">
-        <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">STEP 02 · 진로 진단</span>
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 step-label"><span class="step-number">STEP 02</span> · 진로 진단</span>
         <span class="text-xs text-slate-500 font-medium">약 5~7분 · 41문항</span>
       </div>
       <a href="#step-2" class="text-xs font-semibold text-slate-500 hover:text-blue-600 flex items-center gap-1 transition self-start sm:self-auto">
@@ -7531,8 +8187,9 @@ function toggleTeacherQrCodeModal() {
       </a>
     </div>
 
-    <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title">진로 심리 간이 검사</h2>
-    <p class="text-sm text-slate-600 leading-relaxed max-w-xl mb-4">
+    <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title step-heading step-title">진로 심리 간이 검사</h2>
+    
+ <p class="text-sm text-slate-600 leading-relaxed max-w-xl mb-4 step-description">
       나에게 맞는 진로 방향을 찾아볼까요?
     </p>
 
@@ -7647,7 +8304,7 @@ function toggleTeacherQrCodeModal() {
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
   <div>
     <div class="flex items-center gap-2">
-      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 step-label">
         <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> 검사 결과 기반
       </span>
       <h3 class="text-xl font-bold text-slate-900 tracking-tight">🎯 나에게 맞는 추천 학과</h3>
@@ -7713,10 +8370,10 @@ function toggleTeacherQrCodeModal() {
       <i class="fa-solid fa-arrow-left"></i>
       <span>이전 검사</span>
     </button>
-    <button type="button" class="cp-test-nav-btn cp-test-nav-next" onclick="cpTestNav('next')">
-      <span>다음 검사 / 학과 추천 확인</span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </button>
+    <button type="button" class="cp-test-nav-btn cp-test-nav-next" id="btn-step2-to-step3" onclick="cpNavigateStep('step-2')">  
+ <span>다음 단계: STEP 03 목표 학과 선택하기</span>  
+ <i class="fa-solid fa-arrow-right"></i>  
+ </button>
   </div>
 
 </section>
@@ -7727,15 +8384,16 @@ function toggleTeacherQrCodeModal() {
  <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">  
  <div>  
  <div class="flex items-center gap-2">
- <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">STEP 03 · 목표 학과</span>
+ <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200"><span class="step-number">STEP 03</span> · 목표 학과</span>
  <span class="text-xs font-bold text-indigo-600 uppercase">고1 학업설계 도서 2부 54~249쪽 연계</span>  
  </div>  
- <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title">목표 학과 선택 & 기초 권장 과목 확인</h2>  
- <p class="text-xs text-slate-500 mt-0.5">  
+ <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title step-heading step-title">목표 학과 선택 & 기초 권장 과목 확인</h2>  
+ 
+ <p class="text-xs text-slate-500 mt-0.5 step-description">  
  희망 학과를 선택하면 해당 학과의 도서 페이지 가이드, 공통 과목 및 일반 선택 과목이 로드됩니다.  
  </p>  
  </div>  
- <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200 self-start sm:self-auto">  
+ <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200 self-start sm:self-auto step-label">  
  대표 90개 학과 수록  
  </span>  
  </div>  
@@ -8176,16 +8834,16 @@ function switchMajorInfoTab(targetPaneId) {
       <!-- STEP 3. [고1 학업설계 도서 3부 p.250~311] 선택과목 설계 -->
       <!-- ========================================================= -->
       <section id="step-3" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6 no-print">
-  <!-- ==================== STEP 04 3개년 과목 설계 (컴팩트 헤더 & 분리된 교재 연계 & 과목 선택 상시 노출) ==================== -->
+  <!-- ==================== <span class="step-number">STEP 04</span> 3개년 과목 설계 (컴팩트 헤더 & 분리된 교재 연계 & 과목 선택 상시 노출) ==================== -->
   <!-- 1. 초소형 컴팩트 헤더 (PART B-1) -->
-  <!-- 1. STEP 04 간결한 단계 헤더 (중복 정보 제거, 단계 제목만 유지 - 요청 1) -->
-  <!-- 1. STEP 04 간결한 단계 헤더 (중복 정보 제거, 단계 제목만 유지 - 요청 1) -->
-  <!-- 1. STEP 04 간결한 단계 헤더 (중복 정보 제거, 단계 제목만 유지 - 요청 1) -->
-  <!-- 1. STEP 04 간결한 단계 헤더 (중복 정보 제거, 단계 제목만 유지 - 요청 1) -->
+  <!-- 1. <span class="step-number">STEP 04</span> 간결한 단계 헤더 (중복 정보 제거, 단계 제목만 유지 - 요청 1) -->
+  <!-- 1. <span class="step-number">STEP 04</span> 간결한 단계 헤더 (중복 정보 제거, 단계 제목만 유지 - 요청 1) -->
+  <!-- 1. <span class="step-number">STEP 04</span> 간결한 단계 헤더 (중복 정보 제거, 단계 제목만 유지 - 요청 1) -->
+  <!-- 1. <span class="step-number">STEP 04</span> 간결한 단계 헤더 (중복 정보 제거, 단계 제목만 유지 - 요청 1) -->
   <div class="border-b border-slate-200 pb-3 mb-4">
     <div class="flex items-center justify-between gap-2">
       <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-blue-50 text-blue-700 border border-blue-200 shadow-2xs">
-        STEP 04 · 과목 설계
+        <span class="step-number">STEP 04</span> · 과목 설계
       </span>
       <span class="text-xs text-slate-400 font-medium hidden sm:inline">『고1 학업 설계』 도서 연계 스마트 워크스페이스</span>
     </div>
@@ -8952,20 +9610,21 @@ function toggleCheckDetailGrid(btn) {
         >
           <div>
             <div class="flex items-center gap-2 mb-1.5">
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">STEP 05 · 학업설계서</span>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 step-label"><span class="step-number">STEP 05</span> · 학업설계서</span>
  <span
                 class="text-xs font-bold text-indigo-600 uppercase tracking-wide"
                 >고1 학업설계 도서 1부 Ⅳ·Ⅴ장 p.45~53 연계</span
               >
               <span
-                class="inline-flex items-center gap-1.5 px-3 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-[11px] font-bold"
+                class="inline-flex items-center gap-1.5 px-3 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-[11px] font-bold step-label"
               >
                 <i class="fa-solid fa-shield-halved text-emerald-600"></i>
                 개인정보 서버 미수집 (안심 보증)
               </span>
             </div>
-            <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title">고등학교 3개년 개인 학업 설계서 (A4 2페이지 인쇄 최적화)</h2>
-            <p class="text-xs text-slate-500 mt-1">
+            <h2 class="text-xl font-bold text-slate-900 mt-1 cp-unified-section-title step-heading step-title">고등학교 3개년 개인 학업 설계서 (A4 2페이지 인쇄 최적화)</h2>
+            
+ <p class="text-xs text-slate-500 mt-1 step-description">
               학생 인적사항을 입력하고 탐구 도서를 선택한 후, 하단 완성본을 A4
               규격으로 인쇄하거나 이미지(PNG)/PDF로 저장하세요.
             </p>
@@ -23351,7 +24010,7 @@ window.cpToggleCollapse = function(targetId, btn, showText, hideText) {
       }
     }
 
-    // STEP 02 및 현황/점검 카드 인라인 안전 보장
+    // <span class="step-number">STEP 02</span> 및 현황/점검 카드 인라인 안전 보장
     var curMajorTitle = document.getElementById("selected-major-title");
       var currentMajorName = curMajorTitle ? curMajorTitle.textContent.trim() : "";
 
@@ -29874,5 +30533,52 @@ var switchPadletTab = window.switchPadletTab;
 })();
 </script>
 
+<script id="careerpath-step-navigation-fix">
+(function() {
+  // 1. 단계별 스무스 스크롤 이동
+  window.cpNavigateStep = function(stepId) {
+    if (!stepId) return;
+    var target = document.getElementById(stepId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  // 2. 세부 검사 전환 및 단계 이동 핸들러
+  window.cpTestNav = function(action) {
+    if (action === 'next') {
+      var rBox = document.getElementById('sub-riasec');
+      var aBox = document.getElementById('sub-aptitude');
+      var vBox = document.getElementById('sub-value');
+      if (rBox && !rBox.classList.contains('hidden')) {
+        if (typeof switchSubTest === 'function') switchSubTest('sub-aptitude');
+      } else if (aBox && !aBox.classList.contains('hidden')) {
+        if (typeof switchSubTest === 'function') switchSubTest('sub-value');
+      } else {
+        // 검사 완료 후 STEP 03으로 이동
+        window.cpNavigateStep('step-2');
+      }
+    } else if (action === 'prev') {
+      var aBox = document.getElementById('sub-aptitude');
+      var vBox = document.getElementById('sub-value');
+      if (vBox && !vBox.classList.contains('hidden')) {
+        if (typeof switchSubTest === 'function') switchSubTest('sub-aptitude');
+      } else if (aBox && !aBox.classList.contains('hidden')) {
+        if (typeof switchSubTest === 'function') switchSubTest('sub-riasec');
+      } else {
+        window.cpNavigateStep('section-checklist');
+      }
+    }
+  };
+
+  // 3. 추천 학과 TOP 5 박스로 이동
+  window.cpGoToRecommendation = function() {
+    var box = document.getElementById('top5-recommendation-box');
+    if (box) {
+      box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+})();
+</script>
 </body>
 </html>
