@@ -7466,6 +7466,45 @@ h4, .h4, .card-title, .cp-action-title {
   }
 }
 </style>
+<style id="careerpath-step04-border-style">
+/* ==========================================================================
+   STEP 04 (3개년 과목 설계) 전체 공간 외곽 테두리 및 카드 스타일 복원
+   - STEP 01, 02, 03, 05와 100% 동일한 화이트 카드 캔버스 & 테두리 규격 적용
+   ========================================================================== */
+#step-3,
+section#step-3,
+main > section#step-3,
+div#step-3 {
+  display: block !important;
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 24px !important;
+  padding: clamp(24px, 3.5vw, 36px) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03), 0 1px 3px rgba(15, 23, 42, 0.02) !important;
+  margin-bottom: clamp(42px, 4.5vw, 52px) !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+/* STEP 04 상단 헤더 구분선 및 여백 정상화 */
+#step-3 > div:first-child {
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  padding-bottom: 16px !important;
+  margin-bottom: 24px !important;
+}
+
+@media (max-width: 768px) {
+  #step-3,
+  section#step-3,
+  main > section#step-3,
+  div#step-3 {
+    padding: 20px 16px !important;
+    border-radius: 20px !important;
+    margin-bottom: 36px !important;
+  }
+}
+</style>
 </head>
 <body class="bg-[#f8fafc] text-slate-900 min-h-screen flex flex-col justify-between antialiased pb-16 md:pb-0">
   <!-- ==================== CareerPath EdTech SaaS Sidebar ==================== -->
@@ -31325,13 +31364,8 @@ var switchPadletTab = window.switchPadletTab;
     padding: 0 !important;
     margin: 0 !important;
   }
-  #step-3 {
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    background: transparent !important;
-  }
-  #step-3 > div:first-child { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+  /* [neutralized zero border on #step-3] */
+  /* [neutralized zero header padding on #step-3] */
   #step-3 > div#graduation-requirement-card {
     margin: 0 !important;
     padding: 8px 0 12px !important;
