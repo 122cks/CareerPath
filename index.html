@@ -25006,7 +25006,7 @@ document.addEventListener("click", function(e) {
     }
     if (pageSpan) {
       if (mPage) {
-        pageSpan.textContent = "2부 p." + mPage;
+        pageSpan.innerHTML = '2부 <span class="step3-page-num" style="font-size: 26px !important; font-weight: 900 !important; color: #C2410C !important;">p.' + mPage + '</span>';
       } else {
         pageSpan.textContent = "2부 페이지 준비 중";
       }
@@ -31499,7 +31499,7 @@ var switchPadletTab = window.switchPadletTab;
       border: 0 !important;
       background: transparent !important;
       color: #78350F !important;
-      font-size: 14px !important;
+      font-size: 26px !important; font-weight: 900 !important; color: #C2410C !important;
     }
     #step3-subject-select-row { grid-column: 1; grid-row: 2; }
     #step3-school-search-card { grid-column: 1 / -1; grid-row: 3; margin-top: 6px !important; }
@@ -31777,7 +31777,7 @@ var switchPadletTab = window.switchPadletTab;
       border: 0 !important;
       background: transparent !important;
       color: #78350F !important;
-      font-size: 12px !important;
+      font-size: 26px !important; font-weight: 900 !important; color: #C2410C !important;
     }
     #step-3 #school-info-details > summary { gap: 6px; padding: 8px 10px !important; }
     #step-3 #school-info-details > summary .h-10.w-10,
@@ -32078,5 +32078,134 @@ var switchPadletTab = window.switchPadletTab;
 </script>
 </main>
 <footer id="beta-notice" class="no-print">고1 학업 설계 실습실은 베타 버전입니다. 이용 중 오류가 발생할 수 있습니다.</footer>
+<style id="careerpath-step3-book-guide-enlarge-style">
+/* ==========================================================================
+   STEP 04 선택과목 [교재 안내] - 학과 페이지 번호 (p.58~59) 집중 확대 패치
+   - 타겟: '국어국문학과 2부 p.58~59'에서 [p.58~59 / 2부] 영역을 26px 엑스트라 볼드로 집중 확대
+   - 뒤쪽 '전체 선택과목 상세 해설: 3부 p.250~311'은 원래의 깔끔하고 차분한 보조 크기(12px)로 정돈
+   ========================================================================== */
+
+/* 1. 교재 안내 박스 전체 레이아웃 */
+html body #step3-subject-book-guide-bar {
+  padding: 14px 20px !important;
+  border-radius: 14px !important;
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%) !important;
+  border: 1.5px solid #FCD34D !important;
+  box-shadow: 0 3px 12px -2px rgba(245, 158, 11, 0.12) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+html body #step3-subject-book-guide-bar > div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+
+/* 2. 상단 1행: [교재 안내] [학과명] [2부 p.58~59] */
+html body #step3-subject-book-guide-bar > div > span:first-child {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px 12px !important;
+  width: 100% !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 2-1. 책 아이콘 */
+html body #step3-subject-book-guide-bar i.fa-book-open {
+  font-size: 20px !important;
+  color: #D97706 !important;
+}
+
+/* 2-2. '교재 안내:' 배지 */
+html body #step3-subject-book-guide-bar > div > span:first-child > span:first-of-type,
+html body #step3-subject-book-guide-bar span:has(> #step3-guide-major-name) > span:first-child {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 3px 10px !important;
+  background-color: #FEF3C7 !important;
+  border: 1.5px solid #F59E0B !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #92400E !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* 2-3. 학과명 (국어국문학과, 심리학과 등) */
+html body #step3-subject-book-guide-bar #step3-guide-major-name {
+  font-family: 'Paperlogy', 'Pretendard', sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  color: #0F172A !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.25 !important;
+}
+
+/* 2-4. [핵심 요청] 학과 도서 페이지 번호 (2부 p.58~59 / p.88~89) 집중 확대 */
+html body #step3-subject-book-guide-bar #step3-guide-book-page,
+html body #step3-subject-book-guide-bar .step3-page-num {
+  font-size: 26px !important;
+  font-weight: 900 !important;
+  color: #C2410C !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.2 !important;
+}
+
+/* 3. 하단 2행: 전체 선택과목 상세 해설 (보조 안내용 12px 깔끔 유지) */
+html body #step3-subject-book-guide-bar > div > span:last-child {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #64748B !important;
+  line-height: 1.4 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html body #step3-subject-book-guide-bar > div > span:last-child span {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #64748B !important;
+}
+
+html body #step3-subject-book-guide-bar > div > span:last-child i.fa-layer-group {
+  font-size: 12px !important;
+  color: #94A3B8 !important;
+}
+
+html body #step3-subject-book-guide-bar .step3-guide-catalog-page,
+html body #step3-subject-book-guide-bar strong.step3-guide-catalog-page {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #475569 !important;
+}
+
+/* 모바일 화면 (768px 이하) 대응 */
+@media (max-width: 768px) {
+  html body #step3-subject-book-guide-bar {
+    padding: 12px 14px !important;
+    margin-top: 10px !important;
+  }
+  html body #step3-subject-book-guide-bar #step3-guide-major-name {
+    font-size: 20px !important;
+  }
+  html body #step3-subject-book-guide-bar #step3-guide-book-page,
+  html body #step3-subject-book-guide-bar .step3-page-num {
+    font-size: 20px !important;
+  }
+}
+</style>
 </body>
 </html>
