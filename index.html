@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>고1 학업 설계 실습실 (Beta) | 『고1 학업 설계』 도서 연계 스마트 워크스페이스</title>
+  <title>고1 학업설계 도서 연계 실습실 | 씨마스</title>
   <!-- Open Graph / KakaoTalk Thumbnail Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://122cks.github.io/CareerPath/">
-  <meta property="og:site_name" content="고1 학업 설계 실습실">
-  <meta property="og:title" content="고1 학업 설계 실습실 | 『고1 학업 설계』 도서 연계 스마트 워크스페이스">
+  <meta property="og:site_name" content="씨마스 고1 학업설계">
+  <meta property="og:title" content="고1 학업설계 도서 연계 실습실 | 씨마스">
   <meta property="og:description" content="고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계 실습실 - 입시 전문 선생님이 엄선한 90개 대표 학과 및 272개 선택과목 실습">
   <meta property="og:image" content="https://122cks.github.io/CareerPath/thumbnail.png">
   <meta property="og:image:secure_url" content="https://122cks.github.io/CareerPath/thumbnail.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
-  <meta property="og:image:alt" content="고1 학업 설계 실습실 홍보 배너">
+  <meta property="og:image:alt" content="고1 학업 설계 도서 표지 썸네일">
   <!-- 카카오톡 및 포털 호환 썸네일 태그 -->
   <link rel="image_src" href="https://122cks.github.io/CareerPath/thumbnail.png">
   <meta itemprop="image" content="https://122cks.github.io/CareerPath/thumbnail.png">
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="고1 학업 설계 실습실 | 『고1 학업 설계』 도서 연계 스마트 워크스페이스">
+  <meta name="twitter:title" content="고1 학업설계 도서 연계 실습실 | 씨마스">
   <meta name="twitter:description" content="고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계 실습실 - 입시 전문 선생님이 엄선한 90개 대표 학과 및 272개 선택과목 실습">
   <meta name="twitter:image" content="https://122cks.github.io/CareerPath/thumbnail.png">
   <!-- Tailwind CSS CDN -->
@@ -32400,9 +32400,7 @@ html body #selected-tags-container > div > button:last-child {
    - PC 화면(> 768px)에서는 기존 디자인 100% 유지
    ========================================================================== */
 @media (max-width: 768px) {
-  /* ------------------------------------------------------------------------
-     1. STEP 05 상단 버튼 3개 (이미지 저장 / A4 인쇄 / 패들렛) 3행 배치
-     ------------------------------------------------------------------------ */
+  /* 1. 상단 버튼 3개 3행 배치 */
   #step-4 > div:first-child > div:nth-child(2),
   #step-4 .border-b > .flex.items-center.gap-2.shrink-0,
   html body #step-4 > div:first-child > div:nth-child(2) {
@@ -32416,7 +32414,6 @@ html body #selected-tags-container > div > button:last-child {
     margin-top: 14px !important;
   }
 
-  /* 3개 버튼(이미지 저장, A4 인쇄 / PDF 저장, 패들렛에 올리기): 가로 1줄 바 형태 */
   #step-4 > div:first-child > div:nth-child(2) > button,
   #step-4 .border-b > .flex.items-center.gap-2.shrink-0 > button,
   #step-4 button#btn-step5-top-padlet,
@@ -32439,7 +32436,6 @@ html body #selected-tags-container > div > button:last-child {
     flex: 1 1 100% !important;
   }
 
-  /* 버튼 내부 아이콘 및 텍스트 1줄 정렬 보장 */
   #step-4 > div:first-child > div:nth-child(2) > button i,
   #step-4 .border-b > .flex.items-center.gap-2.shrink-0 > button i {
     font-size: 15px !important;
@@ -32454,11 +32450,7 @@ html body #selected-tags-container > div > button:last-child {
     letter-spacing: -0.01em !important;
   }
 
-  /* ------------------------------------------------------------------------
-     2. STEP 05 완료 대시보드 핵심 지표 3개 (학과 / 학점 / 완성률) 가로 바 형태 배치
-     - 기존의 좁은 세로 3열 그리드를 해제하고,
-     - 모바일 화면 가로 100%를 차지하는 3개의 깔끔한 가로 행(Row)으로 정렬
-     ------------------------------------------------------------------------ */
+  /* 2. 완료 대시보드 지표 3개 가로 바 형태 배치 */
   .cp-plan-metrics-grid,
   #plan-completion-dashboard .cp-plan-metrics-grid,
   html body .cp-plan-metrics-grid {
