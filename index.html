@@ -8,20 +8,20 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="고1 학업 설계 실습실 | 『고1 학업 설계』 도서 연계 스마트 워크스페이스">
   <meta property="og:description" content="고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계 실습실 - 입시 전문 선생님이 엄선한 90개 대표 학과 및 272개 선택과목 실습">
-  <meta property="og:image" content="https://122cks.github.io/thumbnail.png?v=20261002_105330">
-  <meta property="og:image:secure_url" content="https://122cks.github.io/thumbnail.png?v=20261002_105330">
+  <meta property="og:image" content="https://122cks.github.io/thumbnail.png">
+  <meta property="og:image:secure_url" content="https://122cks.github.io/thumbnail.png">
   <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1536">
-  <meta property="og:image:height" content="1024">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
   <meta property="og:image:alt" content="고1 학업 설계 실습실 홍보 배너">
   <!-- 카카오톡 및 포털 호환 썸네일 태그 -->
-  <link rel="image_src" href="https://122cks.github.io/thumbnail.png?v=20261002_105330">
-  <meta itemprop="image" content="https://122cks.github.io/thumbnail.png?v=20261002_105330">
+  <link rel="image_src" href="https://122cks.github.io/thumbnail.png">
+  <meta itemprop="image" content="https://122cks.github.io/thumbnail.png">
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="고1 학업 설계 실습실 | 『고1 학업 설계』 도서 연계 스마트 워크스페이스">
   <meta name="twitter:description" content="고교학점제 과목 선택과 학점 관리를 위한 고1 학업 설계 실습실 - 입시 전문 선생님이 엄선한 90개 대표 학과 및 272개 선택과목 실습">
-  <meta name="twitter:image" content="https://122cks.github.io/thumbnail.png?v=20261002_105330">
+  <meta name="twitter:image" content="https://122cks.github.io/thumbnail.png">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome CDN -->
@@ -1344,7 +1344,7 @@ button#btn-sub-value.text-indigo-600,
 /* Mobile (1열) */
 @media (max-width: 640px) {
   #majors-grid-container {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 10px !important;
   }
 }
@@ -5294,7 +5294,7 @@ a[href*="cmassedumall.com"].cp-book-link-btn {
 /* 초소형 모바일 기기 (< 400px) 대응 */
 @media (max-width: 400px) {
   #majors-grid-container {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
   .grp-btn {
     font-size: 12px !important;
@@ -31635,7 +31635,7 @@ var switchPadletTab = window.switchPadletTab;
     #step-3 #step3-add-subject-header p { font-size: 12px !important; white-space: nowrap; }
 
     #step-2 #majors-grid-container {
-      grid-template-columns: minmax(0, 1fr) !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
     #step-2 #majors-grid-container button {
       display: flex !important;
@@ -31932,17 +31932,24 @@ var switchPadletTab = window.switchPadletTab;
 
     #selected-tags-container > div {
       display: flex !important;
-      flex-wrap: wrap !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      justify-content: space-between !important;
       max-width: 100% !important;
       width: 100%;
       gap: 6px !important;
+      padding: 8px 10px !important;
     }
     #selected-tags-container > div > .truncate {
-      flex: 1 1 100%;
-      white-space: normal;
-      overflow-wrap: anywhere;
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      font-size: 13.5px !important;
     }
-    #selected-tags-container > div > div { max-width: 100%; }
+    #selected-tags-container > div > div { max-width: none !important; flex: 0 0 auto !important; }
 
     #step3-live-table-body { display: table-row-group; }
     #step3-live-table-body tr { display: table-row; }
@@ -32205,5 +32212,297 @@ html body #step3-subject-book-guide-bar strong.step3-guide-catalog-page {
   }
 }
 </style>
-</body>
+<style id="careerpath-mobile-majors-2col-grid-style">
+/* ==========================================================================
+   [모바일 전용] 학과 탐색 결과 2열(2줄) 나란히 배치 최적화
+   - 768px, 640px, 480px, 400px 등 모든 모바일 기기에서 2열 그리드 강제 적용
+   - 카드 안쪽 글자(학과명 + 페이지) 중앙 정렬 및 여백 밸런스 조정
+   ========================================================================== */
+@media (max-width: 768px) {
+  #majors-grid-container,
+  #step-2 #majors-grid-container,
+  html body #majors-grid-container,
+  html body #step-2 #majors-grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #majors-grid-container button,
+  #step-2 #majors-grid-container button,
+  html body #majors-grid-container button,
+  html body #step-2 #majors-grid-container button {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 12px 6px !important;
+    min-height: 68px !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #majors-grid-container button > span:first-child,
+  #step-2 #majors-grid-container button > span:first-child,
+  html body #majors-grid-container button > span:first-child {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+    margin-bottom: 2px !important;
+  }
+
+  #majors-grid-container button > span:last-child,
+  #step-2 #majors-grid-container button > span:last-child,
+  html body #majors-grid-container button > span:last-child {
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    margin-top: 2px !important;
+    opacity: 0.85 !important;
+  }
+}
+</style>
+<style id="careerpath-mobile-selected-subjects-1line-style">
+/* ==========================================================================
+   STEP 04 모바일 선택과목 카드 PC 스타일 1줄(한 줄) 가로 정렬
+   - [과목명] [수능] [상대(5등급)] [3 4 5 학점] [✕] 한 줄 배치
+   - 모바일 2줄 분할(flex-wrap: wrap / flex: 1 1 100%) 원천 차단
+   ========================================================================== */
+#selected-tags-container > div,
+#step-3 #selected-tags-container > div,
+html body #selected-tags-container > div,
+html body #step-3 #selected-tags-container > div {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 48px !important;
+  padding: 8px 10px !important;
+  margin-bottom: 6px !important;
+  gap: 6px !important;
+  box-sizing: border-box !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+}
+
+/* 1. 과목명 (말줄임 처리 및 1줄 고정) */
+#selected-tags-container > div > .truncate,
+#selected-tags-container > div > span:first-child,
+#step-3 #selected-tags-container > div > span:first-child,
+html body #selected-tags-container > div > span:first-child {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  width: auto !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: #0F172A !important;
+  text-align: left !important;
+}
+
+/* 2. 배지 (수능, 상대(5등급), 절대평가 등) */
+#selected-tags-container > div > span:not(:first-child),
+#step-3 #selected-tags-container > div > span:not(:first-child),
+html body #selected-tags-container > div > span:not(:first-child) {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+  padding: 2px 6px !important;
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  border-radius: 6px !important;
+}
+
+/* 3. 학점 선택 버튼 그룹 (3, 4, 5 학점) */
+#selected-tags-container > div > div,
+#step-3 #selected-tags-container > div > div,
+html body #selected-tags-container > div > div {
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 2px !important;
+  padding: 2px 4px !important;
+  max-width: none !important;
+  width: auto !important;
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 8px !important;
+}
+
+#selected-tags-container > div > div button,
+#step-3 #selected-tags-container > div > div button,
+html body #selected-tags-container > div > div button {
+  min-width: 22px !important;
+  height: 26px !important;
+  padding: 2px 4px !important;
+  font-size: 11px !important;
+  border-radius: 6px !important;
+}
+
+#selected-tags-container > div > div > span:last-child,
+#step-3 #selected-tags-container > div > div > span:last-child,
+html body #selected-tags-container > div > div > span:last-child {
+  font-size: 10px !important;
+  color: #64748B !important;
+  margin-left: 2px !important;
+  white-space: nowrap !important;
+}
+
+/* 4. 삭제 버튼 (✕) */
+#selected-tags-container > div > button:last-child,
+#step-3 #selected-tags-container > div > button:last-child,
+html body #selected-tags-container > div > button:last-child {
+  flex: 0 0 auto !important;
+  padding: 4px 6px !important;
+  font-size: 13px !important;
+  color: #94A3B8 !important;
+}
+
+/* 모바일 전용 미디어 쿼리 오버라이드 */
+@media (max-width: 768px) {
+  #selected-tags-container > div,
+  #step-3 #selected-tags-container > div {
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+    gap: 5px !important;
+    padding: 8px !important;
+  }
+  #selected-tags-container > div > .truncate,
+  #selected-tags-container > div > span:first-child {
+    flex: 1 1 auto !important;
+    white-space: nowrap !important;
+    font-size: 13px !important;
+  }
+}
+</style>
+<style id="careerpath-mobile-step05-layout-style">
+/* ==========================================================================
+   STEP 05 모바일 전용 가로(행) 정렬 통합 패치
+   1. 상단 액션 버튼 3개: 세로 3칸 분할 해제 -> 가로 100% 폭 3줄(3행) 배치
+   2. 완료 대시보드 메트릭 3개: 세로 3열 그리드 해제 -> 가로 100% 바(좌: 항목명, 우: 수치) 배치
+   - PC 화면(> 768px)에서는 기존 디자인 100% 유지
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* ------------------------------------------------------------------------
+     1. STEP 05 상단 버튼 3개 (이미지 저장 / A4 인쇄 / 패들렛) 3행 배치
+     ------------------------------------------------------------------------ */
+  #step-4 > div:first-child > div:nth-child(2),
+  #step-4 .border-b > .flex.items-center.gap-2.shrink-0,
+  html body #step-4 > div:first-child > div:nth-child(2) {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    align-items: stretch !important;
+    align-self: stretch !important;
+    gap: 8px !important;
+    margin-top: 14px !important;
+  }
+
+  /* 3개 버튼(이미지 저장, A4 인쇄 / PDF 저장, 패들렛에 올리기): 가로 1줄 바 형태 */
+  #step-4 > div:first-child > div:nth-child(2) > button,
+  #step-4 .border-b > .flex.items-center.gap-2.shrink-0 > button,
+  #step-4 button#btn-step5-top-padlet,
+  html body #step-4 button#btn-step5-top-padlet {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 48px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 12px 18px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    flex: 1 1 100% !important;
+  }
+
+  /* 버튼 내부 아이콘 및 텍스트 1줄 정렬 보장 */
+  #step-4 > div:first-child > div:nth-child(2) > button i,
+  #step-4 .border-b > .flex.items-center.gap-2.shrink-0 > button i {
+    font-size: 15px !important;
+    margin-right: 2px !important;
+  }
+
+  #step-4 > div:first-child > div:nth-child(2) > button span,
+  #step-4 .border-b > .flex.items-center.gap-2.shrink-0 > button span {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  /* ------------------------------------------------------------------------
+     2. STEP 05 완료 대시보드 핵심 지표 3개 (학과 / 학점 / 완성률) 가로 바 형태 배치
+     - 기존의 좁은 세로 3열 그리드를 해제하고,
+     - 모바일 화면 가로 100%를 차지하는 3개의 깔끔한 가로 행(Row)으로 정렬
+     ------------------------------------------------------------------------ */
+  .cp-plan-metrics-grid,
+  #plan-completion-dashboard .cp-plan-metrics-grid,
+  html body .cp-plan-metrics-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 20px auto !important;
+  }
+
+  .cp-plan-metric-box,
+  #plan-completion-dashboard .cp-plan-metric-box,
+  html body .cp-plan-metric-box {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 12px 18px !important;
+    border-radius: 14px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+
+  .cp-plan-metric-label,
+  #plan-completion-dashboard .cp-plan-metric-label,
+  html body .cp-plan-metric-label {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #94A3B8 !important;
+    margin-bottom: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .cp-plan-metric-value,
+  #plan-completion-dashboard .cp-plan-metric-value,
+  html body .cp-plan-metric-value {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.01em !important;
+  }
+}
+</style>\n</body>
 </html>
