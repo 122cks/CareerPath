@@ -6292,164 +6292,90 @@ div#step-1 {
   }
   #modal-padlet-guide .modal-dialog-box {
     background: #FFFFFF !important;
-    border: 1px solid #CBD5E1 !important;
+    border: 1px solid #E2E8F0 !important;
     border-radius: 20px !important;
-    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25) !important;
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(15, 23, 42, 0.05) !important;
     overflow: hidden !important;
-  }
-  #modal-padlet-guide .modal-manual-header {
-    background-color: #0F172A !important;
-    border-bottom: 1px solid #1E293B !important;
-    padding: 16px 24px !important;
-    color: #FFFFFF !important;
+    width: 95vw !important;
+    max-width: 1040px !important;
   }
   #padlet-guide-tab-nav {
     background-color: #F8FAFC !important;
     border-bottom: 1px solid #E2E8F0 !important;
-    padding: 0 16px !important;
-    display: flex !important;
+    padding: 4px 8px 0 8px !important;
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
     gap: 4px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .padlet-nav-tab-btn {
-    padding: 13px 18px !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
+    padding: 8px 4px 10px 4px !important;
+    font-size: 12.5px !important;
+    line-height: 1.35 !important;
+    font-weight: 500 !important;
     color: #64748B !important;
-    border-bottom: 2.5px solid transparent !important;
+    border-bottom: 3px solid transparent !important;
     background: transparent !important;
-    display: inline-flex !important;
+    display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
-    gap: 8px !important;
+    justify-content: center !important;
+    gap: 4px !important;
     cursor: pointer !important;
     transition: all 0.15s ease !important;
-    white-space: nowrap !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    text-align: center !important;
+    border-radius: 8px 8px 0 0 !important;
+    min-height: 52px !important;
+    box-sizing: border-box !important;
+  }
+  @media (min-width: 768px) {
+    .padlet-nav-tab-btn {
+      flex-direction: row !important;
+      padding: 10px 8px !important;
+      font-size: 13px !important;
+      min-height: 46px !important;
+      gap: 6px !important;
+    }
   }
   .padlet-nav-tab-btn:hover {
     color: #0F172A !important;
     background-color: #F1F5F9 !important;
   }
   .padlet-nav-tab-btn.active {
-    color: #0F172A !important;
-    font-weight: 800 !important;
+    color: #1D4ED8 !important;
+    font-weight: 700 !important;
     border-bottom-color: #2563EB !important;
-    background-color: #FFFFFF !important;
+    background-color: rgba(239, 246, 255, 0.7) !important;
   }
   .padlet-nav-tab-btn.active i {
     color: #2563EB !important;
   }
+  .padlet-nav-tab-btn .tab-label {
+    display: inline-block !important;
+    text-align: center !important;
+  }
   #padlet-guide-content-area {
     background: #FFFFFF !important;
-    padding: 20px 24px !important;
+    padding: 24px 28px !important;
     color: #334155 !important;
     font-size: 13px !important;
     line-height: 1.65 !important;
-    min-height: 420px !important;
-    max-height: 65vh !important;
-    height: 520px !important;
+    max-height: 74vh !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    padding-bottom: 40px !important;
   }
   #modal-padlet-guide .padlet-tab-content {
     display: none;
     visibility: visible !important;
     opacity: 1 !important;
     color: #334155 !important;
-  }
-  #modal-padlet-guide .manual-card,
-  #modal-padlet-guide .manual-callout-slate,
-  #modal-padlet-guide .grid {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-  #modal-padlet-guide .grid {
-    display: grid !important;
-  }
-  #modal-padlet-guide p,
-  #modal-padlet-guide span,
-  #modal-padlet-guide div,
-  #modal-padlet-guide strong,
-  #modal-padlet-guide li {
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-  .manual-card {
-    background: #FFFFFF !important;
-    border: 1px solid #E2E8F0 !important;
-    border-radius: 14px !important;
-    padding: 20px !important;
-    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04) !important;
-    margin-bottom: 16px !important;
-  }
-  .manual-sec-title {
-    font-size: 14.5px !important;
-    font-weight: 800 !important;
-    color: #0F172A !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-  .badge-teacher {
-    background-color: #0F172A !important;
-    color: #FFFFFF !important;
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    padding: 3px 8px !important;
-    border-radius: 6px !important;
-  }
-  .badge-student {
-    background-color: #2563EB !important;
-    color: #FFFFFF !important;
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    padding: 3px 8px !important;
-  }
-  .manual-callout-slate {
-    background-color: #F8FAFC !important;
-    border: 1px solid #E2E8F0 !important;
-    border-left: 4px solid #475569 !important;
-    border-radius: 10px !important;
-    padding: 14px 18px !important;
-    margin-bottom: 16px !important;
-  }
-  .manual-num-badge {
-    width: 22px !important;
-    height: 22px !important;
-    background-color: #0F172A !important;
-    color: #FFFFFF !important;
-    font-size: 11.5px !important;
-    font-weight: 800 !important;
-    border-radius: 50% !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0 !important;
-  }
-  .manual-num-badge-blue {
-    width: 22px !important;
-    height: 22px !important;
-    background-color: #2563EB !important;
-    color: #FFFFFF !important;
-    font-size: 11.5px !important;
-    font-weight: 800 !important;
-    border-radius: 50% !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0 !important;
-  }
-  .manual-code {
-    background-color: #F1F5F9 !important;
-    border: 1px solid #CBD5E1 !important;
-    color: #0F172A !important;
-    font-family: ui-monospace, monospace !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    padding: 2px 6px !important;
-    border-radius: 5px !important;
   }
 </style>
 <style id="cp-patch-1-top5-buttons-style">
@@ -7631,11 +7557,11 @@ div#step-3 {
         <span class="font-bold text-slate-300">씨마스진로교육연구소</span>
       </div>
       <div class="flex items-center gap-2">
-        <div class="flex items-center gap-1.5" id="padlet-guide-trigger-bar">
-  <button type="button" onclick="openPadletGuideModal(); if(typeof switchPadletTab==='function') switchPadletTab(1);" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs transition flex items-center gap-1 cursor-pointer border border-slate-700 shadow-2xs" title="교사용 지도 가이드를 확인합니다.">
+        <div class="flex items-center gap-2 flex-wrap" id="padlet-guide-trigger-bar">
+  <button type="button" onclick="openPadletGuideModal(1);" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs transition flex items-center gap-1 cursor-pointer border border-slate-700 shadow-2xs" title="교사용 지도 가이드를 확인합니다.">
     <i class="fa-solid fa-chalkboard-user text-amber-300 text-xs"></i> <span>교사용 가이드 보기</span>
   </button>
-  <button type="button" onclick="openPadletGuideModal(); if(typeof switchPadletTab==='function') switchPadletTab(2);" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs transition flex items-center gap-1 cursor-pointer border border-slate-700 shadow-2xs" title="학생용 패들렛 과제 제출 방법을 확인합니다.">
+  <button type="button" onclick="openPadletGuideModal(3);" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs transition flex items-center gap-1 cursor-pointer border border-slate-700 shadow-2xs" title="학생용 패들렛 과제 제출 방법을 확인합니다.">
     <i class="fa-solid fa-arrow-up-from-bracket text-blue-400 text-xs"></i> <span>학생용 Padlet 제출 방법 보기</span>
   </button>
 </div>
@@ -26194,7 +26120,7 @@ document.addEventListener("click", function(e) {
     ensurePadletModal();
     tabIndex = parseInt(tabIndex, 10) || 1;
 
-    for (var i = 1; i <= 4; i++) {
+    for (var i = 1; i <= 5; i++) {
       var btn = document.getElementById('tab-btn-padlet-' + i);
       var content = document.getElementById('padlet-tab-content-' + i);
 
@@ -28658,372 +28584,630 @@ document.addEventListener("click", function(e) {
 <!-- ========================================================= -->
 <!-- [공식 수업 지도 & 실습 가이드 모달] 깔끔한 매뉴얼 디자인 시스템 -->
 <!-- ========================================================= -->
-<div id="modal-padlet-guide" class="fixed inset-0 z-[10000] flex items-center justify-center bg-slate-950/75 backdrop-blur-xs p-3 sm:p-5 no-print" style="display: none;">
-  <div class="modal-dialog-box relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col max-h-[92vh] animate-in fade-in zoom-in-95 duration-200">
+<div id="modal-padlet-guide" class="fixed inset-0 z-[10000] flex items-center justify-center bg-slate-950/60 backdrop-blur-xs p-3 sm:p-5 no-print" style="display: none;">
+  <div class="modal-dialog-box relative w-full max-w-5xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[92vh] animate-in fade-in zoom-in-95 duration-200">
     
-    <!-- 모달 상단 헤더 -->
-    <div class="modal-manual-header px-6 py-4 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800 shrink-0">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-200 text-base shadow-inner">
-          <i class="fa-solid fa-chalkboard-user"></i>
+    <!-- 모달 상단 헤더: 공식 매뉴얼 표지 헤더 스타일 -->
+    <div class="px-6 py-5 bg-white text-slate-900 flex items-center justify-between border-b border-slate-200/90 shrink-0">
+      <div class="space-y-1">
+        <div class="text-[13px] font-semibold text-slate-500 tracking-tight flex items-center gap-1.5">
+          <i class="fa-solid fa-chalkboard-user text-amber-500 text-xs"></i>
+          <span>수업 지도 & 실습 가이드</span>
+          <span class="text-slate-300">|</span>
+          <span class="text-slate-400 font-normal">교사용 · 학생용 공식 안내</span>
         </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="text-[11px] font-bold bg-slate-800 text-indigo-300 border border-slate-700 px-2.5 py-0.5 rounded tracking-wide">수업 지도 & 실습 가이드</span>
-            <span class="text-[11px] font-bold text-amber-300">교사용 · 학생용 공식 안내</span>
-          </div>
-          <h3 class="text-base sm:text-lg font-bold text-white tracking-tight mt-0.5">고1 학업설계 실습실 100% 활용법 & 패들렛(Padlet) 연동 안내</h3>
-        </div>
+        <h3 class="text-xl sm:text-[22px] font-extrabold text-slate-900 tracking-tight">
+          고1 학업설계 실습실 활용법 & 강의계획서
+        </h3>
       </div>
-      <button type="button" onclick="closePadletGuideModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition cursor-pointer" title="닫기">
-        <i class="fa-solid fa-xmark text-sm"></i>
+      <button type="button" onclick="closePadletGuideModal()" class="w-9 h-9 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition cursor-pointer" title="닫기">
+        <i class="fa-solid fa-xmark text-base"></i>
       </button>
     </div>
 
-    <!-- 4개 탭 네비게이션 바 -->
-    <div class="flex border-b border-slate-200 bg-slate-50 px-4 sm:px-6 overflow-x-auto scrollbar-none shrink-0" id="padlet-guide-tab-nav">
+    <!-- 5개 탭 네비게이션 바: 매뉴얼 목차 스타일 -->
+    <!-- 5개 탭 전원 100% 화면 노출 그리드 (가로스크롤 0, 5개 탭 한눈에 표시) -->
+    <div class="grid grid-cols-5 border-b border-slate-200 bg-slate-50/70 p-1 sm:p-1.5 gap-1 shrink-0 w-full" id="padlet-guide-tab-nav">
       <button type="button" id="tab-btn-padlet-1" onclick="switchPadletTab(1)" class="padlet-nav-tab-btn active">
-        <i class="fa-solid fa-list-check"></i>
-        <span class="padlet-tab-desktop-label">5단계 표준 수업 로드맵</span><span class="padlet-tab-mobile-label">수업 로드맵</span>
+        <i class="fa-solid fa-list-check text-xs shrink-0"></i>
+        <span class="tab-label">5단계 표준 로드맵<span class="inline sm:inline"> (1차시)</span></span>
       </button>
       <button type="button" id="tab-btn-padlet-2" onclick="switchPadletTab(2)" class="padlet-nav-tab-btn">
-        <i class="fa-solid fa-cloud-arrow-up"></i>
-        <span class="padlet-tab-desktop-label">패들렛(Padlet) 과제 연동 & 제출법</span><span class="padlet-tab-mobile-label">Padlet 제출</span>
+        <i class="fa-solid fa-calendar-check text-xs shrink-0"></i>
+        <span class="tab-label">2/4차시 모듈형<span class="inline sm:inline"> 강의계획서</span></span>
       </button>
       <button type="button" id="tab-btn-padlet-3" onclick="switchPadletTab(3)" class="padlet-nav-tab-btn">
-        <i class="fa-solid fa-comments"></i>
-        <span class="padlet-tab-desktop-label">동료 피드백 & 학생부 세특 지도 팁</span><span class="padlet-tab-mobile-label">피드백·세특</span>
+        <i class="fa-solid fa-cloud-arrow-up text-xs shrink-0"></i>
+        <span class="tab-label">패들렛 과제<span class="inline sm:inline"> 연동 & 제출법</span></span>
       </button>
       <button type="button" id="tab-btn-padlet-4" onclick="switchPadletTab(4)" class="padlet-nav-tab-btn">
-        <i class="fa-solid fa-file-lines"></i>
-        <span class="padlet-tab-desktop-label">전체 한눈에 보기</span><span class="padlet-tab-mobile-label">전체 보기</span>
+        <i class="fa-solid fa-comments text-xs shrink-0"></i>
+        <span class="tab-label">동료 피드백 &<span class="inline sm:inline"> 세특 지도 팁</span></span>
+      </button>
+      <button type="button" id="tab-btn-padlet-5" onclick="switchPadletTab(5)" class="padlet-nav-tab-btn">
+        <i class="fa-solid fa-file-lines text-xs shrink-0"></i>
+        <span class="tab-label">전체<span class="inline sm:inline"> 한눈에 보기</span></span>
       </button>
     </div>
 
-    <!-- 탭 콘텐츠 본문 (스크롤 영역) -->
-    <div class="p-5 sm:p-6 overflow-y-auto space-y-5 text-slate-700 leading-relaxed flex-1" id="padlet-guide-content-area" style="min-height: 420px;">
+    <!-- 탭 본문 스크롤 영역 -->
+    <div class="p-5 sm:p-6 overflow-y-auto space-y-6 text-slate-700 leading-relaxed flex-1" id="padlet-guide-content-area" style="min-height: 420px;">
       
-      <!-- [TAB 1] 5단계 표준 수업 로드맵 -->
-      <div id="padlet-tab-content-1" class="space-y-4 padlet-tab-content" style="display: block !important;">
-        <div class="manual-callout-slate">
-          <strong class="text-sm font-bold text-slate-900 flex items-center gap-2">
-            <i class="fa-solid fa-clock text-slate-700"></i> 1차시(50분) 고교학점제 진로학업설계 수업 진행 순서
-          </strong>
-          <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+      <!-- ==================== [TAB 1] 1차시 표준 로드맵 ==================== -->
+      <div id="padlet-tab-content-1" class="space-y-6 padlet-tab-content" style="display: block !important;">
+        
+        <!-- 섹션 인트로 -->
+        <div class="bg-slate-50/70 border border-slate-200/60 rounded-xl p-4 sm:p-5">
+          <div class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-regular fa-clock text-slate-500"></i>
+            <span>1차시(50분) 고교학점제 진로학업설계 수업 진행 순서</span>
+          </div>
+          <p class="text-sm text-slate-600 mt-1.5 leading-relaxed font-normal">
             『고1 학업 설계』 도서와 본 실습 웹앱을 연계하여 50분 정규 수업 시간 내에 192학점 이수 요건을 갖춘 3개년 학업설계서를 완성하는 표준 가이드입니다.
           </p>
         </div>
 
+        <!-- 5단계 수업 스텝 카드 (01 -> 02 -> 03 -> 04 -> 05 흐름) -->
         <div class="grid grid-cols-1 sm:grid-cols-5 gap-3">
-          <div class="bg-white border border-slate-200 rounded-xl p-3.5 flex flex-col justify-between shadow-2xs">
+          <div class="bg-white border border-slate-200/90 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition shadow-2xs">
             <div class="flex items-center justify-between mb-2">
-              <span class="manual-num-badge">1</span>
-              <span class="text-[10px] font-bold text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded">5분</span>
+              <span class="text-xs font-bold text-slate-400 font-mono tracking-wider">01</span>
+              <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">5분</span>
             </div>
             <div>
-              <div class="font-bold text-slate-900 text-xs">상식 체크리스트</div>
-              <p class="text-[11px] text-slate-500 mt-1 leading-normal">고교학점제 5문항<br>OX 팩트체크</p>
+              <div class="font-bold text-slate-900 text-[15px]">상식 체크리스트</div>
+              <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed font-normal">고교학점제 5문항<br>OX 팩트체크</p>
             </div>
           </div>
 
-          <div class="bg-white border border-slate-200 rounded-xl p-3.5 flex flex-col justify-between shadow-2xs">
+          <div class="bg-white border border-slate-200/90 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition shadow-2xs">
             <div class="flex items-center justify-between mb-2">
-              <span class="manual-num-badge">2</span>
-              <span class="text-[10px] font-bold text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded">7분</span>
+              <span class="text-xs font-bold text-slate-400 font-mono tracking-wider">02</span>
+              <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">7분</span>
             </div>
             <div>
-              <div class="font-bold text-slate-900 text-xs">진로 심리검사</div>
-              <p class="text-[11px] text-slate-500 mt-1 leading-normal">흥미·적성·가치관<br>약식 진단</p>
+              <div class="font-bold text-slate-900 text-[15px]">진로 심리검사</div>
+              <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed font-normal">흥미·적성·가치관<br>약식 진단</p>
             </div>
           </div>
 
-          <div class="bg-white border border-slate-200 rounded-xl p-3.5 flex flex-col justify-between shadow-2xs">
+          <div class="bg-white border border-slate-200/90 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition shadow-2xs">
             <div class="flex items-center justify-between mb-2">
-              <span class="manual-num-badge">3</span>
-              <span class="text-[10px] font-bold text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded">8분</span>
+              <span class="text-xs font-bold text-slate-400 font-mono tracking-wider">03</span>
+              <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">8분</span>
             </div>
             <div>
-              <div class="font-bold text-slate-900 text-xs">목표 학과 선택</div>
-              <p class="text-[11px] text-slate-500 mt-1 leading-normal">90개 학과별<br>대입 요강 확인</p>
+              <div class="font-bold text-slate-900 text-[15px]">목표 학과 선택</div>
+              <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed font-normal">90개 학과별<br>대입 요강 확인</p>
             </div>
           </div>
 
-          <div class="bg-white border border-slate-200 rounded-xl p-3.5 flex flex-col justify-between shadow-2xs">
+          <div class="bg-white border border-slate-200/90 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition shadow-2xs">
             <div class="flex items-center justify-between mb-2">
-              <span class="manual-num-badge">4</span>
-              <span class="text-[10px] font-bold text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded">15분</span>
+              <span class="text-xs font-bold text-slate-400 font-mono tracking-wider">04</span>
+              <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">15분</span>
             </div>
             <div>
-              <div class="font-bold text-slate-900 text-xs">편제표 과목 설계</div>
-              <p class="text-[11px] text-slate-500 mt-1 leading-normal">192학점 이수 위계<br>실시간 자동 검증</p>
+              <div class="font-bold text-slate-900 text-[15px]">편제표 과목 설계</div>
+              <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed font-normal">192학점 이수 위계<br>실시간 자동 검증</p>
             </div>
           </div>
 
-          <div class="bg-white border border-slate-200 rounded-xl p-3.5 flex flex-col justify-between shadow-2xs">
+          <div class="bg-white border border-slate-200/90 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition shadow-2xs">
             <div class="flex items-center justify-between mb-2">
-              <span class="manual-num-badge">5</span>
-              <span class="text-[10px] font-bold text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded">10분</span>
+              <span class="text-xs font-bold text-slate-400 font-mono tracking-wider">05</span>
+              <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">10분</span>
             </div>
             <div>
-              <div class="font-bold text-slate-900 text-xs">설계서 저장 & 제출</div>
-              <p class="text-[11px] text-slate-500 mt-1 leading-normal">부록 도서 기입 &<br>이미지(PNG) 저장</p>
+              <div class="font-bold text-slate-900 text-[15px]">설계서 저장 & 제출</div>
+              <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed font-normal">부록 도서 기입 &<br>이미지(PNG) 저장</p>
             </div>
           </div>
         </div>
 
-        <div class="manual-card space-y-3">
-          <div class="manual-sec-title">
-            <i class="fa-solid fa-book-bookmark text-slate-700"></i>
-            <span>『고1 학업 설계』 도서 연계 실습 꿀팁</span>
+        <!-- 교재 연계 안내 표 (도서 참고 -> 실습실 적용) -->
+        <div class="bg-white border border-slate-200/90 rounded-xl p-5 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div class="text-base font-bold text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-book-bookmark text-slate-500"></i>
+              <span>『고1 학업 설계』 도서 연계 실습 꿀팁</span>
+            </div>
+            <span class="text-xs text-slate-500 font-medium">도서 참고 ➔ 실습실 적용</span>
           </div>
-          <ul class="space-y-2 text-xs text-slate-700 pl-1 leading-relaxed">
-            <li class="flex items-start gap-2">
-              <span class="text-slate-400 font-bold shrink-0">•</span>
-              <span><strong class="text-slate-900">교재 1부 (12~45쪽):</strong> 고교학점제 이수 규정(192학점, 기초교과 81학점 제한)을 함께 확인하며 시작하세요.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-slate-400 font-bold shrink-0">•</span>
-              <span><strong class="text-slate-900">교재 2부 (56~237쪽):</strong> 선택한 학과의 핵심/권장 이수 과목과 졸업 후 진로 분야를 도서에서 심층 확인하세요.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-slate-400 font-bold shrink-0">•</span>
-              <span><strong class="text-slate-900">교재 3부 (250~311쪽):</strong> 272개 선택 과목의 개요, 위계, 평가 방식(5등급 상대평가 / 성취평가 A~E)을 대조하세요.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-slate-400 font-bold shrink-0">•</span>
-              <span><strong class="text-slate-900">교재 부록 (332~343쪽):</strong> 세특 탐구 도서 목록 및 RIASEC 정밀 검사지를 펼쳐 확인 후 웹앱에 직접 기입하세요.</span>
-            </li>
-          </ul>
+
+          <div class="border border-slate-200/80 rounded-lg overflow-hidden">
+            <table class="w-full text-xs table-fixed">
+              <thead class="bg-slate-50/80 text-slate-600 font-semibold text-left border-b border-slate-200/80">
+                <tr>
+                  <th class="py-2.5 px-3 w-[22%]">교재 영역</th>
+                  <th class="py-2.5 px-3 w-[16%] text-center">페이지</th>
+                  <th class="py-2.5 px-3 w-[62%]">연계 실습 활용 방법</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-slate-700 text-[12px]">
+                <tr>
+                  <td class="py-2.5 px-3 font-bold text-slate-900">교재 1부 (총론)</td>
+                  <td class="py-2.5 px-3 text-center">
+                    <span class="inline-block bg-slate-100 border border-slate-200/60 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-medium">12~45쪽</span>
+                  </td>
+                  <td class="py-2.5 px-3 leading-relaxed text-slate-600">
+                    고교학점제 이수 규정(192학점, 기초교과 81학점 제한)을 함께 확인하며 시작하세요.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3 font-bold text-slate-900">교재 2부 (학과)</td>
+                  <td class="py-2.5 px-3 text-center">
+                    <span class="inline-block bg-slate-100 border border-slate-200/60 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-medium">56~237쪽</span>
+                  </td>
+                  <td class="py-2.5 px-3 leading-relaxed text-slate-600">
+                    선택한 학과의 핵심/권장 이수 과목과 졸업 후 진로 분야를 도서에서 심층 확인하세요.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3 font-bold text-slate-900">교재 3부 (과목)</td>
+                  <td class="py-2.5 px-3 text-center">
+                    <span class="inline-block bg-slate-100 border border-slate-200/60 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-medium">250~311쪽</span>
+                  </td>
+                  <td class="py-2.5 px-3 leading-relaxed text-slate-600">
+                    272개 선택 과목의 개요, 위계, 평가 방식(5등급 상대평가 / 성취평가 A~E)을 대조하세요.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3 font-bold text-slate-900">교재 부록</td>
+                  <td class="py-2.5 px-3 text-center">
+                    <span class="inline-block bg-slate-100 border border-slate-200/60 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-medium">332~343쪽</span>
+                  </td>
+                  <td class="py-2.5 px-3 leading-relaxed text-slate-600">
+                    세특 탐구 도서 목록 및 RIASEC 정밀 검사지를 펼쳐 확인 후 웹앱에 직접 기입하세요.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+
       </div>
 
-      <!-- [TAB 2] 패들렛(Padlet) 과제 연동 & 제출법 -->
-      <div id="padlet-tab-content-2" class="space-y-5 padlet-tab-content" style="display: none;">
-        <div class="manual-card space-y-3.5">
-          <div class="flex items-center justify-between pb-3 border-b border-slate-200">
-            <div class="manual-sec-title">
-              <i class="fa-solid fa-chalkboard text-slate-700"></i>
-              <span>[선생님용] 수업 전 패들렛(Padlet) 보드 개설 방법 (1분 완성)</span>
-            </div>
-            <span class="badge-teacher">교사용</span>
+      <!-- ==================== [TAB 2] 2/4차시 모듈형 강의계획서 ==================== -->
+      <div id="padlet-tab-content-2" class="space-y-6 padlet-tab-content" style="display: none;">
+        
+        <!-- 섹션 인트로 -->
+        <div class="bg-slate-50/70 border border-slate-200/60 rounded-xl p-4 sm:p-5">
+          <div class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-calendar-check text-slate-500"></i>
+            <span>고1 학업설계 강의계획서 (2차시 / 4차시)</span>
           </div>
-
-          <ul class="space-y-2.5 text-xs text-slate-700 leading-relaxed">
-            <li class="flex items-start gap-2">
-              <span class="text-slate-400 font-bold shrink-0">•</span>
-              <span><strong class="text-slate-900">패들렛 접속:</strong> <a href="https://padlet.com" target="_blank" class="text-blue-600 font-bold underline">padlet.com</a> 로그인 후 [패들렛 만들기] 클릭</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-slate-400 font-bold shrink-0">•</span>
-              <span><strong class="text-slate-900">서식 선택:</strong> <strong class="text-slate-900">[선반(Shelf)]</strong> 형식 선택 권장 (계열별 또는 학생 번호별 열 구분 용이)</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-slate-400 font-bold shrink-0">•</span>
-              <div class="w-full">
-                <strong class="text-slate-900 block mb-1">열(섹션) 이름 구성 예시 (5개 열):</strong>
-                <div class="flex flex-wrap gap-1.5 font-bold text-[11px]">
-                  <span class="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded text-slate-800">1열: 인문·어문·사범계열</span>
-                  <span class="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded text-slate-800">2열: 사회과학·상경계열</span>
-                  <span class="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded text-slate-800">3열: 자연·공학·IT계열</span>
-                  <span class="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded text-slate-800">4열: 의약학·바이오·보건</span>
-                  <span class="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded text-slate-800">5열: 예체능·문화콘텐츠</span>
-                </div>
-              </div>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-slate-400 font-bold shrink-0">•</span>
-              <span><strong class="text-slate-900">공유 링크 배포:</strong> 패들렛 [공유] 메뉴에서 링크 복사 또는 QR코드를 생성하여 학생들에게 전달!</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="manual-card space-y-4">
-          <div class="flex items-center justify-between pb-3 border-b border-slate-200">
-            <div class="manual-sec-title">
-              <i class="fa-solid fa-cloud-arrow-up text-blue-600"></i>
-              <span>[학생용] 패들렛에 나만의 학업설계서 제출하는 방법 (4단계)</span>
-            </div>
-            <span class="badge-student">학생용</span>
-          </div>
-
-          <div class="space-y-3 text-xs text-slate-700 leading-relaxed">
-            <div class="flex items-start gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-              <span class="manual-num-badge-blue mt-0.5">1</span>
-              <div>
-                <strong class="text-slate-900 block font-bold text-xs mb-0.5">학업설계서 이미지 다운로드</strong>
-                <span>본 웹앱 4단계 [공식 학업설계서] 상단의 <strong class="text-slate-900">[이미지(PNG) 저장]</strong> 버튼을 누르면 <span class="manual-code">2026_고1_3개년_학업설계서_OOO.png</span> 파일이 자동 저장됩니다.</span>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-              <span class="manual-num-badge-blue mt-0.5">2</span>
-              <div>
-                <strong class="text-slate-900 block font-bold text-xs mb-0.5">패들렛 접속</strong>
-                <span>선생님이 안내해주신 패들렛 보드 주소(URL) 링크나 QR코드를 통해 패들렛에 접속합니다.</span>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-              <span class="manual-num-badge-blue mt-0.5">3</span>
-              <div>
-                <strong class="text-slate-900 block font-bold text-xs mb-0.5">게시물 추가 (+)</strong>
-                <span>자신의 희망 계열 선반(또는 학생 번호 열) 아래에 있는 <strong class="text-slate-900">[+]</strong> 버튼을 클릭합니다.</span>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-              <span class="manual-num-badge-blue mt-0.5">4</span>
-              <div class="w-full">
-                <strong class="text-slate-900 block font-bold text-xs mb-1">파일 첨부 & 진로 다짐 작성 (제출 규격)</strong>
-                <div class="bg-white border border-slate-200 rounded-lg p-3 space-y-1.5 text-[11.5px] mt-1">
-                  <div>• <strong class="text-slate-900">제목 규격:</strong> <span class="manual-code">[1학년 2반 15번 홍길동] 국어국문학과 3개년 학업설계 포트폴리오</span></div>
-                  <div>• <strong class="text-slate-900">파일 첨부:</strong> 다운로드한 <strong>학업설계서 PNG 이미지 파일</strong> 업로드</div>
-                  <div>• <strong class="text-slate-900">본문 작성:</strong> 나의 3년간 핵심 목표와 선택 과목 설계 이유를 간단히 2~3줄 적기</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span class="font-bold text-slate-700 text-xs">🌐 패들렛 홈페이지에서 보드를 확인하거나 새 패들렛을 만드세요:</span>
-          <a href="https://padlet.com" target="_blank" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-lg text-xs transition flex items-center gap-1.5 shadow-2xs shrink-0">
-            <span>패들렛(Padlet) 공식 사이트 열기</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- [TAB 3] 동료 피드백 & 학생부 세특 지도 팁 -->
-      <div id="padlet-tab-content-3" class="space-y-4 padlet-tab-content" style="display: none;">
-        <div class="manual-card space-y-3">
-          <div class="manual-sec-title">
-            <i class="fa-solid fa-comments text-slate-700"></i>
-            <span>패들렛 댓글을 활용한 모둠 동료 평가(Peer Review) 활동</span>
-          </div>
-          <p class="text-xs text-slate-600">
-            학생들이 서로의 패들렛 게시물을 열람하고 댓글로 피드백을 나누며 진로 시야를 넓힙니다.
+          <p class="text-sm text-slate-600 mt-1.5 leading-relaxed font-normal">
+            도서 『고1 학업설계』와 디지털 실습실(웹앱)을 연계하여 3개년 학업설계서를 완성하는 수업 계획서입니다.
           </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs">
-            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-1.5">
-              <span class="font-bold text-slate-900 flex items-center gap-1.5">
-                <i class="fa-solid fa-thumbs-up text-blue-600"></i> 칭찬 & 강점 피드백 예시
+        </div>
+
+        <!-- 1. [2차시 압축형] 나의 3개년 학업설계 완성하기 -->
+        <div class="space-y-3 pt-2">
+          <!-- MODULE 헤더 -->
+          <div class="border-b border-slate-200 pb-2">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest block">MODULE 1</span>
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mt-0.5">
+              <h4 class="text-lg sm:text-[19px] font-extrabold text-slate-900">
+                1. [2차시 압축형] 나의 3개년 학업설계 1차 완성
+              </h4>
+              <span class="text-xs text-slate-500 font-medium">총 90~100분 / 일반 수업 2차시 연계 추천</span>
+            </div>
+          </div>
+
+          <!-- MODULE 1 표 (100% 반응형, 가로스크롤 완전 제거) -->
+          <div class="bg-white border border-slate-200/90 rounded-xl overflow-hidden shadow-2xs">
+            <table class="w-full text-xs table-fixed">
+              <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200 text-left">
+                <tr>
+                  <th class="py-2.5 px-2.5 w-[11%] text-center text-[12px]">차시(시간)</th>
+                  <th class="py-2.5 px-3 w-[17%] text-[12px]">주제</th>
+                  <th class="py-2.5 px-3 w-[46%] text-[12px]">구체적으로 뭘 하는가 (활동 내용)</th>
+                  <th class="py-2.5 px-2.5 w-[12%] text-[12px]">어떻게 하는가 (교구)</th>
+                  <th class="py-2.5 px-2.5 w-[14%] text-[12px]">산출물 및 효과</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-slate-700">
+                <tr class="hover:bg-slate-50/50 transition">
+                  <td class="py-3 px-2 text-center align-top bg-slate-50/30">
+                    <div class="text-[13.5px] font-bold text-slate-900">1차시</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">(45~50분)</div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <div class="text-[13px] font-bold text-slate-900 leading-snug">
+                      적성 진단 ➔<br>목표 학과 선정
+                    </div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <ul class="list-disc pl-3.5 space-y-1 text-[12px] text-slate-700 leading-relaxed">
+                      <li>고교학점제 핵심 상식 OX 퀴즈 5문항 풀이 (5분)</li>
+                      <li>41문항 진로·적성 간이 진단 및 흥미 계열 결과 확인 (15분)</li>
+                      <li>대표 90개 학과 중 관심 학과 검색·탐색 및 목표 학과(1~2지망) 압축 (15분)</li>
+                      <li>목표 학과 핵심/권장 이수 과목 확인 및 진로 목표 정리 (10분)</li>
+                    </ul>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] text-slate-600 leading-relaxed">
+                    <div class="font-medium text-slate-900">실습실 STEP 01~03</div>
+                    <div class="text-slate-500">도서 2부(학과)</div>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] leading-relaxed">
+                    <div class="font-bold text-slate-900">적성 유형 + 학과 확정</div>
+                    <div class="text-slate-500 text-[10.5px] mt-0.5">진로 목표 조기 수립</div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 transition">
+                  <td class="py-3 px-2 text-center align-top bg-slate-50/30">
+                    <div class="text-[13.5px] font-bold text-slate-900">2차시</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">(45~50분)</div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <div class="text-[13px] font-bold text-slate-900 leading-snug">
+                      선택과목 배치 ➔<br>설계서 1차 완성
+                    </div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <ul class="list-disc pl-3.5 space-y-1 text-[12px] text-slate-700 leading-relaxed">
+                      <li>140개 선택과목 중 목표 학과 관련 일반·진로·융합 과목 선택 (10분)</li>
+                      <li>2·3학년 학기별 과목 배치 및 192학점 이수 시뮬레이션 (15분)</li>
+                      <li>실시간 자동 검증으로 필수 학점 미달 및 위계 오류 수정 (10분)</li>
+                      <li>A4 공식 학업설계서 이미지 저장 및 패들렛 과제 제출 (10분)</li>
+                    </ul>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] text-slate-600 leading-relaxed">
+                    <div class="font-medium text-slate-900">실습실 STEP 04~05</div>
+                    <div class="text-slate-500">도서 3부(과목)</div>
+                    <div class="text-slate-500">온라인 패들렛</div>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] leading-relaxed">
+                    <div class="font-bold text-slate-900">3개년 설계서 1차 완성</div>
+                    <div class="text-slate-500 text-[10.5px] mt-0.5">수강신청 혼선 예방</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 2. [4차시 확장형] 나만의 3개년 학업 로드맵 만들기 -->
+        <div class="space-y-3 pt-6">
+          <!-- MODULE 헤더 -->
+          <div class="border-b border-slate-200 pb-2">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest block">MODULE 2</span>
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mt-0.5">
+              <h4 class="text-lg sm:text-[19px] font-extrabold text-slate-900">
+                2. [4차시 확장형] 나만의 3개년 학업 로드맵 만들기
+              </h4>
+              <span class="text-xs text-slate-500 font-medium">총 180~200분 / 진로캠프·집중주간 운영 추천</span>
+            </div>
+          </div>
+
+          <!-- MODULE 2 표 (100% 반응형, 가로스크롤 완전 제거) -->
+          <div class="bg-white border border-slate-200/90 rounded-xl overflow-hidden shadow-2xs">
+            <table class="w-full text-xs table-fixed">
+              <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200 text-left">
+                <tr>
+                  <th class="py-2.5 px-2.5 w-[11%] text-center text-[12px]">차시(시간)</th>
+                  <th class="py-2.5 px-3 w-[17%] text-[12px]">주제</th>
+                  <th class="py-2.5 px-3 w-[46%] text-[12px]">구체적으로 뭘 하는가 (활동 내용)</th>
+                  <th class="py-2.5 px-2.5 w-[12%] text-[12px]">어떻게 하는가 (교구)</th>
+                  <th class="py-2.5 px-2.5 w-[14%] text-[12px]">산출물 및 효과</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-slate-700">
+                <tr class="hover:bg-slate-50/50 transition">
+                  <td class="py-3 px-2 text-center align-top bg-slate-50/30">
+                    <div class="text-[13.5px] font-bold text-slate-900">1차시</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">(45분)</div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <div class="text-[13px] font-bold text-slate-900 leading-snug">고교학점제 이해</div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <ul class="list-disc pl-3.5 space-y-1 text-[12px] text-slate-700 leading-relaxed">
+                      <li>고교학점제 192학점 구조와 5등급 상대평가 산출 방식 이해</li>
+                      <li>대입 전형에서 고교 과목 선택이 미치는 영향 분석</li>
+                      <li>실습실 OX 팩트체크를 통한 제도 오개념 바로잡기</li>
+                    </ul>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] text-slate-600 leading-relaxed">
+                    <div class="font-medium text-slate-900">실습실 STEP 01</div>
+                    <div class="text-slate-500">도서 1부(총론)</div>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] leading-relaxed">
+                    <div class="font-bold text-slate-900">고교생활 학습방향</div>
+                    <div class="text-slate-500 text-[10.5px] mt-0.5">제도 막연함 해소</div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 transition">
+                  <td class="py-3 px-2 text-center align-top bg-slate-50/30">
+                    <div class="text-[13.5px] font-bold text-slate-900">2차시</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">(45분)</div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <div class="text-[13px] font-bold text-slate-900 leading-snug">
+                      진로 진단과<br>목표 학과 탐색
+                    </div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <ul class="list-disc pl-3.5 space-y-1 text-[12px] text-slate-700 leading-relaxed">
+                      <li>41문항 정밀 진단으로 나의 직업 흥미(RIASEC) 및 적성 계열 도출</li>
+                      <li>계열별 90개 학과 검색·탐색을 통한 주력/대안 학과 2개군 압축</li>
+                      <li>목표 학과가 요구하는 대학별 핵심 권장 과목 리스트 확인</li>
+                    </ul>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] text-slate-600 leading-relaxed">
+                    <div class="font-medium text-slate-900">실습실 STEP 02~03</div>
+                    <div class="text-slate-500">도서 2부(학과)</div>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] leading-relaxed">
+                    <div class="font-bold text-slate-900">목표 학과 분석표</div>
+                    <div class="text-slate-500 text-[10.5px] mt-0.5">진로 동기 부여</div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 transition">
+                  <td class="py-3 px-2 text-center align-top bg-slate-50/30">
+                    <div class="text-[13.5px] font-bold text-slate-900">3차시</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">(45분)</div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <div class="text-[13px] font-bold text-slate-900 leading-snug">
+                      선택과목 탐색 &<br>3개년 과목 배치
+                    </div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <ul class="list-disc pl-3.5 space-y-1 text-[12px] text-slate-700 leading-relaxed">
+                      <li>140개 선택과목의 위계 구조 파악 (일반 → 진로 → 융합)</li>
+                      <li>본교 교육과정 편제표와 대조하며 2·3학년 과목 시뮬레이션</li>
+                      <li>필수 이수 학점 미달 여부 및 학점 정합성 자동 점검</li>
+                    </ul>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] text-slate-600 leading-relaxed">
+                    <div class="font-medium text-slate-900">실습실 STEP 04</div>
+                    <div class="text-slate-500">도서 3부(과목)</div>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] leading-relaxed">
+                    <div class="font-bold text-slate-900">3개년 과목 배치안</div>
+                    <div class="text-slate-500 text-[10.5px] mt-0.5">과목 위계 오류 방지</div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 transition">
+                  <td class="py-3 px-2 text-center align-top bg-slate-50/30">
+                    <div class="text-[13.5px] font-bold text-slate-900">4차시</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">(45~50분)</div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <div class="text-[13px] font-bold text-slate-900 leading-snug">
+                      설계서 완성 &<br>컨설팅 및 제출
+                    </div>
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <ul class="list-disc pl-3.5 space-y-1 text-[12px] text-slate-700 leading-relaxed">
+                      <li>부족한 학점 최종 보완 및 A4 규격 개인 학업설계서 생성</li>
+                      <li>선생님 패들렛 게시판에 학업설계서 이미지 업로드</li>
+                      <li>모둠별 설계안 상호 피드백 및 교사 1:1 확인 점검</li>
+                    </ul>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] text-slate-600 leading-relaxed">
+                    <div class="font-medium text-slate-900">실습실 STEP 05</div>
+                    <div class="text-slate-500">온라인 패들렛</div>
+                  </td>
+                  <td class="py-3 px-2.5 align-top text-[11.5px] leading-relaxed">
+                    <div class="font-bold text-slate-900">최종 3개년 학업설계서</div>
+                    <div class="text-slate-500 text-[10.5px] mt-0.5">수강신청 확정 자료</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== [TAB 3] 패들렛 과제 연동 & 제출법 ==================== -->
+      <div id="padlet-tab-content-3" class="space-y-6 padlet-tab-content" style="display: none;">
+        
+        <!-- 교사용 보드 개설 안내 -->
+        <div class="bg-white border border-slate-200/90 rounded-xl p-5 sm:p-6 space-y-4 shadow-2xs">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div class="text-base font-bold text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-chalkboard text-slate-500"></i>
+              <span>[교사용] 패들렛(Padlet) 수업 보드 개설 방법 (1분 완성)</span>
+            </div>
+            <span class="text-xs font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">교사용</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[13px]">
+            <div class="bg-slate-50/70 border border-slate-200/60 rounded-lg p-3.5 space-y-1">
+              <strong class="text-slate-900 block font-bold text-[14px]">1. 패들렛 접속 & 만들기</strong>
+              <p class="text-slate-600 leading-relaxed font-normal"><a href="https://padlet.com" target="_blank" class="text-blue-600 underline font-medium">padlet.com</a> 로그인 후 [패들렛 만들기]를 클릭합니다.</p>
+            </div>
+            <div class="bg-slate-50/70 border border-slate-200/60 rounded-lg p-3.5 space-y-1">
+              <strong class="text-slate-900 block font-bold text-[14px]">2. 서식 선택: [선반 (Shelf)]</strong>
+              <p class="text-slate-600 leading-relaxed font-normal">계열별 또는 학생 번호별로 열을 구분하기 가장 편리한 [선반] 서식을 선택합니다.</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-50/70 border border-slate-200/60 rounded-lg p-3.5 space-y-2 text-[13px]">
+            <strong class="text-slate-900 block font-bold text-[14px]">3. 5개 열(섹션) 이름 구성 권장안</strong>
+            <div class="flex flex-wrap gap-1.5 text-xs">
+              <span class="px-2.5 py-1 bg-white border border-slate-200 rounded text-slate-700 font-medium">1열: 인문·어문·사범계열</span>
+              <span class="px-2.5 py-1 bg-white border border-slate-200 rounded text-slate-700 font-medium">2열: 사회과학·상경계열</span>
+              <span class="px-2.5 py-1 bg-white border border-slate-200 rounded text-slate-700 font-medium">3열: 자연·공학·IT계열</span>
+              <span class="px-2.5 py-1 bg-white border border-slate-200 rounded text-slate-700 font-medium">4열: 의약학·바이오·보건</span>
+              <span class="px-2.5 py-1 bg-white border border-slate-200 rounded text-slate-700 font-medium">5열: 예체능·문화콘텐츠</span>
+            </div>
+          </div>
+
+          <div class="text-[13px] text-slate-600 flex items-center justify-between pt-1">
+            <span><strong>4. 공유 링크 배포:</strong> 패들렛 [공유] 메뉴에서 링크 복사 또는 QR코드를 생성하여 학생들에게 전달합니다.</span>
+            <a href="https://padlet.com" target="_blank" class="text-xs text-slate-600 hover:text-slate-900 flex items-center gap-1 font-medium underline shrink-0">
+              <span>padlet.com 바로가기</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 학생용 4단계 제출 -->
+        <div class="bg-white border border-slate-200/90 rounded-xl p-5 sm:p-6 space-y-4 shadow-2xs">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div class="text-base font-bold text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-cloud-arrow-up text-slate-500"></i>
+              <span>[학생용] 패들렛에 3개년 학업설계서 제출하는 방법</span>
+            </div>
+            <span class="text-xs font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">학생용</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-[13px]">
+            <div class="bg-slate-50/70 border border-slate-200/60 rounded-lg p-3.5 space-y-1">
+              <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-mono">STEP 01</div>
+              <strong class="text-slate-900 block font-bold text-[14px]">이미지 다운로드</strong>
+              <p class="text-slate-600 text-xs leading-relaxed font-normal">웹앱 4단계 [공식 학업설계서] 상단의 [이미지 저장]을 눌러 PNG 파일을 받습니다.</p>
+            </div>
+            <div class="bg-slate-50/70 border border-slate-200/60 rounded-lg p-3.5 space-y-1">
+              <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-mono">STEP 02</div>
+              <strong class="text-slate-900 block font-bold text-[14px]">패들렛 접속</strong>
+              <p class="text-slate-600 text-xs leading-relaxed font-normal">선생님이 안내한 패들렛 주소(URL) 또는 QR코드로 보드에 입장합니다.</p>
+            </div>
+            <div class="bg-slate-50/70 border border-slate-200/60 rounded-lg p-3.5 space-y-1">
+              <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-mono">STEP 03</div>
+              <strong class="text-slate-900 block font-bold text-[14px]">게시물 추가 (+)</strong>
+              <p class="text-slate-600 text-xs leading-relaxed font-normal">자신의 목표 계열 선반(열) 하단의 [+] 버튼을 클릭하여 게시물을 엽니다.</p>
+            </div>
+            <div class="bg-slate-50/70 border border-slate-200/60 rounded-lg p-3.5 space-y-1">
+              <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-mono">STEP 04</div>
+              <strong class="text-slate-900 block font-bold text-[14px]">파일 첨부 & 제출</strong>
+              <p class="text-slate-600 text-xs leading-relaxed font-normal">설계서 PNG를 첨부하고 제목 규격에 맞춰 학번과 이름을 적은 뒤 등록합니다.</p>
+            </div>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-lg border border-slate-200/80 text-[13px] text-slate-700 flex items-center gap-2">
+            <span class="text-slate-400 font-bold">제목 규격:</span>
+            <span><code class="bg-white border border-slate-200 px-1.5 py-0.5 rounded text-xs font-mono text-slate-800">[1학년 2반 15번 홍길동] 국어국문학과 3개년 학업설계</code></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== [TAB 4] 동료 피드백 & 학생부 세특 지도 팁 ==================== -->
+      <div id="padlet-tab-content-4" class="space-y-6 padlet-tab-content" style="display: none;">
+        
+        <!-- 피드백 활동 안내 -->
+        <div class="bg-white border border-slate-200/90 rounded-xl p-5 sm:p-6 space-y-4 shadow-2xs">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div class="text-base font-bold text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-comments text-slate-500"></i>
+              <span>패들렛 댓글을 활용한 모둠 동료 평가(Peer Review) 활동</span>
+            </div>
+            <span class="text-xs text-slate-400 font-medium">서로의 진로 시야를 넓히는 협력 활동</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[13px]">
+            <div class="bg-slate-50/70 border border-slate-200/60 rounded-xl p-4 space-y-1.5">
+              <span class="font-bold text-slate-900 flex items-center gap-1.5 text-[14px]">
+                <i class="fa-solid fa-thumbs-up text-slate-500"></i> 칭찬 & 강점 피드백 예시
               </span>
-              <p class="text-slate-600 leading-relaxed">
+              <p class="text-slate-600 leading-relaxed font-normal">
                 "컴퓨터공학과 지망인데 대수, 미적분Ⅰ·Ⅱ뿐만 아니라 인공지능 수학과 기하까지 챙겨서 대학 전공 연계 평가에서 확실한 경쟁력이 있을 것 같아!"
               </p>
             </div>
-            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-1.5">
-              <span class="font-bold text-slate-900 flex items-center gap-1.5">
-                <i class="fa-solid fa-lightbulb text-amber-600"></i> 조언 & 보완 피드백 예시
+            <div class="bg-slate-50/70 border border-slate-200/60 rounded-xl p-4 space-y-1.5">
+              <span class="font-bold text-slate-900 flex items-center gap-1.5 text-[14px]">
+                <i class="fa-solid fa-lightbulb text-slate-500"></i> 조언 & 보완 피드백 예시
               </span>
-              <p class="text-slate-600 leading-relaxed">
+              <p class="text-slate-600 leading-relaxed font-normal">
                 "상경계열 희망이라면 3학년 때 경제수학이나 사회문제 탐구를 추가하면 학생부 세특 보고서 주제를 심화시키는 데 더 좋을 것 같아 추천해!"
               </p>
             </div>
           </div>
         </div>
 
-        <div class="manual-card space-y-3">
-          <div class="flex items-center justify-between pb-3 border-b border-slate-200">
-            <div class="manual-sec-title">
-              <i class="fa-solid fa-clipboard-user text-slate-700"></i>
+        <!-- 교사용 학생부 기재 팁 -->
+        <div class="bg-white border border-slate-200/90 rounded-xl p-5 sm:p-6 space-y-4 shadow-2xs">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div class="text-base font-bold text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-clipboard-user text-slate-500"></i>
               <span>교사용 학생부 기재 및 1:1 상담 연계 팁</span>
             </div>
-            <span class="badge-teacher">교사용</span>
+            <span class="text-xs font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">교사용</span>
           </div>
-          <ul class="space-y-2.5 text-xs text-slate-700 pl-1 leading-relaxed">
-            <li class="flex items-start gap-2">
-              <span class="text-slate-400 font-bold shrink-0">•</span>
-              <span><strong class="text-slate-900">진로활동 특기사항 기재 근거:</strong> "고1 학업설계 실습을 통해 흥미(RIASEC)·적성·가치관 검사를 수행하고, 희망 학과(OO학과)의 2028 대입 권장과목을 분석하여 체계적인 3개년 교육과정 로드맵을 주도적으로 수립함."</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-slate-400 font-bold shrink-0">•</span>
-              <span><strong class="text-slate-900">과목별 세특(세부능력 및 특기사항) 연계:</strong> 학생이 직접 입력한 4가지 세특 탐구 도서와 주제를 바탕으로 수행평가 탐구보고서 주제를 선정하도록 연계 지도할 수 있습니다.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-slate-400 font-bold shrink-0">•</span>
-              <span><strong class="text-slate-900">이수 위계 오류 예방:</strong> 실시간 자동 검증 리포트를 통해 선이수 과목 위계 위반 및 기초교과(81학점) 초과 여부를 사전에 바로잡아 3학년 대입 원서 접수 시의 불이익을 원천 차단합니다.</span>
-            </li>
-          </ul>
+
+          <div class="space-y-3 text-[13px] text-slate-700 leading-relaxed">
+            <div class="bg-slate-50/70 border border-slate-200/60 rounded-lg p-3.5 space-y-1">
+              <strong class="text-slate-900 font-bold block text-[14px]">1. 진로활동 특기사항 기재 근거</strong>
+              <p class="text-slate-600 font-normal">"고1 학업설계 실습을 통해 흥미(RIASEC)·적성·가치관 검사를 수행하고, 희망 학과의 대입 권장과목을 분석하여 체계적인 3개년 교육과정 로드맵을 주도적으로 수립함."</p>
+            </div>
+            <div class="bg-slate-50/70 border border-slate-200/60 rounded-lg p-3.5 space-y-1">
+              <strong class="text-slate-900 font-bold block text-[14px]">2. 과목별 세특(세부능력 및 특기사항) 연계</strong>
+              <p class="text-slate-600 font-normal">학생이 직접 선정한 4가지 세특 탐구 도서와 주제를 바탕으로 수행평가 탐구보고서 주제를 연계 지도할 수 있습니다.</p>
+            </div>
+            <div class="bg-slate-50/70 border border-slate-200/60 rounded-lg p-3.5 space-y-1">
+              <strong class="text-slate-900 font-bold block text-[14px]">3. 이수 위계 오류 사전 예방</strong>
+              <p class="text-slate-600 font-normal">실시간 자동 검증 리포트로 선이수 과목 위계 위반 및 기초교과(81학점) 초과 여부를 사전에 바로잡아 대입 불이익을 예방합니다.</p>
+            </div>
+          </div>
         </div>
+
       </div>
 
-      <!-- [TAB 4] 전체 한눈에 보기 -->
-      <div id="padlet-tab-content-4" class="space-y-5 padlet-tab-content" style="display: none;">
-        <div class="p-3 bg-slate-100 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 flex items-center gap-2">
-          <i class="fa-solid fa-file-lines text-slate-600"></i>
-          <span>수업 로드맵, 패들렛 과제 제출법, 세특 지도 팁 전체 내용을 위아래로 한눈에 확인합니다.</span>
-        </div>
+      <!-- ==================== [TAB 5] 전체 한눈에 보기 ==================== -->
+      <div id="padlet-tab-content-5" class="space-y-6 padlet-tab-content" style="display: none;">
         
-        <div class="space-y-3 pb-6 border-b border-slate-200">
-          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-            <i class="fa-solid fa-list-check text-slate-700"></i> [1] 5단계 표준 수업 로드맵
+        <div class="p-4 bg-slate-50/80 rounded-xl border border-slate-200/80 text-[13px] font-medium text-slate-600 flex items-center gap-2">
+          <i class="fa-solid fa-file-lines text-slate-500"></i>
+          <span>1차시 로드맵, 2/4차시 강의계획서, 패들렛 연동, 피드백 지도 팁 전체를 순서대로 확인합니다.</span>
+        </div>
+
+        <!-- 1번 탭 요약 -->
+        <div class="space-y-2 pb-5 border-b border-slate-200">
+          <h4 class="text-[15px] font-bold text-slate-900 flex items-center gap-2">
+            <span class="text-slate-400 font-mono font-bold">01</span> 5단계 표준 로드맵 (1차시)
           </h4>
-          <div class="manual-callout-slate">
-            <strong class="text-xs font-bold text-slate-900">1차시(50분) 고교학점제 진로학업설계 수업 진행 순서</strong>
-            <p class="text-[11px] text-slate-600 mt-1">『고1 학업 설계』 도서와 본 실습 웹앱을 연계하여 50분 내에 3개년 학업설계서를 완성하는 표준 가이드입니다.</p>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-5 gap-2.5">
-            <div class="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
-              <span class="manual-num-badge">1</span>
-              <div class="font-bold text-slate-900 text-xs mt-1.5">상식 체크리스트</div>
-              <p class="text-[10px] text-slate-500 mt-0.5">5문항 OX (5분)</p>
-            </div>
-            <div class="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
-              <span class="manual-num-badge">2</span>
-              <div class="font-bold text-slate-900 text-xs mt-1.5">진로 심리검사</div>
-              <p class="text-[10px] text-slate-500 mt-0.5">흥미·적성 (7분)</p>
-            </div>
-            <div class="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
-              <span class="manual-num-badge">3</span>
-              <div class="font-bold text-slate-900 text-xs mt-1.5">목표 학과 선택</div>
-              <p class="text-[10px] text-slate-500 mt-0.5">90개 학과 (8분)</p>
-            </div>
-            <div class="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
-              <span class="manual-num-badge">4</span>
-              <div class="font-bold text-slate-900 text-xs mt-1.5">편제표 과목 설계</div>
-              <p class="text-[10px] text-slate-500 mt-0.5">192학점 (15분)</p>
-            </div>
-            <div class="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
-              <span class="manual-num-badge">5</span>
-              <div class="font-bold text-slate-900 text-xs mt-1.5">설계서 저장·제출</div>
-              <p class="text-[10px] text-slate-500 mt-0.5">PNG 저장 (10분)</p>
-            </div>
+          <div class="text-[13px] text-slate-600 leading-relaxed font-normal">
+            1차시(50분) 표준 순서: [상식 체크리스트(5분)] ➔ [진로 심리검사(7분)] ➔ [목표 학과 선택(8분)] ➔ [편제표 과목 설계(15분)] ➔ [설계서 저장 & 제출(10분)]
           </div>
         </div>
 
-        <div class="space-y-3 pb-6 border-b border-slate-200">
-          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-            <i class="fa-solid fa-cloud-arrow-up text-blue-600"></i> [2] 패들렛(Padlet) 과제 연동 & 제출법
+        <!-- 2번 탭 요약 -->
+        <div class="space-y-2 pb-5 border-b border-slate-200">
+          <h4 class="text-[15px] font-bold text-slate-900 flex items-center gap-2">
+            <span class="text-slate-400 font-mono font-bold">02</span> 2/4차시 모듈형 강의계획서
           </h4>
-          <div class="manual-card space-y-2 text-xs">
-            <strong class="text-slate-900 block font-bold">학생용 제출 절차 (4단계 요약):</strong>
-            <p class="text-slate-600 leading-relaxed">
-              1단계: 학업설계서 PNG 이미지 다운로드 → 2단계: 선생님 패들렛 보드 접속 → 3단계: 희망 계열 선반 아래 [+] 클릭 → 4단계: 제목 규격 작성 및 이미지 파일 첨부 후 등록
-            </p>
+          <div class="text-[13px] text-slate-600 leading-relaxed font-normal">
+            • <strong>[2차시 압축형] 나의 3개년 학업설계 1차 완성:</strong> 1차시 적성 진단 및 목표 학과 선정 ➔ 2차시 선택과목 배치 및 설계서 1차 완성<br>
+            • <strong>[4차시 확장형] 나만의 3개년 학업 로드맵 만들기:</strong> 1차시 고교학점제 이해 ➔ 2차시 진로 진단·학과 탐색 ➔ 3차시 선택과목 탐색·배치 ➔ 4차시 설계서 완성 및 컨설팅·제출
           </div>
         </div>
 
-        <div class="space-y-3">
-          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-            <i class="fa-solid fa-comments text-slate-700"></i> [3] 동료 피드백 & 학생부 세특 지도 팁
+        <!-- 3번 탭 요약 -->
+        <div class="space-y-2 pb-5 border-b border-slate-200">
+          <h4 class="text-[15px] font-bold text-slate-900 flex items-center gap-2">
+            <span class="text-slate-400 font-mono font-bold">03</span> 패들렛(Padlet) 과제 연동 & 제출법
           </h4>
-          <div class="manual-card space-y-2 text-xs">
-            <strong class="text-slate-900 block font-bold">교사용 세특 기재 & 상담 활용:</strong>
-            <p class="text-slate-600 leading-relaxed">
-              학생이 직접 입력한 4가지 세특 탐구 도서와 주제를 바탕으로 수행평가 탐구보고서 주제를 연계 지도하고, 진로활동 특기사항에 학생 주도 학업설계 역량을 구체적으로 기록합니다.
-            </p>
+          <div class="text-[13px] text-slate-600 leading-relaxed font-normal">
+            • <strong>교사용:</strong> padlet.com 접속 ➔ [선반(Shelf)] 서식 선택 ➔ 5개 계열 열 구성 ➔ 학생에게 공유 링크 배포<br>
+            • <strong>학생용:</strong> 학업설계서 이미지 저장 ➔ 패들렛 접속 ➔ 목표 계열 [+] 클릭 ➔ 학번·이름 기재 후 이미지 첨부
           </div>
         </div>
+
+        <!-- 4번 탭 요약 -->
+        <div class="space-y-2">
+          <h4 class="text-[15px] font-bold text-slate-900 flex items-center gap-2">
+            <span class="text-slate-400 font-mono font-bold">04</span> 동료 피드백 & 학생부 세특 지도 팁
+          </h4>
+          <div class="text-[13px] text-slate-600 leading-relaxed font-normal">
+            • <strong>패들렛 동료 평가:</strong> 강점 칭찬 피드백 및 보완 조언 피드백을 댓글로 작성하여 시야 확장<br>
+            • <strong>학생부 기재 근거:</strong> 진로활동 특기사항 문구 활용 및 세특 추천도서 기반 수행평가 연계 지도
+          </div>
+        </div>
+
       </div>
 
     </div>
 
-    <!-- 모달 푸터 -->
-    <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-2 shrink-0">
+    <!-- 모달 하단 푸터: 정돈된 공식 자료 푸터 -->
+    <div class="p-4 bg-slate-50 border-t border-slate-200/80 flex items-center justify-between gap-2 shrink-0">
       <span class="text-xs text-slate-500 font-medium">도서출판 씨마스21 · 씨마스진로교육연구소 공식 수업 지원 자료</span>
-      <button type="button" onclick="closePadletGuideModal()" class="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition cursor-pointer shadow-sm">
+      <button type="button" onclick="closePadletGuideModal()" class="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl text-xs transition cursor-pointer shadow-sm">
         확인 완료 (실습 계속하기)
       </button>
     </div>
@@ -29055,21 +29239,26 @@ document.addEventListener("click", function(e) {
   };
 
   window.switchPadletTab = function(tabIndex) {
+    if (tabIndex === 'padlet') tabIndex = 3;
+    if (tabIndex === 'plan' || tabIndex === 'curriculum') tabIndex = 2;
+    if (tabIndex === 'feedback' || tabIndex === 'se-teuk') tabIndex = 4;
+    if (tabIndex === 'all') tabIndex = 5;
     tabIndex = parseInt(tabIndex, 10) || 1;
+
     var modal = document.getElementById("modal-padlet-guide");
     if (!modal) return;
 
-    for (var i = 1; i <= 4; i++) {
+    for (var i = 1; i <= 5; i++) {
       var btn = modal.querySelector("#tab-btn-padlet-" + i);
       var content = modal.querySelector("#padlet-tab-content-" + i);
 
       if (btn) {
         if (i === tabIndex) {
           btn.classList.add("active");
-          btn.style.setProperty("border-bottom-color", "#2563EB", "important");
+          btn.style.setProperty("border-bottom-color", "#0F172A", "important");
           btn.style.setProperty("color", "#0F172A", "important");
-          btn.style.setProperty("font-weight", "800", "important");
-          btn.style.setProperty("background-color", "#FFFFFF", "important");
+          btn.style.setProperty("font-weight", "700", "important");
+          btn.style.setProperty("background-color", "transparent", "important");
         } else {
           btn.classList.remove("active");
           btn.style.setProperty("border-bottom-color", "transparent", "important");
@@ -29095,11 +29284,6 @@ document.addEventListener("click", function(e) {
     var contentArea = modal.querySelector("#padlet-guide-content-area");
     if (contentArea) contentArea.scrollTop = 0;
   };
-
-  // 전역 노출
-  window.openPadletGuideModal = window.openPadletGuideModal;
-  window.closePadletGuideModal = window.closePadletGuideModal;
-  window.switchPadletTab = window.switchPadletTab;
 
   document.addEventListener("keydown", function(e) {
     if (e.key === "Escape") window.closePadletGuideModal();
@@ -32498,5 +32682,67 @@ html body #selected-tags-container > div > button:last-child {
     letter-spacing: -0.01em !important;
   }
 }
-</style>\n</body>
+</style>\n<script id="careerpath-padlet-guide-5tabs-script" style="display:none;">
+(function() {
+  window.openPadletGuideModal = function(tabIndex) {
+    var modal = document.getElementById("modal-padlet-guide");
+    if (modal) {
+      modal.style.setProperty("display", "flex", "important");
+      modal.style.setProperty("visibility", "visible", "important");
+      modal.style.setProperty("opacity", "1", "important");
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+    window.switchPadletTab(tabIndex || 1);
+  };
+
+  window.switchPadletTab = function(tabIndex) {
+    if (tabIndex === 'program' || tabIndex === 'curriculum') tabIndex = 3;
+    if (tabIndex === 'padlet') tabIndex = 2;
+    if (tabIndex === 'feedback' || tabIndex === 'se-teuk') tabIndex = 4;
+    if (tabIndex === 'all') tabIndex = 5;
+    tabIndex = parseInt(tabIndex, 10) || 1;
+
+    var modal = document.getElementById("modal-padlet-guide");
+    if (!modal) return;
+
+    for (var i = 1; i <= 5; i++) {
+      var btn = modal.querySelector("#tab-btn-padlet-" + i);
+      var content = modal.querySelector("#padlet-tab-content-" + i);
+
+      if (btn) {
+        if (i === tabIndex) {
+          btn.classList.add("active");
+          btn.style.setProperty("border-bottom-color", "#2563EB", "important");
+          btn.style.setProperty("color", "#0F172A", "important");
+          btn.style.setProperty("font-weight", "800", "important");
+          btn.style.setProperty("background-color", "#FFFFFF", "important");
+        } else {
+          btn.classList.remove("active");
+          btn.style.setProperty("border-bottom-color", "transparent", "important");
+          btn.style.setProperty("color", "#64748B", "important");
+          btn.style.setProperty("font-weight", "600", "important");
+          btn.style.setProperty("background-color", "transparent", "important");
+        }
+      }
+
+      if (content) {
+        if (i === tabIndex) {
+          content.style.setProperty("display", "block", "important");
+          content.style.setProperty("visibility", "visible", "important");
+          content.style.setProperty("opacity", "1", "important");
+          content.classList.remove("hidden");
+        } else {
+          content.style.setProperty("display", "none", "important");
+          content.classList.add("hidden");
+        }
+      }
+    }
+
+    var contentArea = modal.querySelector("#padlet-guide-content-area");
+    if (contentArea) contentArea.scrollTop = 0;
+  };
+})();
+</script>
+</body>
 </html>
