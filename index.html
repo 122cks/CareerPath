@@ -9805,21 +9805,7 @@ function toggleCheckDetailGrid(btn) {
               <span class="step5-desc-desktop">학생 인적사항을 입력하고 탐구 도서를 선택한 후, 하단 완성본을 A4 규격으로 인쇄하거나 이미지(PNG)/PDF로 저장하세요.</span><span class="step5-desc-mobile">정보 입력 후 인쇄·저장하세요.</span>
             </p>
           </div>
-          <div class="flex items-center gap-2 shrink-0 self-start md:self-auto">
-            <button
-              onclick="savePlanAsImage()"
-              class="px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl shadow-md transition flex items-center justify-center gap-1.5 text-xs sm:text-sm"
-              title="설계서를 PNG 이미지로 다운로드합니다."
-            >
-              <i class="fa-solid fa-file-image"></i> <span>이미지 저장</span>
-            </button>
-            <button
-              onclick="quickPrint()"
-              class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm"
-            >
-              <i class="fa-solid fa-print"></i> <span>A4 인쇄 / PDF 저장</span>
-            </button>
-          </div>
+          <!-- STEP 05 헤더 액션 버튼 제거됨 (하단 대시보드로 일원화) -->
         </div>
 
         <!-- 사용자 직접 타이핑 입력 폼 -->
@@ -10064,18 +10050,6 @@ function toggleCheckDetailGrid(btn) {
       <span class="cp-toolbar-badge">A4 규격 공식 문서</span>
     </div>
     <div class="cp-toolbar-actions">
-      <button type="button" onclick="savePlanAsImage()" class="cp-btn-plan cp-btn-png" title="설계서를 고해상도 PNG 이미지로 다운로드합니다.">
-        <i class="fa-solid fa-file-image"></i>
-        <span>PNG 저장</span>
-      </button>
-      <button type="button" onclick="quickPrint()" class="cp-btn-plan cp-btn-print" title="A4 규격으로 즉시 인쇄하거나 PDF로 저장합니다.">
-        <i class="fa-solid fa-print"></i>
-        <span>인쇄 / PDF</span>
-      </button>
-      <button type="button" onclick="document.getElementById('step-3').scrollIntoView({ behavior: 'smooth', block: 'start' });" class="cp-btn-plan cp-btn-redesign" title="선택 과목을 다시 설계합니다.">
-        <i class="fa-solid fa-arrow-rotate-left"></i>
-        <span>다시 설계</span>
-      </button>
       <button type="button" onclick="if (typeof resetAllDataWithConfirm === 'function') resetAllDataWithConfirm();" class="cp-btn-plan cp-btn-reset text-rose-600 bg-rose-50 border border-rose-200 hover:bg-rose-100 hover:text-rose-700" title="입력 데이터를 초기화합니다.">
         <i class="fa-solid fa-trash-can"></i>
         <span>초기화</span>
@@ -24507,16 +24481,7 @@ document.addEventListener("click", function(e) {
       mainEl.insertBefore(banner, mainEl.firstChild);
     }
 
-    var step4Sec = document.getElementById('step-4') || document.getElementById('step-5');
-    if (step4Sec && !document.getElementById('student-padlet-step5-card')) {
-      var card = document.createElement('div');
-      card.id = 'student-padlet-step5-card';
-      card.className = 'p-4 bg-rose-50/70 border border-rose-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 my-4';
-      card.innerHTML = 
-        '<div><strong class="text-sm font-bold text-rose-950 flex items-center gap-1.5"><i class="fa-solid fa-paper-plane text-rose-600"></i>작성 완료 후 패들렛에 제출하기</strong><p class="text-xs text-rose-700 mt-0.5">PDF로 저장한 3개년 학업설계서를 선생님 패들렛에 업로드하세요.</p></div>' +
-        '<a href="' + padletUrl + '" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center gap-1.5 shrink-0"><span>선생님 패들렛에 과제 제출</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>';
-      step4Sec.insertBefore(card, step4Sec.firstChild);
-    }
+    // [제거됨] student-padlet-step5-card (하단 대시보드와 중복)
   }
 
   function initPadletPatch() {
@@ -24985,57 +24950,13 @@ document.addEventListener("click", function(e) {
       }
     }
 
-    // B. Step 05 Top Header Buttons
-    var topActions = document.querySelector("#step-4 .flex.items-center.gap-2.shrink-0");
-    if (topActions) {
-      var topBtn = document.getElementById("btn-step5-top-padlet");
-      if (!topBtn) {
-        topBtn = document.createElement("button");
-        topBtn.id = "btn-step5-top-padlet";
-        topBtn.type = "button";
-        topActions.appendChild(topBtn);
-      }
-      if (isLinked) {
-        topBtn.className = "px-4 py-3 bg-rose-600 hover:bg-rose-700 text-white font-black rounded-xl shadow-md transition flex items-center justify-center gap-1.5 text-xs sm:text-sm cursor-pointer";
-        topBtn.innerHTML = '<i class="fa-solid fa-arrow-up-from-bracket"></i><span>패들렛에 올리기</span>';
-        topBtn.title = "선생님 패들렛에 학업설계서를 제출합니다.";
-        topBtn.onclick = function() {
-          window.open(padletUrl, "_blank", "noopener,noreferrer");
-        };
-        topBtn.style.display = "inline-flex";
-      } else {
-        topBtn.className = "px-3 py-3 bg-slate-100 text-slate-400 border border-slate-200 font-bold rounded-xl transition flex items-center justify-center gap-1 text-xs cursor-not-allowed opacity-60";
-        topBtn.innerHTML = '<i class="fa-solid fa-chalkboard-user"></i><span>패들렛 미연동</span>';
-        topBtn.title = "선생님 패들렛 링크가 없습니다.";
-        topBtn.onclick = function() {
-          alert("선생님이 연동한 패들렛 링크가 없습니다. 선생님께 패들렛 링크를 문의해주세요.");
-        };
-        topBtn.style.display = "inline-flex";
-      }
-    }
-
-    // C. Step 05 Floating Toolbar Actions
-    var toolbarActions = document.querySelector("#plan-preview-toolbar .cp-toolbar-actions");
-    if (toolbarActions) {
-      var tbBtn = document.getElementById("btn-step5-toolbar-padlet");
-      if (!tbBtn) {
-        tbBtn = document.createElement("button");
-        tbBtn.id = "btn-step5-toolbar-padlet";
-        tbBtn.type = "button";
-        toolbarActions.insertBefore(tbBtn, toolbarActions.firstChild);
-      }
-      if (isLinked) {
-        tbBtn.className = "cp-btn-plan bg-rose-600 hover:bg-rose-700 text-white font-bold cursor-pointer";
-        tbBtn.innerHTML = '<i class="fa-solid fa-arrow-up-from-bracket"></i><span>패들렛에 올리기</span>';
-        tbBtn.title = "선생님 패들렛에 제출";
-        tbBtn.onclick = function() {
-          window.open(padletUrl, "_blank", "noopener,noreferrer");
-        };
-        tbBtn.style.display = "inline-flex";
-      } else {
-        tbBtn.style.display = "none";
-      }
-    }
+    // [정리] 상단 헤더 및 툴바의 중복 패들렛 버튼 제거 (하단 대시보드 단일 유지)
+    var oldTopBtn = document.getElementById("btn-step5-top-padlet");
+    if (oldTopBtn) oldTopBtn.remove();
+    var oldTbBtn = document.getElementById("btn-step5-toolbar-padlet");
+    if (oldTbBtn) oldTbBtn.remove();
+    var oldStep5Card = document.getElementById("student-padlet-step5-card");
+    if (oldStep5Card) oldStep5Card.remove();
   }
 
   function initPatch08() {
