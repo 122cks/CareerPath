@@ -31,12 +31,7 @@
   <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
     body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; }
-    @media print {
-      body * { visibility: hidden; }
-      #printable-study-plan, #printable-study-plan * { visibility: visible; }
-      #printable-study-plan { position: absolute; left: 0; top: 0; width: 100%; border: none !important; }
-      .no-print { display: none !important; }
-    }
+    /* [제거됨] 초기 visibility: hidden 인쇄 규칙 (display: none 시스템으로 대체) */
   </style>
 
   <!-- CareerPath Step 02: Design System -->
@@ -2218,46 +2213,251 @@ button#btn-sub-value.text-indigo-600,
 }
 
 /* ==========================================================================
-   5. 인쇄 시 스타일 절대 보존 (@media print)
+   5. A4 1~2페이지 인쇄 및 출력 최적화 시스템 (@media print & Screen)
    ========================================================================== */
+@page {
+  size: A4 portrait;
+  margin: 8mm 10mm 8mm 10mm;
+}
+
+/* 화면 및 인쇄 겸용 컴팩트 과목 뱃지 */
+.cp-plan-subject-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  margin: 1px 3px 2px 0 !important;
+  padding: 2px 6px !important;
+  font-size: 11.5px !important;
+  line-height: 1.35 !important;
+  border-radius: 6px !important;
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+}
+
 @media print {
-  body * {
-    visibility: hidden !important;
+  html, body {
+    width: 210mm !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
-  #printable-study-plan,
-  #printable-study-plan * {
-    visibility: visible !important;
+
+  /* -------------------------------------------------------------------------
+     [핵심] visibility: hidden 폐기 -> display: none 으로 앞선 모든 섹션 0px 소멸
+     ------------------------------------------------------------------------- */
+  body > *:not(main) {
+    display: none !important;
   }
+
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    display: block !important;
+  }
+
+  main > *:not(#step-4) {
+    display: none !important;
+  }
+
+  #step-4 {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    display: block !important;
+  }
+
+  #step-4 > *:not(#printable-study-plan) {
+    display: none !important;
+  }
+
+  /* 화면 전용 UI 요소 전면 차단 */
+  header,
+  footer,
+  nav,
+  aside,
+  form,
+  .no-print,
+  #section-checklist,
+  #careerpath-hero,
+  #step-1,
+  #step-2,
+  #step-3,
+  #modal-ocr-curriculum,
+  #modal-padlet-guide,
+  #plan-preview-toolbar,
+  #plan-completion-dashboard,
+  .cp-page-divider,
+  .cp-floating-quickbar,
+  .cp-mobile-bottom-quickbar {
+    display: none !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     [인쇄 본체] #printable-study-plan이 인쇄 1페이지 y=0에서 즉각 시작
+     ------------------------------------------------------------------------- */
   #printable-study-plan {
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
-    padding: 20mm 15mm !important;
+    padding: 0 !important;
     border: none !important;
     box-shadow: none !important;
+    background: transparent !important;
   }
+
+  #printable-study-plan * {
+    visibility: visible !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     [제1페이지: 학생 정보 + 공통 과목 + 선택과목 계획표]
+     ------------------------------------------------------------------------- */
   .print-page-1 {
+    page-break-before: avoid !important;
+    break-before: avoid !important;
     page-break-after: always !important;
     break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    height: auto !important;
+    max-height: 275mm !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    padding: 0 1mm !important;
   }
-  .print-page-2 {
+
+  .print-page-1 > div,
+  .print-page-1 > table {
+    margin-bottom: 2mm !important;
+  }
+
+  .print-page-1 h2 {
+    font-size: 18px !important;
     margin-top: 0 !important;
-    padding-top: 0 !important;
+    padding-bottom: 1mm !important;
+  }
+
+  .print-page-1 .border-b-2 {
+    padding-bottom: 1.5mm !important;
+    border-bottom-width: 1.5px !important;
+  }
+
+  /* 학생 정보 표 컴팩트화 */
+  .print-page-1 table.print-table:first-of-type th,
+  .print-page-1 table.print-table:first-of-type td {
+    padding: 2px 5px !important;
+    font-size: 10.5px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* 1학년 공통과목 박스 */
+  .print-page-1 .space-y-1 {
+    margin-bottom: 2mm !important;
+  }
+
+  .print-page-1 .space-y-1 .p-2\.5 {
+    padding: 2.5px 6px !important;
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+  }
+
+  /* 2~3학년 선택 이수 계획표 컴팩트화 */
+  .print-page-1 table.print-table:last-of-type th {
+    padding: 2.5px 5px !important;
+    font-size: 10.5px !important;
+  }
+
+  .print-page-1 table.print-table:last-of-type td {
+    padding: 2px 4px !important;
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+  }
+
+  .print-page-1 table.print-table:last-of-type td:first-child {
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+    width: 22% !important;
+    background-color: #F8FAFC !important;
+  }
+
+  /* 인쇄 시 과목 뱃지 초소형 고밀도 정돈 */
+  .cp-plan-subject-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    margin: 1px 2px 1px 0 !important;
+    padding: 1.5px 4px !important;
+    font-size: 9.5px !important;
+    line-height: 1.25 !important;
+    background: #FFFFFF !important;
+    border: 1px solid #94A3B8 !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cp-plan-subject-badge span {
+    font-size: 8px !important;
+    padding: 0.5px 2px !important;
+    line-height: 1.1 !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     [제2페이지: 세특 탐구도서 + 규정 검증 + 진로요약 + 서명란]
+     ------------------------------------------------------------------------- */
+  .print-page-2 {
+    page-break-before: always !important;
+    break-before: page !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    height: auto !important;
+    max-height: 275mm !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    margin-top: 0 !important;
+    padding: 2mm 1mm 0 1mm !important;
     border-top: none !important;
   }
-  .print-page-2::before {
-    display: none !important;
-  }
-  .no-print,
-  .cp-plan-top-toolbar {
-    display: none !important;
-  }
-}
 
-  </style>
+  .print-page-2 > div {
+    margin-bottom: 2.5mm !important;
+    padding: 5px 8px !important;
+  }
+
+  .print-page-2 table,
+  .print-page-2 tr,
+  .print-page-2 td {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .print-table tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}</style>
 
   <!-- CareerPath Step 12: Mobile Responsive System -->
   <style id="careerpath-redesign-step12-responsive">
@@ -5455,7 +5655,6 @@ div#step-1 {
   box-sizing: border-box !important;
   margin-bottom: 48px !important;
   width: 100% !important;
-  display: block !important;
 }
 
 #step-1 .border-b {
@@ -7401,7 +7600,6 @@ h4, .h4, .card-title, .cp-action-title {
 section#step-3,
 main > section#step-3,
 div#step-3 {
-  display: block !important;
   background-color: #FFFFFF !important;
   background: #FFFFFF !important;
   border: 1px solid #E2E8F0 !important;
@@ -7428,6 +7626,179 @@ div#step-3 {
     padding: 20px 16px !important;
     border-radius: 20px !important;
     margin-bottom: 36px !important;
+  }
+}
+</style>
+<style id="cp-print-ultimate-master">
+@page {
+  size: A4 portrait !important;
+  margin: 8mm 10mm 8mm 10mm !important;
+}
+
+@media print {
+  /* 브라우저 기본 및 html/body 리셋 */
+  html, body {
+    width: 210mm !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     1. body 직계 자식 중 main을 제외한 모든 요소 display: none (공간 0px 처리)
+     ------------------------------------------------------------------------- */
+  body > *:not(main) {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     2. main 내부의 모든 섹션 중 #step-4(학업설계서 섹션) 제외 전부 제거
+     (STEP 02 #step-1, STEP 04 #step-3 등 최고 명시도로 원천 차단)
+     ------------------------------------------------------------------------- */
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    display: block !important;
+  }
+
+  main > *:not(#step-4),
+  main > section:not(#step-4),
+  #section-checklist,
+  #careerpath-hero,
+  #step-1,
+  section#step-1,
+  div#step-1,
+  main > section#step-1,
+  #step-2,
+  section#step-2,
+  div#step-2,
+  main > section#step-2,
+  #step-3,
+  section#step-3,
+  div#step-3,
+  main > section#step-3 {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     3. #step-4 내부에서 #printable-study-plan을 제외한 모든 요소 제거
+     (입력 폼, 헤더, 완료 대시보드 등 전부 숨김)
+     ------------------------------------------------------------------------- */
+  #step-4 {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  #step-4 > *:not(#printable-study-plan) {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* 기타 화면용 UI 컴포넌트 전면 차단 */
+  .no-print,
+  header,
+  footer,
+  nav,
+  aside,
+  form,
+  #modal-ocr-curriculum,
+  #modal-padlet-guide,
+  #plan-preview-toolbar,
+  #plan-completion-dashboard,
+  .cp-page-divider,
+  .cp-floating-quickbar,
+  .cp-mobile-bottom-quickbar {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     4. 출력 대상 학업설계서 본체: 인쇄 1페이지 맨 위(y = 0)부터 시작
+     ------------------------------------------------------------------------- */
+  #printable-study-plan {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  #printable-study-plan * {
+    visibility: visible !important;
+  }
+
+  /* -------------------------------------------------------------------------
+     5. 1페이지와 2페이지 강제 분할 (A4 정확히 2장 출력)
+     ------------------------------------------------------------------------- */
+  .print-page-1 {
+    page-break-before: avoid !important;
+    break-before: avoid !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-height: 275mm !important;
+    box-sizing: border-box !important;
+  }
+
+  .print-page-2 {
+    page-break-before: always !important;
+    break-before: page !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-height: 275mm !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 표 및 행 단위 절단 방지 */
+  .print-table tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 }
 </style>
@@ -10225,7 +10596,7 @@ function toggleCheckDetailGrid(btn) {
               >
                 <thead>
                   <tr class="bg-slate-100 text-slate-700">
-                    <th class="border border-slate-300 p-2 w-1/3">교과 영역</th>
+                    <th class="border border-slate-300 p-2 w-1/5 sm:w-[22%] text-center">교과 영역</th>
                     <th class="border border-slate-300 p-2">
                       내가 선택한 과목 목록 (이수 구분)
                     </th>
@@ -10320,10 +10691,16 @@ function toggleCheckDetailGrid(btn) {
             </div>
           </div>
 
+          <!-- 화면 미리보기 전용 A4 페이지 구분선 -->
+          <div class="cp-page-divider no-print my-6 py-2.5 border-y border-dashed border-slate-300 bg-slate-50/80 rounded-xl flex items-center justify-between px-4 text-xs font-bold text-slate-500">
+            <span class="flex items-center gap-1.5 text-slate-600"><i class="fa-solid fa-file-lines text-indigo-500"></i> A4 인쇄 / PDF 제1페이지 (1/2) 끝</span>
+            <span class="bg-indigo-50 text-indigo-700 border border-indigo-200 px-3 py-1 rounded-lg text-xs font-black">제2페이지 (2/2) 시작 ➔</span>
+          </div>
+
           <!-- --------------------------------------------------------------------- -->
           <!-- [제2페이지: 세특 탐구도서, 검사결과, 자동검증리포트, 체크리스트 및 서명란] -->
           <!-- --------------------------------------------------------------------- -->
-          <div class="print-page-2 space-y-5 pt-4">
+          <div class="print-page-2 space-y-5 pt-2">
             <div class="border-b border-slate-300 pb-2 flex justify-between items-center">
               <span class="font-black text-xs text-slate-700">고등학교 3개년 개인 학업 설계서 (2/2)</span>
               <span class="text-xs text-slate-400" id="out-p2-student-summary">학생 정보 미입력</span>
@@ -11678,9 +12055,11 @@ function populateSubjectDropdown(cat, query) {
     if (!select) return;
     const all = getAllSubjectsList();
     const q = (query || "").trim().toLowerCase().replace(/\s+/g, "");
+    
+    // 교과군 엄격 일치 (s.cat === cat) 및 과목명 검색 필터링
     const filtered = all.filter(s => {
         if (cat && cat !== 'all') {
-            if (s.cat !== cat && !s.cat.includes(cat) && !cat.includes(s.cat)) return false;
+            if (s.cat !== cat) return false;
         }
         if (q) {
             const cleanName = s.name.toLowerCase().replace(/\s+/g, "");
@@ -11688,11 +12067,13 @@ function populateSubjectDropdown(cat, query) {
         }
         return true;
     });
+
     select.innerHTML = '';
     const defaultOpt = document.createElement("option");
     defaultOpt.value = "";
     defaultOpt.textContent = filtered.length > 0 ? '-- 과목을 선택하세요 (검색된 과목: ' + filtered.length + '개) --' : "-- 일치하는 과목이 없습니다 --";
     select.appendChild(defaultOpt);
+
     filtered.forEach(s => {
         const opt = document.createElement("option");
         opt.value = s.name;
@@ -11703,21 +12084,14 @@ function populateSubjectDropdown(cat, query) {
         opt.textContent = '[' + s.cat + trackLabel + '] ' + s.name + pageText + ' (' + bInfo.text + suneungText + ')';
         select.appendChild(opt);
     });
+
+    // 교과군 또는 검색어 변경 시 선택을 초기화하고 안내 바 숨김
+    select.value = "";
+    updateDropdownInfoBar("");
 }
 
-function initSubjectDropdown() {
-    setupCategoryFilter();
-    const catSelect = document.getElementById("search-category-select");
+function onCategoryDropdownChange(cat) {
     const searchInput = document.getElementById("subject-search-input");
-    const currentCat = catSelect ? catSelect.value : "all";
-    const currentQ = searchInput ? searchInput.value : "";
-    populateSubjectDropdown(currentCat, currentQ);
-    const select = document.getElementById("subject-dropdown-select");
-    if (select) {
-        select.onchange = function () {
-            updateDropdownInfoBar(this.value);
-        };
-    }
     const q = searchInput ? searchInput.value : "";
     populateSubjectDropdown(cat, q);
 }
@@ -11727,6 +12101,46 @@ function onSubjectSearchInput(q) {
     const cat = catSelect ? catSelect.value : "all";
     populateSubjectDropdown(cat, q);
 }
+
+function initSubjectDropdown() {
+    setupCategoryFilter();
+    const catSelect = document.getElementById("search-category-select");
+    const searchInput = document.getElementById("subject-search-input");
+    const select = document.getElementById("subject-dropdown-select");
+
+    const currentCat = catSelect ? catSelect.value : "all";
+    const currentQ = searchInput ? searchInput.value : "";
+    populateSubjectDropdown(currentCat, currentQ);
+
+    if (catSelect) {
+        catSelect.onchange = function () {
+            onCategoryDropdownChange(this.value);
+        };
+        catSelect.addEventListener("change", function () {
+            onCategoryDropdownChange(this.value);
+        });
+    }
+    if (searchInput) {
+        searchInput.oninput = function () {
+            onSubjectSearchInput(this.value);
+        };
+        searchInput.addEventListener("input", function () {
+            onSubjectSearchInput(this.value);
+        });
+    }
+    if (select) {
+        select.onchange = function () {
+            updateDropdownInfoBar(this.value);
+        };
+    }
+}
+
+// 글로벌 등록 (인라인 onchange / oninput 핸들러와 100% 연동)
+window.setupCategoryFilter = setupCategoryFilter;
+window.populateSubjectDropdown = populateSubjectDropdown;
+window.onCategoryDropdownChange = onCategoryDropdownChange;
+window.onSubjectSearchInput = onSubjectSearchInput;
+window.initSubjectDropdown = initSubjectDropdown;
 
 function updateDropdownInfoBar(sName) {
     const bar = document.getElementById("dropdown-info-bar");
@@ -12629,7 +13043,7 @@ function runDiagnosis() {
         const bInfo = getEvalBadgeInfo(meta ? meta.eval : "");
         let suneungBadgePlan = (meta && meta.suneung) ? `<span class="text-[9px] font-black px-1 py-0.2 rounded bg-rose-100 text-rose-700 border border-rose-300 mr-0.5">수능</span>` : "";
         let evalBadgePlan = `<span class="text-[9px] font-black px-1 py-0.2 rounded ${bInfo.bgClass} mr-0.5">${bInfo.text}</span>`;
-        const formatted = `<span class="inline-flex items-center gap-1 mr-1.5 mb-1 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-900 font-bold shadow-2xs">${sName} (${c}학점) ${suneungBadgePlan}${evalBadgePlan}<span class="text-[10px] font-extrabold px-1 py-0.2 rounded border ${badgeColor}">[${badge}]</span></span>`;
+        const formatted = `<span class="cp-plan-subject-badge inline-flex items-center gap-1 mr-1 mb-1 px-2 py-0.5 rounded-md bg-white border border-slate-300 text-slate-900 font-bold shadow-2xs text-[11px] sm:text-xs leading-tight">${sName} (${c}학점) ${suneungBadgePlan}${evalBadgePlan}<span class="text-[9.5px] font-extrabold px-1 py-0.2 rounded border ${badgeColor}">[${badge}]</span></span>`;
 
         const cat = meta.cat;
         if (cat === "국어") {
@@ -15585,6 +15999,11 @@ function runDiagnosis() {
     });
 
     function quickPrint() {
+      const p = document.getElementById('printable-study-plan');
+      if (p) {
+        p.classList.remove('hidden');
+        p.style.display = 'block';
+      }
       buildStudyPlan();
       updateStudentHeader();
       updatePrintableBooks();
