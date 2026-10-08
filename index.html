@@ -10508,6 +10508,112 @@ button#btn-add-subject * {
   padding: 0 !important;
   color: #50328E !important;
 }
+
+/* 12. STEP 02 헤더: 모바일 좌측 뱃지 2줄 세로 배치 + 우측 건너뛰기 링크 수평 양끝(Space-between) 배치 */
+@media (max-width: 640px) {
+  #step-1 .border-b > div:first-child,
+  #step-1 .step02-header-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    text-align: left !important;
+    width: 100% !important;
+    gap: 8px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #step-1 .border-b > div:first-child > div:first-child,
+  #step-1 .step02-header-row > div:first-child,
+  #step-1 .step02-badge-wrap,
+  .cp-step02-badge-container,
+  #step-1 .cp-step02-badge-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    align-self: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    width: auto !important;
+    margin-left: 0 !important;
+    gap: 5px !important;
+  }
+
+  #step-1 .cp-step-badge-pill,
+  #step-1 .cp-step-badge-pill *,
+  #step-1 .step-label,
+  #step-1 .step-label * {
+    display: inline-flex !important;
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+    white-space: nowrap !important;
+    text-align: left !important;
+  }
+
+  #step-1 .cp-book-badge,
+  #step-1 span.cp-book-badge {
+    display: inline-flex !important;
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+    margin-top: 2px !important;
+    white-space: nowrap !important;
+    text-align: left !important;
+  }
+
+  #step-1 .step02-skip-link,
+  #step-1 .border-b > div:first-child > a {
+    display: inline-flex !important;
+    align-items: center !important;
+    align-self: flex-start !important;
+    margin-left: auto !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    padding-top: 4px !important;
+    font-size: 11.5px !important;
+  }
+}
+
+@media (min-width: 641px) {
+  #step-1 .border-b > div:first-child,
+  #step-1 .step02-header-row {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  #step-1 .border-b > div:first-child > div:first-child,
+  #step-1 .step02-header-row > div:first-child,
+  #step-1 .step02-badge-wrap,
+  .cp-step02-badge-container,
+  #step-1 .cp-step02-badge-container {
+    flex-direction: row !important;
+    align-items: center !important;
+    align-self: auto !important;
+    width: auto !important;
+    gap: 8px !important;
+  }
+
+  #step-1 .cp-book-badge,
+  #step-1 span.cp-book-badge {
+    margin-top: 0 !important;
+    margin-left: 6px !important;
+  }
+
+  #step-1 .step02-skip-link,
+  #step-1 .border-b > div:first-child > a {
+    padding-top: 0 !important;
+    font-size: 12px !important;
+  }
+}
+
+/* 13. '검사 결과 기반' 옆 작은 원형 점(동그라미) 완전 제거 */
+#top5-recommendation-box span.w-1\.5.h-1\.5,
+#top5-recommendation-box .step-label span.rounded-full,
+span:has(> .bg-blue-600) span.bg-blue-600 {
+  display: none !important;
+}
 </style>
 </head>
 <body class="bg-[#f8fafc] text-slate-900 min-h-screen flex flex-col justify-between antialiased pb-16 md:pb-0">
@@ -11494,13 +11600,12 @@ function toggleTeacherQrCodeModal() {
     <section id="step-1" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6 no-print">
   <!-- [진로 심리 간이 검사 상단 헤더: SaaS Progressive Disclosure] -->
   <div class="border-b border-slate-200 pb-5">
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2.5">
-      <div class="flex items-center gap-2">
-        <span class="cp-step-badge-pill step-label inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-2xs" style="background:#50328E !important; color:#FFFFFF !important; border:1px solid #3C1363 !important;"><span class="step-number" style="color:#FBDF0D !important; font-weight:900 !important;">STEP 02</span> <span style="color:#FFFFFF !important; font-weight:800 !important;">· 진로 진단</span></span>
-        <span class="text-xs text-slate-500 font-medium">약 5~7분 · 41문항</span>
-        <span class="cp-book-badge text-[11px] font-extrabold ml-1.5">도서 부록 p.332~343 연계</span>
+    <div class="step02-header-row flex flex-row items-start justify-between gap-2.5 mb-2.5 w-full text-left" style="display: flex !important; flex-direction: row !important; align-items: flex-start !important; justify-content: space-between !important; width: 100% !important; margin-left: 0 !important; margin-right: 0 !important;">
+      <div class="cp-step02-badge-container flex flex-col sm:flex-row items-start sm:items-center self-start justify-start gap-1.5 sm:gap-2 text-left" style="display: flex !important; align-items: flex-start !important; align-self: flex-start !important; justify-content: flex-start !important; text-align: left !important; margin-left: 0 !important;">
+        <span class="cp-step-badge-pill step-label inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-2xs whitespace-nowrap" style="background:#50328E !important; color:#FFFFFF !important; border:1px solid #3C1363 !important; white-space: nowrap !important; align-self: flex-start !important; margin-left: 0 !important;"><span class="step-number" style="color:#FBDF0D !important; font-weight:900 !important; white-space: nowrap !important;">STEP 02</span> <span style="color:#FFFFFF !important; font-weight:800 !important; white-space: nowrap !important;">· 진로 진단</span></span>
+        <span class="cp-book-badge text-[11px] font-extrabold sm:ml-1.5 whitespace-nowrap" style="white-space: nowrap !important; align-self: flex-start !important; margin-left: 0 !important;">도서 부록 p.332~343 연계</span>
       </div>
-      <a href="#step-2" class="text-xs font-semibold text-slate-500 hover:text-blue-600 flex items-center gap-1 transition self-start sm:self-auto">
+      <a href="#step-2" class="step02-skip-link text-xs font-semibold text-slate-500 hover:text-blue-600 inline-flex items-center gap-1 transition self-start shrink-0 pt-0.5" style="align-self: flex-start !important; margin-left: auto !important; text-align: right !important; white-space: nowrap !important;">
         <span>이미 목표 학과가 있다면 건너뛰기</span>
         <svg class="w-3.5 h-3.5 cp-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </a>
@@ -11622,7 +11727,7 @@ function toggleTeacherQrCodeModal() {
   <div>
     <div class="flex items-center gap-2">
       <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 step-label">
-        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> 검사 결과 기반
+        검사 결과 기반
       </span>
       <h3 class="text-xl font-bold text-slate-900 tracking-tight">🎯 나에게 맞는 추천 학과</h3>
     </div>
@@ -13701,6 +13806,9 @@ function toggleCheckDetailGrid(btn) {
     // - 체육·예술: 기본 3학점 (학교 자율 2~4학점)
     // - 교양 교과: 기본 2학점 (학교 자율 1~4학점, 1학점 집중 이수 적극 지원!)
     function getDefaultCredit(sName) {
+      if (sName && (sName.indexOf("생애 설계와 자립") !== -1 || sName.indexOf("생애설계와자립") !== -1)) return 2;
+      if (sName && (sName.indexOf("생애 설계와 자립") !== -1 || sName.indexOf("생애설계와자립") !== -1)) return 2;
+      if (sName && (sName.indexOf("생애 설계와 자립") !== -1 || sName.indexOf("생애설계와자립") !== -1)) return 2;
       if (sName && (sName.indexOf("생애 설계와 자립") !== -1 || sName.indexOf("생애설계와자립") !== -1)) return 2;
       const meta = subjectMetaMap[sName];
       if (meta) {
@@ -31607,12 +31715,18 @@ document.addEventListener("click", function(e) {
   function metaOf(n) { try { return subjectMetaMap[n] || null; } catch (e) { return null; } }
   function optionsFor(n) {
     if (n && (n.indexOf("생애 설계와 자립") !== -1 || n.indexOf("생애설계와자립") !== -1)) return [1, 2];
+    if (n && (n.indexOf("생애 설계와 자립") !== -1 || n.indexOf("생애설계와자립") !== -1)) return [1, 2];
+    if (n && (n.indexOf("생애 설계와 자립") !== -1 || n.indexOf("생애설계와자립") !== -1)) return [1, 2];
+    if (n && (n.indexOf("생애 설계와 자립") !== -1 || n.indexOf("생애설계와자립") !== -1)) return [1, 2];
     var m = metaOf(n);
     if (m && m.cat === "교양") return [1, 2, 3, 4];
     if (m && m.cat === "체육·예술") return [2, 3, 4];
     return [3, 4, 5];
   }
   function defaultFor(n) {
+    if (n && (n.indexOf("생애 설계와 자립") !== -1 || n.indexOf("생애설계와자립") !== -1)) return 2;
+    if (n && (n.indexOf("생애 설계와 자립") !== -1 || n.indexOf("생애설계와자립") !== -1)) return 2;
+    if (n && (n.indexOf("생애 설계와 자립") !== -1 || n.indexOf("생애설계와자립") !== -1)) return 2;
     if (n && (n.indexOf("생애 설계와 자립") !== -1 || n.indexOf("생애설계와자립") !== -1)) return 2;
     var m = metaOf(n);
     if (m && m.cat === "교양") return 2;
@@ -35467,7 +35581,7 @@ var switchPadletTab = window.switchPadletTab;
 </script>
 </main>
 <!-- [CareerPath] 게이트페이지 기반 씨마스 공식 다크 푸터 -->
-            <footer id="beta-notice" class="bg-[#18181A] text-white py-8 px-6 sm:px-10 border-t border-zinc-800 no-print" style="background: repeating-linear-gradient(135deg, #18181A, #18181A 4px, #202024 4px, #202024 8px) !important;">
+                  <footer id="beta-notice" class="bg-[#18181A] text-white py-8 px-6 sm:px-10 border-t border-zinc-800 no-print" style="background: repeating-linear-gradient(135deg, #18181A, #18181A 4px, #202024 4px, #202024 8px) !important;">
     <div class="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-6">
       <div class="space-y-2">
         <div class="text-2xl sm:text-3xl font-black tracking-tight" style="color: #E10098; font-family: 'Pretendard', sans-serif;">
