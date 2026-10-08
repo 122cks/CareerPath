@@ -27628,7 +27628,7 @@ document.addEventListener("click", function(e) {
   function applyRoleAndPadletIntegration() {
     var role = getUrlParam("role") || (getUrlParam("session") ? "student" : "");
     var isStudent = role === "student" || sessionStorage.getItem("cp_is_student_mode") === "true";
-    var padletParam = getUrlParam("padlet") || localStorage.getItem("cp_teacher_padlet_url");
+    var padletParam = getUrlParam("padlet");
 
     if (isStudent) {
       var guideTrigger = document.getElementById("padlet-guide-trigger-bar");
@@ -27746,7 +27746,11 @@ document.addEventListener("click", function(e) {
       } catch(e) {}
       return val;
     }
-    return localStorage.getItem("cp_teacher_padlet_url") || sessionStorage.getItem("cp_teacher_padlet_url") || "";
+    try {
+      localStorage.removeItem("cp_teacher_padlet_url");
+      sessionStorage.removeItem("cp_teacher_padlet_url");
+    } catch(e) {}
+    return "";
   }
 
   function appendPadletToStudentShareUrl() {
@@ -27761,11 +27765,13 @@ document.addEventListener("click", function(e) {
     if (padletUrl) {
       var sep = curVal.indexOf('?') === -1 ? '?' : '&';
       shareInput.value = curVal + sep + 'padlet=' + encodeURIComponent(padletUrl);
+    } else {
+      shareInput.value = curVal;
+    }
 
-      var qrImg = document.getElementById('teacher-qr-image');
-      if (qrImg) {
-        qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(shareInput.value);
-      }
+    var qrImg = document.getElementById('teacher-qr-image');
+    if (qrImg) {
+      qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(shareInput.value);
     }
   }
 
@@ -27790,13 +27796,18 @@ document.addEventListener("click", function(e) {
       padletUrl = p.get('padlet');
       if (padletUrl) {
         sessionStorage.setItem('cp_student_padlet_url', padletUrl);
-        localStorage.setItem('cp_student_padlet_url', padletUrl);
       } else {
-        padletUrl = sessionStorage.getItem('cp_student_padlet_url') || localStorage.getItem('cp_student_padlet_url');
+        sessionStorage.removeItem('cp_student_padlet_url');
+        localStorage.removeItem('cp_student_padlet_url');
+        padletUrl = null;
       }
     } catch(e) {}
 
-    if (!padletUrl) return;
+    var existingBanner = document.getElementById('student-padlet-top-banner');
+    if (!padletUrl) {
+      if (existingBanner) existingBanner.remove();
+      return;
+    }
 
     // [모바일 헤더 메뉴 옆 패들렛 바로가기 버튼 완전 제거]
     var oldHBtn = document.getElementById('student-padlet-header-btn');
