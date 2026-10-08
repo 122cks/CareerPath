@@ -28178,12 +28178,9 @@ document.addEventListener("click", function(e) {
       url = params.get('padlet') || "";
     } catch(e) {}
     if (!url) {
-      try {
-        url = localStorage.getItem("cp_teacher_padlet_url") || 
-              sessionStorage.getItem("cp_teacher_padlet_url") || 
-              localStorage.getItem("cp_student_padlet_url") || 
-              sessionStorage.getItem("cp_student_padlet_url") || "";
-      } catch(e) {}
+      // [수정] 과거 localStorage 강제 조회 차단 (현재 세션 및 입력창에 실제로 패들렛이 있을 때만 인정)
+      var inp = document.getElementById("teacher-padlet-url-input");
+      if (inp && inp.value.trim()) url = inp.value.trim();
     }
     if (!url) {
       var inp = document.getElementById("teacher-padlet-url-input");
@@ -28277,13 +28274,13 @@ document.addEventListener("click", function(e) {
     var dashboardActions = document.querySelector("#plan-completion-dashboard .cp-plan-actions-group");
     if (dashboardActions) {
       var dbBtn = document.getElementById("btn-step5-dashboard-padlet");
-      if (!dbBtn) {
-        dbBtn = document.createElement("button");
-        dbBtn.id = "btn-step5-dashboard-padlet";
-        dbBtn.type = "button";
-        dashboardActions.appendChild(dbBtn);
-      }
       if (isLinked) {
+        if (!dbBtn) {
+          dbBtn = document.createElement("button");
+          dbBtn.id = "btn-step5-dashboard-padlet";
+          dbBtn.type = "button";
+          dashboardActions.appendChild(dbBtn);
+        }
         dbBtn.className = "cp-btn-secondary-action bg-rose-600 hover:bg-rose-700 text-white font-black shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer";
         dbBtn.innerHTML = '<i class="fa-solid fa-arrow-up-from-bracket"></i><span>패들렛에 올리기</span>';
         dbBtn.title = "선생님 패들렛에 학업설계서를 제출합니다.";
@@ -28292,13 +28289,11 @@ document.addEventListener("click", function(e) {
         };
         dbBtn.style.display = "inline-flex";
       } else {
-        dbBtn.className = "cp-btn-secondary-action bg-slate-700 text-slate-400 font-medium transition flex items-center justify-center gap-1.5 cursor-not-allowed opacity-60";
-        dbBtn.innerHTML = '<i class="fa-solid fa-chalkboard-user"></i><span>패들렛 미연동</span>';
-        dbBtn.title = "선생님이 공유한 패들렛 링크가 없습니다.";
-        dbBtn.onclick = function() {
-          alert("선생님이 연동한 패들렛 링크가 없습니다. 선생님께 패들렛 링크를 문의해주세요.");
-        };
-        dbBtn.style.display = "inline-flex";
+        // [사용자 요청] 패들렛 미연동 시 버튼을 아예 표시하지 않음 (완전 숨김/삭제)
+        if (dbBtn) {
+          dbBtn.style.display = "none";
+          dbBtn.remove();
+        }
       }
     }
 
